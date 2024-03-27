@@ -30,30 +30,30 @@
                                 <div class="row p-0">
                                 <div class="col-md-6 rounded-5" style="background-color: #24235b; border-start-start-radius: 10px;border-end-start-radius: 10px;">
                                     <div style="display :flex;flex: 1 1 0%;flex-direction: row;height: 100%;align-content: center;align-items: center;">
-                                        
+
                                             <div class="d-flex flex-col align-content-center justify-content-center" >
-                
-                
+
+
                                                 <span
                                                 class="app-brand-logo2 demo">@include('_partials.macross',["height"=>20,"withbg"=>'fill:
                                                 #fff;'])</span>
-                                            
-                
-                
-                
-                                              
+
+
+
+
+
                                         </div>
                                     </div>
-                
+
                                 </div>
                                 <div class="col-md-6" style=" border-start-end-radius: 10px;border-end-end-radius: 10px;">
 
                                 <h4 class="mb-2 pt-4 pb-5 text-center">Insurance Agent</h4>
-                        
+
                                 <form id="formAuthentication" class="mb-3 py-3 px-4" action="{{url('/login')}}" method="post">
                                     @csrf
                                     <div class="form-floating form-floating-outline mb-3">
-                                        <input type="text" class="form-control" id="email" name="username"
+                                        <input type="text" class="form-control" id="email" name="email"
                                             placeholder="Enter your email or username" autofocus>
                                         <label for="email">Email or Username</label>
                                     </div>
@@ -88,8 +88,8 @@
                         </div>
                     </div>
                 </div>
-       
-  
+
+
         <!-- /Login -->
         {{-- <img src="{{asset('assets/img/illustrations/tree-3.png')}}" alt="auth-tree"
             class="authentication-image-object-left d-none d-lg-block">
