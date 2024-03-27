@@ -40,21 +40,21 @@ class AuthController extends Controller
     // return 'ok';
     // // return redirect('/form');
 
-    $user = User::where('username', $fields['username'])->first();
-    if (!Auth::attempt($request->only('username', 'password'), $request->boolean('remember'))) {
+    $user = User::where('email', $fields['username'])->first();
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
       return response([
         'message' => 'Wrong credentials',
       ]);
     }
-    Session::put('userRole', $user->role_id);
+    Session::put('userRole', $user->role);
     $request->session()->regenerate();
-    if ($user->role_id == 'admin') {
+    if ($user->role == 'admin') {
       return redirect('/dash_adm');
     }
-    if ($user->role_id == 'agent') {
+    if ($user->role == 'agent') {
       return redirect('/dash');
     }
-    if ($user->role_id == 'user') {
+    if ($user->role == 'user') {
       return redirect('/portal');
     }
 
@@ -64,19 +64,19 @@ class AuthController extends Controller
   public function register(Request $request)
   {
     $validatedDataa = Validator::make($request->all(), [
-      'username' => 'required|unique:users',
+      'name' => 'required',
       'password1' => 'required',
       'email' => 'required|email|unique:users',
-      'role_id' => 'required',
-      'Addss' => 'required',
-      'Addss2' => 'required',
-      'fullname' => 'required',
-      'country' => 'required',
-      'city' => 'required',
-      'state' => 'required',
-      'zip' => 'required',
-      'phone' => 'required',
-      'altemail' => 'required',
+      'role' => 'required',
+      // 'Addss' => 'required',
+      // 'Addss2' => 'required',
+      // 'fullname' => 'required',
+      // 'country' => 'required',
+      // 'city' => 'required',
+      // 'state' => 'required',
+      // 'zip' => 'required',
+      // 'phone' => 'required',
+      // 'altemail' => 'required',
     ]);
 
     if ($validatedDataa->fails()) {
@@ -91,10 +91,10 @@ class AuthController extends Controller
       'username' => $validatedData['username'],
       'email' => $validatedData['email'],
       'password' => Hash::make($validatedData['password1']),
-      'role_id' => $validatedData['role_id'], // Assuming default role ID for 'user'
+      'role' => $validatedData['role'], // Assuming default role ID for 'user'
     ]);
     $lastInsertedId = $user->id;
-    if ($validatedData['role_id'] == 'agent') {
+    if ($validatedData['role'] == 'agent') {
       $user = AgencyInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',

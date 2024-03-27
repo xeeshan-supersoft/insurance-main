@@ -56,7 +56,7 @@ class AgentController extends Controller
         $policytypes = PolicyType::with('policies','policyLimits')
                         ->whereIn('id', $request->policyGroup)->get();
 
-        return view('certificates.create', compact('policytypes'));
+        return view('agent.formlist', compact('policytypes'));
     }
 
     /**
