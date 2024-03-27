@@ -50,6 +50,7 @@ class AuthController extends Controller
       ]);
     }
     Session::put('userRole', $user->role);
+
     $request->session()->regenerate();
     if ($user->role == 'admin') {
       return redirect('/dash_adm');
