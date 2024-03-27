@@ -17,6 +17,7 @@ class AgentController extends Controller
   {
     $this->middleware('checkRole:agent');
   }
+  
 
   public function dash()
   {
