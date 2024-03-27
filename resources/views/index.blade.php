@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Masco </title>
+    <title>Accord 360 </title>
     <meta name="description" content="AIMass Tailwind based SASS Template" />
 
     <!-- Favicon  -->
@@ -56,7 +56,7 @@
                             <ul class="site-menu-main">
             <li class="nav-item "><a href="#" class="nav-link-item">home </a> </li>
             <li class="nav-item"><a class='nav-link-item' href='#'>About</a></li>
-            <li class="nav-item "><a href="#" class="nav-link-item ">Services</a></li>                           
+            <li class="nav-item "><a href="#" class="nav-link-item ">Services</a></li>
              <li class="nav-item "><a href="#" class="nav-link-item">Contact</a></li>
                             </ul>
                         </nav>
@@ -98,7 +98,7 @@
                                         Discover the COI Network
                                     </h1>
                                     <p class="mb-10 max-w-[624px] xl:mb-[50px]">
-                                        a groundbreaking platform where getting 
+                                        a groundbreaking platform where getting
                                         certificates in real-time meets effortless
                                          compliance management. It's innovation made simple
                                     </p>
@@ -165,7 +165,7 @@
                                         <div class="h-full rounded-[10px] border-2 border-ColorBlack bg-white p-[30px]">
                                             <img src="assets/img/icons/icon-duotone-translate.svg" alt="icon-duotone-translate" width="60" height="60" class="mb-[30px] h-[60px] w-auto" />
                                             <div class="mb-4 text-xl font-semibold leading-[1.33] -tracking-[0.5px] text-ColorBlack lg:text-2xl">
-                                                Real-Time Compliance: 
+                                                Real-Time Compliance:
                                             </div>
                                             <p>
                                                 Certificial's Smart COI Network delivers continuous, compliant insurance coverage through patented real-time data, reducing risks for all stakeholders.
@@ -238,9 +238,9 @@
                                     </div>
                                     <!-- Section Wrapper -->
                                     <p>
-                                      
-The Smart COI Network unites diverse stakeholders on a unified platform. 
-Certificates of Insurance (COIs) serve various purposes for different users. 
+
+The Smart COI Network unites diverse stakeholders on a unified platform.
+Certificates of Insurance (COIs) serve various purposes for different users.
 No matter why you need COIs, our innovative Smart COI Network
  guarantees everyone has access to consistently updated information.
                                     </p>
@@ -331,7 +331,7 @@ No matter why you need COIs, our innovative Smart COI Network
                             <!-- Section Content Block -->
                             <div class="mx-auto max-w-[636px]">
                                 <h2 class="mb-5 text-center text-white">
-                                    Develop a communication strategy 
+                                    Develop a communication strategy
                                 </h2>
                                 <p class="text-center text-white">
                                     Enable all COI process stakeholders to engage in a data-first, real-time exchange of coverage information, empowering every participant.
@@ -985,7 +985,7 @@ No matter why you need COIs, our innovative Smart COI Network
                         <!-- Section Container -->
                         <div class="container-default">
                             <div class="text-center">
-                                &copy; Copyright 2024, All Rights Reserved by 
+                                &copy; Copyright 2024, All Rights Reserved by
                             </div>
                         </div>
                         <!-- Section Container -->
