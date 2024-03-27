@@ -64,7 +64,6 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/user', [AdminController::class, 'users'])->name('add.user');
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
   Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
-  
 });
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
@@ -90,17 +89,14 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   // Routes accessible only by users with 'user' role
   // Route::get('/user/dashboard', 'UserController@dashboard')->name('user.dashboard');
   Route::get('/truck', [TruckController::class, 'trucker'])->name('truck');
-  
 });
 Route::group(['middleware' => 'checkRole:shipper'], function () {
-  Route::get('/dash', [ShipperController::class, 'dash'])->name('truck.dash');
+  Route::get('/sdash', [ShipperController::class, 'dash'])->name('truck.dash');
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');
   // Routes accessible only by users with 'user' role
   // Route::get('/user/dashboard', 'UserController@dashboard')->name('user.dashboard');
 
   Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
-
-  
 });
 
 Route::get('/exam', [TruckController::class, 'truckers'])->name('truckd');

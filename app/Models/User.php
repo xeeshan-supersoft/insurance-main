@@ -60,6 +60,7 @@ class User extends Authenticatable
 
   public function hasRole($role)
   {
+    dd($role);
     return $this->role === $role;
   }
 }
