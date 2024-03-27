@@ -49,6 +49,9 @@ use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 
 // Main Page Route
+Route::get('accord', function () {
+  return view('fromdrop');
+});
 Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/dash_adm', [AdminController::class, 'dashadmin'])->name('dashs');
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
