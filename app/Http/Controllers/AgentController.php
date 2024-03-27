@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\User;
 use App\Models\Agent;
 use App\Models\Policy;
 use App\Models\PolicyType;
@@ -19,7 +20,9 @@ class AgentController extends Controller
 
   public function dash()
   {
-    return view('agent.dash');
+    $users = User::all();
+
+    return view('dash', compact('users'));
   }
   // public function formlist()
   // {
@@ -39,63 +42,64 @@ class AgentController extends Controller
   //   return view('agent.pdf', compact('insuranceData', 'Insurance_detail'));
   // }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function choosePolicyTypes()
-    {
-        $policytypes = PolicyType::all();
-        return view('certificates.policyTypes', compact('policytypes'));
-    }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function choosePolicyTypes()
+  {
+    $policytypes = PolicyType::all();
+    return view('fromdrop', compact('policytypes'));
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request)
-    {
-        $policytypes = PolicyType::with('policies','policyLimits')
-                        ->whereIn('id', $request->policyGroup)->get();
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create(Request $request)
+  {
+    $policytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereIn('id', $request->policyGroup)
+      ->get();
 
-        return view('agent.formlist', compact('policytypes'));
-    }
+    return view('agent.form2', compact('policytypes'));
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request, CertificateService $certificateService)
-    {
-        $certificateService->store($request->validated());
-    }
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request, CertificateService $certificateService)
+  {
+    $certificateService->store($request->validated());
+  }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+  /**
+   * Display the specified resource.
+   */
+  public function show(string $id)
+  {
+    //
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+  /**
+   * Show the form for editing the specified resource.
+   */
+  public function edit(string $id)
+  {
+    //
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(Request $request, string $id)
+  {
+    //
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(string $id)
+  {
+    //
+  }
 }

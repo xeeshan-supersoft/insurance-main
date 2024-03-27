@@ -68,10 +68,14 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
   Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
 });
+
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
   Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
+
+  Route::get('/cert_1st_step', [ac::class, 'choosePolicyTypes'])->name('cert_1st_step');
+  Route::post('/form2', [ac::class, 'create'])->name('form2');
 
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
   Route::get('/dash', [ac::class, 'dash'])->name('dash');
