@@ -21,7 +21,7 @@ class AuthController extends Controller
   public function login(Request $request)
   {
     $fields = $request->validate([
-      'username' => 'required',
+      'email' => 'required',
       'password' => 'required',
     ]);
 
@@ -40,8 +40,11 @@ class AuthController extends Controller
     // return 'ok';
     // // return redirect('/form');
 
-    $user = User::where('email', $fields['username'])->first();
-    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+    $user = User::where('email', $fields['email'])->first();
+
+    $credentials = $request->only('email', 'password');
+
+    if (!Auth::attempt($credentials)) {
       return response([
         'message' => 'Wrong credentials',
       ]);
