@@ -9,57 +9,57 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+  use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name', 'email', 'role', 'password', 'email_verified_at', 'remember_token',
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = ['name', 'email', 'role', 'password', 'email_verified_at', 'remember_token'];
+
+  /**
+   * The attributes that should be hidden for serialization.
+   *
+   * @var array<int, string>
+   */
+  protected $hidden = ['password', 'remember_token'];
+
+  /**
+   * Get the attributes that should be cast.
+   *
+   * @return array<string, string>
+   */
+  protected function casts(): array
+  {
+    return [
+      'email_verified_at' => 'datetime',
+      'password' => 'hashed',
     ];
+  }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+  public function certificatesAsAgent()
+  {
+    return $this->hasMany(Certificate::class, 'producer_user_id');
+  }
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+  public function certificatesAsDriver()
+  {
+    return $this->hasMany(Certificate::class, 'client_user_id');
+  }
 
-    public function certificatesAsAgent()
-    {
-        return $this->hasMany(Certificate::class, 'producer_user_id');
-    }
+  public function agents()
+  {
+    return $this->belongsToMany(User::class, 'agent_driver', 'agent_id', 'driver_id');
+  }
 
-    public function certificatesAsDriver()
-    {
-        return $this->hasMany(Certificate::class, 'client_user_id');
-    }
+  public function drivers()
+  {
+    return $this->belongsToMany(User::class, 'agent_driver', 'driver_id', 'agent_id');
+  }
 
-    public function agents()
-    {
-        return $this->belongsToMany(User::class, 'agent_driver', 'agent_id', 'driver_id');
-    }
-
-    public function drivers()
-    {
-        return $this->belongsToMany(User::class, 'agent_driver', 'driver_id', 'agent_id');
-    }
+  public function hasRole($role)
+  {
+    return $this->role === $role;
+  }
 }
