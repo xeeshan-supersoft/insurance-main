@@ -26,7 +26,8 @@ class AgentController extends Controller
   }
   public function formlist()
   {
-    return view('agent.formlist');
+    $driver = User::with('agents')->find(Auth::user()->id);
+    return view('agent.formlist', compact('driver'));
   }
 
   /**
