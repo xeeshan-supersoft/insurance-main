@@ -117,7 +117,7 @@ class AuthController extends Controller
         'user_id' => $lastInsertedId,
       ]);
     }
-    if ($validatedData['role_id'] == 'shipper') {
+    if ($validatedData['role'] == 'shipper') {
       $user = ShipperInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
@@ -136,7 +136,7 @@ class AuthController extends Controller
         'user_id' => $lastInsertedId,
       ]);
     }
-    if ($validatedData['role_id'] == 'truker') {
+    if ($validatedData['role'] == 'truck_driver') {
       echo $user = TruckerInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
@@ -156,7 +156,7 @@ class AuthController extends Controller
       ]);
     }
 
-    if ($validatedData['role_id'] == 'freight') {
+    if ($validatedData['role'] == 'freight_driver') {
       $user = FreightInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
