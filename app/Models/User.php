@@ -62,4 +62,25 @@ class User extends Authenticatable
   {
     return $this->role === $role;
   }
+
+   
+  public function shippers()
+  {
+    return $this->hasMany(ShipperInfos::class, 'user_id');
+  }
+
+  public function truckers()
+  {
+    return $this->hasMany(TruckerInfos::class, 'user_id');
+  }
+
+  public function freights()
+  {
+    return $this->hasMany(FreightInfos::class, 'user_id');
+  }
+
+  public function agencies()
+  {
+    return $this->hasMany(AgencyInfos::class, 'user_id');
+  }
 }

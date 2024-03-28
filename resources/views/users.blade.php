@@ -79,13 +79,13 @@ $navbarHideToggle = false;
           <div class="col-6">
           <div class="mb-4">           
             <div class="form-floating form-floating-outline mb-4">
-                <select class="form-select" name="role_id" id="role_id1" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
+                <select class="form-select" name="role" id="role_id1" aria-label="Default select example">
+                <option selected>Open this select  menu</option>
                   <option value="admin">ADMIN</option>
                   <option value="agent">AGENT</option>
-                  <option value="truker">TRUCK</option>
+                  <option value="truck_driver">TRUCK</option>
                   <option value="shipper">SHIPPER</option>     
-                  <option value="freight">FREIGHT</option>                  
+                  <option value="freight_driver">FREIGHT</option>                  
                 </select>
                 <label for="role_id1">ROLE OF USER</label>
               </div>           
@@ -211,13 +211,13 @@ $navbarHideToggle = false;
       <div class="col-6">
       <div class="mb-4">           
         <div class="form-floating form-floating-outline mb-4">
-            <select class="form-select" name="role_id" id="role_id" aria-label="Default select example">
-              <option selected>Open this select menu</option>
+            <select class="form-select" name="role" id="role_id" aria-label="Default select example">
+              <option selected>Open this select  menu</option>
               <option value="admin">ADMIN</option>
               <option value="agent">AGENT</option>
-              <option value="truker">TRUCK</option>
+              <option value="truck_driver">TRUCK</option>
               <option value="shipper">SHIPPER</option>     
-              <option value="freight">FREIGHT</option>                  
+              <option value="freight_driver">FREIGHT</option>                  
             </select>
             <label for="role_id">ROLE OF USER</label>
           </div>           
