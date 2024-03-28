@@ -7,14 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agent extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = [
-        'address', 'phone', 'fax', 'producer_customer_number', 'user_id',
-    ];
+  protected $fillable = ['address', 'phone', 'fax', 'producer_customer_number', 'user_id'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+  public function user()
+  {
+    return $this->belongsTo(User::class, 'user_id');
+  }
 }

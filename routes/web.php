@@ -57,22 +57,22 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
   // Route::get('/dash', [AdminController::class, 'dash'])->name('dash');
-  Route::get('/list', [AdminController::class, 'list'])->name('list');
-  Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
-  Route::get('/form', [AdminController::class, 'insurform'])->name('form');
-  Route::post('/save', [AdminController::class, 'insurformsave'])->name('form.insert');
-  Route::get('/pdf', [AdminController::class, 'pdf'])->name('form.pdf');
-  Route::post('/reg/{id}', [AuthController::class, 'regedit'])->name('form.users');
-  Route::post('/reg', [AuthController::class, 'register'])->name('form.user');
-  Route::get('/user', [AdminController::class, 'users'])->name('add.user');
-  Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
-  Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
+  // Route::get('/list', [AdminController::class, 'list'])->name('list');
+  // Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
+  // Route::get('/form', [AdminController::class, 'insurform'])->name('form');
+  // Route::post('/save', [AdminController::class, 'insurformsave'])->name('form.insert');
+  // Route::get('/pdf', [AdminController::class, 'pdf'])->name('form.pdf');
+  // Route::post('/reg/{id}', [AuthController::class, 'regedit'])->name('form.users');
+  // Route::post('/reg', [AuthController::class, 'register'])->name('form.user');
+  // Route::get('/user', [AdminController::class, 'users'])->name('add.user');
+  // Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
+  // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
 });
 
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
-  Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
+  //Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
 
   Route::get('/cert_1st_step', [ac::class, 'choosePolicyTypes'])->name('cert_1st_step');
   Route::post('/form2', [ac::class, 'create'])->name('form2');
@@ -80,18 +80,18 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
   Route::get('/dash', [ac::class, 'dash'])->name('dash');
   //Route::get('/list', [AdminController::class, 'list'])->name('list');
-  Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
+  //Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
   //Route::get('/form', [ac::class, 'insurform'])->name('form');
   //Route::post('/save', [AdminController::class, 'insurformsave'])->name('form.insert');
 
-  Route::post('/reg', [AuthController::class, 'register'])->name('form.user');
+  //Route::post('/reg', [AuthController::class, 'register'])->name('form.user');
   //Route::get('/user', [AdminController::class, 'users'])->name('add.user');
 });
 
 Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/portal', [TruckController::class, 'adash'])->name('dashw');
-  Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
-  Route::get('/formlist', [TruckController::class, 'truckersss'])->name('truck.list');
+  // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
+  //Route::get('/formlist', [TruckController::class, 'truckersss'])->name('truck.list');
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');
   // Routes accessible only by users with 'user' role
   // Route::get('/user/dashboard', 'UserController@dashboard')->name('user.dashboard');
@@ -103,7 +103,7 @@ Route::group(['middleware' => 'checkRole:shipper'], function () {
   // Routes accessible only by users with 'user' role
   // Route::get('/user/dashboard', 'UserController@dashboard')->name('user.dashboard');
 
-  Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
+  //Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
 });
 
 Route::get('/exam', [TruckController::class, 'truckers'])->name('truckd');

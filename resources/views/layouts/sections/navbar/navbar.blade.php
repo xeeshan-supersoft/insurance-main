@@ -356,7 +356,7 @@
             <a href="{{ route('dash') }}" class="btn btn-light">Dasboard</a>
         </li>
         <li>
-            <a class="btn btn-light">Motor Carrier Insureds</a>
+            <a href="{{ route('formlist') }}" class="btn btn-light">Motor Carrier Insureds</a>
         </li>
         <li>
             <a class="btn btn-light">Company Information</a>

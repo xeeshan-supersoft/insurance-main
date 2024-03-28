@@ -17,7 +17,6 @@ class AgentController extends Controller
   {
     $this->middleware('checkRole:agent');
   }
-  
 
   public function dash()
   {
@@ -25,23 +24,10 @@ class AgentController extends Controller
 
     return view('dash', compact('users'));
   }
-  // public function formlist()
-  // {
-
-  //   $insurance_data = Insurance_data::Join(
-  //     'insurance_details',
-  //     'insurance_datas.id',
-  //     '=',
-  //     'insurance_details.id_isu_data_fk'
-  //   )->get();
-  //   return view('agent.formlist', compact('insurance_data'));
-  // }
-  // public function pdf(request $request, $id)
-  // {
-  //   $insuranceData = Insurance_data::where('id', $id)->first();
-  //   $Insurance_detail = Insurance_detail::where('id_isu_data_fk', $id)->first();
-  //   return view('agent.pdf', compact('insuranceData', 'Insurance_detail'));
-  // }
+  public function formlist()
+  {
+    return view('agent.formlist');
+  }
 
   /**
    * Show the form for creating a new resource.
