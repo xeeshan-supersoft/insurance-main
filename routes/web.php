@@ -84,7 +84,7 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
   //Route::get('/form', [ac::class, 'insurform'])->name('form');
   //Route::post('/save', [AdminController::class, 'insurformsave'])->name('form.insert');
 
-  //Route::post('/reg', [AuthController::class, 'register'])->name('form.user');
+  Route::post('/reg', [AuthController::class, 'register'])->name('form.user');
   //Route::get('/user', [AdminController::class, 'users'])->name('add.user');
 });
 
