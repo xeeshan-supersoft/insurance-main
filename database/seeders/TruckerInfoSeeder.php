@@ -16,7 +16,7 @@ class TruckerInfoSeeder extends Seeder
   public function run(): void
   {
     $trucker = new User();
-    $trucker->name = 'M';
+    $trucker->name = 'Mac';
     $trucker->email = 'trucker@gmail.com';
     $trucker->password = Hash::make('123');
     $trucker->role = 'truck_driver';
