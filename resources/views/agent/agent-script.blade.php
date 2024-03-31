@@ -37,7 +37,6 @@
              var path = "{{ route('insurSearch') }}";
 
              $('#insurA').select2({
-                 height: "100%",
                  ajax: {
                      url: path,
                      dataType: 'json',
@@ -66,7 +65,6 @@
              });
 
              $('#insurB').select2({
-                 height: "100%",
                  ajax: {
                      url: path,
                      dataType: 'json',
@@ -95,7 +93,6 @@
              });
 
              $('#insurC').select2({
-                 height: "100%",
                  ajax: {
                      url: path,
                      dataType: 'json',
@@ -124,7 +121,6 @@
              });
 
              $('#insurD').select2({
-                 height: "100%",
                  ajax: {
                      url: path,
                      dataType: 'json',
@@ -153,7 +149,6 @@
              });
 
              $('#insurE').select2({
-                 height: "100%",
                  ajax: {
                      url: path,
                      dataType: 'json',
