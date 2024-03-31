@@ -101,24 +101,46 @@
      <div class="card mb-4">
          <div class="card-body">
              <div class="row">
-                 <div class="col-6">
-                     <div class="form-floating form-floating-outline mb-4">
-                         <input type="text" class="form-control" id="basic-default-company"
-                             name="CERTIFICATE_HOLDER" placeholder="" />
-                         <label for="basic-default-company">CERTIFICATE HOLDER </label>
-                     </div>
-                 </div>
-                 <div class="col-6">
-                     <div class="form-floating form-floating-outline mb-4">
-                         <input type="text" class="form-control" id="basic-default-company" name="REPRESENTATIVE"
-                             placeholder="" />
-                         <label for="basic-default-company">AUTHORIZED REPRESENTATIVE</label>
-                     </div>
-                 </div>
+                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 9px;">
+                     <tbody>
+                         <tr>
+                             <td style="width: 50%; font-size: 15px; font-weight: bold;">
+                                 CERTIFICATE HOLDER</td>
+                             <td style="width: 50%; font-size: 15px; font-weight: bold;">
+                                 CANCELLATION</td>
+                         </tr>
+                         <tr>
+                             <td valign="top" colspan="2" class="p-0">
+                                 <table width="100%" cellpadding="0" cellspacing="0" border="0"
+                                     class="tftable m-t-b-10">
+                                     <tbody>
+                                         <tr>
+                                             <td rowspan="2" width="50%" class="ct_holder"> President <br> The
+                                                 Intermodal Association of North America <br>
+                                                 11785 Beltsville Drive <br> Suite 1100<br> Calverton, MD 20705-4048<br>
+                                             </td>
+                                             <td class="fot_titel"> SHOULD ANY OF THE ABOVE
+                                                 DESCRIBED POLICIES BE CANCELLED BEFORE THE EXPIRATION DATE THEREOF,
+                                                 NOTICE WILL BE DELIVERED IN ACCORDANCE WITH THE POLICY PROVISIONS.
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td class="fot_titel">AUTHORIZED REPRESENTATIVE
+                                                 <textarea disabled cols="38" rows="3" readonly="readonly"
+                                                     style="vertical-align: middle; margin-left: 10px;"></textarea>
+                                             </td>
+                                         </tr>
+                                     </tbody>
+                                 </table>
+                             </td>
+                         </tr>
+                     </tbody>
+                 </table>
              </div>
          </div>
      </div>
-     {{-- <div class="form-check mt-3">
+ </div>
+ {{-- <div class="form-check mt-3">
          <input class="form-check-input" type="checkbox" value="1" name="checkbox" id="defaultCheck1"
              required />
          <label class="form-check-label" for="defaultCheck1">

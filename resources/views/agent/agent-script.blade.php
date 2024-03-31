@@ -1,30 +1,33 @@
  @push('body-scripts')
-     <script>
+     <script type="text/javascript">
          function validateInput(event) {
              var inputValue = event.target.value.toUpperCase();
              var insuranceInputs = {
-                 'A': 'insur_a',
-                 'B': 'insur_b',
-                 'C': 'insur_c',
-                 'D': 'insur_d',
-                 'E': 'insur_e'
+                 'A': 'insurA',
+                 'B': 'insurB',
+                 'C': 'insurC',
+                 'D': 'insurD',
+                 'E': 'insurE'
              };
 
              // Check if the corresponding insurance input has value
              var correspondingInputName = insuranceInputs[inputValue];
+             console.log(correspondingInputName);
+
              if (correspondingInputName) {
-                 var input = document.getElementsByName(correspondingInputName)[0];
-                 if (input.value.trim() === '') {
+                 var input = document.getElementById(correspondingInputName);
+                 if (input.options.length == 0) {
                      alert("Error: Please fill out the corresponding insurance input before proceeding.");
                      event.target.value = ''; // Clear the input value
                  }
              }
          }
-     </script>
-     <script type="text/javascript">
+
+         var path = "{{ route('insurSearch') }}";
+
          $('.js-example-basic-single').select2({
              ajax: {
-                 url: "{{ route('insurSearch') }}",
+                 url: path,
                  dataType: 'json',
                  delay: 250,
                  processResults: function(data) {
