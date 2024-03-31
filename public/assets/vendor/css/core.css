@@ -2495,9 +2495,7 @@ textarea.form-control-lg {
   background-position: center;
   background-size: contain;
   border: 2px solid #9d9aa0;
-  -webkit-print-color-adjust: exact;
-     color-adjust: exact;
-          print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.125em;
@@ -3093,7 +3091,7 @@ textarea.form-control-lg {
       -ms-user-select: none;
           user-select: none;
   border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
-  /* border-radius: var(--bs-btn-border-radius); */
+  border-radius: var(--bs-btn-border-radius);
   background-color: var(--bs-btn-bg);
   transition: all 0.2s ease-in-out;
 }
@@ -8210,24 +8208,21 @@ label.btn {
   border-color: #ff4c51;
   color: #fff;
 }
-/* ::placeholder {
-  color: black !important;  
-} */
 
 .btn-light {
-  color: #fff !important;
-  background-color: transparent;
- 
+  color: #3a3541;
+  background-color: #dfdfe3;
+  border-color: #dfdfe3;
 }
 .btn-light:hover {
   color: #3a3541 !important;
   background-color: #fdfdfd !important;
- 
+  border-color: #fdfdfd !important;
 }
 .btn-check:focus + .btn-light, .btn-light:focus, .btn-light.focus {
   color: #3a3541;
-
-
+  background-color: #fdfdfd;
+  border-color: #fdfdfd;
   box-shadow: none;
 }
 .btn-check:checked + .btn-light, .btn-check:active + .btn-light, .btn-light:active, .btn-light.active, .btn-light.show.dropdown-toggle, .show > .btn-light.dropdown-toggle {
@@ -18542,29 +18537,15 @@ html:not(.layout-footer-fixed) .content-wrapper {
   -ms-flex-align: center;
       align-items: center;
 }
-.app-brand-logo2 {
-  display: flex;
-  -ms-flex-positive: 0;
-      flex-grow: 0;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  overflow: hidden;
-  min-height: 1px;
-  align-content: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.app-brand-logo {
-  display: flex;
-  -ms-flex-positive: 0;
-      flex-grow: 0;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  overflow: hidden;
-  min-height: 1px;
-  align-content: center;
 
-  flex-wrap: wrap;
+.app-brand-logo {
+  display: block;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  overflow: hidden;
+  min-height: 1px;
 }
 .app-brand-logo img,
 .app-brand-logo svg {

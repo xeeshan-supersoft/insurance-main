@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
     $this->call(PoliciesSeeder::class);
     $this->call(PolicyLimitSeeder::class);
     $this->call(TruckerInfoSeeder::class);
+    $this->call(InsuranceProviderSeeder::class);
   }
 }
