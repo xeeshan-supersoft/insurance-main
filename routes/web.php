@@ -47,6 +47,7 @@ use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
+use App\Http\Controllers\SelectSearchController as ssc;
 
 // Main Page Route
 Route::get('/accord', function () {
@@ -55,6 +56,9 @@ Route::get('/accord', function () {
 Route::get('/register', function () {
   return view('auth.regist');
 });
+
+Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
+
 Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/dash_adm', [AdminController::class, 'dashadmin'])->name('dashs');
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
