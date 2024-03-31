@@ -27,7 +27,7 @@
             </div>
             <!--------------------------------------------------------------bbbbbb------------------------------------------------------------->
 
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
                         <select class="js-example-basic-single form-control" name="insurB" id="insurB"></select>
@@ -47,10 +47,10 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!--------------------------------------------------------------ccccccc------------------------------------------------------------->
 
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
                         <select class="js-example-basic-single form-control" name="insurC" id="insurC"></select>
@@ -70,10 +70,10 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!--------------------------------------------------------------dddddd------------------------------------------------------------->
 
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
                         <select class="js-example-basic-single form-control" name="insurD" id="insurD"></select>
@@ -93,10 +93,10 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!--------------------------------------------------------------eeeeee------------------------------------------------------------->
 
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
                         <select class="js-example-basic-single form-control" name="insurE" id="insurE"></select>
@@ -117,7 +117,7 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
         </div>
     </div>

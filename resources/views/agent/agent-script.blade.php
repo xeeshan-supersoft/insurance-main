@@ -17,40 +17,169 @@
              if (correspondingInputName) {
                  var input = document.getElementById(correspondingInputName);
                  if (input.options.length == 0) {
-                     alert("Error: Please fill out the corresponding insurance input before proceeding.");
+                     const swalWithBootstrapButtons = Swal.mixin({
+                         customClass: {
+                             confirmButton: "btn btn-danger"
+                         },
+                         buttonsStyling: false
+                     });
+                     swalWithBootstrapButtons.fire({
+                         title: 'Error!',
+                         text: 'Error: Please fill out the corresponding insurance input before proceeding.',
+                         icon: 'error',
+                         confirmButtonText: 'OK'
+                     });
                      event.target.value = ''; // Clear the input value
                  }
              }
          }
+         $(document).ready(function() {
+             var path = "{{ route('insurSearch') }}";
 
-         var path = "{{ route('insurSearch') }}";
+             $('#insurA').select2({
+                 height: "100%",
+                 ajax: {
+                     url: path,
+                     dataType: 'json',
+                     delay: 250,
+                     processResults: function(data) {
+                         return {
+                             results: $.map(data, function(item) {
+                                 return {
+                                     text: item.name,
+                                     id: item.id,
+                                     naic: item.naic_number,
+                                     best_rate: item.best_rating_number,
+                                 }
+                             })
+                         };
+                     },
+                     cache: true
+                 }
+             }).on('select2:select', function(event) {
+                 // This is how I got ahold of the data
+                 var contact = event.params.data;
+                 $('#naic_a').val(contact.naic);
+                 $('#br_a').val(contact.best_rate);
+                 // contact.suggestions ...
+                 // contact.organization_id ...
+             });
 
-         $('#insurA').select2({
-             ajax: {
-                 url: path,
-                 dataType: 'json',
-                 delay: 250,
-                 processResults: function(data) {
-                     return {
-                         results: $.map(data, function(item) {
-                             return {
-                                 text: item.name,
-                                 id: item.id,
-                                 naic: item.naic_number,
-                                 best_rate: item.best_rating_number,
-                             }
-                         })
-                     };
-                 },
-                 cache: true
-             }
-         }).on('select2:select', function(event) {
-             // This is how I got ahold of the data
-             var contact = event.params.data;
-             $('#naic_a').val(contact.naic);
-             $('#br_a').val(contact.best_rate);
-             // contact.suggestions ...
-             // contact.organization_id ...
-         });;
+             $('#insurB').select2({
+                 height: "100%",
+                 ajax: {
+                     url: path,
+                     dataType: 'json',
+                     delay: 250,
+                     processResults: function(data) {
+                         return {
+                             results: $.map(data, function(item) {
+                                 return {
+                                     text: item.name,
+                                     id: item.id,
+                                     naic: item.naic_number,
+                                     best_rate: item.best_rating_number,
+                                 }
+                             })
+                         };
+                     },
+                     cache: true
+                 }
+             }).on('select2:select', function(event) {
+                 // This is how I got ahold of the data
+                 var contact = event.params.data;
+                 $('#naic_b').val(contact.naic);
+                 $('#br_b').val(contact.best_rate);
+                 // contact.suggestions ...
+                 // contact.organization_id ...
+             });
+
+             $('#insurC').select2({
+                 height: "100%",
+                 ajax: {
+                     url: path,
+                     dataType: 'json',
+                     delay: 250,
+                     processResults: function(data) {
+                         return {
+                             results: $.map(data, function(item) {
+                                 return {
+                                     text: item.name,
+                                     id: item.id,
+                                     naic: item.naic_number,
+                                     best_rate: item.best_rating_number,
+                                 }
+                             })
+                         };
+                     },
+                     cache: true
+                 }
+             }).on('select2:select', function(event) {
+                 // This is how I got ahold of the data
+                 var contact = event.params.data;
+                 $('#naic_c').val(contact.naic);
+                 $('#br_c').val(contact.best_rate);
+                 // contact.suggestions ...
+                 // contact.organization_id ...
+             });
+
+             $('#insurD').select2({
+                 height: "100%",
+                 ajax: {
+                     url: path,
+                     dataType: 'json',
+                     delay: 250,
+                     processResults: function(data) {
+                         return {
+                             results: $.map(data, function(item) {
+                                 return {
+                                     text: item.name,
+                                     id: item.id,
+                                     naic: item.naic_number,
+                                     best_rate: item.best_rating_number,
+                                 }
+                             })
+                         };
+                     },
+                     cache: true
+                 }
+             }).on('select2:select', function(event) {
+                 // This is how I got ahold of the data
+                 var contact = event.params.data;
+                 $('#naic_d').val(contact.naic);
+                 $('#br_d').val(contact.best_rate);
+                 // contact.suggestions ...
+                 // contact.organization_id ...
+             });
+
+             $('#insurE').select2({
+                 height: "100%",
+                 ajax: {
+                     url: path,
+                     dataType: 'json',
+                     delay: 250,
+                     processResults: function(data) {
+                         return {
+                             results: $.map(data, function(item) {
+                                 return {
+                                     text: item.name,
+                                     id: item.id,
+                                     naic: item.naic_number,
+                                     best_rate: item.best_rating_number,
+                                 }
+                             })
+                         };
+                     },
+                     cache: true
+                 }
+             }).on('select2:select', function(event) {
+                 // This is how I got ahold of the data
+                 var contact = event.params.data;
+                 $('#naic_e').val(contact.naic);
+                 $('#br_e').val(contact.best_rate);
+                 // contact.suggestions ...
+                 // contact.organization_id ...
+             });
+         });
      </script>
  @endpush
