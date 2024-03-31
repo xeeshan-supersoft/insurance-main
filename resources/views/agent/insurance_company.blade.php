@@ -13,14 +13,13 @@
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" name="naic_a" id="naic_a" placeholder="29424" />
+                        <input type="text" class="form-control" id="naic_a" placeholder="29424" />
                         <label for="basic-default-company">NAIC #</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" name="br_a" id="br_a"
-                            placeholder="A++ 04-1" />
+                        <input type="text" class="form-control" id="br_a" placeholder="A++ 04-1" />
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
@@ -36,14 +35,13 @@
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="naic_b" name="naic_b" placeholder="29424" />
+                        <input type="text" class="form-control" id="naic_b" placeholder="29424" />
                         <label for="basic-default-company">NAIC #</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="br_b" name="br_b"
-                            placeholder="A++ 04-1" />
+                        <input type="text" class="form-control" id="br_b" placeholder="A++ 04-1" />
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
@@ -59,14 +57,13 @@
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="naic_c" name="naic_c" placeholder="29424" />
+                        <input type="text" class="form-control" id="naic_c" placeholder="29424" />
                         <label for="basic-default-company">NAIC #</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="br_c" name="br_c"
-                            placeholder="A++ 04-1" />
+                        <input type="text" class="form-control" id="br_c" placeholder="A++ 04-1" />
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
@@ -82,14 +79,13 @@
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="naic_d" name="naic_d" placeholder="29424" />
+                        <input type="text" class="form-control" id="naic_d" placeholder="29424" />
                         <label for="basic-default-company">NAIC #</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="br_d" name="br_d"
-                            placeholder="A++ 04-1" />
+                        <input type="text" class="form-control" id="br_d" placeholder="A++ 04-1" />
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
@@ -105,15 +101,13 @@
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="naic_e" name="naic_e"
-                            placeholder="29424" />
+                        <input type="text" class="form-control" id="naic_e" placeholder="29424" />
                         <label for="basic-default-company">NAIC #</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="br_e" name="br_e"
-                            placeholder="A++ 04-1" />
+                        <input type="text" class="form-control" id="br_e" placeholder="A++ 04-1" />
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>

@@ -66,7 +66,7 @@ class AgentController extends Controller
    */
   public function store(Request $request, CertificateService $certificateService)
   {
-    $certificateService->store($request->validated());
+    $certificateService->store((array)$request);
   }
 
   /**

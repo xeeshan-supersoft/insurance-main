@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController as ac;
@@ -86,6 +87,8 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
 
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
   Route::get('/dash', [ac::class, 'dash'])->name('dash');
+  Route::post('/save_cert', [ac::class, 'store'])->name('save_cert');
+
   //Route::get('/list', [AdminController::class, 'list'])->name('list');
   //Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
   //Route::get('/form', [ac::class, 'insurform'])->name('form');

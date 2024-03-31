@@ -3,8 +3,9 @@
      @foreach ($policytypes as $pt)
          <div class="card mb-4">
              <div class="card-header d-flex justify-content-between align-items-center">
-                 <input type="text" class="" oninput="validateInput(event)" id="IAC"size="1" maxlength="1"
-                     oninput="this.value = this.value.toUpperCase();" style="width: 25px;" name="gl_pol_num" />
+                 <input type="text" class="" oninput="validateInput(event)" id="IAC"
+                     name="insurance_provider_code[{{ $pt->id }}]" size="1" maxlength="1"
+                     oninput="this.value = this.value.toUpperCase();" style="width: 25px;" />
                  <div id="error-message" style="color: red; display: none;">Error: Only 'a', 'b', 'c', 'd', or 'e'
                      are allowed!</div>
                  <h5 class="mb-0">{{ $pt->type_name }}</h5> <small class="text-muted float-end">CONTACT</small>
@@ -13,22 +14,22 @@
                  <div class="row">
                      <div class="col-4">
                          <div class="form-floating form-floating-outline mb-4">
-                             <input type="text" class="form-control" id="basic-default-company" name="gl_pol_num"
-                                 placeholder="EXP116564305-33" />
+                             <input type="text" class="form-control" id="basic-default-company"
+                                 name="gl_pol_num[{{ $pt->id }}]" placeholder="EXP116564305-33" />
                              <label for="basic-default-company">POLICY NUMBER </label>
                          </div>
                      </div>
                      <div class="col-4">
                          <div class="form-floating form-floating-outline mb-4">
-                             <input type="date" class="form-control" id="html5-date-input" name="gl_pol_eff_date"
-                                 placeholder="A++ 04-1" />
+                             <input type="date" class="form-control" id="html5-date-input"
+                                 name="gl_pol_eff_date[{{ $pt->id }}]" placeholder="A++ 04-1" />
                              <label for="basic-default-company">POLICY EFFECTIV DATE </label>
                          </div>
                      </div>
                      <div class="col-4">
                          <div class="form-floating form-floating-outline mb-4">
-                             <input type="date" class="form-control" id="html5-date-input" name="gl_pol_exp_date"
-                                 placeholder="A++ 04-1" />
+                             <input type="date" class="form-control" id="html5-date-input"
+                                 name="gl_pol_exp_date[{{ $pt->id }}]" placeholder="A++ 04-1" />
                              <label for="basic-default-company">POLICY EXPIRATION DATE </label>
                          </div>
                      </div>
@@ -36,46 +37,52 @@
                          @foreach ($pt->policies as $pp)
                              @if ($pp->policy_title == 'DEDUCTIBLE')
                                  <div class="form-check form-check-inline mt-3">
-                                     <label class="form-check-label" for="{{ $pp->id }}">
+                                     <label class="form-check-label" for="{{ $pp->policy_title }}">
                                          {{ $pp->policy_title }}
                                      </label>
                                      <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
-                                         name="{{ $pp->id }}" id="{{ $pp->id }}" />
+                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         id="policy_{{ $pt->id }}" />
                                  </div>
                                  <div class="form-check form-check-inline mt-3">
-                                     <input type="text" class="form-control" id="{{ $pp->id }}"
-                                         name="DEDUCTIBLE_unit" placeholder="$" />
+                                     <input type="text" class="form-control" id="{{ $pp->policy_title }}"
+                                         name="policy_deductible_{{ $pt->id }}[{{ $pp->id }}]"
+                                         placeholder="$" />
                                  </div>
                              @elseif ($pp->policy_title == 'RETENTION')
                                  <br>
                                  <div class="form-check form-check-inline mt-3">
-                                     <label class="form-check-label" for="{{ $pp->id }}">
+                                     <label class="form-check-label" for="{{ $pp->policy_title }}">
                                          {{ $pp->policy_title }}
                                      </label>
                                      <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
-                                         name="{{ $pp->id }}" id="{{ $pp->id }}" />
+                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         id="policy_{{ $pt->id }}" />
                                  </div>
                                  <div class="form-check form-check-inline mt-3">
-                                     <input type="text" class="form-control" id="{{ $pp->id }}"
-                                         name="RETENTION_unit" placeholder="$" />
+                                     <input type="text" class="form-control" id="{{ $pp->policy_title }}"
+                                         name="policy_retention_{{ $pt->id }}[{{ $pp->id }}]"
+                                         placeholder="$" />
                                  </div>
                              @elseif (preg_match('/\bDED\b/', $pp->policy_title))
                                  <div class="form-check form-check-inline mt-3">
-                                     <label class="form-check-label" for="{{ $pp->id }}">
+                                     <label class="form-check-label" for="{{ $pp->policy_title }}">
                                          {{ $pp->policy_title }}
                                      </label>
                                      <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
-                                         name="{{ $pp->id }}" id="{{ $pp->id }}" />
+                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         id="policy_{{ $pt->id }}" />
                                  </div>
                                  <div class="form-check form-check-inline mt-3">
-                                     <input type="text" class="form-control" id="{{ $pp->id }}"
-                                         name="RETENTION_unit" placeholder="$" />
+                                     <input type="text" class="form-control" id="policy_{{ $pt->id }}"
+                                         name="policy_retention_{{ $pt->id }}" placeholder="$" />
                                  </div>
                              @else
                                  <div class="form-check mt-3">
-                                     <input class="form-check-input" type="checkbox" value=""
-                                         name="{{ $pp->id }}" id="{{ $pp->id }}" />
-                                     <label class="form-check-label" for="{{ $pp->id }}">
+                                     <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
+                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         id="{{ $pp->policy_title }}" />
+                                     <label class="form-check-label" for="{{ $pp->policy_title }}">
                                          {{ $pp->policy_title }}
                                      </label>
                                  </div>
@@ -85,8 +92,8 @@
                      <div class="col-6">
                          @foreach ($pt->policyLimits as $pl)
                              <div class="form-floating form-floating-outline mb-4">
-                                 <input type="text" class="form-control" id="{{ $pl->id }}"
-                                     name="{{ $pl->coverage_item }}" placeholder="" />
+                                 <input type="text" class="form-control" id="{{ $pl->coverage_item }}"
+                                     name="coverage_{{ $pt->id }}[{{ $pl->id }}]" placeholder="" />
                                  <label for="basic-default-company">{{ $pl->coverage_item }}</label>
                              </div>
                          @endforeach
