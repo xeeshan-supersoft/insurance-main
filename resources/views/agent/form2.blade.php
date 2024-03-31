@@ -189,7 +189,7 @@
                             <div class="col-4">
                                 <div class="form-floating form-floating-outline mb-4">
                                     <input type="text" class="form-control" id="basic-default-fullname"
-                                        name="insur_a" placeholder="Navigators Insurance Company " />
+                                        name="insur_a"  placeholder="Navigators Insurance Company " />
                                     <label for="basic-default-fullname">INSURER A</label>
                                 </div>
                             </div>
@@ -328,9 +328,13 @@
         <!-- Basic Layout -->
         <div class="row">
             @foreach ($policytypes as $pt)
+
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">{{ $pt->type_name }}</h5> <small class="text-muted float-end">CONTACT</small>
+                        <input type="text" class="" oninput="validateInput(event)" id="IAC"size="1" maxlength="1" oninput="this.value = this.value.toUpperCase();" style="width: 25px;"
+                        name="gl_pol_num" />
+                        <div id="error-message" style="color: red; display: none;">Error: Only 'a', 'b', 'c', 'd', or 'e' are allowed!</div>
+                        <h5 class="mb-0">{{ $pt->type_name }}</h5>  <small class="text-muted float-end">CONTACT</small>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -753,5 +757,27 @@
 
         <button type="submit" class="btn btn-primary">Generate</button>
     </form>
+    <script>
+       function validateInput(event) {
+    var inputValue = event.target.value.toUpperCase();
+    var insuranceInputs = {
+        'A': 'insur_a',
+        'B': 'insur_b',
+        'C': 'insur_c',
+        'D': 'insur_d',
+        'E': 'insur_e'
+    };
 
+    // Check if the corresponding insurance input has value
+    var correspondingInputName = insuranceInputs[inputValue];
+    if (correspondingInputName) {
+        var input = document.getElementsByName(correspondingInputName)[0];
+        if (input.value.trim() === '') {
+            alert("Error: Please fill out the corresponding insurance input before proceeding.");
+            event.target.value = ''; // Clear the input value
+        }
+    }
+}
+
+        </script>
 @endsection

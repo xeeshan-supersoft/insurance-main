@@ -101,22 +101,11 @@ $navbarHideToggle = false;
           <label for="Addss1"> Address 1</label>
         </div>
       </div>
-      <div class="col-6">
-        <div class="form-floating form-floating-outline mb-3">
-          <input type="text" class="form-control" name="Addss2" id="Address21" placeholder="" />
-          <label for="Address21"> Address 1</label>
-        </div>
-      </div>
+     
       <div class="col-6">
         <div class="form-floating form-floating-outline mb-3">
           <input type="text" class="form-control" name="state" id="state1" placeholder="" />
           <label for="state1">state</label>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="form-floating form-floating-outline mb-3">
-          <input type="text" class="form-control" name="country" id="country1" placeholder="" />
-          <label for="country1"> country</label>
         </div>
       </div>
       <div class="col-6">
@@ -131,7 +120,74 @@ $navbarHideToggle = false;
           <label for="zip1"> zip</label>
         </div>
       </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="license_number" id="license_number" placeholder="" />
+          <label for="Address21">License Number</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="date" class="form-control" name="license_expiry_date" id="license_expiry_date" placeholder="" />
+          <label for="country1"> license_expiry_date</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="license_type" id="license_type" placeholder="" />
+          <label for="country1"> license Type</label>
+        </div>
+      </div>
 
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="years_of_experience" id="years_of_experience" placeholder="" />
+          <label for="country1"> Years of Experience</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="vehicle_registration_number" id="vehicle_registration_number" placeholder="" />
+          <label for="country1"> Vehicle Registration Number</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="vehicle_make" id="vehicle_make" placeholder="" />
+          <label for="country1"> Vehicle Make</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="vehicle_model" id="vehicle_model" placeholder="" />
+          <label for="country1"> Vehicle Model</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="vehicle_year" id="vehicle_year" placeholder="" />
+          <label for="country1"> Vehicle Year</label>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="vehicle_capacity" id="vehicle_capacity" placeholder="" />
+          <label for="country1"> Vehicle Capacity</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="vehicle_status" id="vehicle_status" placeholder="" />
+          <label for="country1"> Vehicle Status</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating form-floating-outline mb-3">
+          <input type="text" class="form-control" name="mc_number" id="mc_number" placeholder="" />
+          <label for="country1"> Motor Carrire Number</label>
+        </div>
+      </div>
 
     </div>
   </div>
