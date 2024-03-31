@@ -16,6 +16,7 @@
         <!-- Basic Layout -->
 
         <div class="row">
+
             <!--------------- PRODUCER -------------->
             @include('agent.producer')
 
@@ -42,9 +43,13 @@
         <!-- Basic Layout -->
         <div class="row">
             @foreach ($policytypes as $pt)
+
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">{{ $pt->type_name }}</h5> <small class="text-muted float-end">CONTACT</small>
+                        <input type="text" class="" oninput="validateInput(event)" id="IAC"size="1" maxlength="1" oninput="this.value = this.value.toUpperCase();" style="width: 25px;"
+                        name="gl_pol_num" />
+                        <div id="error-message" style="color: red; display: none;">Error: Only 'a', 'b', 'c', 'd', or 'e' are allowed!</div>
+                        <h5 class="mb-0">{{ $pt->type_name }}</h5>  <small class="text-muted float-end">CONTACT</small>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -467,6 +472,7 @@
 
         <button type="submit" class="btn btn-primary">Generate</button>
     </form>
+
 
     @push('body-scripts')
         <script type="text/javascript">
