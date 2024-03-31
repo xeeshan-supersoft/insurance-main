@@ -14,6 +14,9 @@ return new class extends Migration {
       $table->id();
       $table->foreignId('user_id')->constrained('users');
       $table->string('address', 255)->nullable();
+      $table->string('state', 255)->nullable();
+      $table->string('city', 255)->nullable();
+      $table->string('zip', 255)->nullable();
       $table->string('contact_info', 255)->nullable();
       $table->string('license_number', 255)->nullable();
       $table->date('license_expiry_date')->nullable();

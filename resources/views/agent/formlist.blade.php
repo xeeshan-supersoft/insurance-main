@@ -18,6 +18,7 @@
                             <tr>
                                 <th class="text-truncate">Serial</th>
                                 <th class="text-truncate">Name</th>
+                                <th class="text-truncate">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,13 @@
                                         <div class="d-flex align-items-center">
                                             <div>
                                                 <small class="text-truncate">{{ $data->name }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <a href="{{ route('cert_1st_step', $data->id) }}">Generate Certificate</a>
                                             </div>
                                         </div>
                                     </td>

@@ -12,12 +12,16 @@ class AgencyInfos extends Model
   protected $table = 'agency_infos';
   protected $fillable = [
     'user_id',
+    'agency_name',
     'agency_address',
     'agency_city',
     'agency_state',
     'agency_zip',
     'agency_cellphone',
     'agency_extra_email',
+    'agency_fax',
+    'producer_customer_number',
+    'is_active',
   ];
 
   public function user()

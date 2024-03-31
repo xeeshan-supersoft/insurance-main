@@ -7,9 +7,12 @@ use App\Models\User;
 use App\Models\Agent;
 use App\Models\Policy;
 use App\Models\PolicyType;
+use App\Models\AgencyInfos;
 use App\Models\PolicyLimit;
+use App\Models\DriverDetail;
 use Illuminate\Http\Request;
 use App\Services\CertificateService;
+use Illuminate\Support\Facades\Session;
 
 class AgentController extends Controller
 {
@@ -24,6 +27,7 @@ class AgentController extends Controller
 
     return view('dash', compact('users'));
   }
+
   public function formlist()
   {
     $driver = User::with('agents')->find(Auth::user()->id);
@@ -33,9 +37,10 @@ class AgentController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function choosePolicyTypes()
+  public function choosePolicyTypes($id)
   {
     $policytypes = PolicyType::all();
+    Session::put('driver_id', $id);
     return view('fromdrop', compact('policytypes'));
   }
 
@@ -48,7 +53,12 @@ class AgentController extends Controller
       ->whereIn('id', $request->policyGroup)
       ->get();
 
-    return view('agent.form2', compact('policytypes'));
+    $driver_id = Session::get('driver_id');
+
+    $driver = User::with('truckers')->find($driver_id);
+    $agent = User::with('agencies')->find(Auth::user()->id);
+
+    return view('agent.form2', compact('policytypes', 'driver', 'agent'));
   }
 
   /**
