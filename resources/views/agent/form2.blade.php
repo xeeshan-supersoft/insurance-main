@@ -480,28 +480,6 @@
         <button type="submit" class="btn btn-primary">Generate</button>
     </form>
 
-    <<<<<<< HEAD @push('body-scripts') <script type="text/javascript">
-        $('.js-example-basic-single').select2({
-            ajax: {
-                url: "{{ route('insurSearch') }}",
-                dataType: 'json',
-                delay: 250,
-                processResults: function(data) {
-                    return {
-                        results: $.map(data, function(item) {
-                            return {
-                                text: item.name,
-                                id: item.id
-                            }
-                        })
-                    };
-                },
-                cache: true
-            }
-        });
-    </script>
-    @endpush
-    =======
     @include('agent.agent-script')
-    >>>>>>> ab1fc2e (Form Changes)
+
 @endsection
