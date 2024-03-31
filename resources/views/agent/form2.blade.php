@@ -10,14 +10,14 @@
         CERTIFICATE DOES NOT AFFIRMATIVELY OR NEGATIVELY AMEND, EXTEND OR ALTER THE COVERAGE AFFORDED BY THE POLICIES
         BELOW. THIS CERTIFICATE OF INSURANCE DOES NOT CONSTITUTE A CONTRACT BETWEEN THE ISSUING INSURER(S), AUTHORIZED
         REPRESENTATIVE OR PRODUCER, AND THE CERTIFICATE HOLDER.</p>
-    <form method="post" {{ route('form.insert') }} action="save">
+    <form method="post" action="save">
         @csrf
         <!-- Basic Layout -->
-        
+
         <div class="row">
             <!---------------------------------------------------------------------------------------------------------------------------
-                                                                                                                                                                                                          --------------------------------------------------------------- PRODUCER  ---------------------------------------------------
-                                                                                                                                                                                                          ----------------------------------------------------------------------->
+                                                                                                                                                                                                                                                                                                                                                                                                                      --------------------------------------------------------------- PRODUCER  ---------------------------------------------------
+                                                                                                                                                                                                                                                                                                                                                                                                                      ----------------------------------------------------------------------->
             <div class="col-xl">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -26,54 +26,45 @@
                     <div class="card-body">
 
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control" name="Cname" id="basic-default-fullname"
-                                placeholder="ACME Inc." />
+                            <input type="text" class="form-control" id="basic-default-fullname" placeholder="ACME Inc."
+                                value="{{ $agent->agencies[0]->agency_name }}" readonly />
                             <label for="basic-default-fullname">Company</label>
                         </div>
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control"name="Cadd1" id="basic-default-company2"
-                                placeholder="Address line1" />
+                            <input type="text" class="form-control" id="basic-default-company2"
+                                placeholder="Address line1" value="{{ $agent->agencies[0]->agency_address }}" readonly />
                             <label for="basic-default-company2">Address</label>
-                            <input type="text" class="form-control" name="Cadd2"id="basic-default-company"
-                                placeholder="Address line 2" />
-                            <label for="basic-default-company">Address</label>
-                            <input type="hidden" class="form-control" name="id_isu_data_fk"id="basic-default-company"
-                                placeholder="Address line 2" />
                         </div>
                         <div class="row">
                             <div class="col-4">
                                 <div class="mb-4">
                                     <div class="form-floating form-floating-outline">
-                                        <input type="text" id="basic-default-email" name="Ccity" class="form-control"
-                                            placeholder="Westlake Village" />
+                                        <input type="text" id="basic-default-email" class="form-control"
+                                            placeholder="Westlake Village" value="{{ $agent->agencies[0]->agency_city }}"
+                                            readonly />
                                         <label for="basic-default-email">City </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-floating form-floating-outline mb-4">
-                                    <input type="text" id="basic-default-phone" name="Czip"class="form-control "
-                                        placeholder="6583" />
+                                    <input type="text" id="basic-default-phone" class="form-control " placeholder="6583"
+                                        value="{{ $agent->agencies[0]->agency_zip }}" readonly />
                                     <label for="basic-default-phone">Zip code</label>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-floating form-floating-outline mb-4">
-                                    <input type="text" id="basic-default-phone" name="Cstate" class="form-control "
-                                        placeholder="CA" />
+                                    <input type="text" id="basic-default-phone" class="form-control " placeholder="CA"
+                                        value="{{ $agent->agencies[0]->agency_state }}" readonly />
                                     <label for="basic-default-phone">State</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="basic-default-phone" name="Cphone" class="form-control phone-mask"
-                                placeholder="658 799 8941" />
-                            <label for="basic-default-phone">Phone No</label>
-                        </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="basic-default-phone" name="Cphone2" class="form-control phone-mask"
-                                placeholder="658 799 8941" />
-                            <label for="basic-default-phone">Alt Phone No</label>
+                            <input type="text" id="basic-default-phone" class="form-control phone-mask"
+                                placeholder="44444" value="{{ $agent->agencies[0]->agency_zip }}" readonly />
+                            <label for="basic-default-phone">Zip Code</label>
                         </div>
 
 
@@ -83,8 +74,8 @@
 
 
             <!---------------------------------------------------------------------------------------------------------------------------
-                                                                                                                                                                                                          --------------------------------------------------------------- CONTACT info   ---------------------------------------------------
-                                                                                                                                                                                                          ----------------------------------------------------------------------->
+                                                                                                                                                                                                                                                                                                                                                                                                                      --------------------------------------------------------------- CONTACT info   ---------------------------------------------------
+                                                                                                                                                                                                                                                                                                                                                                                                                      ----------------------------------------------------------------------->
 
             <div class="col-xl">
                 <div class="card mb-4">
@@ -94,35 +85,31 @@
                     <div class="card-body">
 
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control" name="Conname"id="basic-default-fullname"
-                                placeholder="John Doe" />
+                            <input type="text" class="form-control"id="basic-default-fullname" placeholder="John Doe"
+                                value="{{ $agent->name }}" readonly />
                             <label for="basic-default-fullname">Contact Name</label>
                         </div>
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control" name="phone" id="basic-default-company"
-                                placeholder="23443666785" />
-                            <label for="basic-default-company">Phone No</label>
+                            <input type="text" id="basic-default-phone" class="form-control phone-mask"
+                                placeholder="658 799 8941" value="{{ $agent->agencies[0]->agency_cellphone }}" readonly />
+                            <label for="basic-default-phone">Phone No</label>
                         </div>
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control" name="fax"id="basic-default-company"
-                                placeholder="434652342342" />
+                            <input type="text" class="form-control" id="basic-default-company" placeholder="434652342342"
+                                value="{{ $agent->agencies[0]->agency_fax }}" readonly />
                             <label for="basic-default-company">Fax No</label>
                         </div>
                         <div class="mb-4">
-                            <div class="input-group input-group-merge">
-                                <div class="form-floating form-floating-outline">
-                                    <input type="text" id="basic-default-email" name="email" class="form-control"
-                                        placeholder="john.doe" aria-label="john.doe"
-                                        aria-describedby="basic-default-email2" />
-                                    <label for="basic-default-email">Email</label>
-                                </div>
-                                <span class="input-group-text" id="basic-default-email2">@example.com</span>
+                            <div class="form-floating form-floating-outline mb-4">
+                                <input type="text" class="form-control" id="basic-default-company"
+                                    placeholder="434652342342" value="{{ $agent->agencies[0]->agency_extra_email }}"
+                                    readonly />
+                                <label for="basic-default-company">Email</label>
                             </div>
-                            <div class="form-text"> You can use letters, numbers & periods </div>
                         </div>
                         <div class="form-floating form-floating-outline mb-4">
                             <input type="text" id="basic-default-phone" name="PC_ids"class="form-control phone-mask"
-                                placeholder="658" />
+                                placeholder="658" value="{{ $agent->agencies[0]->producer_customer_number }}" readonly />
                             <label for="basic-default-phone">Producer Customer Ids</label>
                         </div>
 
@@ -132,8 +119,8 @@
             </div>
         </div>
         <!---------------------------------------------------------------------------------------------------------------------------
-                                                                                                                                                                                                          --------------------------------------------------------------- INSURED info   ---------------------------------------------------
-                                                                                                                                                                                                          ----------------------------------------------------------------------->
+                                                                                                                                                                                                                                                                                                                                                                                                                      --------------------------------------------------------------- INSURED info   ---------------------------------------------------
+                                                                                                                                                                                                                                                                                                                                                                                                                      ----------------------------------------------------------------------->
 
         <div class="row">
             <div class="col-5">
@@ -144,62 +131,52 @@
                     <div class="card-body">
 
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control" name="Iname"id="basic-default-fullname"
-                                placeholder="ACME Inc." />
+                            <input type="text" class="form-control" id="basic-default-fullname"
+                                placeholder="ACME Inc." value="{{ $driver->name }}" readonly />
                             <label for="basic-default-fullname">Company</label>
                         </div>
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control" name="Iadd1"id="basic-default-company2"
-                                placeholder="Address line1" />
+                            <input type="text" class="form-control" id="basic-default-company2"
+                                placeholder="Address line1" value="{{ $driver->truckers[0]->address }}" readonly />
                             <label for="basic-default-company2">Address</label>
-                            <input type="text" class="form-control" name="Iadd2"id="basic-default-company"
-                                placeholder="Address line 2" />
-                            <label for="basic-default-company">Address</label>
-
                         </div>
                         <div class="row">
                             <div class="col-4">
                                 <div class="mb-4">
                                     <div class="form-floating form-floating-outline">
-                                        <input type="text" id="basic-default-email" name="Iacity"
-                                            class="form-control" placeholder="Westlake Village" />
+                                        <input type="text" id="basic-default-email" class="form-control"
+                                            placeholder="Westlake Village" value="{{ $driver->truckers[0]->city }}"
+                                            readonly />
                                         <label for="basic-default-email">City </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-floating form-floating-outline mb-4">
-                                    <input type="text" id="basic-default-phone" name="Izip" class="form-control"
-                                        placeholder="6583" />
+                                    <input type="text" id="basic-default-phone" class="form-control"
+                                        placeholder="6583" value="{{ $driver->truckers[0]->zip }}" readonly />
                                     <label for="basic-default-phone">Zip code</label>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-floating form-floating-outline mb-4">
-                                    <input type="text" id="basic-default-phone" name="Istate" class="form-control"
-                                        placeholder="CA" />
+                                    <input type="text" id="basic-default-phone" class="form-control" placeholder="CA"
+                                        value="{{ $driver->truckers[0]->state }}" readonly />
                                     <label for="basic-default-phone">State</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="basic-default-phone" name="IPhone"class="form-control phone-mask"
-                                placeholder="658 799 8941" />
+                            <input type="text" id="basic-default-phone" class="form-control phone-mask"
+                                placeholder="658 799 8941" value="{{ $driver->truckers[0]->contact_info }}" readonly />
                             <label for="basic-default-phone">Phone No</label>
                         </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="basic-default-phone" name="IPhone2"
-                                class="form-control phone-mask" placeholder="658 799 8941" />
-                            <label for="basic-default-phone">Alt Phone No</label>
-                        </div>
-
-
                     </div>
                 </div>
             </div>
             <!---------------------------------------------------------------------------------------------------------------------------
-                                                                                                                                                                                                          --------------------------------------------------------------- INSURER(S) AFFORDING COVERAGE   ---------------------------------------------------
-                                                                                                                                                                                                          ----------------------------------------------------------------------->
+                                                                                                                                                                                                                                                                                                                                                                                                                      --------------------------------------------------------------- INSURER(S) AFFORDING COVERAGE   ---------------------------------------------------
+                                                                                                                                                                                                                                                                                                                                                                                                                      ----------------------------------------------------------------------->
 
             <div class="col-7">
                 <div class="card mb-4">

@@ -74,7 +74,7 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
   //Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
 
-  Route::get('/cert_1st_step', [ac::class, 'choosePolicyTypes'])->name('cert_1st_step');
+  Route::get('/cert_1st_step/{id}', [ac::class, 'choosePolicyTypes'])->name('cert_1st_step');
   Route::post('/form2', [ac::class, 'create'])->name('form2');
 
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

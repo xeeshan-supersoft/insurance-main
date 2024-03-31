@@ -63,7 +63,6 @@ class User extends Authenticatable
     return $this->role === $role;
   }
 
-   
   public function shippers()
   {
     return $this->hasMany(ShipperInfos::class, 'user_id');
@@ -71,12 +70,12 @@ class User extends Authenticatable
 
   public function truckers()
   {
-    return $this->hasMany(TruckerInfos::class, 'user_id');
+    return $this->hasMany(DriverDetail::class, 'user_id');
   }
 
   public function freights()
   {
-    return $this->hasMany(FreightInfos::class, 'user_id');
+    return $this->hasMany(DriverDetail::class, 'user_id');
   }
 
   public function agencies()

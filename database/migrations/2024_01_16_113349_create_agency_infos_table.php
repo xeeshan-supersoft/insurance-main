@@ -13,13 +13,16 @@ return new class extends Migration {
     Schema::create('agency_infos', function (Blueprint $table) {
       $table->id();
       $table->unsignedBigInteger('user_id');
+      $table->string('agency_name');
       $table->string('agency_address');
       $table->string('agency_city');
       $table->string('agency_state');
       $table->string('agency_zip');
       $table->string('agency_cellphone');
       $table->string('agency_extra_email')->nullable();
-      $table->enum('status', ['active', 'inactive']);
+      $table->string('agency_fax', 255)->nullable();
+      $table->string('producer_customer_number', 255)->nullable();
+      $table->tinyInteger('is_active')->default(1);
       $table->timestamps();
 
       $table

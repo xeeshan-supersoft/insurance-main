@@ -12,6 +12,9 @@ class DriverDetail extends Model
   protected $fillable = [
     'user_id',
     'address',
+    'state',
+    'city',
+    'zip',
     'contact_info',
     'license_number',
     'license_expiry_date',

@@ -57,7 +57,7 @@
             openRequests
         </li>
         <li class="nav-item  mx-5  pe-5">
-            <a href="cert_1st_step"> NEW ACCORD Form</a>
+            {{-- <a href="cert_1st_step"> NEW ACCORD Form</a> --}}
         </li>
     </ul>
     <ul class="navbar-nav flex-row align-items-center">
@@ -275,7 +275,7 @@
                             <div class="flex-grow-1">
                                 <h6 class="mb-0">{{ $user->username }}</h6>
 
-                                <small class="text-muted">{{ $user->role_id }}</small>
+                                <small class="text-muted">{{ $user->role }}</small>
                             </div>
                         </div>
                     </a>
