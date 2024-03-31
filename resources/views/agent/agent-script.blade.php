@@ -25,7 +25,7 @@
 
          var path = "{{ route('insurSearch') }}";
 
-         $('.js-example-basic-single').select2({
+         $('#insurA').select2({
              ajax: {
                  url: path,
                  dataType: 'json',
@@ -35,13 +35,22 @@
                          results: $.map(data, function(item) {
                              return {
                                  text: item.name,
-                                 id: item.id
+                                 id: item.id,
+                                 naic: item.naic_number,
+                                 best_rate: item.best_rating_number,
                              }
                          })
                      };
                  },
                  cache: true
              }
-         });
+         }).on('select2:select', function(event) {
+             // This is how I got ahold of the data
+             var contact = event.params.data;
+             $('#naic_a').val(contact.naic);
+             $('#br_a').val(contact.best_rate);
+             // contact.suggestions ...
+             // contact.organization_id ...
+         });;
      </script>
  @endpush

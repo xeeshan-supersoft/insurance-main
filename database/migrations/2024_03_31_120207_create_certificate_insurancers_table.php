@@ -14,10 +14,22 @@ return new class extends Migration {
       $table->id();
       $table->foreignId('certificate_id')->constrained('certificates');
       $table->foreignId('insur_a_id')->constrained('insurance_providers');
-      $table->foreignId('insur_b_id')->constrained('insurance_providers');
-      $table->foreignId('insur_c_id')->constrained('insurance_providers');
-      $table->foreignId('insur_d_id')->constrained('insurance_providers');
-      $table->foreignId('insur_e_id')->constrained('insurance_providers');
+      $table
+        ->foreignId('insur_b_id')
+        ->nullable()
+        ->constrained('insurance_providers');
+      $table
+        ->foreignId('insur_c_id')
+        ->nullable()
+        ->constrained('insurance_providers');
+      $table
+        ->foreignId('insur_d_id')
+        ->nullable()
+        ->constrained('insurance_providers');
+      $table
+        ->foreignId('insur_e_id')
+        ->nullable()
+        ->constrained('insurance_providers');
       $table->timestamps();
     });
   }
