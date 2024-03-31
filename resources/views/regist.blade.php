@@ -1,88 +1,172 @@
-@extends('layouts/contentNavbarLayout')
-@extends('layouts/contentNavbarLayout')
 
-@section('title', ' Vertical Layouts - Forms')
+  {{-- <form method="POST" action="{{ route('register') }}">
+      @csrf --}}
 
-@section('content')
-<h4 class="py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+      <!-- Name -->
+      <form id="AddForm">
+        
+        <!-- Basic Layout -->
+   
+          
+    
+   
 
-<!-- Basic Layout -->
-<div class="row">
-  <div class="col-xl">
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Basic Layout</h5> <small class="text-muted float-end">Default label</small>
-      </div>
-      <div class="card-body">
-        <form>
+    
+     
+        <div class="row">
+            <div class="col-6">
           <div class="form-floating form-floating-outline mb-4">
-            <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe" />
-            <label for="basic-default-fullname">Full Name</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="ACME Inc." />
+            <label for="username1">USERNAME</label>
           </div>
+        </div>
+          <div class="col-6">
           <div class="form-floating form-floating-outline mb-4">
-            <input type="text" class="form-control" id="basic-default-company" placeholder="ACME Inc." />
-            <label for="basic-default-company">Company</label>
-          </div>
-          <div class="mb-4">
-            <div class="input-group input-group-merge">
-              <div class="form-floating form-floating-outline">
-                <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2" />
-                <label for="basic-default-email">Email</label>
-              </div>
-              <span class="input-group-text" id="basic-default-email2">@example.com</span>
-            </div>
-            <div class="form-text"> You can use letters, numbers & periods </div>
-          </div>
-          <div class="form-floating form-floating-outline mb-4">
-            <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" />
-            <label for="basic-default-phone">Phone No</label>
-          </div>
-          <div class="form-floating form-floating-outline mb-4">
-            <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" style="height: 60px;"></textarea>
-            <label for="basic-default-message">Message</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-      </div>
+            <input type="text" class="form-control"name="email" id="email1" placeholder="example.com" required />
+            <label for="email1">EMAIL</label>
+        </div>
     </div>
-  </div>
-<!-- Merged -->
-  <div class="col-xl">
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Basic with Icons</h5>
-        <small class="text-muted float-end">Merged input group</small>
-      </div>
-      <div class="card-body">
-        <form>
-          <div class="input-group input-group-merge mb-4">
-            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="mdi mdi-account-outline"></i></span>
-            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-icon-default-fullname2" />
-          </div>
-          <div class="input-group input-group-merge mb-4">
-            <span id="basic-icon-default-company2" class="input-group-text"><i class="mdi mdi-office-building-outline"></i></span>
-            <input type="text" id="basic-icon-default-company" class="form-control" placeholder="Company" aria-label="Company" aria-describedby="basic-icon-default-company2" />
-          </div>
-          <div class="mb-4">
-            <div class="input-group input-group-merge">
-              <span class="input-group-text"><i class="mdi mdi-email-outline"></i></span>
-              <input type="text" id="basic-icon-default-email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-icon-default-email2" />
-              <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
-            </div>
-            <div class="form-text"> You can use letters, numbers & periods </div>
-          </div>
-          <div class="input-group input-group-merge mb-4">
-            <span id="basic-icon-default-phone2" class="input-group-text"><i class="mdi mdi-phone"></i></span>
-            <input type="text" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone No" aria-label="Phone No" aria-describedby="basic-icon-default-phone2" />
-          </div>
-          <div class="input-group input-group-merge mb-4">
-            <span id="basic-icon-default-message2" class="input-group-text"><i class="mdi mdi-message-outline"></i></span>
-            <textarea id="basic-icon-default-message" class="form-control" placeholder="Message" aria-label="Message" aria-describedby="basic-icon-default-message2" style="height: 60px;"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-      </div>
+
+
+    <div class="col-6">
+      <div class="form-floating form-floating-outline mb-4">
+        <input type="text" class="form-control"name="altemail" id="altemail1" placeholder="Address line1" />
+        <label for="altemail1">ALT EMAIL</label>
     </div>
-  </div>
+</div> 
+ <div class="col-6">
+  <div class="form-floating form-floating-outline mb-4">
+    <input type="text" class="form-control"name="phone" id="phone1" placeholder="Address line1" />
+    <label for="phone1">CONTACT #</label>
 </div>
-@endsection
+</div>
+        <div class="col-6">
+        <div class="form-floating form-floating-outline mb-4">
+            <input type="text" class="form-control" name="password1" id="password"  placeholder="********" />
+            <label for="password1">PASSWORD</label>
+        </div>
+    </div> 
+          <div class="col-6">
+          <div class="mb-4">           
+            <div class="form-floating form-floating-outline mb-4">
+                <select class="form-select" name="role" id="role_id1" aria-label="Default select example">
+                <option selected>Open this select  menu</option>
+                  <option value="admin">ADMIN</option>
+                  <option value="agent">AGENT</option>
+                  <option value="truck_driver">TRUCK</option>
+                  <option value="shipper">SHIPPER</option>     
+                  <option value="freight_driver">FREIGHT</option>                  
+                </select>
+                <label for="role_id1">ROLE OF USER</label>
+              </div>           
+          </div>
+        </div>
+        <div class="col-6">
+        
+        <div class="form-floating form-floating-outline mb-4">
+          <input type="text" class="form-control" name="fullname" id="fullname1" placeholder="ACME Inc." />
+          <label for="fullname1"> Name</label>
+        </div>
+      </div>
+        <div class="col-6">
+        <div class="form-floating form-floating-outline mb-4">
+            <input type="text" class="form-control" name="Addss"id="Addss1"  placeholder="" />
+            <label for="Addss1"> Address 1</label>
+        </div>
+    </div> 
+          <div class="col-6">
+            <div class="form-floating form-floating-outline mb-4">
+              <input type="text" class="form-control" name="Addss2"id="Address21"  placeholder="" />
+              <label for="Address21"> Address 1</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating form-floating-outline mb-4">
+              <input type="text" class="form-control" name="state"id="state1"  placeholder="" />
+              <label for="state1">state</label>
+          </div>
+      </div> 
+            <div class="col-6">
+              <div class="form-floating form-floating-outline mb-4">
+                <input type="text" class="form-control" name="country"id="country1"  placeholder="" />
+                <label for="country1"> country</label>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-floating form-floating-outline mb-4">
+                <input type="text" class="form-control" name="city"id="city1"  placeholder="" />
+                <label for="city1"> city</label>
+            </div>
+        </div> 
+              <div class="col-6">
+                <div class="form-floating form-floating-outline mb-4">
+                  <input type="text" class="form-control" name="zip"id="zip1"  placeholder="" />
+                  <label for="zip1"> zip</label>
+              </div>
+            </div>
+                 
+        
+      </div>
+    
+
+      {{-- card end --}}
+  </div>
+
+
+
+      <div class="flex items-center justify-end mt-4">
+          <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+              {{ __('Already registered?') }}
+          </a>        
+      </div>
+ 
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
+  
+  </form>
+  <script>
+    $('#saveButton').click(function(e) {
+    
+      var form = document.getElementById('AddForm');
+          var formData = new FormData(form);
+    
+         
+    
+    // Display the string in an alert
+    
+    // alert(formData);
+     console.log(formData);
+    
+      $.ajax({
+        url: '/reg',
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,  // Important! Don't process the data
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
+            // Check if response contains the expected message
+            if (response && response.message !== undefined) {
+                alert(response.message);
+                // Additional logic after a successful save
+                location.reload();
+                $('#modalCenter').modal('hide');
+            }
+            else{
+              console.log(response.error);
+            }
+        },
+        error: function(error) {
+            console.error('Error saving data:', error);
+        }
+      });
+      $('#modalCenter').modal('hide');
+    });
+    
+    
+    
+    
+    </script>
+</x-guest-layout>

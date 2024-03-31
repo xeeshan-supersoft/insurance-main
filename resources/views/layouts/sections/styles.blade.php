@@ -9,6 +9,7 @@
 <!-- Core CSS -->
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/css/core.css')) }}" />
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/css/theme-default.css')) }}" />
+
 <link rel="stylesheet" href="{{ asset(mix('assets/css/demo.css')) }}" />
 <!-- Vendors CSS -->
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />

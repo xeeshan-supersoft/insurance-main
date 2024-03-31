@@ -52,6 +52,9 @@ use App\Http\Controllers\tables\Basic as TablesBasic;
 Route::get('/accord', function () {
   return view('fromdrop');
 });
+Route::get('/register', function () {
+  return view('auth.regist');
+});
 Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/dash_adm', [AdminController::class, 'dashadmin'])->name('dashs');
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
