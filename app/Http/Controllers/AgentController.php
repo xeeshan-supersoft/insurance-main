@@ -66,7 +66,8 @@ class AgentController extends Controller
    */
   public function store(Request $request, CertificateService $certificateService)
   {
-    $certificateService->store((array)$request);
+    $resp = $certificateService->store($request->all());
+    return redirect()->route('formlist');
   }
 
   /**

@@ -7,7 +7,8 @@
             <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <select class="js-example-basic-single form-control" name="insurA" id="insurA"></select>
+                        <select class="js-example-basic-single form-control" name="insurance_provider_id[]"
+                            id="insurA"></select>
                         <label for="basic-default-fullname">INSURER A</label>
                     </div>
                 </div>
@@ -26,10 +27,11 @@
             </div>
             <!--------------------------------------------------------------bbbbbb------------------------------------------------------------->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <select class="js-example-basic-single form-control" name="insurB" id="insurB"></select>
+                        <select class="js-example-basic-single form-control" name="insurance_provider_id[]"
+                            id="insurB"></select>
                         <label for="basic-default-fullname">INSURER B</label>
                     </div>
                 </div>
@@ -45,13 +47,14 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--------------------------------------------------------------ccccccc------------------------------------------------------------->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <select class="js-example-basic-single form-control" name="insurC" id="insurC"></select>
+                        <select class="js-example-basic-single form-control" name="insurance_provider_id[]"
+                            id="insurC"></select>
                         <label for="basic-default-fullname">INSURER C</label>
                     </div>
                 </div>
@@ -67,13 +70,14 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--------------------------------------------------------------dddddd------------------------------------------------------------->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <select class="js-example-basic-single form-control" name="insurD" id="insurD"></select>
+                        <select class="js-example-basic-single form-control" name="insurance_provider_id[]"
+                            id="insurD"></select>
                         <label for="basic-default-fullname">INSURER D</label>
                     </div>
                 </div>
@@ -89,13 +93,14 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--------------------------------------------------------------eeeeee------------------------------------------------------------->
-
+            {{--
             <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <select class="js-example-basic-single form-control" name="insurE" id="insurE"></select>
+                        <select class="js-example-basic-single form-control" name="insurance_provider_id[]"
+                            id="insurE"></select>
                         <label for="basic-default-fullname">INSURER E</label>
                     </div>
                 </div>
@@ -111,7 +116,7 @@
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>

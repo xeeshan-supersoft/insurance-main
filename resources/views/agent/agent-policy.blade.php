@@ -2,46 +2,46 @@
  <div class="row">
      @foreach ($policytypes as $pt)
          <div class="card mb-4">
-             <div class="card-header d-flex justify-content-between align-items-center">
-                 <input type="text" class="" oninput="validateInput(event)" id="IAC"
-                     name="insurance_provider_code[{{ $pt->id }}]" size="1" maxlength="1"
-                     oninput="this.value = this.value.toUpperCase();" style="width: 25px;" />
-                 <div id="error-message" style="color: red; display: none;">Error: Only 'a', 'b', 'c', 'd', or 'e'
-                     are allowed!</div>
-                 <h5 class="mb-0">{{ $pt->type_name }}</h5> <small class="text-muted float-end">CONTACT</small>
-             </div>
              <div class="card-body">
+                 <div class="card-header d-flex justify-content-between align-items-center">
+                     <input type="text" class="" oninput="validateInput(event)" id="IAC"
+                         name="insurance_provider_code[{{ $pt->id }}]" size="1" maxlength="1"
+                         oninput="this.value = this.value.toUpperCase();" style="width: 25px;" />
+
+                     <h5 class="mb-0">{{ $pt->type_name }}</h5>
+                     <small class="text-muted float-end">CONTACT</small>
+                 </div>
                  <div class="row">
                      <div class="col-4">
                          <div class="form-floating form-floating-outline mb-4">
                              <input type="text" class="form-control" id="basic-default-company"
-                                 name="gl_pol_num[{{ $pt->id }}]" placeholder="EXP116564305-33" />
+                                 name="main_policy_polnum[{{ $pt->id }}]" placeholder="EXP116564305-33" />
                              <label for="basic-default-company">POLICY NUMBER </label>
                          </div>
                      </div>
                      <div class="col-4">
                          <div class="form-floating form-floating-outline mb-4">
                              <input type="date" class="form-control" id="html5-date-input"
-                                 name="gl_pol_eff_date[{{ $pt->id }}]" placeholder="A++ 04-1" />
+                                 name="main_policy_eff_date[{{ $pt->id }}]" placeholder="A++ 04-1" />
                              <label for="basic-default-company">POLICY EFFECTIV DATE </label>
                          </div>
                      </div>
                      <div class="col-4">
                          <div class="form-floating form-floating-outline mb-4">
                              <input type="date" class="form-control" id="html5-date-input"
-                                 name="gl_pol_exp_date[{{ $pt->id }}]" placeholder="A++ 04-1" />
+                                 name="main_policy_exp_date[{{ $pt->id }}]" placeholder="A++ 04-1" />
                              <label for="basic-default-company">POLICY EXPIRATION DATE </label>
                          </div>
                      </div>
                      <div class="col-6">
                          @foreach ($pt->policies as $pp)
-                             @if ($pp->policy_title == 'DEDUCTIBLE')
+                             {{-- @if ($pp->policy_title == 'DEDUCTIBLE')
                                  <div class="form-check form-check-inline mt-3">
                                      <label class="form-check-label" for="{{ $pp->policy_title }}">
                                          {{ $pp->policy_title }}
                                      </label>
                                      <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
-                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         name="main_policy_subpol[{{ $pt->type_name }}][{{ $pp->id }}]"
                                          id="policy_{{ $pt->id }}" />
                                  </div>
                                  <div class="form-check form-check-inline mt-3">
@@ -56,7 +56,7 @@
                                          {{ $pp->policy_title }}
                                      </label>
                                      <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
-                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         name="main_policy_sub[{{ $pt->id }}][{{ $pp->id }}]"
                                          id="policy_{{ $pt->id }}" />
                                  </div>
                                  <div class="form-check form-check-inline mt-3">
@@ -70,7 +70,7 @@
                                          {{ $pp->policy_title }}
                                      </label>
                                      <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
-                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         name="main_policy_sub[{{ $pt->id }}][{{ $pp->id }}]"
                                          id="policy_{{ $pt->id }}" />
                                  </div>
                                  <div class="form-check form-check-inline mt-3">
@@ -80,20 +80,29 @@
                              @else
                                  <div class="form-check mt-3">
                                      <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
-                                         name="policy_{{ $pt->id }}[{{ $pp->id }}]"
+                                         name="main_policy_sub[{{ $pt->id }}][{{ $pp->id }}]"
                                          id="{{ $pp->policy_title }}" />
                                      <label class="form-check-label" for="{{ $pp->policy_title }}">
                                          {{ $pp->policy_title }}
                                      </label>
                                  </div>
-                             @endif
+                             @endif --}}
+                             <div class="form-check mt-3">
+                                 <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
+                                     name="main_policy_sub[{{ str_replace(' ', '_', $pt->id) }}][{{ $pp->id }}]"
+                                     id="{{ $pp->policy_title }}" />
+                                 <label class="form-check-label" for="{{ $pp->policy_title }}">
+                                     {{ $pp->policy_title }}
+                                 </label>
+                             </div>
                          @endforeach
                      </div>
                      <div class="col-6">
                          @foreach ($pt->policyLimits as $pl)
                              <div class="form-floating form-floating-outline mb-4">
                                  <input type="text" class="form-control" id="{{ $pl->coverage_item }}"
-                                     name="coverage_{{ $pt->id }}[{{ $pl->id }}]" placeholder="" />
+                                     name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
+                                     placeholder="" />
                                  <label for="basic-default-company">{{ $pl->coverage_item }}</label>
                              </div>
                          @endforeach
@@ -133,8 +142,7 @@
                                          </tr>
                                          <tr>
                                              <td class="fot_titel">AUTHORIZED REPRESENTATIVE
-                                                 <textarea disabled cols="38" rows="3" readonly="readonly"
-                                                     style="vertical-align: middle; margin-left: 10px;"></textarea>
+                                                 <textarea disabled cols="38" rows="3" readonly="readonly" style="vertical-align: middle; margin-left: 10px;"></textarea>
                                              </td>
                                          </tr>
                                      </tbody>
