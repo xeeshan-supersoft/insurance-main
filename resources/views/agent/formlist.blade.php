@@ -13,12 +13,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="table-responsive">
+
                     <table class="table">
                         <thead class="table-light">
                             <tr>
-                                <th class="text-truncate">Serial</th>
                                 <th class="text-truncate">Name</th>
-                                <th class="text-truncate">Action</th>
+                                <th class="text-truncate">Role</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,20 +26,14 @@
                             @foreach ($driver->agents as $data)
                                 <tr>
                                     <td>
-                                        {{ $loop->index + 1 }}
-                                    </td>
-                                    <td>
                                         <div class="d-flex align-items-center">
-                                            <div>
-                                                <small class="text-truncate">{{ $data->name }}</small>
-                                            </div>
+                                            <a href="{{ route('view_cert', $data->id) }}"
+                                                class="btn btn-primary">{{ $data->name }}</a>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div>
-                                                <a href="{{ route('cert_1st_step', $data->id) }}">Generate Certificate</a>
-                                            </div>
+                                            <span class="btn btn-success">{{ str_replace('_', ' ', $data->role) }}</span>
                                         </div>
                                     </td>
                                 </tr>
