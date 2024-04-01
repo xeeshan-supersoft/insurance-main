@@ -27,7 +27,7 @@
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <a href="{{ route('list_cert', $data->id) }}"
+                                            <a href="{{ route('main_cert', $data->id) }}"
                                                 class="btn btn-primary">{{ $data->name }}</a>
                                         </div>
                                     </td>

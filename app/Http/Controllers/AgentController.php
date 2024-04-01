@@ -78,6 +78,15 @@ class AgentController extends Controller
   /**
    * Display the specified resource.
    */
+  public function MainCertificate(string $driverId)
+  {
+    $certificate = Certificate::where('client_user_id', $driverId)->get() ?? '';
+    return view('agent.certificate_main', compact('certificate', 'driverId'));
+  }
+
+  /**
+   * Display the specified resource.
+   */
   public function show(string $id)
   {
     $certificate = Certificate::with('policies', 'policyLimits')
