@@ -62,7 +62,7 @@ Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
 Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/dash_adm', [AdminController::class, 'dashadmin'])->name('dashs');
-  Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+  //Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
   // Route::get('/dash', [AdminController::class, 'dash'])->name('dash');
   // Route::get('/list', [AdminController::class, 'list'])->name('list');
@@ -85,7 +85,7 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
   Route::get('/cert_1st_step/{id}', [ac::class, 'choosePolicyTypes'])->name('cert_1st_step');
   Route::post('/form2', [ac::class, 'create'])->name('form2');
 
-  Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
   Route::get('/dash', [ac::class, 'dash'])->name('dash');
   Route::post('/save_cert', [ac::class, 'store'])->name('save_cert');
 
@@ -154,6 +154,7 @@ Route::get('/logg', [LoginBasic::class, 'index'])->name('auth-login-basic');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');
 Route::get('/auth/forgot-password-basic', [ForgotPasswordBasic::class, 'index'])->name('auth-reset-password-basic');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // cards
 // Route::get('/cards/basic', [CardBasic::class, 'index'])->name('cards-basic');
