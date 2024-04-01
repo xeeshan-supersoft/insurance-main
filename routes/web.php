@@ -89,7 +89,8 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
   Route::get('/dash', [ac::class, 'dash'])->name('dash');
   Route::post('/save_cert', [ac::class, 'store'])->name('save_cert');
 
-  Route::get('/view_cert/{id}', [ac::class, 'show'])->name('view_cert');
+  Route::get('/list_cert/{id}', [ac::class, 'show'])->name('list_cert');
+  Route::get('/view_cert/{id}', [ac::class, 'showCertificate'])->name('view_cert');
 
   //Route::get('/list', [AdminController::class, 'list'])->name('list');
   //Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');

@@ -25,7 +25,7 @@
         @include('agent.insured')
 
         <!----------- INSURER(S) AFFORDING COVERAGE -------------->
-        @include('agent.insurance_company')
+        @include('agent.insurance_company2')
 
     </div>
 
@@ -42,6 +42,6 @@
     @include('agent.agent-policy2')
 
 
-    @include('agent.agent-script')
+    @include('agent.agent-script2')
 
 @endsection

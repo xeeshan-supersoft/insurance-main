@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-sm-3">
-            <a href="{{ $certificate->id }}" class="btn btn-primary">View Certificate</a>
+            <a href="{{ route('view_cert', $certificate->id) }}" class="btn btn-primary">View Certificate</a>
         </div>
         <div>
             <table class="table">
@@ -25,6 +25,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+
                     @foreach ($certPolicy as $cp)
                         <tr>
                             <td>{{ $cp->policy->policy_title }}</td>
