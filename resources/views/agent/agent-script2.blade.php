@@ -36,6 +36,7 @@
          $(document).ready(function() {
              var path = "{{ route('insurSearch') }}";
 
+
              $('#insurA').select2({
                  ajax: {
                      url: path,

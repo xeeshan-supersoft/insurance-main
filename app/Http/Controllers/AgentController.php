@@ -10,8 +10,13 @@ use App\Models\PolicyType;
 use App\Models\AgencyInfos;
 use App\Models\PolicyLimit;
 use App\Models\DriverDetail;
-use Illuminate\Http\Request;
+use App\Models\Certificate;
+use App\Models\CertificatePolicy;
+use App\Models\CertificatePolicyLimit;
+
 use App\Services\CertificateService;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class AgentController extends Controller
@@ -66,7 +71,17 @@ class AgentController extends Controller
    */
   public function store(Request $request, CertificateService $certificateService)
   {
-    $certificateService->store($request->validated());
+    $resp = $certificateService->store($request->all());
+    return redirect()->route('formlist');
+  }
+
+  /**
+   * Display the specified resource.
+   */
+  public function MainCertificate(string $driverId)
+  {
+    $certificate = Certificate::where('client_user_id', $driverId)->get() ?? '';
+    return view('agent.certificate_main', compact('certificate', 'driverId'));
   }
 
   /**
@@ -74,7 +89,45 @@ class AgentController extends Controller
    */
   public function show(string $id)
   {
-    //
+    $certificate = Certificate::with('policies', 'policyLimits')
+      ->where('client_user_id', $id)
+      ->first();
+
+    $certPolicy = CertificatePolicy::with('policyType', 'policy')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $driver = User::with('truckers')->find($certificate->client_user_id);
+    $agent = User::with('agencies')->find($certificate->producer_user_id);
+
+    return view('agent.certificate_list', compact('certificate', 'certPolicy', 'driver', 'agent'));
+  }
+
+  public function showCertificate(string $id)
+  {
+    $certificate = Certificate::with('policies', 'policyLimits')
+      ->where('id', $id)
+      ->first();
+
+    $certPolicy = CertificatePolicy::with('policyType', 'policy')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $certPolimit = CertificatePolicyLimit::with('certificate', 'policyType', 'policyLimit')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $policytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
+      ->get();
+
+    $driver = User::with('truckers')->find($certificate->client_user_id);
+    $agent = User::with('agencies')->find($certificate->producer_user_id);
+
+    return view(
+      'agent.certificate_created',
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent')
+    );
   }
 
   /**

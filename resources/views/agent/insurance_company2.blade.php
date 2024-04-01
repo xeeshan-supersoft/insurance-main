@@ -7,20 +7,22 @@
             <div class="row">
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <select class="js-example-basic-single form-control" name="insurance_provider_id[]"
-                            id="insurA"></select>
+                        <input type="text" class="form-control" id="" placeholder="29424"
+                            value="{{ $certPolicy->first()->insuranceProvider->name }}" readonly />
                         <label for="basic-default-fullname">INSURER A</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="naic_a" placeholder="29424" />
+                        <input type="text" class="form-control" id="naic_a" placeholder="29424"
+                            value="{{ $certPolicy->first()->insuranceProvider->naic_number }}" readonly />
                         <label for="basic-default-company">NAIC #</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating form-floating-outline mb-4">
-                        <input type="text" class="form-control" id="br_a" placeholder="A++ 04-1" />
+                        <input type="text" class="form-control" id="br_a" placeholder="A++ 04-1"
+                            value="{{ $certPolicy->first()->insuranceProvider->best_rating_number }}" readonly />
                         <label for="basic-default-company">Best Rating </label>
                     </div>
                 </div>

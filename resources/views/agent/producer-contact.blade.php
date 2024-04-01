@@ -28,8 +28,8 @@
                 </div>
             </div>
             <div class="form-floating form-floating-outline mb-4">
-                <input type="text" id="basic-default-phone" name="PC_ids"class="form-control phone-mask"
-                    placeholder="658" value="{{ $agent->agencies[0]->producer_customer_number }}" readonly />
+                <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658"
+                    value="{{ $agent->agencies[0]->producer_customer_number }}" readonly />
                 <label for="basic-default-phone">Producer Customer Ids</label>
             </div>
 
