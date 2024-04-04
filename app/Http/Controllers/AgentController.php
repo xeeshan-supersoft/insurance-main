@@ -90,7 +90,7 @@ class AgentController extends Controller
   public function show(string $id)
   {
     $certificate = Certificate::with('policies', 'policyLimits')
-      ->where('client_user_id', $id)
+      ->where('id', $id)
       ->first();
 
     $certPolicy = CertificatePolicy::with('policyType', 'policy')
