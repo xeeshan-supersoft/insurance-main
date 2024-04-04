@@ -25,8 +25,8 @@
                     @foreach ($certificate as $cert)
                         <tr>
                             <td>
-                                <a href="{{ route('view_cert', $cert->id) }}" class="btn btn-primary">Show Certificate
-                                    {{ $cert->id }}</a>
+                                <a href="{{ route('list_cert', $cert->id) }}" class="btn btn-primary">Show Certificate
+                                    {{ $cert->id }} Details</a>
                             </td>
                         </tr>
                     @endforeach
