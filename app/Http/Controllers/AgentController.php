@@ -18,6 +18,7 @@ use App\Services\CertificateService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use PDF;
 
 class AgentController extends Controller
 {
@@ -124,10 +125,29 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
-    return view(
-      'agent.certificate_created',
-      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent')
-    );
+    $data = [
+      'certificate' => $certificate,
+      'policytypes' => $policytypes,
+      'certPolicy' => $certPolicy,
+      'certPolimit' => $certPolimit,
+      'driver' => $driver,
+      'agent' => $agent,
+    ];
+
+    PDF::setOptions([
+      'dpi' => 150,
+      'defaultFont' => 'sans-serif',
+      'fontHeightRatio' => 1,
+      'isPhpEnabled' => true,
+    ]);
+
+    $pdf = PDF::loadView('agent.certificate_created', $data);
+    return $pdf->stream('cert.pdf');
+
+    // return view(
+    //   'agent.certificate_created',
+    //   compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent')
+    // );
   }
 
   /**
