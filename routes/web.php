@@ -57,7 +57,9 @@ Route::get('/accord', function () {
 Route::get('/register', function () {
   return view('auth.regist');
 });
-
+Route::get('/form3', function () {
+  return view('agent.form3');
+});
 Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
 Route::group(['middleware' => 'checkRole:admin'], function () {

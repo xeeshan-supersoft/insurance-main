@@ -29,11 +29,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css"
         integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
 
-    <style>
+    {{-- <style>
         .select2-container--default .select2-selection--single {
             height: 50px;
         }
-    </style>
+        </style> --}}
+        @stack('body-scripts')
 
     <!-- Include Styles -->
     @include('layouts/sections/styles')
