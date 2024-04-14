@@ -18,7 +18,7 @@ use App\Services\CertificateService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AgentController extends Controller
 {
@@ -141,8 +141,8 @@ class AgentController extends Controller
       'isPhpEnabled' => true,
     ]);
 
-    $pdf = PDF::loadView('agent.certificate_created', $data);
-    return $pdf->stream('cert.pdf');
+    $pdf = Pdf::loadView('agent.form_cert', $data)->setPaper('a4', 'landscape');
+    return $pdf->download('cert_pdf.pdf');
 
     // return view(
     //   'agent.certificate_created',

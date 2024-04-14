@@ -34,3 +34,5 @@ package-lock.log
 /public/assets/css
 /public/assets/vendor
 
+!storage/fonts/Helvetica-Bold.afm.json
+!storage/fonts/DejaVuSans-Bold.ufm.json
