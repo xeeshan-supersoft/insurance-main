@@ -1,5 +1,25 @@
  @push('body-scripts')
+@if ($r==1)
+<script type="text/javascript">
+
+    var inputFields = document.querySelectorAll('input, select');  
+    inputFields.forEach(function(input) {
+        input.disabled = true;
+    });
+    var btn = document.getElementById('btn');
+if (btn) {
+    btn.style.display = 'none';
+}
+</script>
+@endif
+
+
      <script type="text/javascript">
+
+
+
+
+
          function validateInput(event) {
              var inputValue = event.target.value.toUpperCase();
              var insuranceInputs = {

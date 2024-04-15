@@ -53,12 +53,12 @@ class AgentController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create(Request $request, int $r = 0)
+  public function create(Request $request)
   {
     $policytypes = PolicyType::with('policies', 'policyLimits')
       ->whereIn('id', $request->policyGroup)
       ->get();
-
+$r=0;
     $driver_id = Session::get('driver_id');
 
     $driver = User::with('truckers')->find($driver_id);
@@ -104,7 +104,7 @@ class AgentController extends Controller
     return view('agent.certificate_list', compact('certificate', 'certPolicy', 'driver', 'agent'));
   }
 
-  public function showCertificate(string $id, int $r = 1)
+  public function showCertificate(string $id)
   {
     $certificate = Certificate::with('policies', 'policyLimits')
       ->where('id', $id)
@@ -140,7 +140,7 @@ class AgentController extends Controller
       'fontHeightRatio' => 1,
       'isPhpEnabled' => true,
     ]);
-
+$r=1;
     // $pdf = Pdf::loadView('agent.form_cert', $data);
     // $pdf->setOptions($options);
     // $pdf->setPaper('L', 'landscape');

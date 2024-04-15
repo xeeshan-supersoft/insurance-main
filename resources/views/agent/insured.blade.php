@@ -13,7 +13,7 @@
                  </div>
                  <div class="form-floating form-floating-outline mb-4">
                      <input type="text" class="form-control" id="basic-default-company2" placeholder="Address line1"
-                         value="{{ $driver->truckers[0]->address }}" readonly />
+                         value="{{ $driver->name }}" readonly />
                      <label for="basic-default-company2">Address</label>
                  </div>
                  <div class="row">

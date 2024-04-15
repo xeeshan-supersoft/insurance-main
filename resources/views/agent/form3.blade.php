@@ -459,11 +459,6 @@ $navbarHideToggle = false;
         animation: none !important
     }
 
-    .mat-fab .mat-button-wrapper {
-        padding: 16px 0;
-        display: inline-block;
-        line-height: 24px
-    }
 
     .mat-mini-fab {
         box-sizing: border-box;
@@ -517,11 +512,7 @@ $navbarHideToggle = false;
         animation: none !important
     }
 
-    .mat-mini-fab .mat-button-wrapper {
-        padding: 8px 0;
-        display: inline-block;
-        line-height: 24px
-    }
+  
 
     .mat-icon-button {
         padding: 0;
@@ -567,15 +558,7 @@ $navbarHideToggle = false;
         z-index: 1
     }
 
-    .mat-button .mat-button-wrapper>*,
-    .mat-flat-button .mat-button-wrapper>*,
-    .mat-stroked-button .mat-button-wrapper>*,
-    .mat-raised-button .mat-button-wrapper>*,
-    .mat-icon-button .mat-button-wrapper>*,
-    .mat-fab .mat-button-wrapper>*,
-    .mat-mini-fab .mat-button-wrapper>* {
-        vertical-align: middle
-    }
+   
 
     .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,
     .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
@@ -4743,15 +4726,15 @@ $navbarHideToggle = false;
                                                                                 CERTIFICATE OF
                                                                                 INSURANCE</span></td>
                                                                         <td width="180" class="date_top ng-tns-c268-42">
-                                                                            <div class="date_lable ng-tns-c268-42">DATE
+                                                                            {{-- <div class="date_lable ng-tns-c268-42">DATE
                                                                                 (MM/DD/YYYY)
-                                                                            </div>
+                                                                            </div> --}}
                                                                             <mat-form-field appearance="outline"
                                                                                 class="mat-form-field ng-tns-c268-42 ng-tns-c70-48 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-star-inserted mat-form-field-should-float mat-form-field-disabled"
                                                                                 style="width: 170px !important;">
                                                                                 <div
                                                                                     class="mat-form-field-wrapper ng-tns-c70-48">
-                                                                                    <div
+                                                                                    {{-- <div
                                                                                         class="mat-form-field-flex ng-tns-c70-48">
                                                                                         <div
                                                                                             class="mat-form-field-outline ng-tns-c70-48 ng-star-inserted">
@@ -4776,10 +4759,11 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-outline-end ng-tns-c70-48">
                                                                                             </div>
-                                                                                        </div>
+                                                                                        </div> --}}
                                                                                         <div
                                                                                             class="mat-form-field-infix ng-tns-c70-48">
-                                                                                            <input matinput=""
+                                                                                            {{-- <input type="date"
+                                                                                            matinput=""
                                                                                                 formcontrolname="acordCertiDate"
                                                                                                 placeholder="Choose a date"
                                                                                                 class="mat-input-element mat-form-field-autofill-control mat-datepicker-input acordCertiDateCls l_h_23 ng-tns-c70-48 ng-untouched ng-pristine cdk-text-field-autofill-monitored"
@@ -4789,7 +4773,7 @@ $navbarHideToggle = false;
                                                                                                 aria-required="false"
                                                                                                 aria-haspopup="dialog"
                                                                                                 data-mat-calendar="mat-datepicker-0"
-                                                                                                disabled="">
+                                                                                                disabled=""> --}}
                                                                                             <mat-datepicker
                                                                                                 class="ng-tns-c70-48">
                                                                                             </mat-datepicker><span
@@ -4809,17 +4793,6 @@ $navbarHideToggle = false;
                                                                                                     aria-label="Open calendar"
                                                                                                     tabindex="-1"
                                                                                                     disabled="true"><span
-                                                                                                        class="mat-button-wrapper"><svg
-                                                                                                            viewBox="0 0 24 24"
-                                                                                                            width="24px"
-                                                                                                            height="24px"
-                                                                                                            fill="currentColor"
-                                                                                                            focusable="false"
-                                                                                                            class="mat-datepicker-toggle-default-icon ng-star-inserted">
-                                                                                                            <path
-                                                                                                                d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z">
-                                                                                                            </path>
-                                                                                                        </svg></span><span
                                                                                                         matripple=""
                                                                                                         class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span
                                                                                                         class="mat-button-focus-overlay"></span></button>
@@ -4873,15 +4846,15 @@ $navbarHideToggle = false;
                                                                                 PRODUCER</td>
                                                                             <td valign="top"
                                                                                 class="lable_title_normal ng-tns-c268-42">
-                                                                                Registry
-                                                                                Monitoring Insurance Services, Inc <br
-                                                                                    class="ng-tns-c268-42"> 5703 Corsa
-                                                                                Avenue, 1st
-                                                                                Floor, <br class="ng-tns-c268-42"> ,
-                                                                                Westlake
-                                                                                Village , CA 91362 <br
+                                                                                {{ $agent->agencies[0]->agency_name }}<br
+                                                                                class="ng-tns-c268-42"> 
+                                                                                {{ $agent->agencies[0]->agency_address }}<br
+                                                                                    class="ng-tns-c268-42"> {{ $agent->agencies[0]->agency_city }}
+                                                                                    {{ $agent->agencies[0]->agency_state }}
+                                                                                ,
+                                                                               {{ $agent->agencies[0]->agency_zip }} <br
                                                                                     class="ng-tns-c268-42">
-                                                                                (800)400-4924 , (818)574-3114 </td>
+                                                                              </td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -4897,7 +4870,7 @@ $navbarHideToggle = false;
                                                                                 class="lable_title tab_fild_set ng-tns-c268-42">
                                                                                 CONTACT NAME:</td>
                                                                             <td colspan="3" class="ng-tns-c268-42"> Nick
-                                                                                Anderson
+                                                                                {{ $agent->name }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr class="ng-tns-c268-42">
@@ -4906,14 +4879,14 @@ $navbarHideToggle = false;
                                                                                     class="ng-tns-c268-42">PHONE</span>
                                                                                 (A/C, No,
                                                                                 Ext): </td>
-                                                                            <td class="ng-tns-c268-42"></td>
+                                                                            <td class="ng-tns-c268-42">{{ $agent->agencies[0]->agency_cellphone }}</td>
                                                                             <td width="26%"
                                                                                 class="lable_title tab_fild_set ng-tns-c268-42">
                                                                                 <span class="ng-tns-c268-42">FAX (A/C,
                                                                                     No):</span>
                                                                             </td>
                                                                             <td width="26%"
-                                                                                class="tab_fild_set ng-tns-c268-42">
+                                                                                class="tab_fild_set ng-tns-c268-42">{{ $agent->agencies[0]->agency_fax }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr class="ng-tns-c268-42">
@@ -4923,14 +4896,14 @@ $navbarHideToggle = false;
                                                                                 ADDRESS:
                                                                             </td>
                                                                             <td width="26%" class="ng-tns-c268-42">
-                                                                                nick@registrymonitoring.net </td>
+                                                                                {{ $agent->agencies[0]->agency_extra_email }} </td>
                                                                             <td width="25%"
                                                                                 class="lable_title ng-tns-c268-42"><span
                                                                                     class="ng-tns-c268-42">PRODUCER</span>
                                                                                 CUSTOMER
                                                                                 ID #: </td>
                                                                             <td width="25%" class="ng-tns-c268-42">
-                                                                                &nbsp;</td>
+                                                                                {{ $agent->agencies[0]->producer_customer_number }}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -4948,13 +4921,14 @@ $navbarHideToggle = false;
                                                                                 INSURED</td>
                                                                             <td valign="top"
                                                                                 class="lable_title_normal pt-30 ng-tns-c268-42">
-                                                                                Expedited Transport Inc <br
+                                                                                {{ $driver->name }}<br
                                                                                     class="ng-tns-c268-42">
-                                                                                EXZT <br class="ng-tns-c268-42"> 3 Zuni
-                                                                                Circle <br class="ng-tns-c268-42"> ,
-                                                                                Pensacola, FL, 32507
+                                                                                    {{ $driver->truckers[0]->address }} <br class="ng-tns-c268-42">
+                                                                                    {{ $driver->truckers[0]->city }}
+                                                                                    {{ $driver->truckers[0]->state }} <br class="ng-tns-c268-42"> ,
+                                                                                    {{ $driver->truckers[0]->zip }}
                                                                                 <br class="ng-tns-c268-42">
-                                                                                (901)734-9226 ,
+                                                                                {{ $driver->truckers[0]->contact_info }} ,
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -5023,7 +4997,7 @@ $navbarHideToggle = false;
                                                                                                 <input matinput=""
                                                                                                     placeholder="Enter Insurer A Details"
                                                                                                     formcontrolname="insurerA"
-                                                                                                    value=""
+                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurA"
                                                                                                     data-placeholder="Enter Insurer A Details"
@@ -5093,7 +5067,7 @@ $navbarHideToggle = false;
                                                                                                 <input matinput=""
                                                                                                     placeholder="Enter Insurer A Details"
                                                                                                     formcontrolname="insNaicNoA"
-                                                                                                    value=""
+                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->naic_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="naic_a"
                                                                                                     data-placeholder="Enter Insurer A Details"
@@ -5162,7 +5136,7 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="insBestRatingA"
                                                                                                     readonly="true"
-                                                                                                    value=""
+                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->best_rating_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="br_a"
                                                                                                     aria-invalid="false"
@@ -6142,7 +6116,7 @@ $navbarHideToggle = false;
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-65">
                                                                                 <input autocomplete="off" matinput=""
-                                                                                    value="haka" disabled=""
+                                                                                    value="" disabled=""
                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-65 cdk-text-field-autofill-monitored"
                                                                                     id="mat-input-21"
                                                                                     aria-invalid="false"
@@ -6180,7 +6154,12 @@ $navbarHideToggle = false;
                                                                                     id="mat-checkbox-29">
                                                                                     <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
                                                                                     name="main_policy_sub[{{ str_replace(' ', '_', $pt->id) }}][{{ $pp->id }}]"
-                                                                                    id="{{ $pp->policy_title }}" />
+                                                                                    id="{{ $pp->policy_title }}"
+                                                                                 
+                                                                                      @if (isset(  $certPolicy ) )
+                                                                                           {{ $certPolicy->where('policy_id', $pp->id)->first() ? 'checked' : '' }}                                                                                       
+                                                                                    @endif
+                                                                                 />
                                                                                 </mat-checkbox>
                                                                             </td>
                                                                             <td colspan="3"
@@ -6236,7 +6215,7 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="policyNumberGL"
                                                                                                     maxlength="20" name="main_policy_polnum[{{ $pt->id }}]"
-                                                                                                    value=""
+                                                                                                    value="@if (isset(  $certPolicy ) ) {{ $certPolicy->where('policy_type_id', $pt->id)->first()->policy_number }} @endif"
                                                                                                     oninput="this.value = this.value.toUpperCase()"
                                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-67 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                                                                                                     required=""
@@ -6320,15 +6299,11 @@ $navbarHideToggle = false;
                                                                             </div>
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-68">
-                                                                                <input matinput="" maxlength="10"
-                                                                                    placeholder="Choose a date"   name="main_policy_eff_date[{{ $pt->id }}]"
-                                                                                    formcontrolname="policyEffecDateGL"
+                                                                                <input  type="text"
+                                                                                   name="main_policy_eff_date[{{ $pt->id }}]"                                                                                
                                                                                     class="mat-input-element mat-form-field-autofill-control mat-datepicker-input l_h_23 ng-tns-c70-68 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
-                                                                                    required="" id="mat-input-24"
-                                                                                    data-placeholder="Choose a date"
-                                                                                    aria-required="true"
-                                                                                    aria-haspopup="dialog"
-                                                                                    data-mat-calendar="mat-datepicker-1">
+                                                                                    value="@if(isset($certPolicy)){{date('m/d/Y', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->start_date))}}@endif"
+                                                                                 >
                                                                                 <mat-datepicker class="ng-tns-c70-68">
                                                                                 </mat-datepicker><span
                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-68"></span>
@@ -6344,17 +6319,6 @@ $navbarHideToggle = false;
                                                                                         aria-haspopup="dialog"
                                                                                         aria-label="Open calendar"
                                                                                         tabindex="0"><span
-                                                                                            class="mat-button-wrapper"><svg
-                                                                                                viewBox="0 0 24 24"
-                                                                                                width="24px"
-                                                                                                height="24px"
-                                                                                                fill="currentColor"
-                                                                                                focusable="false"
-                                                                                                class="mat-datepicker-toggle-default-icon ng-star-inserted">
-                                                                                                <path
-                                                                                                    d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z">
-                                                                                                </path>
-                                                                                            </svg></span><span
                                                                                             matripple=""
                                                                                             class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span
                                                                                             class="mat-button-focus-overlay"></span></button>
@@ -6401,16 +6365,11 @@ $navbarHideToggle = false;
                                                                             </div>
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-69">
-                                                                                <input matinput="" maxlength="10"
-                                                                                    placeholder="Choose a date"   name="main_policy_exp_date[{{ $pt->id }}]"
-                                                                                    formcontrolname="policyExpDateGL"
+                                                                                <input type="text"
+                                                                                     name="main_policy_exp_date[{{ $pt->id }}]"
                                                                                     class="mat-input-element mat-form-field-autofill-control mat-datepicker-input l_h_23 ng-tns-c70-69 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
-                                                                                    required="" id="mat-input-25"
-                                                                                    data-placeholder="Choose a date"
-                                                                                    aria-required="true"
-                                                                                    aria-haspopup="dialog"
-                                                                                    min="2024-04-10T11:46:09+05:00"
-                                                                                    data-mat-calendar="mat-datepicker-2">
+                                                                                    value="@if(isset($certPolicy)){{date('m/d/Y', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date))}}@endif"
+                                                                                    >
                                                                                 <mat-datepicker class="ng-tns-c70-69">
                                                                                 </mat-datepicker><span
                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-69"></span>
@@ -6426,17 +6385,6 @@ $navbarHideToggle = false;
                                                                                         aria-haspopup="dialog"
                                                                                         aria-label="Open calendar"
                                                                                         tabindex="0"><span
-                                                                                            class="mat-button-wrapper"><svg
-                                                                                                viewBox="0 0 24 24"
-                                                                                                width="24px"
-                                                                                                height="24px"
-                                                                                                fill="currentColor"
-                                                                                                focusable="false"
-                                                                                                class="mat-datepicker-toggle-default-icon ng-star-inserted">
-                                                                                                <path
-                                                                                                    d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z">
-                                                                                                </path>
-                                                                                            </svg></span><span
                                                                                             matripple=""
                                                                                             class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span
                                                                                             class="mat-button-focus-overlay"></span></button>
@@ -6503,16 +6451,10 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-70">
-                                                                                                <input
-                                                                                                    autocomplete="off"
-                                                                                                    matinput=""
-                                                                                                    formcontrolname="eachOccurLimit"
-                                                                                                    maxlength="13"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-70 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    required=""
-                                                                                                    id="{{ $pl->coverage_item }}"
-                                                                                                    name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
+                                                                                                <input type="text" class="form-control" id="{{ $pl->coverage_item }}"
+                                     name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
+                                     placeholder=""
+                                     value="@if (isset(  $certPolimit ) ){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount }}@endif"
                                                                                                     aria-invalid="false"
                                                                                                     aria-required="true"><span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-70"></span>
@@ -6736,7 +6678,7 @@ $navbarHideToggle = false;
                             </div>
                             <div fxlayout="row" fxlayoutalign="center center" class="acord-button-row ng-tns-c268-42"
                                 style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center; align-items: center;">
-                                <button mat-flat-button="" color="accent"   type="submit"                            
+                                <button mat-flat-button="" color="accent" id="btn"  type="submit"                            
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-accent">
                                     
                                     <span
@@ -6744,13 +6686,12 @@ $navbarHideToggle = false;
                                         </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
                                         class="mat-button-focus-overlay"></span></button>
                                         
-                                        <button mat-flat-button=""
+                                        <a mat-flat-button="" href="/formlist"
                                     color="warn"
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-warn"><span
                                         class="mat-button-wrapper">
                                Close
-                                    </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
-                                        class="mat-button-focus-overlay"></span></button>
+                                    </span></a>
                             </div>
                         </div>
                     </div>
