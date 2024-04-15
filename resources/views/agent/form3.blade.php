@@ -512,7 +512,7 @@ $navbarHideToggle = false;
         animation: none !important
     }
 
-  
+
 
     .mat-icon-button {
         padding: 0;
@@ -558,7 +558,7 @@ $navbarHideToggle = false;
         z-index: 1
     }
 
-   
+
 
     .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,
     .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
@@ -4847,7 +4847,7 @@ $navbarHideToggle = false;
                                                                             <td valign="top"
                                                                                 class="lable_title_normal ng-tns-c268-42">
                                                                                 {{ $agent->agencies[0]->agency_name }}<br
-                                                                                class="ng-tns-c268-42"> 
+                                                                                class="ng-tns-c268-42">
                                                                                 {{ $agent->agencies[0]->agency_address }}<br
                                                                                     class="ng-tns-c268-42"> {{ $agent->agencies[0]->agency_city }}
                                                                                     {{ $agent->agencies[0]->agency_state }}
@@ -6024,9 +6024,9 @@ $navbarHideToggle = false;
                                                         <tr class="ng-tns-c268-42 ng-trigger ng-trigger-slideUpDown ng-star-inserted"
                                                             style="">
                                                             <td colspan="7" class="chkb_lable_title ng-tns-c268-42">
-                                                                <mat-checkbox 
+                                                                <mat-checkbox
                                                                     class="mat-checkbox ng-tns-c268-42 mat-accent mat-checkbox-checked"
-                                                                    id="mat-checkbox-28"> 
+                                                                    id="mat-checkbox-28">
                                                                       <input class="form-check-input" type="checkbox" value="{{ $pt->id }}"
                                                                     name=""
                                                                     />
@@ -6155,9 +6155,9 @@ $navbarHideToggle = false;
                                                                                     <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
                                                                                     name="main_policy_sub[{{ str_replace(' ', '_', $pt->id) }}][{{ $pp->id }}]"
                                                                                     id="{{ $pp->policy_title }}"
-                                                                                 
+
                                                                                       @if (isset(  $certPolicy ) )
-                                                                                           {{ $certPolicy->where('policy_id', $pp->id)->first() ? 'checked' : '' }}                                                                                       
+                                                                                           {{ $certPolicy->where('policy_id', $pp->id)->first() ? 'checked' : '' }}
                                                                                     @endif
                                                                                  />
                                                                                 </mat-checkbox>
@@ -6167,7 +6167,7 @@ $navbarHideToggle = false;
                                                                                 <span class="ng-tns-c268-42">  {{ $pp->policy_title }}</span></td>
                                                                         </tr>
                                                                         @endforeach
-                                                                    
+
                                                                     </tbody>
                                                                 </table>
                                                             </td>
@@ -6299,14 +6299,14 @@ $navbarHideToggle = false;
                                                                             </div>
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-68">
-                                                                                <input  
+                                                                                <input
                                                                                 @if ($r==1)
                                                                                 type="text"
                                                                                 @else
                                                                                 type="date"
                                                                                 @endif
-                                                                                
-                                                                                   name="main_policy_eff_date[{{ $pt->id }}]"                                                                                
+
+                                                                                   name="main_policy_eff_date[{{ $pt->id }}]"
                                                                                     class="mat-input-element mat-form-field-autofill-control mat-datepicker-input l_h_23 ng-tns-c70-68 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                                                                                     value="@if(isset($certPolicy)){{date('m/d/Y', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->start_date))}}@endif"
                                                                                  >
@@ -6484,7 +6484,7 @@ $navbarHideToggle = false;
                                                                             </td>
                                                                         </tr>
                                                                         @endforeach
-                                                                      
+
                                                                     </tbody>
                                                                 </table>
                                                             </td>
@@ -6504,7 +6504,7 @@ $navbarHideToggle = false;
 
 
 
-                                                  
+
                                                         <tr class="ng-tns-c268-42">
                                                             <td colspan="7" style="padding: 10px;"
                                                                 class="ng-tns-c268-42">
@@ -6688,15 +6688,15 @@ $navbarHideToggle = false;
                             </div>
                             <div fxlayout="row" fxlayoutalign="center center" class="acord-button-row ng-tns-c268-42"
                                 style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center; align-items: center;">
-                                <button mat-flat-button="" color="accent" id="btn"  type="submit"                            
+                                <button mat-flat-button="" color="accent" id="btn"  type="submit"
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-accent">
-                                    
+
                                     <span
                                         class="mat-button-wrapper"> Continue
                                         </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
                                         class="mat-button-focus-overlay"></span></button>
-                                        
-                                        <a mat-flat-button="" href="/formlist"
+
+                                        <a mat-flat-button="" href="{{ route('formlist') }}"
                                     color="warn"
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-warn"><span
                                         class="mat-button-wrapper">
