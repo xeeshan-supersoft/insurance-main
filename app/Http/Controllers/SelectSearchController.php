@@ -19,7 +19,7 @@ class SelectSearchController extends Controller
       foreach($results as $row)
       {
        $output .= '
-       <li data-naic="' . $row->naic_number .  '" data-brn="' . $row->best_rating_number . '"><a href="#">'.$row->name.'</a></li>
+       <li data-id="' . $row->id . '" data-naic="' . $row->naic_number .  '" data-brn="' . $row->best_rating_number . '"><a href="#">'.$row->name.'</a></li>
        ';
       }
       $output .= '</ul>';

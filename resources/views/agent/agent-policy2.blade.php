@@ -1,6 +1,7 @@
  <!-- Basic Layout -->
  <div class="row">
      @foreach ($policytypes as $pt)
+     
          <div class="card mb-4">
              <div class="card-body">
                  <div class="card-header d-flex justify-content-between align-items-center">
