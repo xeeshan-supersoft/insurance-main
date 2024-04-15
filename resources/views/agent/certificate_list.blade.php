@@ -12,6 +12,9 @@
         <div class="col-sm-3">
             <a href="{{ route('view_cert', $certificate->id) }}" class="btn btn-primary">View Certificate</a>
         </div>
+        <div class="col-sm-3">
+            {{-- <a href="{{ route('view_cert', $certificate->id) }}" class="btn btn-light waves-effect waves-light" style="background-color:#3b235b  !important">PDF Certificate</a> --}}
+        </div>
         <div>
             <table class="table">
                 <thead>
