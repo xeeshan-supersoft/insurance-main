@@ -4695,7 +4695,7 @@ $navbarHideToggle = false;
 
 <div id="acordPage" fxlayout="row" class="page-layout simple right-sidebar ng-tns-c268-42"
     style="flex-direction: row; box-sizing: border-box; display: flex;">
-    
+
     <div fuseperfectscrollbar="" class="center ng-tns-c268-42 ps"
         style="flex-direction: column; box-sizing: border-box; display: flex;">
         <div class="ps__rail-x" style="left: 0px; top: 0px;">
@@ -5023,8 +5023,9 @@ $navbarHideToggle = false;
                                                                                                     placeholder="Enter Insurer A Details"
                                                                                                     formcontrolname="insurerA"
                                                                                                     value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-5"
+                                                                                                    class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                    name="insurance_provider_id[]"
+                                                                                                    id="insurA"
                                                                                                     data-placeholder="Enter Insurer A Details"
                                                                                                     aria-invalid="false"
                                                                                                     aria-required="false"
@@ -5033,6 +5034,8 @@ $navbarHideToggle = false;
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
                                                                                                     aria-haspopup="listbox">
+                                                                                                    <div id="insurerAList">
+                                                                                                    </div>
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-49">
@@ -5091,7 +5094,7 @@ $navbarHideToggle = false;
                                                                                                     formcontrolname="insNaicNoA"
                                                                                                     value=""
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-6"
+                                                                                                    id="naic_a"
                                                                                                     data-placeholder="Enter Insurer A Details"
                                                                                                     aria-invalid="false"
                                                                                                     aria-required="false"
@@ -5099,7 +5102,7 @@ $navbarHideToggle = false;
                                                                                                     role="combobox"
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                    aria-haspopup="listbox" readonly>
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-50">
@@ -5160,9 +5163,9 @@ $navbarHideToggle = false;
                                                                                                     readonly="true"
                                                                                                     value=""
                                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-7"
+                                                                                                    id="br_a"
                                                                                                     aria-invalid="false"
-                                                                                                    aria-required="false"><span
+                                                                                                    aria-required="false" readonly><span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-51"></span>
                                                                                             </div>
                                                                                         </div>
@@ -12616,7 +12619,7 @@ $navbarHideToggle = false;
                                                                 </table>
                                                             </td>
                                                         </tr>
-                                                      
+
                                                     </tbody>
                                                 </table>
                                                 <table width="100%" cellpadding="0" cellspacing="0" border="0"
@@ -12681,7 +12684,7 @@ $navbarHideToggle = false;
                                 style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center; align-items: center;">
                                 <button mat-flat-button="" color="accent"
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-accent"><span
-                                        class="mat-button-wrapper"> Continue 
+                                        class="mat-button-wrapper"> Continue
                                         </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
                                         class="mat-button-focus-overlay"></span></button><button mat-flat-button=""
                                     color="warn"
@@ -12700,6 +12703,6 @@ $navbarHideToggle = false;
     </div>
 </div>
 
+@include('agent.agent-script')
 
-
-            @endsection
+@endsection

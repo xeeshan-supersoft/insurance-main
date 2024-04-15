@@ -15,6 +15,16 @@ class SelectSearchController extends Controller
       ->where('name', 'LIKE', "%$search%")
       ->get();
 
-    return response()->json($results);
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($results as $row)
+      {
+       $output .= '
+       <li data-naic="' . $row->naic_number .  '" data-brn="' . $row->best_rating_number . '"><a href="#">'.$row->name.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+
+    //return response()->json($results);
   }
 }

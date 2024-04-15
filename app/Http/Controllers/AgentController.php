@@ -64,7 +64,7 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($driver_id);
     $agent = User::with('agencies')->find(Auth::user()->id);
 
-    return view('agent.form2', compact('policytypes', 'driver', 'agent'));
+    return view('agent.form3', compact('policytypes', 'driver', 'agent'));
   }
 
   /**
@@ -134,20 +134,22 @@ class AgentController extends Controller
       'agent' => $agent,
     ];
 
-    PDF::setOptions([
-      'dpi' => 150,
+    $options = ([
+      'dpi' => 100,
       'defaultFont' => 'sans-serif',
       'fontHeightRatio' => 1,
       'isPhpEnabled' => true,
     ]);
 
-    $pdf = Pdf::loadView('agent.form_cert', $data)->setPaper('a4', 'landscape');
-    return $pdf->download('cert_pdf.pdf');
+    // $pdf = Pdf::loadView('agent.form_cert', $data);
+    // $pdf->setOptions($options);
+    // $pdf->setPaper('L', 'landscape');
+    // return $pdf->download('cert_pdf.pdf');
 
-    // return view(
-    //   'agent.certificate_created',
-    //   compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent')
-    // );
+    return view(
+      'agent.form3',
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent')
+    );
   }
 
   /**
