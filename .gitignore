@@ -33,6 +33,7 @@ package-lock.log
 /public/assets/js
 /public/assets/css
 /public/assets/vendor
+/public/assets.zip
 
 !storage/fonts/Helvetica-Bold.afm.json
 !storage/fonts/DejaVuSans-Bold.ufm.json
