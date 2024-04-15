@@ -73,8 +73,8 @@
                   method:"GET",
                   data:{query:query},
                   success:function(data){
-                  $('#insurerAList').fadeIn();
-                            $('#insurerAList').html(data);
+                    $('#insurerAList').fadeIn();
+                    $('#insurerAList').html(data);
                   }
                 });
                 }
@@ -84,6 +84,7 @@
                 $('#insurA').val($(this).text());
                 $('#naic_a').val($(this).data("naic"));
                 $('#br_a').val($(this).data("brn"));
+                $('#insurance_provider_id_A').val($(this).data("id"));                
                 $('#insurerAList').fadeOut();
             });
 

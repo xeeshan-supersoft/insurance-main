@@ -8,6 +8,7 @@
                          name="insurance_provider_code[{{ $pt->id }}]" size="1" maxlength="1"
                          oninput="this.value = this.value.toUpperCase();" style="width: 25px;" />
 
+                         
                      <h5 class="mb-0">{{ $pt->type_name }}</h5>
                      <small class="text-muted float-end">CONTACT</small>
                  </div>

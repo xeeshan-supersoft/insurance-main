@@ -141,7 +141,6 @@
   --bs-form-invalid-color: #ff4c51;
   --bs-form-invalid-border-color: #ff4c51;
 }
-
 *,
 *::before,
 *::after {
