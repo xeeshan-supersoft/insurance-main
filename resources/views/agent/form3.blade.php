@@ -6299,7 +6299,13 @@ $navbarHideToggle = false;
                                                                             </div>
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-68">
-                                                                                <input  type="text"
+                                                                                <input  
+                                                                                @if ($r==1)
+                                                                                type="text"
+                                                                                @else
+                                                                                type="date"
+                                                                                @endif
+                                                                                
                                                                                    name="main_policy_eff_date[{{ $pt->id }}]"                                                                                
                                                                                     class="mat-input-element mat-form-field-autofill-control mat-datepicker-input l_h_23 ng-tns-c70-68 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                                                                                     value="@if(isset($certPolicy)){{date('m/d/Y', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->start_date))}}@endif"
@@ -6365,7 +6371,11 @@ $navbarHideToggle = false;
                                                                             </div>
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-69">
-                                                                                <input type="text"
+                                                                                <input  @if ($r==1)
+                                                                                type="text"
+                                                                                @else
+                                                                                type="date"
+                                                                                @endif
                                                                                      name="main_policy_exp_date[{{ $pt->id }}]"
                                                                                     class="mat-input-element mat-form-field-autofill-control mat-datepicker-input l_h_23 ng-tns-c70-69 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                                                                                     value="@if(isset($certPolicy)){{date('m/d/Y', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date))}}@endif"
