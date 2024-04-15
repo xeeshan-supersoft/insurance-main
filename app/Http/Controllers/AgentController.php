@@ -53,7 +53,7 @@ class AgentController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create(Request $request)
+  public function create(Request $request, int $r = 0)
   {
     $policytypes = PolicyType::with('policies', 'policyLimits')
       ->whereIn('id', $request->policyGroup)
@@ -64,7 +64,7 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($driver_id);
     $agent = User::with('agencies')->find(Auth::user()->id);
 
-    return view('agent.form3', compact('policytypes', 'driver', 'agent'));
+    return view('agent.form3', compact('policytypes', 'driver', 'agent', 'r'));
   }
 
   /**
@@ -104,7 +104,7 @@ class AgentController extends Controller
     return view('agent.certificate_list', compact('certificate', 'certPolicy', 'driver', 'agent'));
   }
 
-  public function showCertificate(string $id)
+  public function showCertificate(string $id, int $r = 1)
   {
     $certificate = Certificate::with('policies', 'policyLimits')
       ->where('id', $id)
@@ -148,7 +148,7 @@ class AgentController extends Controller
 
     return view(
       'agent.form3',
-      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent')
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r')
     );
   }
 
