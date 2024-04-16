@@ -177,7 +177,7 @@ class AgentController extends Controller
       'r' => $r,
     ];
 
-    $options = ([
+     $options = ([
       'dpi' => 100,
       'defaultFont' => 'sans-serif',
       'fontHeightRatio' => 1,
@@ -249,8 +249,7 @@ $r=0;
   public function update(Request $request , CertificateService $certificateService)
   {
      $resp = $certificateService->update($request->all());
-   // return  $request;
-   return;
+     return redirect()->route('formlist');
   }
 
   /**

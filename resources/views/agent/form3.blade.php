@@ -6051,6 +6051,7 @@ $navbarHideToggle = false;
                                                                                     style="width: 0px;"></div>
                                                                                 <div
                                                                                     class="mat-form-field-outline-end ng-tns-c70-64">
+                                                                                    {{ $certPolicy->where('policy_type_id', $pt->id)->first()->insurance_provider_code }}
                                                                                 </div>
                                                                             </div>
                                                                             <div
@@ -6059,9 +6060,7 @@ $navbarHideToggle = false;
                                                                                     style="width: 0px;"></div>
                                                                                 <div class="mat-form-field-outline-gap ng-tns-c70-64"
                                                                                     style="width: 0px;"></div>
-                                                                                <div
-                                                                                    class="mat-form-field-outline-end ng-tns-c70-64">
-                                                                                </div>
+
                                                                             </div>
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-64">
