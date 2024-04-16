@@ -6307,7 +6307,7 @@ $navbarHideToggle = false;
 
                                                                                    name="main_policy_eff_date[{{ $pt->id }}]"
                                                                                     class="mat-input-element mat-form-field-autofill-control mat-datepicker-input l_h_23 ng-tns-c70-68 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
-                                                                                    value="@if(isset($certPolicy)){{date('m/d/Y', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->start_date))}}@endif"
+                                                                                    value="@if(isset($certPolicy)){{date('Y-m-d', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->start_date))}}@endif"
                                                                                  >
                                                                                 <mat-datepicker class="ng-tns-c70-68">
                                                                                 </mat-datepicker><span
@@ -6377,7 +6377,7 @@ $navbarHideToggle = false;
                                                                                 @endif
                                                                                      name="main_policy_exp_date[{{ $pt->id }}]"
                                                                                     class="mat-input-element mat-form-field-autofill-control mat-datepicker-input l_h_23 ng-tns-c70-69 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
-                                                                                    value="@if(isset($certPolicy)){{date('m/d/Y', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date))}}@endif"
+                                                                                    value="@if(isset($certPolicy)){{date('Y-m-d', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date))}}@endif"
                                                                                     >
                                                                                 <mat-datepicker class="ng-tns-c70-69">
                                                                                 </mat-datepicker><span
