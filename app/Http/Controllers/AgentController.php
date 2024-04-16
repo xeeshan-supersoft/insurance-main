@@ -182,10 +182,12 @@ class AgentController extends Controller
       'defaultFont' => 'sans-serif',
       'fontHeightRatio' => 1,
       'isPhpEnabled' => true,
+      //'isHtml5ParserEnabled' => true,
+      //'debugCss' => true,
     ]);
 
     $pdf = Pdf::loadView('agent.form3', $data);
-    $pdf->setOptions($options);
+    //$pdf->setOptions($options);
     $pdf->setPaper('L', 'landscape');
     return $pdf->download('cert_pdf.pdf');
   }
