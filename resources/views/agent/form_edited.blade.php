@@ -4720,7 +4720,7 @@ $navbarHideToggle = false;
                                                                     <tr class="ng-tns-c268-42">
                                                                         <td class="ng-tns-c268-42"><span
                                                                                 class="acord_title ng-tns-c268-42"><img
-                                                                                src="{{ asset('assets/img/logo.png')}}"
+                                                                                src="{{ asset('assets/img/nlogo.png')}}"
                                                                                     width="91" height="39"
                                                                                     class="ng-tns-c268-42">
                                                                                 &nbsp;&nbsp;INTERMODAL INTERCHANGE
