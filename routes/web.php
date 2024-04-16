@@ -94,8 +94,13 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
   Route::get('/main_cert/{id}', [ac::class, 'MainCertificate'])->name('main_cert');
   Route::get('/list_cert/{id}', [ac::class, 'show'])->name('list_cert');
   Route::get('/view_cert/{id}', [ac::class, 'showCertificate'])->name('view_cert');
+
   Route::get('/edit_cert/{id}', [ac::class, 'editCertificate'])->name('edit_cert');
   Route::post('/update', [ac::class, 'update'])->name('update_cert');
+
+  Route::get('/get_pdf/{id}', [ac::class, 'showPDF'])->name('get_pdf');
+
+
   //Route::get('/list', [AdminController::class, 'list'])->name('list');
   //Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
   //Route::get('/form', [ac::class, 'insurform'])->name('form');

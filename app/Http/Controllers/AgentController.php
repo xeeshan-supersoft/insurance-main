@@ -58,7 +58,9 @@ class AgentController extends Controller
     $policytypes = PolicyType::with('policies', 'policyLimits')
       ->whereIn('id', $request->policyGroup)
       ->get();
-$r=0;
+
+    $r=0;
+
     $driver_id = Session::get('driver_id');
 
     $driver = User::with('truckers')->find($driver_id);
@@ -122,6 +124,8 @@ $r=0;
       ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
       ->get();
 
+    $r = 1;
+
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
@@ -134,22 +138,56 @@ $r=0;
       'agent' => $agent,
     ];
 
+    return view(
+      'agent.form3',
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r')
+    );
+  }
+
+  public function showPDF(string $id)
+  {
+    $certificate = Certificate::with('policies', 'policyLimits')
+      ->where('id', $id)
+      ->first();
+
+    $certPolicy = CertificatePolicy::with('policyType', 'policy')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $certPolimit = CertificatePolicyLimit::with('certificate', 'policyType', 'policyLimit')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $policytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
+      ->get();
+
+    $r = 1;
+
+    $driver = User::with('truckers')->find($certificate->client_user_id);
+    $agent = User::with('agencies')->find($certificate->producer_user_id);
+
+    $data = [
+      'certificate' => $certificate,
+      'policytypes' => $policytypes,
+      'certPolicy' => $certPolicy,
+      'certPolimit' => $certPolimit,
+      'driver' => $driver,
+      'agent' => $agent,
+      'r' => $r,
+    ];
+
     $options = ([
       'dpi' => 100,
       'defaultFont' => 'sans-serif',
       'fontHeightRatio' => 1,
       'isPhpEnabled' => true,
     ]);
-$r=1;
-    // $pdf = Pdf::loadView('agent.form_cert', $data);
-    // $pdf->setOptions($options);
-    // $pdf->setPaper('L', 'landscape');
-    // return $pdf->download('cert_pdf.pdf');
 
-    return view(
-      'agent.form3',
-      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r')
-    );
+    $pdf = Pdf::loadView('agent.form3', $data);
+    $pdf->setOptions($options);
+    $pdf->setPaper('L', 'landscape');
+    return $pdf->download('cert_pdf.pdf');
   }
 
   /**
