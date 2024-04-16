@@ -6695,7 +6695,7 @@ $navbarHideToggle = false;
                                         </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
                                         class="mat-button-focus-overlay"></span></button>
 
-                                        <a mat-flat-button="" href="/formlist"
+                                        <a mat-flat-button="" href="{{ route('formlist') }}"
                                     color="warn"
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-warn"><span
                                         class="mat-button-wrapper">
