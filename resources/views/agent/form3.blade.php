@@ -6051,7 +6051,7 @@ $navbarHideToggle = false;
                                                                                     style="width: 0px;"></div>
                                                                                 <div
                                                                                     class="mat-form-field-outline-end ng-tns-c70-64">
-                                                                                    {{ $certPolicy->where('policy_type_id', $pt->id)->first()->insurance_provider_code }}
+                                                                                    @if(isset($certPolicy)){{ $certPolicy->where('policy_type_id', $pt->id)->first()->insurance_provider_code }}@endif
                                                                                 </div>
                                                                             </div>
                                                                             <div
