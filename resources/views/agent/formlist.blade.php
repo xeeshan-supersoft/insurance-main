@@ -19,6 +19,7 @@
                             <tr>
                                 <th class="text-truncate">Name</th>
                                 <th class="text-truncate">Role</th>
+                              
                             </tr>
                         </thead>
                         <tbody>
@@ -36,6 +37,8 @@
                                             <span class="btn btn-success">{{ str_replace('_', ' ', $data->role) }}</span>
                                         </div>
                                     </td>
+                                    
+
                                 </tr>
                             @endforeach
                         </tbody>

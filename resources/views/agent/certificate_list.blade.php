@@ -9,8 +9,15 @@
     </h4>
 
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a href="{{ route('view_cert', $certificate->id) }}" class="btn btn-primary">View Certificate</a>
+        </div>
+        <div class="col-sm-1">
+            <a href="#" class="btn btn-primary rounded-pill">  <i class="mdi mdi-arrow-down-bold mdi-24px lh-0"></i></a>
+        </div>
+
+        <div class="col-sm-3">
+            <a href="{{ route('edit_cert', $certificate->id) }}" class="btn btn-primary rounded-pill">  <i class="mdi mdi-pencil-box mdi-24px lh-0"></i> Edit Certificate</a>
         </div>
         <div class="col-sm-3">
             {{-- <a href="{{ route('view_cert', $certificate->id) }}" class="btn btn-light waves-effect waves-light" style="background-color:#3b235b  !important">PDF Certificate</a> --}}

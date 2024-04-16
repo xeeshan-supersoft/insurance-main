@@ -155,17 +155,64 @@ $r=1;
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function editCertificate(string $id)
   {
-    //
+    $certificate = Certificate::with('policies', 'policyLimits')
+      ->where('id', $id)
+      ->first();
+
+    $certPolicy = CertificatePolicy::with('policyType', 'policy')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $certPolimit = CertificatePolicyLimit::with('certificate', 'policyType', 'policyLimit')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $policytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
+      ->get();
+
+    $driver = User::with('truckers')->find($certificate->client_user_id);
+    $agent = User::with('agencies')->find($certificate->producer_user_id);
+
+    $data = [
+      'certificate' => $certificate,
+      'policytypes' => $policytypes,
+      'certPolicy' => $certPolicy,
+      'certPolimit' => $certPolimit,
+      'driver' => $driver,
+      'agent' => $agent,
+    ];
+
+    $options = ([
+      'dpi' => 100,
+      'defaultFont' => 'sans-serif',
+      'fontHeightRatio' => 1,
+      'isPhpEnabled' => true,
+    ]);
+$r=0;
+    // $pdf = Pdf::loadView('agent.form_cert', $data);
+    // $pdf->setOptions($options);
+    // $pdf->setPaper('L', 'landscape');
+    // return $pdf->download('cert_pdf.pdf');
+
+    return view(
+      'agent.form_edited',
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r')
+    );
+
+
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(Request $request , CertificateService $certificateService)
   {
-    //
+     $resp = $certificateService->update($request->all());
+   // return  $request;
+   return;
   }
 
   /**

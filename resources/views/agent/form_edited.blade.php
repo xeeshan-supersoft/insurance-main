@@ -4675,10 +4675,11 @@ $navbarHideToggle = false;
 
 @endpush
 @section('content')
-<form method="post" action="{{ route('save_cert') }}">
+<form method="post" action="{{ route('update_cert') }}">
     @csrf
 <div id="acordPage" fxlayout="row" class="page-layout simple right-sidebar ng-tns-c268-42"
     style="flex-direction: row; box-sizing: border-box; display: flex;">
+<input type="hidden" name="cert_id" value="{{request()->id}}">
 
     <div fuseperfectscrollbar="" class="center ng-tns-c268-42 ps"
         style="flex-direction: column; box-sizing: border-box; display: flex;">
@@ -5008,7 +5009,7 @@ $navbarHideToggle = false;
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
                                                                                                     aria-haspopup="listbox">
-                                                                                                    <input type="hidden" id="insurance_provider_id_A" name="insurance_provider_id[]" value=""/>
+                                                                                                    <input type="hidden" id="insurance_provider_id_A" name="insurance_provider_id[]" value="@if(isset($certPolicy)){{$certPolicy->first()->insuranceProvider->id}}@endif"/>
                                                                                                     <div id="insurerAList">
                                                                                                     </div>
                                                                                                 <mat-autocomplete
@@ -6692,7 +6693,7 @@ $navbarHideToggle = false;
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-accent">
                                     
                                     <span
-                                        class="mat-button-wrapper"> Continue
+                                        class="mat-button-wrapper"> Update
                                         </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
                                         class="mat-button-focus-overlay"></span></button>
                                         
