@@ -13,7 +13,7 @@
             <a href="{{ route('view_cert', $certificate->id) }}" class="btn btn-primary">View Certificate</a>
         </div>
         <div class="col-sm-1">
-            <a href="#" class="btn btn-primary rounded-pill">  <i class="mdi mdi-arrow-down-bold mdi-24px lh-0"></i></a>
+            <a href="{{ route('get_pdf', $certificate->id) }}" class="btn btn-primary rounded-pill">  <i class="mdi mdi-arrow-down-bold mdi-24px lh-0"></i></a>
         </div>
 
         <div class="col-sm-3">

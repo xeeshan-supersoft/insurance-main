@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+set_time_limit(300);
 
 use Auth;
 use App\Models\User;
@@ -18,7 +19,7 @@ use App\Services\CertificateService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Barryvdh\DomPDF\Facade\Pdf;
+use PDF;
 
 class AgentController extends Controller
 {
@@ -167,29 +168,11 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
-    $data = [
-      'certificate' => $certificate,
-      'policytypes' => $policytypes,
-      'certPolicy' => $certPolicy,
-      'certPolimit' => $certPolimit,
-      'driver' => $driver,
-      'agent' => $agent,
-      'r' => $r,
-    ];
+    $name = 'Accord-' . date('Y-m-d') .'.pdf';
+    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
+    $html = 'agent.form_pdf';
 
-     $options = ([
-      'dpi' => 100,
-      'defaultFont' => 'sans-serif',
-      'fontHeightRatio' => 1,
-      'isPhpEnabled' => true,
-      //'isHtml5ParserEnabled' => true,
-      //'debugCss' => true,
-    ]);
-
-    $pdf = Pdf::loadView('agent.form3', $data);
-    //$pdf->setOptions($options);
-    $pdf->setPaper('L', 'landscape');
-    return $pdf->download('cert_pdf.pdf');
+    return view($html , $data);
   }
 
   /**

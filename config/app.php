@@ -169,7 +169,7 @@ return [
       App\Providers\EventServiceProvider::class,
       App\Providers\RouteServiceProvider::class,
       App\Providers\MenuServiceProvider::class,
-      Barryvdh\DomPDF\ServiceProvider::class, //Add this code
+      ZanySoft\LaravelPDF\PdfServiceProvider::class,
     ])
     ->toArray(),
 
@@ -187,7 +187,7 @@ return [
   'aliases' => Facade::defaultAliases()
     ->merge([
       // 'Example' => App\Facades\Example::class,
-      'PDF' => Barryvdh\DomPDF\Facade::class, //Add this code
+      'PDF' => ZanySoft\LaravelPDF\Facades\PDF::class,
     ])
     ->toArray(),
 ];
