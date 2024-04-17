@@ -19,7 +19,6 @@ use App\Services\CertificateService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use PDF;
 
 class AgentController extends Controller
 {
