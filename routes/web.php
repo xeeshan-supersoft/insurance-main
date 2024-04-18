@@ -49,6 +49,7 @@ use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 use App\Http\Controllers\SelectSearchController as ssc;
+use Illuminate\Support\Facades\Artisan;
 
 // Main Page Route
 Route::get('/accord', function () {
@@ -78,8 +79,8 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 });
 
 Route::get('/migrate', function(){
-  \Artisan::call('migrate:fresh');
-  \Artisan::call('db:seed');
+  Artisan::call('migrate:fresh');
+  Artisan::call('db:seed');
 });
 
 Route::group(['middleware' => 'checkRole:agent'], function () {
