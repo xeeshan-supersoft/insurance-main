@@ -151,7 +151,7 @@
                     <i class="mdi mdi-magnify mdi-24px lh-0"></i>
                     <input type="text" id="searched" class="form-control border-0 shadow-none bg-body"
                         placeholder="LookUp MC Insured " aria-label="Search..."
-                        @if ($user = "admin")
+                        @if ($user->role == "admin")
                         disabled
                         @endif>
                 </div>
@@ -163,7 +163,7 @@
                     <i class="mdi mdi-magnify mdi-24px lh-0"></i>
                     <input type="text" id="searched" class="form-control border-0 shadow-none bg-body"
                         placeholder="Certificate Search" aria-label="Search..."
-                        @if ($user = "admin")
+                        @if ($user->role == "admin")
                         disabled
                         @endif
                         >
@@ -176,7 +176,7 @@
 <div class="container-fluid bg-black ">
     <!-- Search -->
     <ul class="navbar-nav   flex-row align-items-center ms-1">
-        @if ($user != "admin")
+        @if ($user->role != "admin")
         <li>
             <a href="{{ route('dash') }}" class="btn btn-light  ">Dasboard</a>
         </li>
