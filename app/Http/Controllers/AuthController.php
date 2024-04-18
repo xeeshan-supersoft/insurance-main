@@ -54,7 +54,7 @@ class AuthController extends Controller
 
     $request->session()->regenerate();
     if ($user->role == 'admin') {
-      return redirect('/dash_adm');
+      return redirect()->route('dashs');
     }
     if ($user->role == 'agent') {
       return redirect('/dash');
@@ -130,14 +130,14 @@ $subb = Subscription::create([
       $user = AgencyInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
-        'agency_address' => $validatedData['Addss'],
-        'agency_address2' => $validatedData['Addss2'],
-        'agency_name' => $validatedData['fullname'],      
-        'agency_city' => $validatedData['city'],
-        'agency_state' => $validatedData['state'],
-        'agency_zip' => $validatedData['zip'],
-        'agency_cellphone' => $validatedData['phone'],
-        'agency_extra_email' => $validatedData['altemail'],
+        'address' => $validatedData['Addss'],
+        'address2' => $validatedData['Addss2'],
+        'name' => $validatedData['fullname'],      
+        'city' => $validatedData['city'],
+        'state' => $validatedData['state'],
+        'zip' => $validatedData['zip'],
+        'cellphone' => $validatedData['phone'],
+        'extra_email' => $validatedData['altemail'],
       ]);
       return response()->json([
         'message' => 'agent created successfully!',
@@ -148,14 +148,14 @@ $subb = Subscription::create([
       $user = ShipperInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
-        'shipper_address' => $validatedData['Addss'],
-        'shipper_address2' => $validatedData['Addss2'],
-        'shipper_name' => $validatedData['fullname'],
-        'shipper_city' => $validatedData['city'],
-        'shipper_state' => $validatedData['state'],
-        'shipper_zip' => $validatedData['zip'],
-        'shipper_cellphone' => $validatedData['phone'],
-        'shipper_extra_email' => $validatedData['altemail'],
+        'address' => $validatedData['Addss'],
+        'address2' => $validatedData['Addss2'],
+        'name' => $validatedData['fullname'],
+        'city' => $validatedData['city'],
+        'state' => $validatedData['state'],
+        'zip' => $validatedData['zip'],
+        'cellphone' => $validatedData['phone'],
+        'extra_email' => $validatedData['altemail'],
       ]);
       return response()->json([
         'message' => 'shipper created successfully!',
@@ -171,7 +171,7 @@ $subb = Subscription::create([
         'city' => $validatedData['city'],
         'state' => $validatedData['state'],
         'zip' => $validatedData['zip'],
-        'contact_info' => $validatedData['phone'],
+        'cellphone' => $validatedData['phone'],
         'extra_email' => $validatedData['altemail'],
         'license_number' => $validatedData['license_number'],
         'license_expiry_date'=> $validatedData['license_expiry_date'],

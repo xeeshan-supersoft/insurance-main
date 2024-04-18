@@ -28,6 +28,10 @@ class CheckRole
     // dd($asdd);
     // Use Laravel's `hasRole` method for clear and concise role check
     //dd($request->user()->hasRole($roles));
+    // if ($request->user()->hasRole('admin')) {
+    //   return redirect()->route('dashs');
+    //   //abort(403, "You don't have the necessary permissions for this action.");
+    // }
     if ($request->user()->hasRole($roles)) {
       return $next($request);
       //abort(403, "You don't have the necessary permissions for this action.");
