@@ -28,7 +28,7 @@ class TruckerInfoSeeder extends Seeder
       'state' => 'New York',
       'city' => 'New York City',
       'zip' => '10001',
-      'contact_info' => '1 987 2014',
+      'cellphone' => '1 987 2014',
       'license_number' => 'RDX-1000',
       'license_expiry_date' => '2026-09-19',
       'license_type' => 'Commercial',

@@ -24,14 +24,14 @@ class AgentSeeder extends Seeder
 
     AgencyInfos::create([
       'user_id' => $agent->id,
-      'agency_name' => 'SaveInsure Co.',
-      'agency_address' => 'Apt 10, West Rd',
-      'agency_state' => 'Florida',
-      'agency_city' => 'Orlando',
-      'agency_zip' => '33332',
-      'agency_cellphone' => '1 234 6789',
-      'agency_fax' => '1 335 6797',
-      'agency_extra_email' => 'agent2@gmail.com',
+      'name' => 'SaveInsure Co.',
+      'address' => 'Apt 10, West Rd',
+      'state' => 'Florida',
+      'city' => 'Orlando',
+      'zip' => '33332',
+      'cellphone' => '1 234 6789',
+      'fax' => '1 335 6797',
+      'extra_email' => 'agent2@gmail.com',
       'producer_customer_number' => 'RXDERF536',
       'is_active' => 1,
     ]);
