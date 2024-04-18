@@ -34,7 +34,7 @@
             height: 50px;
         }
         </style> --}}
-        @stack('body-scripts')
+        {{-- @stack('body-scripts') --}}
 
     <!-- Include Styles -->
     @include('layouts/sections/styles')

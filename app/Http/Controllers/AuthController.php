@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\ShipperInfos;
-use App\Models\TruckerInfos;
-use App\Models\FreightInfos;
+use App\Models\DriverDetail;
 use App\Models\AgencyInfos;
+use App\Models\Subscription_plan;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -68,44 +69,70 @@ class AuthController extends Controller
   public function register(Request $request)
   {
     $validatedDataa = Validator::make($request->all(), [
-      'name' => 'required',
+      'username' => 'required',
       'password1' => 'required',
       'email' => 'required|email|unique:users',
       'role' => 'required',
-      // 'Addss' => 'required',
-      // 'Addss2' => 'required',
-      // 'fullname' => 'required',
-      // 'country' => 'required',
-      // 'city' => 'required',
-      // 'state' => 'required',
-      // 'zip' => 'required',
-      // 'phone' => 'required',
-      // 'altemail' => 'required',
+      'Addss' => 'sometimes',
+      'Addss2' => 'sometimes',
+      'fullname' => 'sometimes',
+      'country' => 'sometimes',
+      'city' => 'sometimes',
+      'state' => 'sometimes',
+      'zip' => 'sometimes',
+      'phone' => 'sometimes',
+      'altemail' => 'sometimes',
+      'license_number' => 'sometimes',
+      'license_expiry_date' => 'sometimes',
+      'license_type' => 'sometimes',
+      'years_of_experience' => 'sometimes',
+      'vehicle_registration_number' => 'sometimes',
+      'vehicle_make' => 'sometimes',
+      'vehicle_model' => 'sometimes',
+      'vehicle_year' => 'sometimes:',
+      'vehicle_capacity' => 'sometimes',
+      'vehicle_status' => 'sometimes',
+      'mc_number' => 'sometimes',
+      'subs_id' => 'sometimes',
+      
     ]);
+    // var_dump( $validatedDataa);
 
-    if ($validatedDataa->fails()) {
-      return Redirect::back()
-        ->withErrors($validatedDataa)
-        ->withInput();
-      // return 'back';
+
+    if($validatedDataa->fails()){
+      // return Redirect::back()
+      //   ->withErrors($validatedDataa)
+      //   ->withInput();
+      return 'fail';
     }
+
     $validatedData = $validatedDataa->validated();
 
     $user = User::create([
-      'username' => $validatedData['username'],
+      'name' => $validatedData['username'],
       'email' => $validatedData['email'],
       'password' => Hash::make($validatedData['password1']),
       'role' => $validatedData['role'], // Assuming default role ID for 'user'
     ]);
     $lastInsertedId = $user->id;
+
+$subb = Subscription::create([
+  'user_id' => $lastInsertedId,
+  'plan_id' => $validatedData['subs_id'],
+  'status'=> 'Active',
+]);
+
+
+    // dd( $validatedDataa->getData()['Addss']);
+
+  
     if ($validatedData['role'] == 'agent') {
       $user = AgencyInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
         'agency_address' => $validatedData['Addss'],
         'agency_address2' => $validatedData['Addss2'],
-        'agency_name' => $validatedData['fullname'],
-        'agency_country' => $validatedData['country'],
+        'agency_name' => $validatedData['fullname'],      
         'agency_city' => $validatedData['city'],
         'agency_state' => $validatedData['state'],
         'agency_zip' => $validatedData['zip'],
@@ -124,7 +151,6 @@ class AuthController extends Controller
         'shipper_address' => $validatedData['Addss'],
         'shipper_address2' => $validatedData['Addss2'],
         'shipper_name' => $validatedData['fullname'],
-        'shipper_country' => $validatedData['country'],
         'shipper_city' => $validatedData['city'],
         'shipper_state' => $validatedData['state'],
         'shipper_zip' => $validatedData['zip'],
@@ -137,18 +163,27 @@ class AuthController extends Controller
       ]);
     }
     if ($validatedData['role'] == 'truck_driver') {
-      echo $user = TruckerInfos::create([
-        'user_id' => $lastInsertedId,
-        'status' => '1',
-        'trucker_address' => $validatedData['Addss'],
-        'trucker_address2' => $validatedData['Addss2'],
-        'trucker_name' => $validatedData['fullname'],
-        'trucker_country' => $validatedData['country'],
-        'trucker_city' => $validatedData['city'],
-        'trucker_state' => $validatedData['state'],
-        'trucker_zip' => $validatedData['zip'],
-        'trucker_cellphone' => $validatedData['phone'],
-        'trucker_extra_email' => $validatedData['altemail'],
+       $user = DriverDetail::create([
+        'user_id' => $lastInsertedId,        
+        'address' => $validatedData['Addss'],
+        'address2' => $validatedData['Addss2'],
+        'name' => $validatedData['fullname'],
+        'city' => $validatedData['city'],
+        'state' => $validatedData['state'],
+        'zip' => $validatedData['zip'],
+        'contact_info' => $validatedData['phone'],
+        'extra_email' => $validatedData['altemail'],
+        'license_number' => $validatedData['license_number'],
+        'license_expiry_date'=> $validatedData['license_expiry_date'],
+        'license_type' => $validatedData['license_type'],
+        'years_of_experience'=> $validatedData['years_of_experience'],
+        'vehicle_registration_number'=> $validatedData['vehicle_registration_number'],
+        'vehicle_make'=> $validatedData['vehicle_make'],
+        'vehicle_model'=> $validatedData['vehicle_model'],
+        'vehicle_year'=> $validatedData['vehicle_year'],
+        'vehicle_capacity'=> $validatedData['vehicle_capacity'],
+        'vehicle_status'=> $validatedData['vehicle_status'],
+        'mc_number'=> $validatedData['mc_number'],
       ]);
       return response()->json([
         'message' => 'truker created successfully!',
@@ -157,36 +192,35 @@ class AuthController extends Controller
     }
 
     if ($validatedData['role'] == 'freight_driver') {
-      $user = FreightInfos::create([
+      $user = DriverDetail::create([
         'user_id' => $lastInsertedId,
-        'status' => '1',
-        'freight_address' => $validatedData['Addss'],
-        'freight_address2' => $validatedData['Addss2'],
-        'freight_name' => $validatedData['fullname'],
-        'freight_country' => $validatedData['country'],
-        'freight_city' => $validatedData['city'],
-        'freight_state' => $validatedData['state'],
-        'freight_zip' => $validatedData['zip'],
-        'freight_cellphone' => $validatedData['phone'],
-        'freight_extra_email' => $validatedData['altemail'],
+        
+        'address' => $validatedData['Addss'],
+        'address2' => $validatedData['Addss2'],
+        'name' => $validatedData['fullname'],
+        'city' => $validatedData['city'],
+        'state' => $validatedData['state'],
+        'zip' => $validatedData['zip'],
+        'cellphone' => $validatedData['phone'],
+        'extra_email' => $validatedData['altemail'],
       ]);
       return response()->json([
         'message' => 'freight created successfully!',
         'user_id' => $lastInsertedId,
       ]);
     }
-    return response()->json([
-      'message' => 'admin created successfully!',
-      'user_id' => $lastInsertedId,
-    ]);
+    // // return response()->json([
+    // //   'message' => 'admin created successfully!',
+    // //   'user_id' => $lastInsertedId,
+    // // ]);
 
     // // Your existing code...
 
-    // return response()->json(['message' => 'Success']);
-    //return response()->json(['message' => 'Success']);
-    // Redirect to intended or successful registration page
+    // // return response()->json(['message' => 'Success']);
+    // // return response()->json(['message' => 'Success']);
+    // // Redirect to intended or successful registration page
 
-    return $request;
+      return 'notthing';
   }
 
   public function logout()
@@ -200,9 +234,18 @@ class AuthController extends Controller
     }
     return redirect('/logg');
   }
-
+  
   public function land()
   {
-    return view('index');
+    $data=Subscription_plan::All();
+
+    return view('index' ,compact('data'));
   }
+  public function registerfrom (Request $request)
+  {
+   $subs_id =$request->sub_id;
+    return view('auth.regist' ,compact('subs_id'));
+  }
+
+
 }
