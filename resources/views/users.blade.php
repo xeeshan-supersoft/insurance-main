@@ -88,11 +88,7 @@ $navbarHideToggle = false;
                     <input type="text" class="form-control" name="password" id="password" placeholder="********" />
                     <label for="password">PASSWORD</label>
                   </div>
-                </div>
-
-
-                
-    
+                </div>    
                 <div class="col-6">
                   <input type="hidden" class="form-control" name="id" id="id" />
                   <div class="form-floating form-floating-outline mb-4">

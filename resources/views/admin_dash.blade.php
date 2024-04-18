@@ -44,9 +44,7 @@
               <th class="text-truncate">Status</th>
               <th class="text-truncate">Action</th>
 
-            </tr>
-            
-
+            </tr>     
           </thead>
           <tbody>
              @foreach ($users as $user)
