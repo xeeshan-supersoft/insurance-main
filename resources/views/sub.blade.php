@@ -207,9 +207,7 @@ $navbarHideToggle = false;
             <tr>
               <td>
                 <div class="d-flex align-items-center">
-                  <div class="avatar avatar-sm me-3">
-                    <img src="{{asset('assets/img/avatars/1.png')}}" alt="Avatar" class="rounded-circle">
-                  </div>e
+              
                   <div>
                     <h6 class="mb-0 "> {{$subs->name}}</h6> 
                 </div>   
