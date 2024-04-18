@@ -17,7 +17,7 @@ return new class extends Migration {
       $table->string('state', 255)->nullable();
       $table->string('city', 255)->nullable();
       $table->string('zip', 255)->nullable();
-      $table->string('contact_info', 255)->nullable();
+      $table->string('cellphone', 255)->nullable();
       $table->string('license_number', 255)->nullable();
       $table->date('license_expiry_date')->nullable();
       $table->string('license_type', 255)->nullable();

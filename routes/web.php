@@ -56,26 +56,21 @@ Route::get('/accord', function () {
   return view('fromdrop');
 });
 
+
+
 Route::get('/form3', function () {
   return view('agent.form3');
 });
 Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
 Route::group(['middleware' => 'checkRole:admin'], function () {
-  Route::get('/dash_adm', [AdminController::class, 'dashadmin'])->name('dashs');
+  Route::get('/admin/dash', [AdminController::class, 'dashadmin'])->name('dashs');
   //Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-  // Route::get('/dash', [AdminController::class, 'dash'])->name('dash');
-  // Route::get('/list', [AdminController::class, 'list'])->name('list');
-  // Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
-  // Route::get('/form', [AdminController::class, 'insurform'])->name('form');
-  // Route::post('/save', [AdminController::class, 'insurformsave'])->name('form.insert');
-  // Route::get('/pdf', [AdminController::class, 'pdf'])->name('form.pdf');
-  // Route::post('/reg/{id}', [AuthController::class, 'regedit'])->name('form.users');
-  // Route::post('/reg', [AuthController::class, 'register'])->name('form.user');
-  // Route::get('/user', [AdminController::class, 'users'])->name('add.user');
-  // Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
-  // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
+  Route::get('/admin/sub/', [AdminController::class, 'subs'])->name('sub');
+  Route::get('/admin/edit_user/{id}', [AdminController::class, 'edituser'])->name('edit_user');
+  Route::post('/admin/update_user/', [AdminController::class, 'updateuser'])->name('update_user');
+  Route::post('/admin/add_sub/', [AdminController::class, 'add_sub'])->name('add_sub');
+  Route::post('/admin/edit_sub/{id}', [AdminController::class, 'edit_sub'])->name('edit_sub');
 });
 
 Route::get('/migrate', function(){

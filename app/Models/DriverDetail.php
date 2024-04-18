@@ -18,7 +18,7 @@ class DriverDetail extends Model
     'state',
     'city',
     'zip',
-    'contact_info',
+    'cellphone',
     'license_number',
     'license_expiry_date',
     'license_type',
