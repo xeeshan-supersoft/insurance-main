@@ -53,11 +53,9 @@
              <tr>
                <td>
                  <div class="d-flex align-items-center">
-                   <div class="avatar avatar-sm me-3">
-                     <img src="{{asset('assets/img/avatars/1.png')}}" alt="Avatar" class="rounded-circle">
-                   </div>
+                 
                    <div>
-                     <h6 class="mb-0 text-truncate">@ {{$user->name}}</h6>
+                     <h6 class="mb-0 text-truncate">{{$user->name}}</h6>
                      {{-- <small class="text-truncate">@amiccoo</small> --}}
                    </div>
                  </div>
