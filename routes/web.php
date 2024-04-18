@@ -79,7 +79,7 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 
 Route::get('/migrate', function(){
   \Artisan::call('migrate:fresh');
-  dd('migrated!');
+  \Artisan::call('db:seed');
 });
 
 Route::group(['middleware' => 'checkRole:agent'], function () {
