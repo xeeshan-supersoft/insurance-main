@@ -78,6 +78,8 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 //   Artisan::call('db:seed');
 // });
 
+// NOW
+
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
