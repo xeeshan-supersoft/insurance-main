@@ -77,6 +77,11 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
 });
 
+Route::get('/migrate', function(){
+  \Artisan::call('migrate');
+  dd('migrated!');
+});
+
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
