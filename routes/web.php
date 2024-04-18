@@ -73,10 +73,12 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::post('/admin/edit_sub/{id}', [AdminController::class, 'edit_sub'])->name('edit_sub');
 });
 
-Route::get('/migrate', function(){
-  Artisan::call('migrate:fresh');
-  Artisan::call('db:seed');
-});
+// Route::get('/migrate', function(){
+//   Artisan::call('migrate:fresh');
+//   Artisan::call('db:seed');
+// });
+
+// NOW
 
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
