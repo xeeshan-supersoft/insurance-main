@@ -310,7 +310,7 @@ $('#saveButton').click(function(e) {
 //  console.log(formData);
 
   $.ajax({
-    url: '/admin/add_sub',
+    url: '{{route("add_sub")}}',
     type: 'post',
     data: formData,
     contentType: false,
@@ -357,7 +357,7 @@ $('#saveButton').click(function(e) {
 
 
     $.ajax({
-      url: '/admin/edit_sub/' + id,
+      url: 'admin/edit_sub/' + id,
       type: 'post',
       data: formData,
       contentType: false,
