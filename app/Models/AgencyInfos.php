@@ -14,6 +14,7 @@ class AgencyInfos extends Model
     'user_id',
     'agency_name',
     'agency_address',
+    'agency_address2',
     'agency_city',
     'agency_state',
     'agency_zip',
