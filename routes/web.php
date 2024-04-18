@@ -78,7 +78,7 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 });
 
 Route::get('/migrate', function(){
-  \Artisan::call('migrate');
+  \Artisan::call('migrate:fresh');
   dd('migrated!');
 });
 
