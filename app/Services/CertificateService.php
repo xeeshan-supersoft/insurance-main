@@ -29,8 +29,6 @@ class CertificateService
 
     $cid = $new_cert->id;
 
-    //dd($certificateData);
-
     foreach ($certificateData['main_policy_sub'] as $k => $v) {
       foreach ($v as $val) {
         $certificatePolicy = new CertificatePolicy();
@@ -43,13 +41,28 @@ class CertificateService
         $certificatePolicy->is_risk_retention_insured = false;
         $certificatePolicy->is_actual_cash_value = false;
         $certificatePolicy->insurance_provider_code = $certificateData['insurance_provider_code'][$k];
-        $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
+        if($certificateData['insurance_provider_code'][$k]=='A'){
+          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
+        }
+        if($certificateData['insurance_provider_code'][$k]=='B'){
+          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
+        }
+        if($certificateData['insurance_provider_code'][$k]=='C'){
+          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
+        }
+        if($certificateData['insurance_provider_code'][$k]=='D'){
+          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
+        }
+        if($certificateData['insurance_provider_code'][$k]=='E'){
+          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
+        }
         $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
         $certificatePolicy->issue_date = Carbon::now()->format('Y-m-d');
         $certificatePolicy->start_date = $certificateData['main_policy_eff_date'][$k];
         $certificatePolicy->expiry_date = $certificateData['main_policy_exp_date'][$k];
         $certificatePolicy->save();
       }
+
     }
 
     foreach ($certificateData['main_policy_coverage'] as $k => $v) {
@@ -91,7 +104,21 @@ class CertificateService
           $certificatePolicy->is_risk_retention_insured = false;
           $certificatePolicy->is_actual_cash_value = false;
           $certificatePolicy->insurance_provider_code = $certificateData['insurance_provider_code'][$k];
-          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
+          if($certificateData['insurance_provider_code'][$k]=='A'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='B'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='C'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='D'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='E'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
+          }
           $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
           $certificatePolicy->issue_date = Carbon::now()->format('Y-m-d');
           $certificatePolicy->start_date = $certificateData['main_policy_eff_date'][$k];
