@@ -172,10 +172,10 @@ class AgentController extends Controller
     $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
     $html = 'agent.form_pdf';
 
-     $pdf = PDF::loadView($html, $data)->setPaper('Letter')->setOrientation('landscape')->setOption('disable-javascript', true);
-     return $pdf->download($name);
+    //  $pdf = PDF::loadView($html, $data)->setPaper('Letter')->setOrientation('landscape')->setOption('disable-javascript', true);
+    //  return $pdf->download($name);
 
-    //return view($html , $data);
+    return view($html , $data);
   }
 
   /**
