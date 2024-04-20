@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\AgentDriver;
 use App\Models\DriverDetail;
 use App\Models\User;
 use Hash;
@@ -41,6 +42,11 @@ class TruckerInfoSeeder extends Seeder
       'vehicle_status' => 'Good',
       'mc_number' => 'HW343',
       'is_active' => 1,
+    ]);
+
+    AgentDriver::create([
+      'agent_id'  => 2,
+      'driver_id' => 3
     ]);
   }
 }

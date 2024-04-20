@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('certificate_policies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('certificate_id')->constrained('certificates');
-            $table->foreignId('policy_type_id')->constrained('policy_types');
-            $table->foreignId('policy_id')->constrained('policies');
-            $table->integer('policy_deductible')->default(0);
-            $table->integer('policy_retention')->default(0);
-            $table->tinyInteger('is_policy_checked')->default(0);
-            $table->tinyInteger('is_risk_retention_insured')->default(0);
-            $table->tinyInteger('is_actual_cash_value')->default(0);
-            $table->foreignId('insurance_provider_id')->constrained('insurance_providers');
-            $table->string('insurance_provider_code', 255);
-            $table->string('policy_number', 255);
-            $table->date('issue_date');
-            $table->date('start_date');
-            $table->date('expiry_date');
+            $table->foreignId('certificate_id')->nullable()->constrained('certificates');
+            $table->foreignId('policy_type_id')->nullable()->constrained('policy_types');
+            $table->foreignId('policy_id')->nullable()->constrained('policies');
+            $table->integer('policy_deductible')->nullable()->default(0);
+            $table->integer('policy_retention')->nullable()->default(0);
+            $table->tinyInteger('is_policy_checked')->nullable()->default(0);
+            $table->tinyInteger('is_risk_retention_insured')->nullable()->default(0);
+            $table->tinyInteger('is_actual_cash_value')->nullable()->default(0);
+            $table->foreignId('insurance_provider_id')->nullable()->constrained('insurance_providers');
+            $table->string('insurance_provider_code', 255)->nullable();
+            $table->string('policy_number', 255)->nullable();
+            $table->date('issue_date')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('expiry_date')->nullable();
             $table->timestamps();
         });
     }

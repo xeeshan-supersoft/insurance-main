@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('certificate_policy_limits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('certificate_id')->constrained('certificates');
-            $table->foreignId('policy_type_id')->constrained('policy_types');
-            $table->foreignId('policy_limit_id')->constrained('policy_limits');
+            $table->foreignId('certificate_id')->nullable()->constrained('certificates');
+            $table->foreignId('policy_type_id')->nullable()->constrained('policy_types');
+            $table->foreignId('policy_limit_id')->nullable()->constrained('policy_limits');
             $table->decimal('amount', 10, 2)->nullable()->default(0);
             $table->tinyInteger('is_checkbox')->nullable()->default(0);
             $table->tinyInteger('is_checked')->nullable()->default(0);
