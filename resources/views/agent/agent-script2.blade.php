@@ -16,6 +16,8 @@
 
              if (correspondingInputName) {
                  var input = document.getElementById(correspondingInputName);
+                 console.log(input);
+
                  if (input.options.length == 0) {
                      const swalWithBootstrapButtons = Swal.mixin({
                          customClass: {

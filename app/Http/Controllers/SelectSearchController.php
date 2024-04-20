@@ -23,7 +23,7 @@ class SelectSearchController extends Controller
        ';
       }
       $output .= '</ul>';
-      echo $output;
+      return Response($output);
 
     //return response()->json($results);
   }
