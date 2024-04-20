@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('certificate_id')->constrained('certificates');
             $table->foreignId('policy_type_id')->constrained('policy_types');
             $table->foreignId('policy_limit_id')->constrained('policy_limits');
-            $table->decimal('amount', 10, 2)->default(0);
-            $table->tinyInteger('is_checkbox')->default(0);
-            $table->tinyInteger('is_checked')->default(0);
+            $table->decimal('amount', 10, 2)->nullable()->default(0);
+            $table->tinyInteger('is_checkbox')->nullable()->default(0);
+            $table->tinyInteger('is_checked')->nullable()->default(0);
             $table->timestamps();
         });
     }
