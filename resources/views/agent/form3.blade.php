@@ -4996,11 +4996,11 @@ $navbarHideToggle = false;
                                                                                                 class="mat-form-field-infix ng-tns-c70-49">
                                                                                                 <input 
                                                                                                     placeholder="Enter Insurer A Details"                                                                                                    
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
+                                                                                                    value="@if (isset(  $certPolicy->insurance_provider_code ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurA"
                                                                                                     data-placeholder="Enter Insurer A Details">
-                                                                                                    <input type="hidden" id="insurance_provider_id_A" name="insurance_provider_ids[]" value=""/>
+                                                                                                    <input type="hidden" id="insurance_provider_id_A" name="insurance_provider_id[]" value=""/>
                                                                                                     <div id="insurerAList">
                                                                                                     </div>
                                                                                                 <mat-autocomplete
