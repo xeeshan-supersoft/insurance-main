@@ -6411,7 +6411,7 @@ $navbarHideToggle = false;
                                                                                                 <input type="number" class="form-control" id="{{ $pl->coverage_item }}"
                                      name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
                                      placeholder=""
-                                     value="@if (isset(  $certPolimit ) ){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount }}@endif"
+                                     value="@if (isset(  $certPolimit ) ){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0 }}@endif"
                                                                                                     aria-invalid="false"
                                                                                                     aria-required="true"><span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-70"></span>
