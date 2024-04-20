@@ -5185,7 +5185,7 @@ $navbarHideToggle = false;
                                                                                                 class="mat-form-field-infix ng-tns-c70-52">
                                                                                                 <input 
                                                                                                 placeholder="Enter Insurer B Details"                                                                                                    
-                                                                                                value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
+                                                                                                value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                 class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                 id="insurB"
                                                                                                 data-placeholder="Enter Insurer B Details">
@@ -5248,7 +5248,7 @@ $navbarHideToggle = false;
                                                                                                 <input matinput=""
                                                                                                     placeholder="Enter Insurer B Details"
                                                                                                     formcontrolname="insNaicNoB"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->naic_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="naic_b"
                                                                                                     data-placeholder="Enter Insurer B Details"                                                                                              
@@ -5313,7 +5313,7 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="insBestRatingB"
                                                                                                     readonly="true"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="br_b"
                                                                                                     aria-invalid="false"
@@ -5373,7 +5373,7 @@ $navbarHideToggle = false;
                                                                                                 class="mat-form-field-infix ng-tns-c70-55">
                                                                                                 <input 
                                                                                                 placeholder="Enter Insurer C Details"                                                                                                    
-                                                                                                value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
+                                                                                                value="@if (isset($certPolicy) && null !==  $certPolicy->skip(2)->take(1)->first() ){{ $certPolicy->skip(2)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                 class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                 id="insurC"
                                                                                                 data-placeholder="Enter Insurer C Details">
@@ -5436,7 +5436,7 @@ $navbarHideToggle = false;
                                                                                                 <input matinput=""
                                                                                                     placeholder="Enter Insurer C Details"
                                                                                                     formcontrolname="insNaicNoC"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(2)->take(1)->first()  ){{ $certPolicy->skip(2)->take(1)->first()->insuranceProvider->naic_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="naic_c"
                                                                                                     data-placeholder="Enter Insurer C Details"
@@ -5501,7 +5501,7 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="insBestRatingC"
                                                                                                     readonly="true"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(2)->take(1)->first() ){{ $certPolicy->skip(2)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="br_c"
                                                                                                     aria-invalid="false"
@@ -5561,7 +5561,7 @@ $navbarHideToggle = false;
                                                                                                 class="mat-form-field-infix ng-tns-c70-58">
                                                                                                 <input 
                                                                                                     placeholder="Enter Insurer D Details"                                                                                                    
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(3)->take(1)->first() ){{ $certPolicy->skip(3)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurD"
                                                                                                     data-placeholder="Enter Insurer D Details">
@@ -5619,7 +5619,7 @@ $navbarHideToggle = false;
                                                                                                 <input matinput=""
                                                                                                     placeholder="Enter Insurer D Details"
                                                                                                     formcontrolname="insNaicNoD"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(3)->take(1)->first() ){{ $certPolicy->skip(3)->take(1)->first()->insuranceProvider->naic_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="naic_d"
                                                                                                     data-placeholder="Enter Insurer D Details"
@@ -5684,7 +5684,7 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="insBestRatingD"
                                                                                                     readonly="true"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(3)->take(1)->first() ){{ $certPolicy->skip(3)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="br_d"
                                                                                                     aria-invalid="false"
@@ -5744,7 +5744,7 @@ $navbarHideToggle = false;
                                                                                                 class="mat-form-field-infix ng-tns-c70-61">
                                                                                                 <input 
                                                                                                     placeholder="Enter Insurer E  Details"                                                                                                    
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(4)->take(1)->first() ){{ $certPolicy->skip(4)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurE"
                                                                                                     data-placeholder="Enter Insurer E Details">
@@ -5807,7 +5807,7 @@ $navbarHideToggle = false;
                                                                                                 <input matinput=""
                                                                                                     placeholder="Enter Insurer E Details"
                                                                                                     formcontrolname="insNaicNoE"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(4)->take(1)->first() ){{ $certPolicy->skip(4)->take(1)->first()->insuranceProvider->naic_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="naic_e"
                                                                                                     data-placeholder="Enter Insurer E Details"
@@ -5872,7 +5872,7 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="insBestRatingE"
                                                                                                     readonly="true"
-                                                                                                    value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(4)->take(1)->first() ){{ $certPolicy->skip(4)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="br_e"
                                                                                                     aria-invalid="false"
@@ -6099,14 +6099,16 @@ $navbarHideToggle = false;
                                                                                     formcontrolname="glLiability"
                                                                                     class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
                                                                                     id="mat-checkbox-29">
-                                                                                    <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
+                                                                                    <input class="form-check-input abcd" type="checkbox" value="{{ $pp->id }}"
                                                                                     name="main_policy_sub[{{ str_replace(' ', '_', $pt->id) }}][{{ $pp->id }}]"
                                                                                     id="{{ $pp->policy_title }}"
 
                                                                                       @if (isset(  $certPolicy ) )
                                                                                            {{ $certPolicy->where('policy_id', $pp->id)->first() ? 'checked' : '' }}
                                                                                     @endif
+
                                                                                  />
+                                                                                 <input type="hidden" id="checkboxValidation" value="false">
                                                                                 </mat-checkbox>
                                                                             </td>
                                                                             <td colspan="3"

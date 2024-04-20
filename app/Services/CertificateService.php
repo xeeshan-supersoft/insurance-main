@@ -91,7 +91,7 @@ class CertificateService
           $certificatePolicy->is_risk_retention_insured = false;
           $certificatePolicy->is_actual_cash_value = false;
           $certificatePolicy->insurance_provider_code = $certificateData['insurance_provider_code'][$k];
-          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
+          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][$k];
           $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
           $certificatePolicy->issue_date = Carbon::now()->format('Y-m-d');
           $certificatePolicy->start_date = $certificateData['main_policy_eff_date'][$k];

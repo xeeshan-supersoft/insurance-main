@@ -17,6 +17,65 @@ if (btn) {
      <script type="text/javascript">
 
 
+    // Get all checkboxes
+    var checkboxes = document.querySelectorAll('.abcd');
+
+    // Add event listener to each checkbox
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            validateCheckboxes();
+        });
+    });
+
+    // Add event listener to the button
+    document.getElementById('btn').addEventListener('click', function(e) {
+        validateCheckboxes();
+        var validationStatus = document.getElementById('checkboxValidation').value;
+      
+        // Check if at least one checkbox is checked
+        if (validationStatus === 'false') {
+            e.preventDefault();
+            const swalWithBootstrapButtons = Swal.mixin({
+                         customClass: {
+                             confirmButton: "btn btn-danger"
+                         },
+                         buttonsStyling: false
+                     });
+                     swalWithBootstrapButtons.fire({
+                         title: 'Error!',
+                         text: 'Error: Please Check at least one type of insurance',
+                         icon: 'error',
+                         confirmButtonText: 'OK'
+                     });
+
+        } 
+    });
+
+    function validateCheckboxes() {
+        var atLeastOneChecked = false;
+
+        // Check if at least one checkbox is checked
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                atLeastOneChecked = true;
+            }
+        });
+
+        // Update the hidden input with the validation status
+        document.getElementById('checkboxValidation').value = atLeastOneChecked ? 'true' : 'false';
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 function validateInput(event) {
     var inputValue = event.target.value.toUpperCase();
     var insuranceInputs = {
