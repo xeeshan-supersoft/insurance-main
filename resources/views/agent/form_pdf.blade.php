@@ -6709,14 +6709,14 @@
 @if ($r==1)
 <script type="text/javascript">
 
-    var inputFields = document.querySelectorAll('input, select');
-    inputFields.forEach(function(input) {
-        input.disabled = true;
-    });
-    var btn = document.getElementById('btn');
-if (btn) {
-    btn.style.display = 'none';
-}
+//     var inputFields = document.querySelectorAll('input, select');
+//     inputFields.forEach(function(input) {
+//         input.disabled = true;
+//     });
+//     var btn = document.getElementById('btn');
+// if (btn) {
+//     btn.style.display = 'none';
+// }
 
 //this.print();
 
