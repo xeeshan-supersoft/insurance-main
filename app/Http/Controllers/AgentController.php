@@ -174,10 +174,10 @@ class AgentController extends Controller
     $html = 'agent.form_pdf';
 
      $pdf = PDF::loadView($html, $data);
-     $pdf->setPaper('a4', 'landscape');
-     Storage::disk('reports')->put('tickets'. '.pdf', $pdf->output());
-     $url = Storage::disk('reports')->url('tickets'. '.pdf');
-     return $pdf->stream($url);
+     $pdf->setPaper('a4');
+     //Storage::disk('reports')->put('tickets'. '.pdf', $pdf->output());
+     //$url = Storage::disk('reports')->url('tickets'. '.pdf');
+     return $pdf->stream();
 
     // return view($html , $data);
   }
