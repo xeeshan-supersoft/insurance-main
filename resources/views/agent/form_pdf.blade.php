@@ -6718,7 +6718,7 @@ if (btn) {
     btn.style.display = 'none';
 }
 
-this.print();
+//this.print();
 
 </script>
 @endif
