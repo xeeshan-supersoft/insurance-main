@@ -169,22 +169,14 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
-    $name = 'Accord-' . date('Y-m-d') .'.pdf';
     $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
-    $html = 'agent.form_pdf';
 
-    //  $pdf = PDF::loadView($html, $data);
-    //  $pdf->setPaper('a4', 'Portrait');
-    //  Storage::disk('reports')->put('tickets'. '.pdf', $pdf->output());
-    //  $url = Storage::disk('reports')->url('tickets'. '.pdf');
-    //  return $pdf->download();
+    $view = 'agent.form_pdf';
+    $cert = 'certificate.pdf';
 
-    $pdf = App::make('snappy.pdf.wrapper');
-    $pdf->loadHTML('<h1>Test</h1>');
-    return $pdf->inline();
-
+    $pdf = PDF::loadView($view, $data);
+    return $pdf->download($cert);
     // return view($html , $data);
-
   }
 
   /**
