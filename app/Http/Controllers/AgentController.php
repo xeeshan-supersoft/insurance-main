@@ -177,7 +177,7 @@ class AgentController extends Controller
      $pdf->setPaper('a4');
      //Storage::disk('reports')->put('tickets'. '.pdf', $pdf->output());
      //$url = Storage::disk('reports')->url('tickets'. '.pdf');
-     return $pdf->stream();
+     return $pdf->download();
 
     // return view($html , $data);
   }
