@@ -174,9 +174,9 @@ class AgentController extends Controller
     $view = 'agent.form_pdf';
     $cert = 'certificate.pdf';
 
-    $pdf = PDF::loadView($view, $data);
-    return $pdf->download($cert);
-    // return view($html , $data);
+    // $pdf = PDF::loadView($view, $data);
+    // return $pdf->download($cert);
+    return view($view , $data);
   }
 
   /**
