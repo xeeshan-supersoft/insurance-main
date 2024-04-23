@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ public_path('assets/img/favicon/favicon.ico') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,17 +19,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset(mix('assets/vendor/fonts/materialdesignicons.css')) }}" />
-    <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/node-waves/node-waves.css')) }}" />
+    <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/fonts/materialdesignicons.css')) }}" />
+    <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/libs/node-waves/node-waves.css')) }}" />
     <!-- Core CSS -->
 
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
-    <link rel="stylesheet" href="{{ asset(mix('assets/css/demo.css')) }}" />
+    <link rel="stylesheet" href="{{ public_path('assets/css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ public_path(mix('assets/css/demo.css')) }}" />
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
+    <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
     @stack('body-css')
 
-    <link rel="stylesheet" href="{{ asset('assets/css/accord.css') }}" />
+    <link rel="stylesheet" href="{{ public_path('assets/css/accord.css') }}" />
 
     <style>
       [_nghost-rgn-c237] {
@@ -4745,7 +4745,7 @@
                                                                     <tr class="ng-tns-c268-42">
                                                                         <td class="ng-tns-c268-42"><span
                                                                                 class="acord_title ng-tns-c268-42"><img
-                                                                                src="{{ asset('assets/img/nlogo.png')}}"
+                                                                                src="{{ public_path('assets/img/nlogo.png')}}"
                                                                                     width="91" height="39"
                                                                                     class="ng-tns-c268-42">
                                                                                 &nbsp;&nbsp;INTERMODAL INTERCHANGE
