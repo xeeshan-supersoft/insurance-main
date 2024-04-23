@@ -169,7 +169,6 @@ return [
       App\Providers\EventServiceProvider::class,
       App\Providers\RouteServiceProvider::class,
       App\Providers\MenuServiceProvider::class,
-      Barryvdh\Snappy\ServiceProvider::class,
     ])
     ->toArray(),
 
@@ -187,8 +186,6 @@ return [
   'aliases' => Facade::defaultAliases()
     ->merge([
       // 'Example' => App\Facades\Example::class,
-      'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-      'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ])
     ->toArray(),
 ];

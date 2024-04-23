@@ -4994,8 +4994,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-49">
-                                                                                                <input 
-                                                                                                    placeholder="Enter Insurer A Details"                                                                                                    
+                                                                                                <input
+                                                                                                    placeholder="Enter Insurer A Details"
                                                                                                     value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurA"
@@ -5063,7 +5063,7 @@ $navbarHideToggle = false;
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="naic_a"
                                                                                                     data-placeholder="Enter Insurer A Details"
-                                                                                              
+
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
                                                                                                     aria-haspopup="listbox" readonly>
@@ -5183,8 +5183,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-52">
-                                                                                                <input 
-                                                                                                placeholder="Enter Insurer B Details"                                                                                                    
+                                                                                                <input
+                                                                                                placeholder="Enter Insurer B Details"
                                                                                                 value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                 class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                 id="insurB"
@@ -5251,7 +5251,7 @@ $navbarHideToggle = false;
                                                                                                     value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->naic_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="naic_b"
-                                                                                                    data-placeholder="Enter Insurer B Details"                                                                                              
+                                                                                                    data-placeholder="Enter Insurer B Details"
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
                                                                                                     aria-haspopup="listbox" readonly>
@@ -5371,8 +5371,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-55">
-                                                                                                <input 
-                                                                                                placeholder="Enter Insurer C Details"                                                                                                    
+                                                                                                <input
+                                                                                                placeholder="Enter Insurer C Details"
                                                                                                 value="@if (isset($certPolicy) && null !==  $certPolicy->skip(2)->take(1)->first() ){{ $certPolicy->skip(2)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                 class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                 id="insurC"
@@ -5559,8 +5559,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-58">
-                                                                                                <input 
-                                                                                                    placeholder="Enter Insurer D Details"                                                                                                    
+                                                                                                <input
+                                                                                                    placeholder="Enter Insurer D Details"
                                                                                                     value="@if (isset($certPolicy) && null !==  $certPolicy->skip(3)->take(1)->first() ){{ $certPolicy->skip(3)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurD"
@@ -5742,8 +5742,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-61">
-                                                                                                <input 
-                                                                                                    placeholder="Enter Insurer E  Details"                                                                                                    
+                                                                                                <input
+                                                                                                    placeholder="Enter Insurer E  Details"
                                                                                                     value="@if (isset($certPolicy) && null !==  $certPolicy->skip(4)->take(1)->first() ){{ $certPolicy->skip(4)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurE"
@@ -6013,9 +6013,9 @@ $navbarHideToggle = false;
                                                                             </div>
                                                                             <div
                                                                                 class="mat-form-field-infix ng-tns-c70-64">
-                                                                                <input autocomplete="off" oninput="validateInput(event)" 
+                                                                                <input autocomplete="off" oninput="validateInput(event)"
                                                                                     formcontrolname="insrLtrGL" name="insurance_provider_code[{{ $pt->id }}]"
-                                                                                    maxlength="1" minlength="1" value=""                                                                                   
+                                                                                    maxlength="1" minlength="1" value=""
                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-64 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                                                                                     required="" id="mat-input-20"
                                                                                  ><span
@@ -6411,9 +6411,9 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-70">
                                                                                                 <input type="number" class="form-control" id="{{ $pl->coverage_item }}"
-                                     name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
-                                     placeholder=""
-                                     value="@if (isset(  $certPolimit ) ){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0 }}@endif"
+                                                                                                    name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
+                                                                                                    placeholder=""
+                                                                                                    value="@if (isset(  $certPolimit ) ){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0 }}@endif"
                                                                                                     aria-invalid="false"
                                                                                                     aria-required="true"><span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-70"></span>
@@ -6440,19 +6440,6 @@ $navbarHideToggle = false;
                                                         </tr>
 
                                                         @endforeach
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                                         <tr class="ng-tns-c268-42">
                                                             <td colspan="7" style="padding: 10px;"
