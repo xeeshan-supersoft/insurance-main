@@ -19,14 +19,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/fonts/materialdesignicons.css')) }}" />
-    <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/libs/node-waves/node-waves.css')) }}" />
+    {{-- <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/fonts/materialdesignicons.css')) }}" />
+    <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/libs/node-waves/node-waves.css')) }}" /> --}}
     <!-- Core CSS -->
 
     <link rel="stylesheet" href="{{ public_path('assets/css/styles.css') }}" />
-    <link rel="stylesheet" href="{{ public_path(mix('assets/css/demo.css')) }}" />
+    {{-- <link rel="stylesheet" href="{{ public_path(mix('assets/css/demo.css')) }}" /> --}}
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
+    {{-- <link rel="stylesheet" href="{{ public_path(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" /> --}}
     @stack('body-css')
 
     <link rel="stylesheet" href="{{ public_path('assets/css/accord.css') }}" />
@@ -679,7 +679,7 @@
 
       .mat-radio-outer-circle {
           box-sizing: border-box;
-          display: block;
+          /* display: block; */
           height: 20px;
           left: 0;
           position: absolute;
@@ -698,7 +698,7 @@
       .mat-radio-inner-circle {
           border-radius: 50%;
           box-sizing: border-box;
-          display: block;
+          /* display: block; */
           height: 20px;
           left: 0;
           position: absolute;
@@ -1136,7 +1136,7 @@
 
       .mat-list-base {
           padding-top: 8px;
-          display: block;
+          /* display: block; */
           -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
       }
 
@@ -1151,7 +1151,7 @@
 
       .mat-list-base .mat-list-item,
       .mat-list-base .mat-list-option {
-          display: block;
+          /* display: block; */
           height: 48px;
           -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
           width: 100%;
@@ -1180,7 +1180,7 @@
 
       .mat-list-base .mat-list-item .mat-list-item-ripple,
       .mat-list-base .mat-list-option .mat-list-item-ripple {
-          display: block;
+          /* display: block; */
           top: 0;
           left: 0;
           right: 0;
@@ -1358,7 +1358,7 @@
 
       .mat-list-base[dense] .mat-list-item,
       .mat-list-base[dense] .mat-list-option {
-          display: block;
+          /* display: block; */
           height: 40px;
           -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
           width: 100%;
@@ -1387,7 +1387,7 @@
 
       .mat-list-base[dense] .mat-list-item .mat-list-item-ripple,
       .mat-list-base[dense] .mat-list-option .mat-list-item-ripple {
-          display: block;
+          /* display: block; */
           top: 0;
           left: 0;
           right: 0;
@@ -1615,7 +1615,7 @@
       }
 
       .mat-divider {
-          display: block;
+          /* display: block; */
           margin: 0;
           border-top-width: 1px;
           border-top-style: solid
@@ -1795,7 +1795,7 @@
 
       .c_name {
           width: 100%;
-          display: block;
+          /* display: block; */
           color: #e95a27;
           padding-right: 30px
       }
@@ -1849,7 +1849,7 @@
 
       .ac_no {
           color: #006ed0;
-          display: block;
+          /* display: block; */
           padding-right: 30px
       }
 
@@ -1917,7 +1917,7 @@
 
       .user_status {
           position: absolute;
-          display: block;
+          /* display: block; */
           height: 22px;
           z-index: 1000;
           right: 0;
@@ -1956,7 +1956,7 @@
 
       .user_logout {
           position: absolute;
-          display: block;
+          /* display: block; */
           height: 22px;
           z-index: 1000;
           right: 0;
@@ -2065,7 +2065,7 @@
           }
 
           .uiiamenumobile {
-              display: block;
+              /* display: block; */
               position: fixed;
               left: 5px;
               bottom: 45px;
@@ -2197,7 +2197,7 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          display: block;
+          /* display: block; */
           line-height: 48px;
           height: 48px;
           padding: 0 16px;
@@ -2234,7 +2234,7 @@
       }
 
       .mat-menu-item[disabled]::after {
-          display: block;
+          /* display: block; */
           position: absolute;
           content: "";
           top: 0;
@@ -2318,7 +2318,7 @@
       }
 
       .mat-form-field-infix {
-          display: block;
+          /* display: block; */
           position: relative;
           flex: auto;
           min-width: 0;
@@ -2378,7 +2378,7 @@
       }
 
       .mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill+.mat-form-field-label-wrapper .mat-form-field-label {
-          display: block;
+          /* display: block; */
           transition: none
       }
 
@@ -2479,7 +2479,7 @@
 
       .mat-form-field-appearance-fill .mat-form-field-underline::before {
           content: "";
-          display: block;
+          /* display: block; */
           position: absolute;
           bottom: 0;
           height: 1px;
@@ -2999,7 +2999,7 @@
       }
 
       #iananavMenu ul.main-nav>.nav-custom-item>li>a {
-          display: block;
+          /* display: block; */
           padding: 13px 15px;
           position: relative;
           color: #1e293b;
@@ -3142,7 +3142,7 @@
           }
 
           #iananavMenu ul.main-nav>.nav-custom-item>li {
-              display: block;
+              /* display: block; */
               border-bottom: 1px solid #444
           }
 
@@ -3188,7 +3188,7 @@
 
       @media only screen and (min-width: 769px) {
           #iananavMenu ul.main-nav {
-              display: block;
+              /* display: block; */
               position: relative
           }
 
@@ -3291,7 +3291,7 @@
       }
 
       #iananavMenu #menuToggle {
-          display: block;
+          /* display: block; */
           position: absolute;
           top: 17px;
           right: 17px;
@@ -3303,7 +3303,7 @@
       }
 
       #iananavMenu #menuToggle input {
-          display: block;
+          /* display: block; */
           width: 50px;
           height: 40px;
           position: absolute;
@@ -3316,7 +3316,7 @@
       }
 
       #iananavMenu #menuToggle span {
-          display: block;
+          /* display: block; */
           width: 25px;
           height: 4px;
           margin-bottom: 4px;
@@ -3378,7 +3378,7 @@
           transition: color .3s ease;
           font-size: 14px;
           width: 100%;
-          display: block;
+          /* display: block; */
           border-radius: 8px;
           padding: 8px 10px;
           color: #006ed0;
@@ -3477,13 +3477,13 @@
 
       #iananavMenu ul.main-nav>.nav-custom-item>li ul.sub-menu-lists>.nav-custom-item>li>a {
           margin-bottom: 0;
-          display: block;
+          /* display: block; */
           padding: 15px;
           white-space: nowrap
       }
 
       #iananavMenu ul>.nav-custom-item>li>.sub-menu-block>ul>.nav-custom-item>li>a.sub-mu-sub {
-          display: block;
+          /* display: block; */
           margin-bottom: 0
       }
 
@@ -4141,7 +4141,7 @@
       }
 
       .mat-checkbox-persistent-ripple {
-          display: block;
+          /* display: block; */
           width: 100%;
           height: 100%;
           transform: none
@@ -4306,7 +4306,7 @@
       }
 
       .mat-progress-bar {
-          display: block;
+          /* display: block; */
           height: 4px;
           overflow: hidden;
           position: relative;

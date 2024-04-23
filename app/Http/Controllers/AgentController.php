@@ -19,6 +19,7 @@ use App\Services\CertificateService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 
 class AgentController extends Controller
@@ -173,7 +174,10 @@ class AgentController extends Controller
     $html = 'agent.form_pdf';
 
      $pdf = PDF::loadView($html, $data);
-     return $pdf->download($name);
+     $pdf->setPaper('a4', 'landscape');
+     Storage::disk('reports')->put('tickets'. '.pdf', $pdf->output());
+     $url = Storage::disk('reports')->url('tickets'. '.pdf');
+     return $pdf->stream($url);
 
     // return view($html , $data);
   }
