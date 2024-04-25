@@ -151,7 +151,7 @@
                     <i class="mdi mdi-magnify mdi-24px lh-0"></i>
                     <input type="text" id="searched" class="form-control border-0 shadow-none bg-body"
                         placeholder="LookUp MC Insured " aria-label="Search..."
-                        @if ($user->role == "admin")
+                        @if ($user->role != "agent" )
                         disabled
                         @endif>
                 </div>
@@ -163,7 +163,7 @@
                     <i class="mdi mdi-magnify mdi-24px lh-0"></i>
                     <input type="text" id="searched" class="form-control border-0 shadow-none bg-body"
                         placeholder="Certificate Search" aria-label="Search..."
-                        @if ($user->role == "admin")
+                        @if ($user->role != "agent" )
                         disabled
                         @endif
                         >
@@ -176,7 +176,7 @@
 <div class="container-fluid bg-black ">
     <!-- Search -->
     <ul class="navbar-nav   flex-row align-items-center ms-1">
-        @if ($user->role != "admin")
+        @if ($user->role == "agent")
         <li>
             <a href="{{ route('dash') }}" class="btn btn-light  ">Dasboard</a>
         </li>
@@ -187,14 +187,20 @@
             <a class="btn btn-light  ">Company Information</a>
         </li>     
     
-       
-     @else
+        @elseif ($user->role == "admin")
+    
         <li>
             <a class="btn btn-light" href="{{ route('sub') }}" >Subscription Plans</a>
         </li>
         <li>
             <a class="btn btn-light" href="{{ route('dashs') }}">Users</a>
         </li>
+
+        @else
+      <li>
+            <a class="btn btn-light" href="{{ route('dashw') }}">Dasboard</a>
+        </li>
+
         @endif
 
     </ul>

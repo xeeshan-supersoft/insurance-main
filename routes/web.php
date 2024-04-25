@@ -113,8 +113,12 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
 
 Route::post('/register', [AuthController::class, 'registerfrom'])->name('regist');
 Route::post('/reg', [AuthController::class, 'register'])->name('form.reg');
+
+
 Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/portal', [TruckController::class, 'adash'])->name('dashw');
+  Route::post('/upload', [TruckController::class, 'upload'])->name('upload');
+  
   // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
   //Route::get('/formlist', [TruckController::class, 'truckersss'])->name('truck.list');
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');
@@ -122,6 +126,8 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   // Route::get('/user/dashboard', 'UserController@dashboard')->name('user.dashboard');
   Route::get('/truck', [TruckController::class, 'trucker'])->name('truck');
 });
+
+
 Route::group(['middleware' => 'checkRole:shipper'], function () {
   Route::get('/sdash', [ShipperController::class, 'dash'])->name('truck.dash');
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');

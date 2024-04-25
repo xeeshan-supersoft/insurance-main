@@ -51,7 +51,7 @@ class AuthController extends Controller
       ]);
     }
     Session::put('userRole', $user->role);
-
+    Session::put('userId', $user->id);
     $request->session()->regenerate();
     if ($user->role == 'admin') {
       return redirect()->route('dashs');
@@ -59,7 +59,7 @@ class AuthController extends Controller
     if ($user->role == 'agent') {
       return redirect('/dash');
     }
-    if ($user->role == 'user') {
+    if ($user->role == 'truck_driver') {
       return redirect('/portal');
     }
 
