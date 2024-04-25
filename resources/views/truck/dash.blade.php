@@ -1,110 +1,89 @@
 @extends('layouts/contentNavbarLayout')
 @section('title', ' Vertical Layouts - Forms')
 @section('content')
-<h4 class="py-3 mb-4"><span class="text-muted fw-light">Truckers Certificate of Insurance</h4>
-<p>Please fill out the following information and press the submit button to request a certificate of insurance. Your request will be processed and sent to you as soon as possible. Certificates will only be issued upon verification of coverage.</p>
-  <form method="post" {{ route('form.user') }} action="reg" >
-    @csrf
-<!-- Basic Layout -->
-@if(Session::has('success'))
-    <div class="alert alert-success alert-dismissible" role="alert">
-        {{ Session::get('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-        </button>
+@php
+    $isMenu = false;
+    $navbarHideToggle = false;
+@endphp
+
+
+
+    <div class="row gy-4 justify-content-center">
+        <div class="col-md-10 col-lg-10">
+          @php
+          $user = request()->user();
+      @endphp
+          <form method="post" action="/upload" enctype="multipart/form-data">
+            @csrf
+            <div class="row gy-4 my-5 pb-5">
+              <div class="col-10">
+                   <div class="mb-3">
+                    <input class="form-control" type="hidden"  value="{{ $user->id }}" name="user_id">
+          <input class="form-control" type="file" name="file">
+        </div>
       </div>
-@endif 
-@if($errors->any())
-   
-            @foreach($errors->all() as $error)
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                {{ $error }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                </button>
-            </div>
-            @endforeach  
-@endif
-
-
-
-<div class="row"> 
-    <!---------------------------------------------------------------------------------------------------------------------------
-      --------------------------------------------------------------- PRODUCER  ---------------------------------------------------
-      ----------------------------------------------------------------------->
-  <div class="col-xl">
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">PRODUCER</h5> <small class="text-muted float-end">USER INFO</small>
-      </div>
-      <div class="card-body">
-        <div class="row">
-            <div class="col-6">
-          <div class="form-floating form-floating-outline mb-4">
-            <input type="text" class="form-control" name="username" id="basic-default-fullname" placeholder="ACME Inc." />
-            <label for="basic-default-fullname">INSURNAME</label>
+        <div class="col-2">
+        <button type="submit" class="btn btn-primary" >
+          + ADD 
+           </button> 
           </div>
-        </div>
-          <div class="col-6">
-            <div class="form-floating form-floating-outline mb-4">
-                <input type="text" class="form-control" name="password"id="basic-default-company"  placeholder="********" />
-                <label for="basic-default-company">Insured's MC #</label>
             </div>
-    </div>
-    <div class="col-6">
-        <div class="form-floating form-floating-outline mb-4">
-          <input type="text" class="form-control" name="username" id="basic-default-fullname" placeholder="ACME Inc." />
-          <label for="basic-default-fullname">Certificate Holder</label>
-        </div>
+        </form>
+
+
+        <!-- Data Tables -->
+        <div class="col-12">
+
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="table-light">
+            <tr>
+              <th class="text-truncate">User</th>
+              <th class="text-truncate">Uploads</th>         
+              <th class="text-truncate">Action</th>
+
+            </tr>     
+          </thead>
+          <tbody>
+             @foreach ($users as $user)
+            
+             <tr>
+               <td>
+                 <div class="d-flex align-items-center">
+                 
+                   <div>
+                     <h6 class="mb-0 text-truncate">{{$user->path}}</h6>
+                     {{-- <small class="text-truncate">@amiccoo</small> --}}
+                   </div>
+                 </div>
+              
+               </td>
+             
+               <td> <span class="badge bg-label-success rounded-pill">Active</span></td>            
+               <td>
+                 <div class="dropdown">
+                   <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></button>
+                   <div class="dropdown-menu">                
+                     <a class="dropdown-item"  href=""><i class="mdi mdi-pencil-outline me-1"></i> Edit</a>
+                     <a class="dropdown-item" href="javascript:void(0);"><i class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                   </div>
+                 </div>
+               </td>            
+             </tr>
+                 
+             
+
+
+
+            @endforeach
+          </tbody>
+        </table>
       </div>
-        <div class="col-6">
-        <div class="form-floating form-floating-outline mb-4">
-          <input type="text" class="form-control"name="email" id="basic-default-company" placeholder="Address line1" />
-          <label for="basic-default-company">Street Address</label>
-      </div>
-  </div>
-  <div class="col-6">
-    <div class="form-floating form-floating-outline mb-4">
-      <input type="text" class="form-control" name="username" id="basic-default-fullname" placeholder="ACME Inc." />
-      <label for="basic-default-fullname">Street Address LINE 2</label>
     </div>
-  </div>
-    <div class="col-4">
-    <div class="form-floating form-floating-outline mb-4">
-      <input type="text" class="form-control"name="email" id="basic-default-company" placeholder="Address line1" />
-      <label for="basic-default-company">CITY</label>
-  </div>
-</div>
-        <div class="col-4">
-        <div class="form-floating form-floating-outline mb-4">
-            <input type="text" class="form-control" name="password"id="basic-default-company"  placeholder="********" />
-            <label for="basic-default-company">STATE</label>
-        </div>
-    </div>  <div class="col-4">
-        <div class="form-floating form-floating-outline mb-4">
-            <input type="text" class="form-control" name="password"id="basic-default-company"  placeholder="********" />
-            <label for="basic-default-company">ZIP CODE</label>
-        </div>
-    </div> 
-        
-    <div class="col-6">
-        <div class="form-floating form-floating-outline mb-4">
-          <input type="text" class="form-control"name="email" id="basic-default-company" placeholder="Address line1" />
-          <label for="basic-default-company">EAMIL</label>
-      </div>
-  </div>
-  <div class="col-6">
-    <div class="form-floating form-floating-outline mb-4">
-      <input type="text" class="form-control" name="username" id="basic-default-fullname" placeholder="ACME Inc." />
-      <label for="basic-default-fullname">PHONE #</label>
+  </div> 
+        <!--/ Data Tables -->
     </div>
-  </div>
-      </div>
-          
-         
-                
-      </div>    
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Send</button> 
-    </form>
+
 
 @endsection
