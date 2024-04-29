@@ -61,14 +61,15 @@ class AgentController extends Controller
       ->whereIn('id', $request->policyGroup)
       ->get();
 
-    $r=0;
+      $allpolicytypes = PolicyType::whereNotIn('id', $request->policyGroup)->get();
+      $r=0;
 
     $driver_id = Session::get('driver_id');
 
     $driver = User::with('truckers')->find($driver_id);
     $agent = User::with('agencies')->find(Auth::user()->id);
 
-    return view('agent.form3', compact('policytypes', 'driver', 'agent', 'r'));
+    return view('agent.form3', compact('policytypes', 'driver', 'agent', 'r', 'allpolicytypes'));
   }
 
   /**
@@ -126,6 +127,10 @@ class AgentController extends Controller
       ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
       ->get();
 
+      $allpolicytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
+      ->get();
+
     $r = 1;
 
     $driver = User::with('truckers')->find($certificate->client_user_id);
@@ -142,7 +147,7 @@ class AgentController extends Controller
 
     return view(
       'agent.form3',
-      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r')
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes')
     );
   }
 
@@ -164,12 +169,16 @@ class AgentController extends Controller
       ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
       ->get();
 
+      $allpolicytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
+      ->get();
+
     $r = 1;
 
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
-    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
+    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes');
 
     $view = 'agent.form_pdf';
     $cert = 'certificate.pdf';
@@ -199,6 +208,10 @@ class AgentController extends Controller
     $policytypes = PolicyType::with('policies', 'policyLimits')
       ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
       ->get();
+      
+      $allpolicytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
+      ->get();
 
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
@@ -226,7 +239,7 @@ $r=0;
 
     return view(
       'agent.form_edited',
-      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r')
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes')
     );
 
 
