@@ -57,7 +57,6 @@ Route::get('/accord', function () {
 });
 
 
-
 Route::get('/form3', function () {
   return view('agent.form3');
 });
@@ -101,13 +100,10 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
 
   Route::get('/get_pdf/{id}', [ac::class, 'showPDF'])->name('get_pdf');
 
-
   //Route::get('/list', [AdminController::class, 'list'])->name('list');
   //Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
   //Route::get('/form', [ac::class, 'insurform'])->name('form');
   //Route::post('/save', [AdminController::class, 'insurformsave'])->name('form.insert');
-
-
   //Route::get('/user', [AdminController::class, 'users'])->name('add.user');
 });
 
@@ -133,7 +129,6 @@ Route::group(['middleware' => 'checkRole:shipper'], function () {
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');
   // Routes accessible only by users with 'user' role
   // Route::get('/user/dashboard', 'UserController@dashboard')->name('user.dashboard');
-
   //Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
 });
 Route::get('/exam', [TruckController::class, 'truckers'])->name('truckd');
