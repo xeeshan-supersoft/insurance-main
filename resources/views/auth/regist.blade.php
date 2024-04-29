@@ -221,7 +221,7 @@ containerDiv.innerHTML = inputField;
      console.log(formData);
     
       $.ajax({
-        url: '/reg',
+        url: {{ route('form.reg')}},
         type: 'post',
         data: formData,
         contentType: false,
