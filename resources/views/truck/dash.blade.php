@@ -13,12 +13,13 @@
           @php
           $user = request()->user();
       @endphp
-          <form method="post" action="/upload" enctype="multipart/form-data">
+          <form method="post" action="{{route('upload')}}" enctype="multipart/form-data">
             @csrf
             <div class="row gy-4 my-5 pb-5">
               <div class="col-10">
                    <div class="mb-3">
                     <input class="form-control" type="hidden"  value="{{ $user->id }}" name="user_id">
+                    <input class="form-control" type="hidden"  value="{{ $user->name }}" name="name">
           <input class="form-control" type="file" name="file">
         </div>
       </div>

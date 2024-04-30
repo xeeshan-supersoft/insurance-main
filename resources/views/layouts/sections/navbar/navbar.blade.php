@@ -62,11 +62,23 @@
     </ul>
     <ul class="navbar-nav flex-row align-items-center">
         <li class="nav-item dropdown-notifications navbar-dropdown dropdown ms-5 me-xl-4 ps-5">
-            <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow waves-effect waves-light"
-                href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            <a class="nav-link  btn btn-text-secondary px-5 mx-5 rounded-pill btn-icon dropdown-toggle hide-arrow waves-effect waves-light"
+                href="{{route('notice')}}" >
+                {{-- <span class="badge rounded-pill bg-label-primary text-xs">8 New</span> --}}
+                @php
+
+
+                    $noticesExist = \App\Models\Notice::where('status', 1)->exists();
+                    @endphp
+                <div class="avatar
+                                   @if($noticesExist)
+                  avatar-away
+                  @endif
+
+          
+             ">
                 <i class="mdi mdi-bell-outline mdi-24px"></i>
-                <span
-                    class="position-absolute top-0 start-50 translate-middle-y badge badge-dot bg-danger mt-2 border"></span>
+            </div>
             </a>
             
         </li>
