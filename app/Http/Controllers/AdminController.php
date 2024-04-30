@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Notice;
 use App\Models\DriverDetail;
 use App\Models\AgencyInfos;
 use App\Models\Subscription_plan;
@@ -135,6 +136,15 @@ return back()->with($message);
     return response()->json([
       'message' => 'Subscription Plan created successfully.'   
     ]);
+  }
+  public function notice ()
+  {
+    // $notice = new Notice();
+    // Notice::update(['stauts' => 0]);
+    Notice::query()->update(['status' => 0]);
+   $notice = Notice::all();
+
+    return view('notice', compact('notice'));
   }
 
   public function edit_sub (Request $request , int $id)

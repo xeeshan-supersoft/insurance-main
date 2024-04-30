@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Upload;
+use App\Models\Notice;
 use App\Models\Insurance_data;
 use App\Models\Insurance_detail;
 class TruckController extends Controller
@@ -56,8 +57,14 @@ $upload = new Upload();
         $upload->path = $path;
         $upload->save();  
 
-        return "successfully";
-// return back()->with('success', 'File uploaded successfully.');
+        $ids = $upload->id;
+        $notice = new Notice();
+        $notice->user_id = $request->user_id;
+        $notice->upload_id = $ids;
+        $notice->name = $request->name ."is upload file";
+        $notice->save();  
+        //return "successfully";
+ return back()->with('success', 'File uploaded successfully.');
 
     
   }

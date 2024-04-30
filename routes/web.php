@@ -114,7 +114,7 @@ Route::post('/reg', [AuthController::class, 'register'])->name('form.reg');
 Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/portal', [TruckController::class, 'adash'])->name('dashw');
   Route::post('/upload', [TruckController::class, 'upload'])->name('upload');
-  
+
   // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
   //Route::get('/formlist', [TruckController::class, 'truckersss'])->name('truck.list');
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');
@@ -123,7 +123,7 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/truck', [TruckController::class, 'trucker'])->name('truck');
 });
 
-
+Route::get('/notice', [AdminController::class, 'notice'])->name('notice');
 Route::group(['middleware' => 'checkRole:shipper'], function () {
   Route::get('/sdash', [ShipperController::class, 'dash'])->name('truck.dash');
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');
@@ -136,6 +136,14 @@ Route::get('/exam1', [TruckController::class, 'truckerss'])->name('truckf');
 Route::get('/exam2', [TruckController::class, 'truckersss'])->name('truckfs');
 // Route::get('/dash', [Analytics::class, 'index'])->name('dashboard-analytics');
 Route::get('/', [AuthController::class, 'land'])->name('landing');
+
+
+Route::fallback(function () {
+  return view('content.pages.pages-misc-error');
+});
+
+
+
 
 // layout
 // Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');
@@ -165,7 +173,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');
 Route::get('/auth/forgot-password-basic', [ForgotPasswordBasic::class, 'index'])->name('auth-reset-password-basic');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
+Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
 // cards
 // Route::get('/cards/basic', [CardBasic::class, 'index'])->name('cards-basic');
 
