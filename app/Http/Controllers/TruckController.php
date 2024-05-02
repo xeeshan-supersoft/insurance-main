@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Upload;
-use App\Models\Notice;
 use App\Models\Insurance_data;
 use App\Models\Insurance_detail;
 class TruckController extends Controller
@@ -55,18 +54,12 @@ $path = $request->file('file')->store('uploads');
 $upload = new Upload();
         $upload->user_id = $request->user_id; // Assuming you have authentication and each upload is associated with a user
         $upload->path = $path;
-        $upload->save();  
+        $upload->save();
 
-        $ids = $upload->id;
-        $notice = new Notice();
-        $notice->user_id = $request->user_id;
-        $notice->upload_id = $ids;
-        $notice->name = $request->name ."is upload file";
-        $notice->save();  
-        //return "successfully";
+      //  return "successfully";
  return back()->with('success', 'File uploaded successfully.');
 
-    
+
   }
 
   public function truckersss()
