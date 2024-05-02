@@ -56,6 +56,10 @@ Route::get('/accord', function () {
   return view('fromdrop');
 });
 
+Route::get('/arti', function () {
+  \Artisan::call('migrate:fresh');
+  \Artisan::call('db:seed');
+});
 
 Route::get('/form3', function () {
   return view('agent.form3');
