@@ -57,8 +57,8 @@ Route::get('/accord', function () {
 });
 
 Route::get('/arti', function () {
-  \Artisan::call('migrate:fresh');
-  \Artisan::call('db:seed');
+  //\Artisan::call('migrate:fresh');
+  //\Artisan::call('db:seed');
 });
 
 Route::get('/form3', function () {
