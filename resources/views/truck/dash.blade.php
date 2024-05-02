@@ -19,14 +19,13 @@
               <div class="col-10">
                    <div class="mb-3">
                     <input class="form-control" type="hidden"  value="{{ $user->id }}" name="user_id">
-                    <input class="form-control" type="hidden"  value="{{ $user->name }}" name="name">
           <input class="form-control" type="file" name="file">
         </div>
       </div>
         <div class="col-2">
         <button type="submit" class="btn btn-primary" >
-          + ADD 
-           </button> 
+          + ADD
+           </button>
           </div>
             </div>
         </form>
@@ -41,39 +40,39 @@
           <thead class="table-light">
             <tr>
               <th class="text-truncate">User</th>
-              <th class="text-truncate">Uploads</th>         
+              <th class="text-truncate">Uploads</th>
               <th class="text-truncate">Action</th>
 
-            </tr>     
+            </tr>
           </thead>
           <tbody>
              @foreach ($users as $user)
-            
+
              <tr>
                <td>
                  <div class="d-flex align-items-center">
-                 
+
                    <div>
                      <h6 class="mb-0 text-truncate">{{$user->path}}</h6>
                      {{-- <small class="text-truncate">@amiccoo</small> --}}
                    </div>
                  </div>
-              
+
                </td>
-             
-               <td> <span class="badge bg-label-success rounded-pill">Active</span></td>            
+
+               <td> <span class="badge bg-label-success rounded-pill">Active</span></td>
                <td>
                  <div class="dropdown">
                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></button>
-                   <div class="dropdown-menu">                
+                   <div class="dropdown-menu">
                      <a class="dropdown-item"  href=""><i class="mdi mdi-pencil-outline me-1"></i> Edit</a>
                      <a class="dropdown-item" href="javascript:void(0);"><i class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
                    </div>
                  </div>
-               </td>            
+               </td>
              </tr>
-                 
-             
+
+
 
 
 
@@ -82,7 +81,7 @@
         </table>
       </div>
     </div>
-  </div> 
+  </div>
         <!--/ Data Tables -->
     </div>
 
