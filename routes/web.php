@@ -145,9 +145,9 @@ Route::get('/exam2', [TruckController::class, 'truckersss'])->name('truckfs');
 Route::get('/', [AuthController::class, 'land'])->name('landing');
 
 
-Route::fallback(function () {
-  return view('content.pages.pages-misc-error');
-});
+// Route::fallback(function () {
+//   return view('content.pages.pages-misc-error');
+// });
 
 
 
