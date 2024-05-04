@@ -25,7 +25,7 @@ class ShipperInfoSeeder extends Seeder
 
       ShipperInfos::create([
         'user_id' => $shipper->id,
-        'name',
+        'name' => 'Ship Show',
         'address' => 'Apt 10, West Rd',
         'address2' => 'Not Know',
         'state' => 'New York',
