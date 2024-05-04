@@ -63,14 +63,9 @@ Route::get('/form3', function () {
 Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
 Route::get('/run-migrations', function () {
-  Artisan::call('migrate:refresh', ['--force' => true]);
+  Artisan::call('migrate:fresh', ['--force' => true]);
   Artisan::call('db:seed');
-  echo 'Migrate Done!';
-});
-
-Route::get('/run-seed', function () {
-  Artisan::call('db:seed', ['--force' => true]);
-  echo 'Seed Done!';
+  echo 'All Done!';
 });
 
 Route::group(['middleware' => 'checkRole:admin'], function () {
