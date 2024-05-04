@@ -10,9 +10,9 @@ class Subscription_plan extends Model
     protected $fillable = [
         'name',
         'description',
-        'exdetail',
-        'duration',
         'price',
+        'duration',
+        'exdetail',
       ];
 
 

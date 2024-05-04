@@ -25,7 +25,9 @@ class TruckerInfoSeeder extends Seeder
 
     DriverDetail::create([
       'user_id' => $trucker->id,
+      'name' => 'Ship Comp',
       'address' => 'Apt 10, West Rd',
+      'address2' => 'Not Know',
       'state' => 'New York',
       'city' => 'New York City',
       'zip' => '10001',
@@ -41,13 +43,14 @@ class TruckerInfoSeeder extends Seeder
       'vehicle_capacity' => 'Heavy Items',
       'vehicle_status' => 'Good',
       'mc_number' => 'HW343',
+      'extra_email' => 'trvacancy@mail.co',
       'is_active' => 1,
     ]);
 
     AgentDriver::create([
       'agent_id'  => 2,
       'driver_id' => 3,
-      'relation_status'=>1
+      'relation_status'=> 1,
     ]);
   }
 }

@@ -21,6 +21,7 @@ class ShipperInfos extends Model
     'zip',
     'cellphone',
     'extra_email',
+    'status',
   ];
 
   public function user()

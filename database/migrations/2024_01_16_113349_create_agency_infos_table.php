@@ -12,23 +12,19 @@ return new class extends Migration {
   {
     Schema::create('agency_infos', function (Blueprint $table) {
       $table->id();
-      $table->unsignedBigInteger('user_id');
-      $table->string('name');
-      $table->string('address');
-      $table->string('city');
-      $table->string('state');
-      $table->string('zip');
-      $table->string('cellphone');
+      $table->foreignId('user_id')->constrained('users');
+      $table->string('name')->nullable();
+      $table->string('address')->nullable();
+      $table->string('address2')->nullable();
+      $table->string('city')->nullable();
+      $table->string('state')->nullable();
+      $table->string('zip')->nullable();
+      $table->string('cellphone')->nullable();
       $table->string('extra_email')->nullable();
       $table->string('fax', 255)->nullable();
       $table->string('producer_customer_number', 255)->nullable();
       $table->tinyInteger('is_active')->default(1);
       $table->timestamps();
-
-      $table
-        ->foreign('user_id')
-        ->references('id')
-        ->on('users');
     });
   }
 

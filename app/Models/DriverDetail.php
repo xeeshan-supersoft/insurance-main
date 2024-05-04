@@ -9,7 +9,7 @@ class DriverDetail extends Model
 {
   use HasFactory;
 
-  
+
   protected $fillable = [
     'user_id',
     'name',
@@ -30,7 +30,8 @@ class DriverDetail extends Model
     'vehicle_capacity',
     'vehicle_status',
     'mc_number',
-   
+    'extra_email',
+    'is_active'
   ];
 
   public function user()

@@ -13,7 +13,9 @@ return new class extends Migration {
     Schema::create('driver_details', function (Blueprint $table) {
       $table->id();
       $table->foreignId('user_id')->constrained('users');
+      $table->string('name')->nullable();
       $table->string('address', 255)->nullable();
+      $table->string('address2', 255)->nullable();
       $table->string('state', 255)->nullable();
       $table->string('city', 255)->nullable();
       $table->string('zip', 255)->nullable();
@@ -29,6 +31,7 @@ return new class extends Migration {
       $table->string('vehicle_capacity', 255)->nullable();
       $table->string('vehicle_status', 50)->nullable();
       $table->string('mc_number', 255)->nullable();
+      $table->string('extra_email', 255)->nullable();
       $table->tinyInteger('is_active')->default(1);
       $table->timestamps();
     });
