@@ -73,7 +73,7 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 
 Route::get('/run-migrations', function () {
   set_time_limit(300);
-  Artisan::call('migrate:fresh');
+  Artisan::call('migrate:refresh', ['--force' => true,]);
   Artisan::call('db:seed');
   echo 'Done!';
 });
