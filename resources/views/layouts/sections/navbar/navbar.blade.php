@@ -212,7 +212,22 @@
       <li>
             <a class="btn btn-light" href="{{ route('dashw') }}">Dasboard</a>
         </li>
+        <li>
+            <a class="btn btn-light" href="{{ route('dashw') }}">Shipper list</a>
+        </li>
+        <li>
+            <a class="btn btn-light" href="{{ route('dashw') }}">Add shipper</a>
+        </li>
+        <li>
+            <a class="btn btn-light" href="{{ route('dashw') }}">Add Agency</a>
+        </li>
+        <li>
+            <a class="btn btn-light" href="{{ route('dashw') }}">Print Certificates</a>
+        </li>
 
+        <li>
+            <a class="btn btn-light" href="{{ route('dashw') }}">Company Information</a>
+        </li>
         @endif
 
     </ul>
