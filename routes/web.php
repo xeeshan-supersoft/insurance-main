@@ -72,12 +72,15 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 });
 
 Route::get('/run-migrations', function () {
-  set_time_limit(300);
-  Artisan::call('migrate:refresh', ['--force' => true,]);
+  Artisan::call('migrate:refresh', ['--force' => true]);
   Artisan::call('db:seed');
-  echo 'Done!';
+  echo 'Migrate Done!';
 });
 
+Route::get('/run-seed', function () {
+  Artisan::call('db:seed', ['--force' => true]);
+  echo 'Seed Done!';
+});
 // NOW
 
 Route::group(['middleware' => 'checkRole:agent'], function () {

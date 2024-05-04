@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-set_time_limit(300);
 
 use Auth;
 use App\Models\User;
@@ -208,7 +207,7 @@ class AgentController extends Controller
     $policytypes = PolicyType::with('policies', 'policyLimits')
       ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
       ->get();
-      
+
       $allpolicytypes = PolicyType::with('policies', 'policyLimits')
       ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
       ->get();
