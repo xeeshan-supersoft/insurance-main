@@ -59,17 +59,8 @@ Route::get('/accord', function () {
 Route::get('/form3', function () {
   return view('agent.form3');
 });
-Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
-Route::group(['middleware' => 'checkRole:admin'], function () {
-  Route::get('/admin/dash', [AdminController::class, 'dashadmin'])->name('dashs');
-  //Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-  Route::get('/admin/sub/', [AdminController::class, 'subs'])->name('sub');
-  Route::get('/admin/edit_user/{id}', [AdminController::class, 'edituser'])->name('edit_user');
-  Route::post('/admin/update_user/', [AdminController::class, 'updateuser'])->name('update_user');
-  Route::post('/admin/add_sub/', [AdminController::class, 'add_sub'])->name('add_sub');
-  Route::post('/admin/edit_sub/{id}', [AdminController::class, 'edit_sub'])->name('edit_sub');
-});
+Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
 Route::get('/run-migrations', function () {
   Artisan::call('migrate:refresh', ['--force' => true]);
@@ -81,6 +72,17 @@ Route::get('/run-seed', function () {
   Artisan::call('db:seed', ['--force' => true]);
   echo 'Seed Done!';
 });
+
+Route::group(['middleware' => 'checkRole:admin'], function () {
+  Route::get('/admin/dash', [AdminController::class, 'dashadmin'])->name('dashs');
+  //Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+  Route::get('/admin/sub/', [AdminController::class, 'subs'])->name('sub');
+  Route::get('/admin/edit_user/{id}', [AdminController::class, 'edituser'])->name('edit_user');
+  Route::post('/admin/update_user/', [AdminController::class, 'updateuser'])->name('update_user');
+  Route::post('/admin/add_sub/', [AdminController::class, 'add_sub'])->name('add_sub');
+  Route::post('/admin/edit_sub/{id}', [AdminController::class, 'edit_sub'])->name('edit_sub');
+});
+
 // NOW
 
 Route::group(['middleware' => 'checkRole:agent'], function () {
