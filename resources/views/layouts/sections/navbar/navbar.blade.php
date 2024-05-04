@@ -213,7 +213,7 @@
             <a class="btn btn-light" href="{{ route('dashw') }}">Dasboard</a>
         </li>
         <li>
-            <a class="btn btn-light" href="{{ route('dashw') }}">Shipper list</a>
+            <a class="btn btn-light" href="{{ route('list.ship') }}">Shipper list</a>
         </li>
         <li>
             <a class="btn btn-light" href="{{ route('add.ship') }}">Add shipper</a>

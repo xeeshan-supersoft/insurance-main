@@ -128,6 +128,7 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
     return view('truck.add-shipper');
 })->name('add.ship');
   Route::get('/add-agency', function () { return view('truck.add-agency'); })->name('add.agnt');
+  Route::get('/list-shipper', function () { return view('truck.list-shipper'); })->name('list.ship');
   Route::get('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
   
 });
