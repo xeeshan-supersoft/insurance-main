@@ -56,11 +56,6 @@ Route::get('/accord', function () {
   return view('fromdrop');
 });
 
-Route::get('/arti', function () {
-  //\Artisan::call('migrate:fresh');
-  //\Artisan::call('db:seed');
-});
-
 Route::get('/form3', function () {
   return view('agent.form3');
 });
@@ -76,10 +71,10 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::post('/admin/edit_sub/{id}', [AdminController::class, 'edit_sub'])->name('edit_sub');
 });
 
-// Route::get('/migrate', function(){
-//   Artisan::call('migrate:fresh');
-//   Artisan::call('db:seed');
-// });
+Route::get('/run-migrations', function () {
+  Artisan::call('migrate:fresh');
+   return Artisan::call('db:seed');
+});
 
 // NOW
 
@@ -130,7 +125,7 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/add-agency', function () { return view('truck.add-agency'); })->name('add.agnt');
   Route::get('/list-shipper', function () { return view('truck.list-shipper'); })->name('list.ship');
   Route::get('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
-  
+
 });
 
 Route::get('/notice', [AdminController::class, 'notice'])->name('notice');
