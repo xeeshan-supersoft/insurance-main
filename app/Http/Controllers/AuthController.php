@@ -223,6 +223,9 @@ $subb = Subscription::create([
       return 'notthing';
   }
 
+
+  
+
   public function logout()
   {
     Session::flush();
