@@ -18,6 +18,107 @@ class TruckController extends Controller
   {
     return view('truck.trucker');
   }
+  public function addReg()
+  {
+    $validatedDataa = Validator::make($request->all(), [
+      'username' => 'required',
+      'password1' => 'required',
+      'email' => 'required|email|unique:users',
+      'role' => 'required',
+      'Addss' => 'sometimes',
+      'Addss2' => 'sometimes',
+      'fullname' => 'sometimes',     
+      'city' => 'sometimes',
+      'state' => 'sometimes',
+      'zip' => 'sometimes',
+      'phone' => 'sometimes',
+      'altemail' => 'sometimes',    
+      'role' => 'sometimes',
+      
+    ]);
+    // var_dump( $validatedDataa);
+
+
+    if($validatedDataa->fails()){
+      return Redirect::back()
+        ->withErrors($validatedDataa)
+        ->withInput();
+      // return 'fail';
+    }
+
+    $validatedData = $validatedDataa->validated();
+
+   
+    if ($validatedData['role'] == 'agent') {
+      $user = User::create([
+        'name' => $validatedData['username'],
+        'email' => $validatedData['email'],
+        'password' => Hash::make($validatedData['password1']),
+        'role' => $validatedData['role'], // Assuming default role ID for 'user'
+      ]);
+      $lastInsertedId = $user->id;
+  
+  $subb = Subscription::create([
+    'user_id' => $lastInsertedId,
+    'plan_id' => '1',
+    'status'=> 'Active',
+  ]);
+      $user = AgencyInfos::create([
+        'user_id' => $lastInsertedId,
+        'status' => '1',
+        'address' => $validatedData['Addss'],
+        'address2' => $validatedData['Addss2'],
+        'name' => $validatedData['fullname'],      
+        'city' => $validatedData['city'],
+        'state' => $validatedData['state'],
+        'zip' => $validatedData['zip'],
+        'cellphone' => $validatedData['phone'],
+        'extra_email' => $validatedData['altemail'],
+      ]);
+
+      return response()->json([
+        'message' => 'agent created successfully!',
+        'user_id' => $lastInsertedId,
+      ]);
+    }
+    if ($validatedData['role'] == 'shipper') {
+      $user = User::create([
+        'name' => $validatedData['username'],
+        'email' => $validatedData['email'],
+        'password' => Hash::make($validatedData['password1']),
+        'role' => $validatedData['role'], // Assuming default role ID for 'user'
+      ]);
+      $lastInsertedId = $user->id;
+  
+  $subb = Subscription::create([
+    'user_id' => $lastInsertedId,
+    'plan_id' => '1',
+    'status'=> 'Active',
+  ]);
+      $user = ShipperInfos::create([
+        'user_id' => $lastInsertedId,
+        'status' => '1',
+        'address' => $validatedData['Addss'],
+        'address2' => $validatedData['Addss2'],
+        'name' => $validatedData['fullname'],
+        'city' => $validatedData['city'],
+        'state' => $validatedData['state'],
+        'zip' => $validatedData['zip'],
+        'cellphone' => $validatedData['phone'],
+        'extra_email' => $validatedData['altemail'],
+      ]);
+      return response()->json([
+        'message' => 'shipper created successfully!',
+        'user_id' => $lastInsertedId,
+      ]);
+    }
+
+    
+    return "nothing";
+  }
+
+
+
 
   public function truckers()
   {
@@ -61,6 +162,7 @@ $upload = new Upload();
 
 
   }
+  
 
   public function truckersss()
   {

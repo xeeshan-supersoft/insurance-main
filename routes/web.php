@@ -124,7 +124,12 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   //Route::get('/form', [AdminController::class, 'insurform'])->name('form');
   // Routes accessible only by users with 'user' role
   // Route::get('/user/dashboard', 'UserController@dashboard')->name('user.dashboard');
-  Route::get('/truck', [TruckController::class, 'trucker'])->name('truck');
+  Route::get('/add-shipper', function () {
+    return view('truck.add-shipper');
+})->name('add.ship');
+  Route::get('/add-agency', function () { return view('truck.add-agency'); })->name('add.agnt');
+  Route::get('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
+  
 });
 
 Route::get('/notice', [AdminController::class, 'notice'])->name('notice');
