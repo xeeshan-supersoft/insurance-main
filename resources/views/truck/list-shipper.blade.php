@@ -14,33 +14,35 @@
         <thead class="table-light">
           <tr>
             <th class="text-truncate">User</th>
+            <th class="text-truncate">Address</th>
+            <th class="text-truncate">Cellphone</th>
             <th class="text-truncate">Email</th>
-            <th class="text-truncate">Role</th>
             <th class="text-truncate">Status</th>
 
           </tr>
 
         </thead>
         <tbody>
-           {{-- @foreach ($users as $user) --}}
+           @foreach ($ship as $ships)
           <tr>
             <td>
               <div class="d-flex align-items-center">
-                <div class="avatar avatar-sm me-3">
-                  <img src="{{asset('assets/img/avatars/1.png')}}" alt="Avatar" class="rounded-circle">
-                </div>
+             
                 <div>
-                  <h6 class="mb-0 text-truncate">@ </h6>
-            <small class="text-truncate">@amiccoo</small> --
+                  <h6 class="mb-0 text-truncate"> {{$ships->name}}</h6>
+        
                 </div>
               </div>
 
             </td>
-            <td class="text-truncate">asdf</td>
-
-           
+            <td class="text-truncate">{{$ships->address}}</td>
+            <td class="text-truncate">{{$ships->cellphone}}</td>
+            <td class="text-truncate">{{$ships->extra_email}}</td>
+<td>
+            <span class="badge bg-label-success rounded-pill">Active</span>
+          </td>
           </tr>
-          {{-- @endforeach --}}
+          @endforeach
         </tbody>
       </table>
     </div>

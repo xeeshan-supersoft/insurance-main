@@ -66,44 +66,19 @@
           <thead class="table-light">
             <tr>
               <th class="text-truncate">User</th>
-              <th class="text-truncate">Email</th>
-              <th class="text-truncate">Role</th>
-              <th class="text-truncate">Status</th>
+    
 
             </tr>
 
           </thead>
           <tbody>
-             @foreach ($users as $user)
+             {{-- @foreach ($users as $user) --}}
             <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-sm me-3">
-                    <img src="{{asset('assets/img/avatars/1.png')}}" alt="Avatar" class="rounded-circle">
-                  </div>
-                  <div>
-                    <h6 class="mb-0 text-truncate">@ {{$user->username}}</h6>
-              <small class="text-truncate">@amiccoo</small> --
-                  </div>
-                </div>
-
-              </td>
-              <td class="text-truncate">{{$user->email}}</td>
-
-              @if ($user->role_id == 'agent')
-              <td class="text-truncate"><i class="mdi mdi-account-outline mdi-24px text-primary me-1"></i>{{$user->role_id}}</td>
-
-              @elseif($user->role_id=='user')
-              <td class="text-truncate"><i class="mdi mdi-chart-donut mdi-24px text-success me-1"></i>{{$user->role_id}}</td>
-              @else
-
-              <td class="text-truncate"><i class="mdi mdi-laptop mdi-24px text-danger me-1"></i>{{$user->role_id}}</td>
-              @endif
-              <td>
-              <span class="badge bg-label-success rounded-pill">Active</span>
-            </td>
+              <td></td>
+            
+         
             </tr>
-            @endforeach
+         {{--   @endforeach --}}
           </tbody>
         </table>
       </div>
@@ -121,40 +96,31 @@
                 <thead class="table-light">
                   <tr>
                     <th class="text-truncate">User</th>
+                    <th class="text-truncate">Address</th>
+                    <th class="text-truncate">Cellphone</th>
                     <th class="text-truncate">Email</th>
-                    <th class="text-truncate">Role</th>
                     <th class="text-truncate">Status</th>
       
                   </tr>
       
                 </thead>
                 <tbody>
-                   @foreach ($users as $user)
+                   @foreach ($ship as $ships)
                   <tr>
                     <td>
                       <div class="d-flex align-items-center">
-                        <div class="avatar avatar-sm me-3">
-                          <img src="{{asset('assets/img/avatars/1.png')}}" alt="Avatar" class="rounded-circle">
-                        </div>
+                     
                         <div>
-                          <h6 class="mb-0 text-truncate">@ {{$user->username}}</h6>
-                    <small class="text-truncate">@amiccoo</small> --
+                          <h6 class="mb-0 text-truncate"> {{$ships->name}}</h6>
+                
                         </div>
                       </div>
       
                     </td>
-                    <td class="text-truncate">{{$user->email}}</td>
-      
-                    @if ($user->role_id == 'agent')
-                    <td class="text-truncate"><i class="mdi mdi-account-outline mdi-24px text-primary me-1"></i>{{$user->role_id}}</td>
-      
-                    @elseif($user->role_id=='user')
-                    <td class="text-truncate"><i class="mdi mdi-chart-donut mdi-24px text-success me-1"></i>{{$user->role_id}}</td>
-                    @else
-      
-                    <td class="text-truncate"><i class="mdi mdi-laptop mdi-24px text-danger me-1"></i>{{$user->role_id}}</td>
-                    @endif
-                    <td>
+                    <td class="text-truncate">{{$ships->address}}</td>
+                    <td class="text-truncate">{{$ships->cellphone}}</td>
+                    <td class="text-truncate">{{$ships->extra_email}}</td>
+ <td>
                     <span class="badge bg-label-success rounded-pill">Active</span>
                   </td>
                   </tr>

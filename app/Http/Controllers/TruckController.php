@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\ShipperInfos;
+use App\Models\DriverDetail;
+use App\Models\AgencyInfos;
+use App\Models\Subscription_plan;
 use App\Models\Upload;
 use App\Models\Insurance_data;
 use App\Models\Insurance_detail;
@@ -14,10 +18,21 @@ class TruckController extends Controller
     $this->middleware('checkRole:truker');
   }
 
-  public function trucker()
+  public function trucker()  
   {
-    return view('truck.trucker');
+    $ship= ShipperInfos::all();
+
+    return view('truck.dash', compact('ship'));
   }
+  public function shipper()  
+  {
+    $ship= ShipperInfos::all();
+
+    return view('truck.list-shipper' , compact('ship'));
+  }
+
+
+
   public function addReg()
   {
     $validatedDataa = Validator::make($request->all(), [
@@ -37,7 +52,6 @@ class TruckController extends Controller
       
     ]);
     // var_dump( $validatedDataa);
-
 
     if($validatedDataa->fails()){
       return Redirect::back()
