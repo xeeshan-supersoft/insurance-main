@@ -58,6 +58,11 @@ class User extends Authenticatable
     return $this->belongsToMany(User::class, 'agent_driver', 'driver_id', 'agent_id');
   }
 
+  public function ships()
+  {
+    return $this->belongsToMany(User::class, 'agent_driver', 'agent_id', 'driver_id');
+  }
+
   public function hasRole($role)
   {
     return $this->role === $role;

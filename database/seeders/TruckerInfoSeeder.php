@@ -46,7 +46,8 @@ class TruckerInfoSeeder extends Seeder
 
     AgentDriver::create([
       'agent_id'  => 2,
-      'driver_id' => 3
+      'driver_id' => 3,
+      'relation_status'=>1
     ]);
   }
 }

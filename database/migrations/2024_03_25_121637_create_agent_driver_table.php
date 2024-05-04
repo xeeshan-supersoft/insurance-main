@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('agent_id')->constrained('users');
             $table->foreignId('driver_id')->constrained('users');
+            $table->tinyInteger('relation_status')->default(1);
             $table->timestamps();
         });
     }

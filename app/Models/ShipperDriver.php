@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AgentDriver extends Model
+class ShipperDriver extends Model
 {
     use HasFactory;
 
-    protected $table = 'agent_driver';
+    protected $table = 'shipper_driver';
 
     protected $fillable = [
-      'agent_id',
+      'shipper_id',
       'driver_id',
       'relation_status'
     ];
 
-    public function agent()
+    public function ship()
     {
-      return $this->belongsTo(User::class, 'agent_id');
+      return $this->belongsTo(User::class, 'shipper_id');
     }
 
     public function driver()
