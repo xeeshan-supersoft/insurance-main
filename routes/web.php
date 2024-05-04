@@ -63,8 +63,8 @@ Route::get('/form3', function () {
 Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
 Route::get('/run-migrations', function () {
-  Artisan::call('migrate:fresh', ['--force' => true]);
-  Artisan::call('db:seed');
+  //Artisan::call('migrate:fresh', ['--force' => true]);
+  //Artisan::call('db:seed');
   echo 'All Done!';
 });
 
@@ -145,9 +145,9 @@ Route::get('/exam2', [TruckController::class, 'truckersss'])->name('truckfs');
 Route::get('/', [AuthController::class, 'land'])->name('landing');
 
 
-// Route::fallback(function () {
-//   return view('content.pages.pages-misc-error');
-// });
+Route::fallback(function () {
+  return view('content.pages.pages-misc-error');
+});
 
 
 
