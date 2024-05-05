@@ -113,7 +113,7 @@ Route::post('/reg', [AuthController::class, 'register'])->name('form.reg');
 
 
 Route::group(['middleware' => 'checkRole:truck'], function () {
-  Route::get('/portal', [TruckController::class, 'trucker'])->name('dashw');
+  Route::get('/portal/{id?}', [TruckController::class, 'trucker'])->name('dashw');
   Route::post('/upload', [TruckController::class, 'upload'])->name('upload');
 
   // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');

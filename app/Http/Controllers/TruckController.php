@@ -21,10 +21,10 @@ class TruckController extends Controller
     $this->middleware('checkRole:truker');
   }
 
-  public function trucker (  )  
+  public function trucker ( $id )
   {
     $userId = Auth::id();
-    //  $yourCertificateId  = Certificate::where('client_user_id', '=', $id)->get('id');     
+    //  $yourCertificateId  = Certificate::where('client_user_id', '=', $id)->get('id');
 //$distinctPolicies = CertificatePolicy::where('certificate_id', '=', $yourCertificateId)->distinct()->get('policy_id')>toArray();
     $array2 = PolicyType::pluck('id')->toArray();
 // // $yourCertificateId is the certificate_id you want to match against
@@ -41,7 +41,7 @@ $distinctPolicies = CertificatePolicy::with(['policyType'])
 
   }
 
-  public function shipper()  
+  public function shipper()
   {
     $ship= ShipperInfos::all();
 
@@ -57,14 +57,14 @@ $distinctPolicies = CertificatePolicy::with(['policyType'])
       'role' => 'required',
       'Addss' => 'sometimes',
       'Addss2' => 'sometimes',
-      'fullname' => 'sometimes',     
+      'fullname' => 'sometimes',
       'city' => 'sometimes',
       'state' => 'sometimes',
       'zip' => 'sometimes',
       'phone' => 'sometimes',
-      'altemail' => 'sometimes',    
+      'altemail' => 'sometimes',
       'role' => 'sometimes',
-      
+
     ]);
     // var_dump( $validatedDataa);
 
@@ -77,7 +77,7 @@ $distinctPolicies = CertificatePolicy::with(['policyType'])
 
     $validatedData = $validatedDataa->validated();
 
-   
+
     if ($validatedData['role'] == 'agent') {
       $user = User::create([
         'name' => $validatedData['username'],
@@ -86,7 +86,7 @@ $distinctPolicies = CertificatePolicy::with(['policyType'])
         'role' => $validatedData['role'], // Assuming default role ID for 'user'
       ]);
       $lastInsertedId = $user->id;
-  
+
   $subb = Subscription::create([
     'user_id' => $lastInsertedId,
     'plan_id' => '1',
@@ -97,7 +97,7 @@ $distinctPolicies = CertificatePolicy::with(['policyType'])
         'status' => '1',
         'address' => $validatedData['Addss'],
         'address2' => $validatedData['Addss2'],
-        'name' => $validatedData['fullname'],      
+        'name' => $validatedData['fullname'],
         'city' => $validatedData['city'],
         'state' => $validatedData['state'],
         'zip' => $validatedData['zip'],
@@ -118,7 +118,7 @@ $distinctPolicies = CertificatePolicy::with(['policyType'])
         'role' => $validatedData['role'], // Assuming default role ID for 'user'
       ]);
       $lastInsertedId = $user->id;
-  
+
   $subb = Subscription::create([
     'user_id' => $lastInsertedId,
     'plan_id' => '1',
@@ -142,7 +142,7 @@ $distinctPolicies = CertificatePolicy::with(['policyType'])
       ]);
     }
 
-    
+
     return "nothing";
   }
 
@@ -191,7 +191,7 @@ $upload = new Upload();
 
 
   }
-  
+
 
   public function truckersss()
   {

@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <!--/ Congratulations card -->
-             
+
 
                 <!-- Congratulations card -->
                 <div class="col-md-3 col-lg-3">
@@ -66,7 +66,7 @@
           <thead class="table-light">
             <tr>
               <th class="text-truncate">User</th>
-    
+
 
             </tr>
 
@@ -74,9 +74,9 @@
           <tbody>
              {{-- @foreach ($users as $user) --}}
             <tr>
-              @foreach ($distinctPolicies as $p)                                   
-                  <td style="color: green;">{{ $p->policyType->type_name }}</td>
-                @endforeach                    
+              @foreach ($distinctPolicies as $p)
+                  <td style="color: green;">{{ SpellHelper::shout($p->policyType->type_name) }}</td>
+                @endforeach
             </tr>
            {{-- @endforeach --}}
           </tbody>
@@ -100,22 +100,22 @@
                     <th class="text-truncate">Cellphone</th>
                     <th class="text-truncate">Email</th>
                     <th class="text-truncate">Status</th>
-      
+
                   </tr>
-      
+
                 </thead>
                 <tbody>
                    @foreach ($ship as $ships)
                   <tr>
                     <td>
                       <div class="d-flex align-items-center">
-                     
+
                         <div>
                           <h6 class="mb-0 text-truncate"> {{$ships->name}}</h6>
-                
+
                         </div>
                       </div>
-      
+
                     </td>
                     <td class="text-truncate">{{$ships->address}}</td>
                     <td class="text-truncate">{{$ships->cellphone}}</td>
