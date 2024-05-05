@@ -21,22 +21,28 @@ class TruckController extends Controller
     $this->middleware('checkRole:truker');
   }
 
-  public function trucker ( $id )
+  public function trucker($id)
   {
     $userId = Auth::user()->id;
-    $yourCertificateId  = Certificate::select('id')->where('client_user_id', $userId)->first();
-    $certificatePolicies = CertificatePolicy::where('certificate_id', $yourCertificateId->id)->get();
-    $policies = PolicyType::get();
-    $ship= ShipperInfos::all();
+    $certificatePolicies = null;
+    $policies = null;
+    $yourCertificateId = Certificate::select('id')
+      ->where('client_user_id', $userId)
+      ->first();
+    if (isset($yourCertificateId)) {
+      $certificatePolicies = CertificatePolicy::where('certificate_id', $yourCertificateId->id)->get();
+      $policies = PolicyType::get();
+    }
+    $ship = ShipperInfos::all();
 
-    return view('truck.dash' , compact('ship', 'certificatePolicies', 'policies'));
+    return view('truck.dash', compact('ship', 'certificatePolicies', 'policies'));
   }
 
   public function shipper()
   {
-    $ship= ShipperInfos::all();
+    $ship = ShipperInfos::all();
 
-    return view('truck.list-shipper' , compact('ship'));
+    return view('truck.list-shipper', compact('ship'));
   }
 
   public function addReg()
@@ -55,11 +61,10 @@ class TruckController extends Controller
       'phone' => 'sometimes',
       'altemail' => 'sometimes',
       'role' => 'sometimes',
-
     ]);
     // var_dump( $validatedDataa);
 
-    if($validatedDataa->fails()){
+    if ($validatedDataa->fails()) {
       return Redirect::back()
         ->withErrors($validatedDataa)
         ->withInput();
@@ -67,7 +72,6 @@ class TruckController extends Controller
     }
 
     $validatedData = $validatedDataa->validated();
-
 
     if ($validatedData['role'] == 'agent') {
       $user = User::create([
@@ -78,11 +82,11 @@ class TruckController extends Controller
       ]);
       $lastInsertedId = $user->id;
 
-  $subb = Subscription::create([
-    'user_id' => $lastInsertedId,
-    'plan_id' => '1',
-    'status'=> 'Active',
-  ]);
+      $subb = Subscription::create([
+        'user_id' => $lastInsertedId,
+        'plan_id' => '1',
+        'status' => 'Active',
+      ]);
       $user = AgencyInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
@@ -110,11 +114,11 @@ class TruckController extends Controller
       ]);
       $lastInsertedId = $user->id;
 
-  $subb = Subscription::create([
-    'user_id' => $lastInsertedId,
-    'plan_id' => '1',
-    'status'=> 'Active',
-  ]);
+      $subb = Subscription::create([
+        'user_id' => $lastInsertedId,
+        'plan_id' => '1',
+        'status' => 'Active',
+      ]);
       $user = ShipperInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
@@ -133,12 +137,8 @@ class TruckController extends Controller
       ]);
     }
 
-
-    return "nothing";
+    return 'nothing';
   }
-
-
-
 
   public function truckers()
   {
@@ -153,36 +153,30 @@ class TruckController extends Controller
   {
     $user = request()->user();
     $id = $user->id;
-    $users= Upload::where("user_id",$id)->get();
+    $users = Upload::where('user_id', $id)->get();
     // return $users;
-    return view('truck.dash', compact("users") );
+    return view('truck.dash', compact('users'));
   }
-
 
   public function upload(Request $request)
-
   {
+    // Validate the uploaded file if necessary
+    $request->validate([
+      'file' => 'required|file|max:10240', // Example: Maximum file size of 10MB
+    ]);
 
-// Validate the uploaded file if necessary
-$request->validate([
-  'file' => 'required|file|max:10240', // Example: Maximum file size of 10MB
-]);
+    // Store the uploaded file
+    $path = $request->file('file')->store('uploads');
 
-// Store the uploaded file
-$path = $request->file('file')->store('uploads');
+    // You can also store file information in the database here if needed
+    $upload = new Upload();
+    $upload->user_id = $request->user_id; // Assuming you have authentication and each upload is associated with a user
+    $upload->path = $path;
+    $upload->save();
 
-// You can also store file information in the database here if needed
-$upload = new Upload();
-        $upload->user_id = $request->user_id; // Assuming you have authentication and each upload is associated with a user
-        $upload->path = $path;
-        $upload->save();
-
-      //  return "successfully";
- return back()->with('success', 'File uploaded successfully.');
-
-
+    //  return "successfully";
+    return back()->with('success', 'File uploaded successfully.');
   }
-
 
   public function truckersss()
   {
