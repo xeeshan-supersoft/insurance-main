@@ -74,7 +74,7 @@
           <tbody>
              {{-- @foreach ($users as $user) --}}
             <tr>
-              @foreach ($distinctPolicies as $p)
+                @foreach ($distinctPolicies as $p)
                   <td style="color: green;">{{ shout($p->policyType->type_name) }}</td>
                 @endforeach
             </tr>
