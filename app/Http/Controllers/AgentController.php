@@ -19,7 +19,6 @@ use App\Services\CertificateService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use Spatie\LaravelPdf\Facades\Pdf;
 
 class AgentController extends Controller
 {
@@ -182,8 +181,6 @@ class AgentController extends Controller
     $view = 'agent.form_pdf';
     $cert = 'certificate.pdf';
 
-    // $pdf = Pdf::view($view, $data)->download('invoice.pdf');
-    // return $pdf;
     return view($view , $data);
   }
 
