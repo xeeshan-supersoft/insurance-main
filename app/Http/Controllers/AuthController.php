@@ -60,7 +60,7 @@ class AuthController extends Controller
       return redirect('/dash');
     }
     if ($user->role == 'truck_driver') {
-      return redirect('/portal');
+      return redirect("/portal/" . $user->id);
     }
 
     return redirect('/dash');

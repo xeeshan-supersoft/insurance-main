@@ -74,11 +74,11 @@
           <tbody>
              {{-- @foreach ($users as $user) --}}
             <tr>
-              <td></td>
-            
-         
+              @foreach ($distinctPolicies as $p)                                   
+                  <td style="color: green;">{{ $p->policyType->type_name }}</td>
+                @endforeach                    
             </tr>
-         {{--   @endforeach --}}
+           {{-- @endforeach --}}
           </tbody>
         </table>
       </div>
