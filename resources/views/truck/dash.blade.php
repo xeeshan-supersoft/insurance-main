@@ -74,8 +74,14 @@
           <tbody>
              {{-- @foreach ($users as $user) --}}
             <tr>
-                @foreach ($distinctPolicies as $p)
-                  <td style="color: green;">{{ shout($p->policyType->type_name) }}</td>
+                @foreach ($policies as $p)
+                  @foreach ($certificatePolicies->unique('policy_type_id') as $cp)
+                    @if($cp->policy_type_id == $p->id)
+                      <td style="color: green;">{{ shout( $p->type_name ) }}</td>
+                    @else
+                      <td style="color: red;">{{ shout( $p->type_name ) }}</td>
+                    @endif
+                  @endforeach
                 @endforeach
             </tr>
            {{-- @endforeach --}}

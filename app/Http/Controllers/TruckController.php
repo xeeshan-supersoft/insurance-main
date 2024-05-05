@@ -23,22 +23,13 @@ class TruckController extends Controller
 
   public function trucker ( $id )
   {
-    $userId = Auth::id();
-    //  $yourCertificateId  = Certificate::where('client_user_id', '=', $id)->get('id');
-//$distinctPolicies = CertificatePolicy::where('certificate_id', '=', $yourCertificateId)->distinct()->get('policy_id')>toArray();
-    $array2 = PolicyType::pluck('id')->toArray();
-// // $yourCertificateId is the certificate_id you want to match against
-
-$distinctPolicies = CertificatePolicy::with(['policyType'])
-->join('certificates', 'certificate_policies.certificate_id', '=', 'certificates.id')
-->where('certificates.client_user_id', $userId)
-->distinct()
-->get();
-
+    $userId = Auth::user()->id;
+    $yourCertificateId  = Certificate::select('id')->where('client_user_id', $userId)->first();
+    $certificatePolicies = CertificatePolicy::where('certificate_id', $yourCertificateId->id)->get();
+    $policies = PolicyType::get();
     $ship= ShipperInfos::all();
-  // dd($distinctPolicies);
-    return view('truck.dash' , compact('ship', 'distinctPolicies'));
 
+    return view('truck.dash' , compact('ship', 'certificatePolicies', 'policies'));
   }
 
   public function shipper()
