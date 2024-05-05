@@ -84,6 +84,8 @@
                                             @endif
                                         @endforeach
                                     @endforeach
+                                  @else
+                                  <td style="color: grey;">No Data Available</td>
                                 @endif
                             </tr>
                             {{-- @endforeach --}}
