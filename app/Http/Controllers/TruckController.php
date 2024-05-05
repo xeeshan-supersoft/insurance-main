@@ -8,9 +8,12 @@ use App\Models\ShipperInfos;
 use App\Models\DriverDetail;
 use App\Models\AgencyInfos;
 use App\Models\Subscription_plan;
+use App\Models\Certificate;
+use App\Models\CertificatePolicy;
+use App\Models\PolicyType;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Upload;
-use App\Models\Insurance_data;
-use App\Models\Insurance_detail;
+use Illuminate\Support\Facades\Session;
 class TruckController extends Controller
 {
   public function __construct()
@@ -18,20 +21,32 @@ class TruckController extends Controller
     $this->middleware('checkRole:truker');
   }
 
-  public function trucker()  
+  public function trucker (  )  
   {
-    $ship= ShipperInfos::all();
+    $userId = Auth::id();
+    //  $yourCertificateId  = Certificate::where('client_user_id', '=', $id)->get('id');     
+//$distinctPolicies = CertificatePolicy::where('certificate_id', '=', $yourCertificateId)->distinct()->get('policy_id')>toArray();
+    $array2 = PolicyType::pluck('id')->toArray();
+// // $yourCertificateId is the certificate_id you want to match against
 
-    return view('truck.dash', compact('ship'));
+$distinctPolicies = CertificatePolicy::with(['policyType'])
+->join('certificates', 'certificate_policies.certificate_id', '=', 'certificates.id')
+->where('certificates.client_user_id', $userId)
+->distinct()
+->get();
+
+    $ship= ShipperInfos::all();
+  // dd($distinctPolicies);
+    return view('truck.dash' , compact('ship', 'distinctPolicies'));
+
   }
+
   public function shipper()  
   {
     $ship= ShipperInfos::all();
 
     return view('truck.list-shipper' , compact('ship'));
   }
-
-
 
   public function addReg()
   {
