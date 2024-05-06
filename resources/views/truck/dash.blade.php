@@ -1,6 +1,19 @@
 @extends('layouts/contentNavbarLayout')
 @section('title', ' Vertical Layouts - Forms')
 @section('content')
+    <Style>
+        .green-square {
+            width: 10px;
+            height: 10px;
+            background-color: green;
+        }
+        .red-square {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+        }
+    </style>
+    </Style>
     @php
         $isMenu = false;
         $navbarHideToggle = false;
@@ -72,23 +85,30 @@
 
                         </thead>
                         <tbody>
-                            {{-- @foreach ($users as $user) --}}
                             <tr>
                                 @if (isset($policies))
-                                    @foreach ($certificatePolicies->unique('policy_type_id') as $cp)
-                                        @foreach ($policies->unique('id') as $p)
-                                            @if ($cp->policy_type_id == $p->id)
-                                                <td style="color: green;">{{ shout($p->type_name) }}</td>
-                                            @else
-                                                <td style="color: red;">{{ shout($p->type_name) }}</td>
-                                            @endif
-                                        @endforeach
+                                    @foreach ($policies as $p)
+                                        <td>{{ shout($p->type_name) }}</td>
                                     @endforeach
-                                  @else
-                                  <td style="color: grey;">No Data Available</td>
                                 @endif
                             </tr>
-                            {{-- @endforeach --}}
+                            <tr>
+                                @if (isset($certificatePolicies))
+                                    @foreach ($policies as $p)
+                                        @if ($certificatePolicies->pluck('policy_type_id')->contains($p->id))
+                                            <td>
+                                                <div class="green-square"></div>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <div class="red-square"></div>
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <td style="color: grey;">No Data Available</td>
+                                @endif
+                            </tr>
                         </tbody>
                     </table>
                 </div>
