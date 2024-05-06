@@ -75,7 +75,7 @@
                             {{-- @foreach ($users as $user) --}}
                             <tr>
                                 @if (isset($policies))
-                                    @foreach ($policies as $p)
+                                    @foreach ($policies->unique('id') as $p)
                                         @foreach ($certificatePolicies->unique('policy_type_id') as $cp)
                                             @if ($cp->policy_type_id == $p->id)
                                                 <td style="color: green;">{{ shout($p->type_name) }}</td>
