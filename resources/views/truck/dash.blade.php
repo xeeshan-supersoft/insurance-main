@@ -121,6 +121,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="table-responsive">
+                    <div class="form-group">
+                      <label>Search</label>
+                        <input type="text" class="form-controller" id="search" name="search"></input>
+                    </div>
                     <table class="table">
                         <h4 class="mb-1 py-4 px-4">list of Shippers</h4>
                         <thead class="table-light">
