@@ -31,8 +31,8 @@ class TruckController extends Controller
       ->first();
     if (isset($yourCertificateId)) {
       $certificatePolicies = CertificatePolicy::where('certificate_id', $yourCertificateId->id)->get();
-      $policies = PolicyType::get();
     }
+    $policies = PolicyType::get();
     $ship = ShipperInfos::all();
 
     return view('truck.dash', compact('ship', 'certificatePolicies', 'policies'));
