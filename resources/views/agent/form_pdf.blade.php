@@ -2544,7 +2544,7 @@ var elementHTML = document.querySelector("#contentToPdf");
 doc.html(elementHTML, {
     callback: function(doc) {
         // Save the PDF
-        doc.save('certificate.pdf');
+        window.open(doc.output('bloburl'), '_blank');
     },
     margin: [10, 10, 10, 10],
     autoPaging: 'text',
