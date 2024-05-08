@@ -64,9 +64,7 @@
                 <div class="col-md-3 col-lg-3">
                     <div class="card"
                         style="background: rgb(42,132,254); background: linear-gradient(180deg, rgba(42,132,254,1) 0%, rgba(54,197,255,1) 100%);">
-                        <div class="card-body text-center" style="
-                        height: 220px;
-                    ">
+                        <div class="card-body text-center" style="height: 220px;">
                             <h4 class="mb-1 py-4 text-white">No.of Active Shippers</h4>
                             <h2 class="py-3 text-white card-title" style="font-size: 72px">0</h2>
                         </div>
