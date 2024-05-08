@@ -30,8 +30,7 @@
     @stack('body-css')
 
     <link rel="stylesheet" href="{{ asset('assets/css/accord.css') }}" />
-
-
+    <link rel="stylesheet" href="{{ asset('assets/css/pdf.css') }}" />
 
 </head>
 
