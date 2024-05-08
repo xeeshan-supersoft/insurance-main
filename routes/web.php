@@ -113,7 +113,7 @@ Route::post('/reg', [AuthController::class, 'register'])->name('form.reg');
 
 
 Route::group(['middleware' => 'checkRole:truck'], function () {
-  Route::get('/portal/{id?}', [TruckController::class, 'trucker'])->name('dashw');
+  Route::get('/portal', [TruckController::class, 'trucker'])->name('dashw');
   Route::post('/upload', [TruckController::class, 'upload'])->name('upload');
 
   // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
@@ -127,7 +127,7 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/add-agency', function () { return view('truck.add-agency'); })->name('add.agnt');
   Route::get('/list-shipper', [TruckController::class, 'shipper'])->name('list.ship');
   Route::get('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
-
+  Route::get('/profile-truck', [TruckController::class, 'truckprofiles'])->name('profile.truck');
 });
 
 Route::get('/notice', [AdminController::class, 'notice'])->name('notice');
