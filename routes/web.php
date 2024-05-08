@@ -56,13 +56,9 @@ Route::get('/accord', function () {
   return view('fromdrop');
 });
 
-Route::get('/accord', function () {
-  return view('fromdrop');
+Route::get('/form3', function () {
+  return view('agent.form3');
 });
-
-// Route::get('/pdf2', function () {
-//   return view('agent.form_pdf2');
-// });
 
 Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
