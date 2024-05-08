@@ -7,7 +7,6 @@ $navbarHideToggle = false;
 
 @section('layoutContent')
 <!-- Name -->
-
 <div id="AddForm">
   <!-- Basic Layout -->
   <div class="position-relative">
@@ -33,31 +32,34 @@ $navbarHideToggle = false;
               <!-- /Logo -->
 
             </div>
+            @foreach ($driverdetail as $item)
+                
+           
             <div class="card-body">
               <div class="row">
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="username" id="username" placeholder="ACME Inc." />
+                    <input type="text" class="form-control" value="{{$item->name}}" id="username" placeholder="ACME Inc." disabled />
                     <label for="username1">USERNAME</label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="email" id="email1" placeholder="example.com"
-                      required />
+                    <input type="text" class="form-control" value="{{$item->extra_email}}"  name="email"  id="email1" placeholder="example.com"
+                      required disabled />
                     <label for="email1">EMAIL</label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="altemail" id="altemail1"
-                      placeholder="Address line1" />
+                    <input type="text" class="form-control" value="{{$item->extra_email}}"  name="altemail" id="altemail1"
+                      placeholder="Address line1" disabled />
                     <label for="altemail1">ALT EMAIL</label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="phone" id="phone1" placeholder="Address line1" />
+                    <input type="text" class="form-control" value="{{$item->cellphone}}"  name="phone" id="phone1" placeholder="Address line1" disabled />
                     <label for="phone1">CONTACT #</label>
                   </div>
                 </div>
@@ -66,60 +68,60 @@ $navbarHideToggle = false;
               <div class="row" id="inputContainer2">
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="license_number" id="fullname1"
-                      placeholder="ACME Inc." />
+                    <input type="text" class="form-control" value="{{$item->license_number}}"  name="license_number" id="fullname1"
+                      placeholder="ACME Inc." disabled />
                     <label for="fullname1"> license_number</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="date" class="form-control" name="license_expiry_date" id="Addss1" placeholder="" />
+                    <input type="date" class="form-control" value="{{$item->license_expiry_date}}"  name="license_expiry_date" id="Addss1" placeholder="" disabled />
                     <label for="Addss1"> license_expiry_date</label></div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="license_type" id="Address21" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->license_type}}"  name="license_type" id="Address21" placeholder="" disabled />
                     <label for="Address21"> license_type</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="years_of_experience" id="state1" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->years_of_experience}}"  name="years_of_experience" id="state1" placeholder="" disabled />
                     <label for="state1">years_of_experience</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="vehicle_registration_number" id="country1"
-                      placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->vehicle_registration_number}}"  name="vehicle_registration_number" id="country1"
+                      placeholder="" disabled />
                     <label for="country1"> vehicle_registration_number</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="vehicle_make" id="city1" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->vehicle_make}}"  name="vehicle_make" id="city1" placeholder="" disabled />
                     <label for="city1"> vehicle_make</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="vehicle_model" id="zip1" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->vehicle_model}}"  name="vehicle_model" id="zip1" placeholder="" disabled />
                     <label for="zip1"> vehicle_model</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="vehicle_year" id="fullname1"
-                      placeholder="ACME Inc." />
+                    <input type="text" class="form-control" value="{{$item->vehicle_year}}"  name="vehicle_year" id="fullname1"
+                      placeholder="ACME Inc." disabled />
                     <label for="fullname1"> vehicle_year</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="vehicle_capacity" id="Addss1" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->vehicle_capacity}}"  name="vehicle_capacity" id="Addss1" placeholder="" disabled />
                     <label for="Addss1"> vehicle_capacity</label></div>
                 </div>
                 <div class="col-6">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="vehicle_status" id="Address21" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->vehicle_status}}"  name="vehicle_status" id="Address21" placeholder="" disabled />
                     <label for="Address21"> vehicle_status</label> </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="mc_number" id="state1" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->mc_number}}"  name="mc_number" id="state1" placeholder="" disabled />
                     <label for="state1">mc_number</label> </div>
                 </div>';
 
@@ -128,49 +130,45 @@ $navbarHideToggle = false;
                 <div class="col-4">
 
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="fullname" id="fullname1" placeholder="ACME Inc." />
+                    <input type="text" class="form-control" value="{{$item->name}}"  name="fullname" id="fullname1" placeholder="ACME Inc." disabled />
                     <label for="fullname1"> Name</label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="Addss" id="Addss1" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->address}}"  name="Addss" id="Addss1" placeholder="" disabled />
                     <label for="Addss1"> Address 1</label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="Addss2" id="Address21" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->address2}}"  name="Addss2" id="Address21" placeholder="" disabled />
                     <label for="Address21"> Address 2</label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="state" id="state1" placeholder="" />
+                    <input type="text" class="form-control" value="{{$item->state}}"  name="state" id="state1" placeholder="" disabled />
                     <label for="state1">state</label>
                   </div>
                 </div>
+
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="country" id="country1" placeholder="" />
-                    <label for="country1"> country</label>
+                    <input type="text" class="form-control" value="{{$item->city}}"  name="city" id="city1" placeholder="" disabled />
+                    <label for="city1">city</label>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="city" id="city1" placeholder="" />
-                    <label for="city1"> city</label>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="form-floating form-floating-outline mb-3">
-                    <input type="text" class="form-control" name="zip" id="zip1" placeholder="" />
-                    <label for="zip1"> zip</label>
+                    <input type="text" class="form-control" value="{{$item->zip}}"  name="zip" id="zip1" placeholder="" disabled />
+                    <label for="zip1">zip</label>
                   </div>
                 </div>
 
               </div>
             </div>
+            @endforeach
           </div>
         </div>
         {{-- card end --}}
@@ -179,47 +177,5 @@ $navbarHideToggle = false;
   </div>
 </div>
 
-@push('body-scripts')
-<script>
-  function addInputField() {
-    var vehicleType = document.getElementById("role_id1").value;
-    var inputContainer = document.getElementById("inputContainer");
-    // Clear existing input fields
-    inputContainer.innerHTML = "";
-    // Append input field if vehicle type is "truck"
-  }
-  $('#saveButton').click(function(e) {
-    var form = document.getElementById('AddForm');
-    var formData = new FormData(form);
-    // Display the string in an alert
-    // alert(formData);
-    console.log(formData);
-    $.ajax({
-      url: "{{ route('form.reg')}}",
-      type: 'post',
-      data: formData,
-      contentType: false,
-      processData: false, // Important! Don't process the data
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
-      success: function(response) {
-        // Check if response contains the expected message
-        if (response && response.message !== undefined) {
-          alert(response.message);
-          // Additional logic after a successful save
-          window.location.href = "{{ route('auth-login-basic') }}";
-        } else {
-          console.log(response.error);
-        }
-      },
-      error: function(error) {
-        console.error('Error saving data:', error);
-      }
-    });
-  });
-</script>
-
-@endpush
 
 @endsection

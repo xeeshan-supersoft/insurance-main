@@ -21,7 +21,7 @@ class TruckController extends Controller
     $this->middleware('checkRole:truker');
   }
 
-  public function trucker($id)
+  public function trucker()
   {
     $userId = Auth::user()->id;
     $certificatePolicies = null;
@@ -138,6 +138,16 @@ class TruckController extends Controller
     }
 
     return 'nothing';
+  }
+  
+
+  public function truckprofiles()
+  {
+    $userId = Auth::user()->id;
+ 
+    $driverdetail = DriverDetail::where('user_id', $userId)->get();
+
+    return view('truck.profile' , compact('driverdetail'));
   }
 
   public function truckers()

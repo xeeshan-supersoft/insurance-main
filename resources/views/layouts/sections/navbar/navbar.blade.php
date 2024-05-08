@@ -226,7 +226,7 @@
         </li>
 
         <li>
-            <a class="btn btn-light" href="{{ route('dashw') }}">Company Information</a>
+            <a class="btn btn-light" href="{{ route('profile.truck') }}">Company Information</a>
         </li>
         @endif
 
