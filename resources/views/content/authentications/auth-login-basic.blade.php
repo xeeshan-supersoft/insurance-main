@@ -37,7 +37,7 @@
                                                 <span
                                                 class="app-brand-logo2 demo">@include('_partials.macross',["height"=>20,"withbg"=>'fill:
                                                 #fff;'])</span>
-
+                                                </a>
 
 
 
