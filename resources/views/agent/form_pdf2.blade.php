@@ -130,7 +130,7 @@
 <p style="position:absolute;top:816px;left:239px;white-space:nowrap" class="ft00"><b>Y / N</b></p>
 <p style="position:absolute;top:1134px;left:32px;white-space:nowrap" class="ft03"><b>ACORD 22 (2016/03)&#160;</b></p>
 <p style="position:absolute;top:1116px;left:540px;white-space:nowrap" class="ft03"><b>© 2006-2012 ACORD CORPORATION. &#160;All rights reserved.</b></p>
-<p style="position:absolute;top:1004px;left:113px;white-space:nowrap" class="ft05">{{ $agent->agencies[0]->agency_name }}</p>
+<p style="position:absolute;top:1004px;left:113px;white-space:nowrap" class="ft05"></p>
 <p style="position:absolute;top:973px;left:32px;white-space:nowrap" class="ft03"><b>CERTIFICATE HOLDER</b></p>
 <p style="position:absolute;top:1134px;left:280px;white-space:nowrap" class="ft03"><b>The ACORD name and logo are registered marks of ACORD</b></p>
 <p style="position:absolute;top:73px;left:43px;white-space:nowrap" class="ft06"><b>THIS CERTIFICATE IS ISSUED AS A MATTER OF INFORMATION ONLY AND CONFERS NO RIGHTS UPON THE CERTIFICATE HOLDER. THIS</b></p>
