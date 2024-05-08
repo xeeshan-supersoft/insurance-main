@@ -33,7 +33,7 @@
 
                                             <div class="d-flex flex-col align-content-center justify-content-center" >
 
-
+                                                <a href="{{ route('landing') }}"
                                                 <span
                                                 class="app-brand-logo2 demo">@include('_partials.macross',["height"=>20,"withbg"=>'fill:
                                                 #fff;'])</span>
