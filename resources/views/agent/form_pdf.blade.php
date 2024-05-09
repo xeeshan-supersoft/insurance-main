@@ -6170,6 +6170,7 @@
                                                                                   class="lable_title ng-tns-c268-42">
                                                                                   {{$pt->type_name}}</td>
                                                                           </tr>
+                                                                          
                                                                           @foreach ($pt->policies as $pp)
                                                                           <tr class="ng-tns-c268-42">
                                                                               <td class="text-center ng-tns-c268-42">

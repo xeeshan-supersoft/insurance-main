@@ -163,14 +163,35 @@ class AgentController extends Controller
       ->where('certificate_id', $certificate->id)
       ->get();
 
+      $customOrder = [
+        'General Liability',
+        'Auto Liability',
+        'Cargo',
+        'RAILER INTERCHANGEPHYSICAL DAMAG',
+        'UMBRELLA LIA',
+        'WORKERS COMPENSATION'
+    ];
+    // $policytypes = PolicyType::with('policies', 'policyLimits')
+    //   ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
+    //   ->get();
     $policytypes = PolicyType::with('policies', 'policyLimits')
-      ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
-      ->get();
+    ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
+    ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
+    ->get();
 
       $allpolicytypes = PolicyType::with('policies', 'policyLimits')
+      ->whereIn("id",[1,2,3,4,10,6])
       ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
+      
+      ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
       ->get();
 
+      $allpolicytypes = $allpolicytypes->sortBy(function ($el) use ($customOrder) {
+        // Get the index of the current fruit in the custom order array
+        $index = array_search($el->type_name, $customOrder);
+        // If the fruit is not found in the custom order array, assign a high index
+        return $index === false ? count($customOrder) : $index;
+    });
     $r = 1;
 
     $driver = User::with('truckers')->find($certificate->client_user_id);
@@ -178,7 +199,7 @@ class AgentController extends Controller
 
     $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes');
 
-    $view = 'agent.form_pdf';
+    $view = 'agent.form_pdf3';
     $cert = 'certificate.pdf';
 
     return view($view , $data);
