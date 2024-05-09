@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('certificate_id')->nullable()->constrained('certificates');
             $table->foreignId('policy_type_id')->nullable()->constrained('policy_types');
             $table->foreignId('policy_id')->nullable()->constrained('policies');
+            $table->double('policy_amount',8,2)->nullable()->default(0.0);
             $table->integer('policy_deductible')->nullable()->default(0);
             $table->integer('policy_retention')->nullable()->default(0);
             $table->tinyInteger('is_policy_checked')->nullable()->default(0);
