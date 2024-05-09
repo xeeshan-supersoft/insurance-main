@@ -6263,6 +6263,7 @@
 
                                                                           @endforeach
                                                                           @endif
+                                                                          
                                                                           @if($pt->type_name == "Auto Liability")
                                                                           @foreach ($pt->policies as $pp)
 
@@ -6326,6 +6327,163 @@
                                                                         
                                                                           @endforeach
                                                                           @endif
+
+                                                                       
+                                                                          @if( $pt->type_name == "Trailer Interchange")      
+                                                                          @foreach ($pt->policies as $pp)
+                                                                          <tr class="ng-tns-c268-42">
+                                                                              <td class="text-center ng-tns-c268-42">
+                                                                                  <mat-checkbox
+                                                                                      formcontrolname="glLiability"
+                                                                                      class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                                                                                      id="mat-checkbox-29">
+                                                                                      <input class="form-check-input abcd" type="checkbox" value="{{ $pp->id }}"
+                                                                                      name="main_policy_sub[{{ str_replace(' ', '_', $pt->id) }}][{{ $pp->id }}]"
+                                                                                      id="{{ $pp->policy_title }}"
+
+                                                                                        @if (isset(  $certPolicy ) )
+                                                                                            {{ $certPolicy->where('policy_id', $pp->id)->first() ? 'checked' : '' }}
+                                                                                      @endif
+                                                                                      disabled
+                                                                                  />
+                                                                                  <input type="hidden" id="checkboxValidation" value="false">
+                                                                                  </mat-checkbox>
+                                                                              </td>
+                                                                              <td colspan="3"
+                                                                                  class="lable_title_normal ng-tns-c268-42">
+                                                                                  <span class="ng-tns-c268-42">  {{ $pp->policy_title }}</span></td>
+                                                                          </tr>
+
+                                                                          @endforeach
+                                                                          @endif
+
+
+
+                                                                       
+
+                                                                          @if( $pt->type_name == "Umbrella")      
+                                                                          @foreach ($pt->policies as $pp)
+                                                                            <tr class="ng-tns-c268-42">    
+                                                                                  
+                                                                         @if( $pp->policy_title == "UMBRELLA LIAB")
+                                                                                                                                     
+
+
+                    <td colspan="7" style="padding: 1px;"  class="ng-tns-c268-42">
+                    <table height="100">
+                        <tbody>
+
+
+
+                            <tr>
+                                <td> <mat-checkbox
+                        formcontrolname="glLiability"
+                        class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                        id="mat-checkbox-29">
+                        <input class="form-check-input" type="checkbox" value="14"                                                                            
+                                @if (isset(  $certPolicy ) )
+                                {{ $certPolicy->where('policy_id', 14)->first() ? 'checked' : '' }}
+                        @endif
+                    />
+                    </mat-checkbox>   {{ $pp->where('id', 14)->first()->policy_title }}
+                
+                
+                </td><td> <mat-checkbox
+                formcontrolname="glLiability"
+                class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                id="mat-checkbox-29">
+                <input class="form-check-input" type="checkbox" value="8"                                                                            
+                        @if (isset(  $certPolicy ) )
+                        {{ $certPolicy->where('policy_id', 15)->first() ? 'checked' : '' }}
+                @endif
+            />
+            </mat-checkbox>
+                    {{ $pp->where('id', 15)->first()->policy_title }}</td>
+                            </tr>
+
+                            <tr>
+                                <td> <mat-checkbox
+                        formcontrolname="glLiability"
+                        class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                        id="mat-checkbox-29">
+                        <input class="form-check-input" type="checkbox" value="14"                                                                            
+                                @if (isset(  $certPolicy ) )
+                                {{ $certPolicy->where('policy_id', 16)->first() ? 'checked' : '' }}
+                        @endif
+                    />
+                    </mat-checkbox>   {{ $pp->where('id', 16)->first()->policy_title }}</td>
+                
+                
+                <td> <mat-checkbox
+                formcontrolname="glLiability"
+                class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                id="mat-checkbox-29">
+                <input class="form-check-input" type="checkbox" value="8"                                                                            
+                        @if (isset(  $certPolicy ) )
+                        {{ $certPolicy->where('policy_id', 17)->first() ? 'checked' : '' }}
+                @endif
+            />
+            </mat-checkbox>
+                    {{ $pp->where('id', 17)->first()->policy_title }}</td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td> <mat-checkbox
+                        formcontrolname="glLiability"
+                        class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                        id="mat-checkbox-29">
+                        <input class="form-check-input" type="checkbox" value="14"                                                                            
+                                @if (isset(  $certPolicy ) )
+                                {{ $certPolicy->where('policy_id', 18)->first() ? 'checked' : '' }}
+                        @endif
+                    />
+                    </mat-checkbox>  {{ $pp->where('id', 18)->first()->policy_title }}</td>
+                    <td>
+                        13435
+                    </td>
+                
+                 </tr>
+                <tr>
+                    <td> 
+                
+                <mat-checkbox
+                formcontrolname="glLiability"
+                class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                id="mat-checkbox-29">
+                <input class="form-check-input" type="checkbox" value="8"                                                                            
+                        @if (isset(  $certPolicy ) )
+                        {{ $certPolicy->where('policy_id', 19)->first() ? 'checked' : '' }}
+                @endif
+            />
+            </mat-checkbox>
+                    {{ $pp->where('id', 19)->first()->policy_title }}</td>
+                    <td>
+                        13435
+                    </td>
+                            </tr>
+
+                           
+
+
+                        </tbody>
+                    </table>
+
+
+                    </td>
+                                                                        
+                                                                         @endif
+
+                                                                                </tr>
+
+                                                                                @endforeach
+                                                                                @endif
+
+
+
+
+
                                                                       </tbody>
                                                                   </table>
                                                               </td>
@@ -6575,6 +6733,12 @@
                                                                   <table width="100%" cellpadding="0" cellspacing="0"
                                                                       border="0" class="agenc_sub_table ng-tns-c268-42">
                                                                       <tbody class="ng-tns-c268-42">
+
+
+
+
+
+
                                                                           @foreach ($pt->policyLimits as $pl)
                                                                           <tr class="ng-tns-c268-42">
                                                                               <td width="80%"
@@ -6780,6 +6944,160 @@
                                                                                   class="lable_title ng-tns-c268-42">
                                                                                   {{$pt->type_name}}</td>
                                                                           </tr>
+
+
+
+                                                                          @if($pt->type_name == "General Liability")
+                                                                          @foreach ($pt->policies as $pp)
+
+                                                                        
+                                                                              
+                                                                         @if( $pp->policy_title == "COMMERCIAL GENERAL LIABILITY")
+                                                                          <tr class="ng-tns-c268-42">                                                                   
+
+
+                                                                          <td colspan="7" style="padding: 1px;"  class="ng-tns-c268-42">
+                                                                            <table height="100">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td> <mat-checkbox
+                                                                                formcontrolname="glLiability"
+                                                                                class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                                                                                id="mat-checkbox-29">
+                                                                                <input class="form-check-input" type="checkbox" value="7"                                                                            
+                                                                                      @if (isset(  $certPolicy ) )
+                                                                                      {{ $certPolicy->where('policy_id', 7)->first() ? 'checked' : '' }}
+                                                                                @endif
+                                                                            />
+                                                                            </mat-checkbox>  </td>
+                                                                            <td>{{ $pp->where('id', 7)->first()->policy_title }}</td>
+                                                                                    </tr>
+                                                                                    <tr>  <td>
+                                                                                        <mat-checkbox
+                                                                                        formcontrolname="glLiability"
+                                                                                        class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                                                                                        id="mat-checkbox-29">
+                                                                                        <input class="form-check-input" type="checkbox" value="8"                                                                            
+                                                                                              @if (isset(  $certPolicy ) )
+                                                                                              {{ $certPolicy->where('policy_id', 8)->first() ? 'checked' : '' }}
+                                                                                        @endif
+                                                                                    />
+                                                                                    </mat-checkbox>  </td>
+                                                                                        <td>{{ $pp->where('id', 8)->first()->policy_title }}         <mat-checkbox
+                                                                                            formcontrolname="glLiability"
+                                                                                            class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                                                                                            id="mat-checkbox-29">
+                                                                                            <input class="form-check-input" type="checkbox" value="9"                                                                            
+                                                                                                  @if (isset(  $certPolicy ) )
+                                                                                                  {{ $certPolicy->where('policy_id', 9)->first() ? 'checked' : '' }}
+                                                                                            @endif
+                                                                                        />
+                                                                                        </mat-checkbox>
+                                                                                        {{ $pp->where('id', 9)->first()->policy_title }}</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                        <mat-checkbox
+                                                                                        formcontrolname="glLiability"
+                                                                                        class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                                                                                        id="mat-checkbox-29">
+                                                                                        <input class="form-check-input" type="checkbox" value="10"                                                                            
+                                                                                              @if (isset(  $certPolicy ) )
+                                                                                              {{ $certPolicy->where('policy_id', 10)->first() ? 'checked' : '' }}
+                                                                                        @endif
+                                                                                    />
+                                                                                    </mat-checkbox></td>
+                                                                                        <td>{{ $pp->where('id', 10)->first()->policy_title }}</td>
+                                                                                    </tr>
+                                                                                    <tr>    <td>   <mat-checkbox
+                                                                                        formcontrolname="glLiability"
+                                                                                        class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                                                                                        id="mat-checkbox-29">
+                                                                                        <input class="form-check-input" type="checkbox" value="11"                                                                            
+                                                                                              @if (isset(  $certPolicy ) )
+                                                                                              {{ $certPolicy->where('policy_id', 11)->first() ? 'checked' : '' }}
+                                                                                        @endif
+                                                                                    />
+                                                                                    </mat-checkbox>  </td>
+                                                                                        <td>{{ $pp->where('id', 11)->first()->policy_title }}</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+          
+          
+                                                                          </td>
+                                                                         
+                                                                          @endif
+                                                                        </tr>
+
+
+
+
+                                                                          @endforeach
+                                                                          @endif
+                                                                          @if($pt->type_name == "Auto Liability")
+                                                                          @foreach ($pt->policies as $pp)
+
+                                                                        
+                                                                              
+                                                                      
+                                                                          <tr class="ng-tns-c268-42">                                                                   
+
+                                                                            <td class="text-center ng-tns-c268-42">
+                                                                                <mat-checkbox
+                                                                                    formcontrolname="glLiability"
+                                                                                    class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
+                                                                                    id="mat-checkbox-29">
+                                                                                    <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
+                                                                                    name="main_policy_sub[{{ str_replace(' ', '_', $pt->id) }}][{{ $pp->id }}]"
+                                                                                    id="{{ $pp->policy_title }}"
+
+                                                                                      @if (isset(  $certPolicy ) )
+                                                                                          {{ $certPolicy->where('policy_id', $pp->id)->first() ? 'checked' : '' }}
+                                                                                    @endif
+                                                                                />
+                                                                                </mat-checkbox>
+                                                                            </td>
+                                                                            <td colspan="3"
+                                                                                class="lable_title_normal ng-tns-c268-42">
+                                                                                <span class="ng-tns-c268-42">  {{ $pp->policy_title }}</span></td>
+                                                                        </tr>
+                                                                        
+                                                                        
+
+
+
+                                                                        
+                                                                          @endforeach                                                                          
+                                                                          @endif
+
+
+                                                                          @if($pt->type_name == "Cargo")
+                                                                          @foreach ($pt->policies as $pp)
+
+                                                                        
+                                                                              
+                                                                      
+                                                                          <tr class="ng-tns-c268-42">                                                                   
+
+                                                                              <td colspan="3"
+                                                                              class="lable_title_normal" style="border: none">
+                                                                              <span class="">  {{ $pp->policy_title }}</span></td>
+                                                                              <td class="text-center"  style="border: none">
+                                                                                <input  maxlength="20" 
+                                                                                  value=" 13435 " oninput="this.value = this.value.toUpperCase()"
+                                                                                   class="mat-input-element mat-form-field-autofill-control ng-tns-c70-67 ng-untouched 
+                                                                                   ng-pristine ng-invalid cdk-text-field-autofill-monitored"  disabled="">
+                                                                              </td>
+                                                                        </tr>
+                                                                        
+                                                                        
+
+
+
+                                                                        
+                                                                          @endforeach
+                                                                          @endif
 
 
 
