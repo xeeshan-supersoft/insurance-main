@@ -6048,8 +6048,7 @@
                                                               </td>
                                                           </tr>
 
-                                                          this start of table  GENERAL LIABILITY
-                                                          -------------------------------------------------------------------------------------------------------------
+                                                       
                                                           @foreach ($policytypes as $pt)
                                                           {{-- <tr class="ng-tns-c268-42 ng-trigger ng-trigger-slideUpDown ng-star-inserted"
                                                               style="">
@@ -6263,7 +6262,7 @@
 
                                                                           @endforeach
                                                                           @endif
-                                                                          
+
                                                                           @if($pt->type_name == "Auto Liability")
                                                                           @foreach ($pt->policies as $pp)
 
