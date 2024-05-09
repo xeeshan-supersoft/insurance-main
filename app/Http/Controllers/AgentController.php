@@ -179,6 +179,12 @@ class AgentController extends Controller
     ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
     ->get();
 
+
+    $rpts = PolicyType::with('policies', 'policyLimits')
+    ->whereIn("id",[5,7,8,9])
+    ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
+    ->get();
+
       $allpolicytypes = PolicyType::with('policies', 'policyLimits')
       ->whereIn("id",[1,2,3,4,10,6])
       ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
@@ -197,7 +203,7 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
-    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes');
+    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes' ,'rpts');
 
     $view = 'agent.form_pdf3';
     $cert = 'certificate.pdf';

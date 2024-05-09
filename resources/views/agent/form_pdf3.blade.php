@@ -2793,7 +2793,7 @@
       }
 
       .mat-form-field-appearance-outline .mat-form-field-outline {
-          display: flex;
+          display: none;
           position: absolute;
           top: .25em;
           left: 0;
@@ -2804,7 +2804,7 @@
 
       .mat-form-field-appearance-outline .mat-form-field-outline-start,
       .mat-form-field-appearance-outline .mat-form-field-outline-end {
-          border: 1px solid currentColor;
+          border: 1px solid transparent;
           min-width: 5px
       }
 
@@ -2833,7 +2833,7 @@
 
       .mat-form-field-appearance-outline .mat-form-field-outline-gap {
           border-radius: .000001px;
-          border: 1px solid currentColor;
+          border: 1px solid transparent;
           border-left-style: none;
           border-right-style: none
       }
@@ -6577,7 +6577,7 @@
                                                                       <tbody class="ng-tns-c268-42">
                                                                           @foreach ($pt->policyLimits as $pl)
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td width="50%"
+                                                                              <td width="80%"
                                                                                   class="lable_title_normal ng-tns-c268-42">
                                                                                   {{ $pl->coverage_item }}</td>
                                                                               <td class="ng-tns-c268-42">
@@ -7189,9 +7189,10 @@
                                                                       <tbody class="ng-tns-c268-42">
                                                                           @foreach ($pt->policyLimits as $pl)
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td width="50%"
+                                                                              <td width="80%"
                                                                                   class="lable_title_normal ng-tns-c268-42">
-                                                                                  {{ $pl->coverage_item }}</td>
+                                                                                  {{ $pl->coverage_item }}
+                                                                                </td>
                                                                               <td class="ng-tns-c268-42">
                                                                                   <mat-form-field appearance="outline"
                                                                                       class="mat-form-field dolinpu input_c_r ng-tns-c268-42 ng-tns-c70-70 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-should-float ng-untouched ng-pristine ng-valid ng-star-inserted"
@@ -7265,7 +7266,7 @@
 
 
 
-                                                          @foreach($allpolicytypes as $pt)
+                                                          @foreach($rpts as $pt)
                                                           {{-- <tr class="ng-tns-c268-42 ng-trigger ng-trigger-slideUpDown ng-star-inserted"
                                                               style="">
                                                               <td colspan="7" class="chkb_lable_title ng-tns-c268-42">
@@ -7385,7 +7386,7 @@
                                                                       <tbody class="ng-tns-c268-42">
                                                                           <tr height="30" class="ng-tns-c268-42">
                                                                               <td colspan="4"
-                                                                                  class="lable_title ng-tns-c268-42">
+                                                                                  class="ng-tns-c268-42">
                                                                                   {{$pt->type_name}}</td>
                                                                           </tr>
                                                                           @foreach ($pt->policies as $pp)
@@ -7625,7 +7626,7 @@
                                                                       <tbody class="ng-tns-c268-42">
                                                                           @foreach ($pt->policyLimits as $pl)
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td width="50%"
+                                                                              <td width="80%"
                                                                                   class="lable_title_normal ng-tns-c268-42">
                                                                                   {{ $pl->coverage_item }}</td>
                                                                               <td class="ng-tns-c268-42">
@@ -7842,7 +7843,7 @@
                                                                       border="0" class="tftable m-t-b-10 ng-tns-c268-42">
                                                                       <tbody class="ng-tns-c268-42">
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td rowspan="2" width="50%"
+                                                                              <td rowspan="2" width="80%"
                                                                                   class="ct_holder ng-tns-c268-42">
                                                                                   President <br class="ng-tns-c268-42">
                                                                                   The Intermodal
