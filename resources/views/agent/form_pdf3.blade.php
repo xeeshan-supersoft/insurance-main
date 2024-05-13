@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/node-waves/node-waves.css')) }}" />
     <!-- Core CSS -->
 
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset(mix('assets/css/demo.css')) }}" />
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
@@ -469,7 +469,12 @@
       .mat-fab.mat-button-disabled {
           cursor: default
       }
-
+      @media print{
+  body{ background-color:#FFFFFF; background-image:none; color:#000000 }
+  #ad{ display:none;}
+  #leftbar{ display:none;}
+  #contentarea{ width:100%;}
+}
       .mat-fab.cdk-keyboard-focused .mat-button-focus-overlay,
       .mat-fab.cdk-program-focused .mat-button-focus-overlay {
           opacity: .12
@@ -2692,7 +2697,7 @@
           position: absolute;
           top: 50%;
           right: 0;
-          margin-top: -2.5px;
+          /* margin-top: -2.5px; */
           pointer-events: none
       }
 
@@ -2715,11 +2720,11 @@
       }
 
       .mat-form-field-type-mat-native-select.mat-form-field-appearance-outline .mat-form-field-infix::after {
-          margin-top: -5px
+          /* margin-top: -5px */
       }
 
       .mat-form-field-type-mat-native-select.mat-form-field-appearance-fill .mat-form-field-infix::after {
-          margin-top: -10px
+          /* margin-top: -10px */
       }
 
       .mat-form-field-appearance-legacy .mat-form-field-label {
@@ -4719,7 +4724,7 @@
               style="flex-direction: column; box-sizing: border-box; display: flex; place-content: stretch space-between; align-items: stretch;">
               <div fxlayout="row wrap" fxflex="100%" fxflex.xs="100%" fxflex.sm="100%"
                   class="widget-group tableBox pt-0 ng-tns-c268-42 ng-trigger ng-trigger-animateStagger"
-                  style="flex-flow: wrap; box-sizing: border-box; display: flex; flex: 1 1 100%; max-height: 100%;">
+                  >
                   <div fxlayout="row" fxflex="100%" fxflex.xs="100%" fxflex.sm="100%"
                       class="widget ng-tns-c268-42 ng-trigger ng-trigger-animate"
                       style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 100%; max-width: 100%;">
@@ -4939,15 +4944,15 @@
                                                           <tr class="ng-tns-c268-42">
                                                               <td width="35%" valign="top" class="p-0 ng-tns-c268-42">
                                                                   <table width="100%" cellpadding="0" cellspacing="0"
-                                                                      border="0" style="min-height: 205px;"
+                                                                      border="0" style="min-height:100px;"
                                                                       class="ng-tns-c268-42">
                                                                       <tbody class="ng-tns-c268-42">
-                                                                          <tr height="173" class="ng-tns-c268-42">
+                                                                          <tr height="70" class="ng-tns-c268-42">
                                                                               <td width="100" valign="middle"
                                                                                   class="lable_title ng-tns-c268-42">
                                                                                   INSURED</td>
                                                                               <td valign="top"
-                                                                                  class="lable_title_normal pt-30 ng-tns-c268-42">
+                                                                                  class="lable_title_normal pt-3">
                                                                                   {{ $driver->name }}<br
                                                                                       class="ng-tns-c268-42">
                                                                                       {{ $driver->truckers[0]->address }} <br class="ng-tns-c268-42">
@@ -4965,60 +4970,31 @@
                                                                   <table width="100%" cellpadding="0" cellspacing="0"
                                                                       border="0" formgroupname="iaInsurerForm"
                                                                       class="agenc_sub_table a_s_t_b ng-tns-c268-42 ng-untouched ng-pristine ng-valid"
-                                                                      style="min-height: 205px;">
+                                                                      style="min-height:100px;">
                                                                       <tbody class="ng-tns-c268-42">
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td width="22%"
-                                                                                  class="w-120 tab_fild_set ng-tns-c268-42">
+                                                                              <td width="18%"
+                                                                                  class="w-120 tab_fild_set ng-tns-c268-42 td">
                                                                               </td>
-                                                                              <td width="26%" align="center"
-                                                                                  class="lable_title ng-tns-c268-42">
+                                                                              <td width="35%" align="center"
+                                                                                  class="lable_title ng-tns-c268-42 td">
                                                                                   INSURER(S)
                                                                                   AFFORDING COVERAGE</td>
-                                                                              <td width="26%" align="center"
-                                                                                  class="lable_title tab_fild_set ng-tns-c268-42">
+                                                                              <td width="20%" align="center"
+                                                                                  class="lable_title tab_fild_set ng-tns-c268-42 td">
                                                                                   NAIC
                                                                                   #</td>
-                                                                              <td width="26%" align="center"
-                                                                                  class="lable_title tab_fild_set ng-tns-c268-42">
+                                                                              <td width="18%" align="center"
+                                                                                  class="lable_title tab_fild_set ng-tns-c268-42 td">
                                                                                   BEST
                                                                                   RATING</td>
                                                                           </tr>
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td class="lable_title ng-tns-c268-42">
+                                                                              <td class="lable_title ng-tns-c268-42 td">
                                                                                   INSURER A : </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-49 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-49">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-49">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-49 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-49"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-49"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-49">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-49 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-49"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-49"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-49">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                
+                                                                                          
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-49">
                                                                                                   <input matinput=""
@@ -5044,51 +5020,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-49"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-49">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-49 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-49">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                          
                                                                               </td>
-                                                                              <td class="opd_td ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-50 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-50">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-50">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-50 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-50"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-50"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-50">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-50 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-50"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-50"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-50">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="opd_td ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-50">
                                                                                                   <input matinput=""
@@ -5105,57 +5040,11 @@
                                                                                                       aria-autocomplete="list"
                                                                                                       aria-expanded="false"
                                                                                                       aria-haspopup="listbox" readonly>
-                                                                                                  <mat-autocomplete
-                                                                                                      panelwidth="auto"
-                                                                                                      class="mat-autocomplete ng-tns-c70-50">
-                                                                                                  </mat-autocomplete><span
-                                                                                                      class="mat-form-field-label-wrapper ng-tns-c70-50"></span>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-50">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-50 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-50">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                                     </div>
+                                                                                        
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-51 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-51">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-51">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-51 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-51"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-51"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-51">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-51 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-51"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-51"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-51">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-51">
                                                                                                   <input
@@ -5170,55 +5059,14 @@
                                                                                                       aria-required="false" readonly><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-51"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-51">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-51 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-51">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                         
                                                                               </td>
                                                                           </tr>
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td class="lable_title ng-tns-c268-42">
+                                                                              <td class="lable_title ng-tns-c268-42 td">
                                                                                   INSURER B : </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-52 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-52">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-52">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-52 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-52"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-52"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-52">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-52 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-52"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-52"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-52">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-52">
                                                                                                   <input matinput=""
@@ -5241,51 +5089,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-52"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-52">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-52 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-52">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                          
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-53 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-53">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-53">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-53 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-53"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-53"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-53">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-53 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-53"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-53"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-53">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-53">
                                                                                                   <input matinput=""
@@ -5308,51 +5115,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-53"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-53">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-53 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-53">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                         
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-54 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-54">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-54">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-54 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-54"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-54"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-54">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-54 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-54"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-54"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-54">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-54">
                                                                                                   <input
@@ -5367,55 +5133,14 @@
                                                                                                       aria-required="false"><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-54"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-54">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-54 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-54">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                         
                                                                               </td>
                                                                           </tr>
-                                                                          <tr class="ng-tns-c268-42">
-                                                                              <td class="lable_title ng-tns-c268-42">
+                                                                          <tr class="ng-tns-c268-42 ">
+                                                                              <td class="lable_title ng-tns-c268-42 td">
                                                                                   INSURER C : </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-55 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-55">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-55">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-55 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-55"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-55"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-55">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-55 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-55"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-55"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-55">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-55">
                                                                                                   <input matinput=""
@@ -5438,51 +5163,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-55"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-55">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-55 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-55">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                         
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-56 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-56">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-56">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-56 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-56"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-56"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-56">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-56 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-56"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-56"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-56">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                  
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-56">
                                                                                                   <input matinput=""
@@ -5505,51 +5189,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-56"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-56">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-56 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-56">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                       
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-57 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-57">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-57">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-57 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-57"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-57"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-57">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-57 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-57"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-57"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-57">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-57">
                                                                                                   <input
@@ -5564,55 +5207,14 @@
                                                                                                       aria-required="false"><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-57"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-57">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-57 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-57">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                          
                                                                               </td>
                                                                           </tr>
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td class="lable_title ng-tns-c268-42">
+                                                                              <td class="lable_title ng-tns-c268-42 td">
                                                                                   INSURER D : </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-58 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-58">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-58">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-58 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-58"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-58"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-58">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-58 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-58"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-58"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-58">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-58">
                                                                                                   <input matinput=""
@@ -5635,51 +5237,9 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-58"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-58">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-58 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-58">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
-                                                                              </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-59 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-59">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-59">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-59 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-59"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-59"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-59">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-59 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-59"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-59"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-59">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                                            </td >
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-59">
                                                                                                   <input matinput=""
@@ -5702,51 +5262,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-59"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-59">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-59 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-59">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                          
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-60 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-60">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-60">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-60 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-60"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-60"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-60">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-60 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-60"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-60"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-60">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-60">
                                                                                                   <input
@@ -5761,55 +5280,14 @@
                                                                                                       aria-required="false"><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-60"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-60">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-60 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-60">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                          
                                                                               </td>
                                                                           </tr>
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td class="lable_title ng-tns-c268-42">
+                                                                              <td class="lable_title td ng-tns-c268-42">
                                                                                   INSURER E : </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-61 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-61">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-61">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-61 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-61"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-61"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-61">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-61 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-61"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-61"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-61">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                 
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-61">
                                                                                                   <input matinput=""
@@ -5832,51 +5310,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-61"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-61">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-61 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-61">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                        
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-62 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-62">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-62">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-62 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-62"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-62"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-62">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-62 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-62"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-62"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-62">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                  
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-62">
                                                                                                   <input matinput=""
@@ -5899,51 +5336,10 @@
                                                                                                   </mat-autocomplete><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-62"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-62">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-62 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-62">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                         
                                                                               </td>
-                                                                              <td class="ng-tns-c268-42">
-                                                                                  <mat-form-field appearance="outline"
-                                                                                      class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-63 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
-                                                                                      style="">
-                                                                                      <div
-                                                                                          class="mat-form-field-wrapper ng-tns-c70-63">
-                                                                                          <div
-                                                                                              class="mat-form-field-flex ng-tns-c70-63">
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline ng-tns-c70-63 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-63"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-63"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-63">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-63 ng-star-inserted">
-                                                                                                  <div class="mat-form-field-outline-start ng-tns-c70-63"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div class="mat-form-field-outline-gap ng-tns-c70-63"
-                                                                                                      style="width: 0px;">
-                                                                                                  </div>
-                                                                                                  <div
-                                                                                                      class="mat-form-field-outline-end ng-tns-c70-63">
-                                                                                                  </div>
-                                                                                              </div>
+                                                                              <td class="ng-tns-c268-42 td">
+                                                                                  
                                                                                               <div
                                                                                                   class="mat-form-field-infix ng-tns-c70-63">
                                                                                                   <input
@@ -5958,18 +5354,7 @@
                                                                                                       aria-required="false"><span
                                                                                                       class="mat-form-field-label-wrapper ng-tns-c70-63"></span>
                                                                                               </div>
-                                                                                          </div>
-                                                                                          <div
-                                                                                              class="mat-form-field-subscript-wrapper ng-tns-c70-63">
-                                                                                              <div class="mat-form-field-hint-wrapper ng-tns-c70-63 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                                  style="opacity: 1; transform: translateY(0%);">
-                                                                                                  <div
-                                                                                                      class="mat-form-field-hint-spacer ng-tns-c70-63">
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </mat-form-field>
+                                                                                          
                                                                               </td>
                                                                           </tr>
                                                                       </tbody>
@@ -6035,12 +5420,12 @@
                                                               </td>
                                                               <td width="10%" class="lable_title ng-tns-c268-42">
                                                                   <div align="left" class="ng-tns-c268-42">POLICY
-                                                                      EFFECTIVE<br class="ng-tns-c268-42">DATE
+                                                                      EFF<br class="ng-tns-c268-42">DATE
                                                                       (MM/DD/YYYY)</div>
                                                               </td>
                                                               <td width="10%" class="lable_title ng-tns-c268-42">
                                                                   <div align="left" class="ng-tns-c268-42">POLICY
-                                                                      EXPIRATION<br class="ng-tns-c268-42">DATE
+                                                                      EXP<br class="ng-tns-c268-42">DATE
                                                                       (MM/DD/YYYY)</div>
                                                               </td>
                                                               <td width="28%" class="lable_title ng-tns-c268-42">
@@ -6155,7 +5540,7 @@
                                                                   <table width="100%" cellpadding="0" cellspacing="0"
                                                                       border="0" class="agenc_sub_table ng-tns-c268-42">
                                                                       <tbody class="ng-tns-c268-42">
-                                                                          <tr height="30" class="ng-tns-c268-42">
+                                                                          <tr height="10" class="ng-tns-c268-42">
                                                                               <td colspan="4"
                                                                                   class="lable_title ng-tns-c268-42">
                                                                                   {{$pt->type_name}}</td>
@@ -6170,7 +5555,7 @@
                                                                           <tr class="ng-tns-c268-42">
 
 
-                                                                          <td colspan="7" style="padding: 1px;"  class="ng-tns-c268-42">
+                                                                          <td colspan="7" style="padding: px;"  class="ng-tns-c268-42">
                                                                             <table height="100">
                                                                                 <tbody>
                                                                                     <tr>
@@ -6478,7 +5863,7 @@
                                                                       border="0" class="agenc_sub_table ng-tns-c268-42">
                                                                       <tbody class="ng-tns-c268-42">
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td align="center" class="ng-tns-c268-42">
+                                                                              <td align="center" class="ng-tns-c268-42 ">
                                                                                   <mat-form-field appearance="outline"
                                                                                       class="mat-form-field input_c_r w-95p ng-tns-c268-42 ng-tns-c70-67 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-invalid ng-star-inserted"
                                                                                       style="">
@@ -6697,10 +6082,10 @@
 
                                                                           @foreach ($pt->policyLimits as $pl)
                                                                           <tr class="ng-tns-c268-42">
-                                                                              <td width="80%"
-                                                                                  class="lable_title_normal ng-tns-c268-42">
+                                                                              <td width="60%"
+                                                                                  class="lable_title_normal ng-tns-c268-42 td">
                                                                                   {{ $pl->coverage_item }}</td>
-                                                                              <td class="ng-tns-c268-42">
+                                                                              <td  width="40%" class="ng-tns-c268-42 td">
                                                                                   <mat-form-field appearance="outline"
                                                                                       class="mat-form-field dolinpu input_c_r ng-tns-c268-42 ng-tns-c70-70 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-should-float ng-untouched ng-pristine ng-valid ng-star-inserted"
                                                                                       style="">
@@ -6737,16 +6122,12 @@
                                                                                                   <span matprefix=""
                                                                                                       class="ng-tns-c70-70">$&nbsp;</span>
                                                                                               </div>
-                                                                                              <div
-                                                                                                  class="mat-form-field-infix ng-tns-c70-70">
-                                                                                                  <input type="text" class="form-control" id="{{ $pl->coverage_item }}"
-                                                                                                      name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
-                                                                                                      placeholder=""
-                                                                                                      value="@if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0}}@endif"
-                                                                                                      aria-invalid="false"
-                                                                                                      aria-required="true"><span
-                                                                                                      class="mat-form-field-label-wrapper ng-tns-c70-70"></span>
-                                                                                              </div>
+                                                                                             
+                                                                                                  
+                                                                                                  <span   class="">
+                                                                                                   @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0}}@endif
+                                                                                                </span>
+                                                                                              
                                                                                           </div>
                                                                                           <div
                                                                                               class="mat-form-field-subscript-wrapper ng-tns-c70-70">
@@ -6966,48 +6347,20 @@
       </div>
   </div>
 </div>
-@if ($r==1)
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
 
 <script type="text/javascript">
 
-    var inputFields = document.querySelectorAll('input, select');
-     inputFields.forEach(function(input) {
-         input.disabled = true;
-     });
-     var btn = document.getElementById('btn');
- if (btn) { btn.style.display = 'none'; }
 
- window.jsPDF = window.jspdf.jsPDF;
- window.html2canvas = html2canvas;
+ 
+ // Trigger the browser's print functionality when the window finishes loading
+ window.onload = function() {
+     window.print();
+ };
 
-var doc = new jsPDF();
 
-var elementHTML = document.querySelector("#contentToPdf");
-
-doc.html(elementHTML, {
-    callback: function(doc) {
-        // Save the PDF
-        //window.open(doc.output('bloburl'), '_blank');
-    },
-    margin: [10, 10, 10, 10],
-    autoPaging: 'text',
-    x: 0,
-    y: 0,
-    width: 150, //target width in the PDF document
-    windowWidth: 1250 //window width in CSS pixels
-});
-//window.close();
 </script>
-@endif
+
 
 </div>
 </body>
