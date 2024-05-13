@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+
 class AgentController extends Controller
 {
   public function __construct()
@@ -188,7 +190,7 @@ class AgentController extends Controller
       $allpolicytypes = PolicyType::with('policies', 'policyLimits')
       ->whereIn("id",[1,2,3,4,10,6])
       ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
-      
+
       ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
       ->get();
 
@@ -205,10 +207,13 @@ class AgentController extends Controller
 
     $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes' ,'rpts');
 
-    $view = 'agent.form_pdf3';
+    $view = 'agent.form_pdf4';
     $cert = 'certificate.pdf';
 
-    return view($view , $data);
+    $pdf = PDF::loadView($view);
+    return $pdf->stream('pdf.pdf');
+
+    //return view($view , $data);
   }
 
   /**
