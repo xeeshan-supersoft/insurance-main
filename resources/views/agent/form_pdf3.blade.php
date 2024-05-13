@@ -4754,8 +4754,8 @@
                                                                                   src="{{ asset('assets/img/nlogo.png')}}"
                                                                                       width="91" height="39"
                                                                                       class="ng-tns-c268-42">
-                                                                                  &nbsp;&nbsp;INTERMODAL INTERCHANGE
-                                                                                  CERTIFICATE OF
+                                                                                  &nbsp;&nbsp;
+                                                                                  CERTIFICATE OF LIABILITY
                                                                                   INSURANCE</span></td>
                                                                           <td width="180" class="date_top ng-tns-c268-42">
                                                                               {{-- <div class="date_lable ng-tns-c268-42">DATE
