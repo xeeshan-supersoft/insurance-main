@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+//use misterspelik\LaravelPdf\Facades\Pdf;
 
 class AgentController extends Controller
 {
@@ -173,39 +174,32 @@ class AgentController extends Controller
         'UMBRELLA LIA',
         'WORKERS COMPENSATION'
     ];
-    // $policytypes = PolicyType::with('policies', 'policyLimits')
-    //   ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
-    //   ->get();
-    $policytypes = PolicyType::with('policies', 'policyLimits')
+
+    $policyExistTypes = PolicyType::with('policies', 'policyLimits')
     ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
     ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
     ->get();
 
-
-    $rpts = PolicyType::with('policies', 'policyLimits')
-    ->whereIn("id",[5,7,8,9])
+    $policyNotExistTypes = PolicyType::with('policies', 'policyLimits')
+    ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
     ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
     ->get();
 
-      $allpolicytypes = PolicyType::with('policies', 'policyLimits')
-      ->whereIn("id",[1,2,3,4,10,6])
-      ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
+    $policytypes = $policyExistTypes->merge($policyNotExistTypes);
 
-      ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
-      ->get();
-
-      $allpolicytypes = $allpolicytypes->sortBy(function ($el) use ($customOrder) {
+    $policytypes = $policytypes->sortBy(function ($el) use ($customOrder) {
         // Get the index of the current fruit in the custom order array
         $index = array_search($el->type_name, $customOrder);
         // If the fruit is not found in the custom order array, assign a high index
         return $index === false ? count($customOrder) : $index;
     });
+
     $r = 1;
 
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
-    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes' ,'rpts');
+    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
 
     $view = 'agent.form_pdf3';
     $cert = 'certificate.pdf';
