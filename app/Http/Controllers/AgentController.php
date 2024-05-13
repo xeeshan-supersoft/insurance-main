@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
-//use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 //use misterspelik\LaravelPdf\Facades\Pdf;
 
 class AgentController extends Controller
