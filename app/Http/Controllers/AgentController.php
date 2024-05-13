@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 //use misterspelik\LaravelPdf\Facades\Pdf;
 
 class AgentController extends Controller
@@ -204,7 +204,7 @@ class AgentController extends Controller
     $view = 'agent.form_pdf3';
     $cert = 'certificate.pdf';
 
-    //$pdf = PDF::loadView($view, $data);
+    $pdf = PDF::loadView($view, $data);
     //return $pdf->stream('pdf.pdf');
 
     return view($view , $data);
