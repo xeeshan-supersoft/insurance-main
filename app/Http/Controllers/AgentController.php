@@ -210,6 +210,64 @@ class AgentController extends Controller
     return view($view , $data);
   }
 
+  public function showPDF2(string $id)
+  {
+    $certificate = Certificate::with('policies', 'policyLimits')
+      ->where('id', $id)
+      ->first();
+
+    $certPolicy = CertificatePolicy::with('policyType', 'policy')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+    $certPolimit = CertificatePolicyLimit::with('certificate', 'policyType', 'policyLimit')
+      ->where('certificate_id', $certificate->id)
+      ->get();
+
+      $customOrder = [
+        'General Liability',
+        'Auto Liability',
+        'Cargo',
+        'RAILER INTERCHANGEPHYSICAL DAMAG',
+        'UMBRELLA LIA',
+        'WORKERS COMPENSATION'
+    ];
+
+    $policyExistTypes = PolicyType::with('policies', 'policyLimits')
+    ->whereIn('id', $certPolicy->map->only(['policy_type_id']))
+    ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
+    ->get();
+
+    $policyNotExistTypes = PolicyType::with('policies', 'policyLimits')
+    ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
+    ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
+    ->get();
+
+    $policytypes = $policyExistTypes->merge($policyNotExistTypes);
+
+    $policytypes = $policytypes->sortBy(function ($el) use ($customOrder) {
+        // Get the index of the current fruit in the custom order array
+        $index = array_search($el->type_name, $customOrder);
+        // If the fruit is not found in the custom order array, assign a high index
+        return $index === false ? count($customOrder) : $index;
+    });
+
+    $r = 1;
+
+    $driver = User::with('truckers')->find($certificate->client_user_id);
+    $agent = User::with('agencies')->find($certificate->producer_user_id);
+
+    $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
+
+    $view = 'agent.form_pdf4';
+    $cert = 'certificate.pdf';
+
+    $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
+    return $pdf->stream('pdf.pdf');
+
+    //return view($view , $data);
+  }
+
   /**
    * Show the form for editing the specified resource.
    */
