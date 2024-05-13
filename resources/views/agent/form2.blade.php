@@ -5,7 +5,8 @@
 @extends('layouts/contentNavbarLayout')
 @section('title', ' Certificate Form')
 @section('content')
-    <h4 class="py-3 mb-4"><span class="text-muted fw-light">INSURANCE/</span>INTERMODAL INTERCHANGE CERTIFICATE OF INSURANCE
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">INSURANCE/</span>CERTIFICATE OF LIABILITY
+        INSURANCE</span></td>
     </h4>
     <p>THIS CERTIFICATE IS ISSUED AS A MATTER OF INFORMATION ONLY AND CONFERS NO RIGHTS UPON THE CERTIFICATE HOLDER. THIS
         CERTIFICATE DOES NOT AFFIRMATIVELY OR NEGATIVELY AMEND, EXTEND OR ALTER THE COVERAGE AFFORDED BY THE POLICIES
