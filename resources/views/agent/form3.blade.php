@@ -7,6 +7,14 @@ $navbarHideToggle = false;
 
 @push('body-css')
 <style>
+
+#acordPage input[type="text"], textarea {
+
+background-color : rgb(128, 128, 128, 0.562) !important;
+
+}
+
+
     [_nghost-rgn-c237] {
         position: relative;
         display: flex;

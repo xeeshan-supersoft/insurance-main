@@ -16,6 +16,11 @@
         .select2-container--default .select2-selection--single {
             height: 50px;
         }
+        #acordPage input[type="text"], textarea {
+
+background-color : rgb(128, 128, 128, 0.562) !important;
+
+}
     </style>
     <!-- Core CSS -->
     <style>
