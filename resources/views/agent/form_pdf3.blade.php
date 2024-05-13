@@ -4753,8 +4753,16 @@
                                                                                   class="acord_title ng-tns-c268-42"><img
                                                                                   src="{{ asset('assets/img/nlogo.png')}}"
                                                                                       width="91" height="39"
-                                                                                      class="ng-tns-c268-42">
-                                                                                  &nbsp;&nbsp;
+                                                                                      class="ng-tns-c268-42 text-center">
+                                                                                  &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                  &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; 
+                                                                                   &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                     &nbsp;&nbsp; 
+                                                                                      &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                        &nbsp;&nbsp;
+                                                                                        &nbsp;&nbsp; 
+                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                          &nbsp;&nbsp;
                                                                                   CERTIFICATE OF LIABILITY
                                                                                   INSURANCE</span></td>
                                                                           <td width="180" class="date_top ng-tns-c268-42">
