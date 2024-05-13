@@ -100,6 +100,7 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
   Route::post('/update', [ac::class, 'update'])->name('update_cert');
 
   Route::get('/get_pdf/{id}', [ac::class, 'showPDF'])->name('get_pdf');
+  Route::get('/get_pdf2/{id}', [ac::class, 'showPDF2'])->name('get_pdf2');
 
   //Route::get('/list', [AdminController::class, 'list'])->name('list');
   //Route::get('/dashh', [Analytics::class, 'index'])->name('dashboard-analytics');
