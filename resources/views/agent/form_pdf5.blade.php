@@ -299,9 +299,11 @@
                                                           </td>
                                                           @else
                                                           <td class="ng-tns-c268-42 td">
-                                                        </td>
-                                                        <td class="opd_td ng-tns-c268-42 td">
-                                                        </td>
+                                                            <div class="mat-form-field-infix ng-tns-c70-49"></div>
+                                                          </td>
+                                                          <td class="opd_td ng-tns-c268-42 td">
+                                                            <div class="mat-form-field-infix ng-tns-c70-49"></div>
+                                                          </td>
                                                           @endif
                                                       </tr>
                                                       @php
