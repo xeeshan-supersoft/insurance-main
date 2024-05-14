@@ -329,7 +329,7 @@
                               class="tftable ng-tns-c268-42">
                               <tbody class="ng-tns-c268-42">
                                 <tr class="ng-tns-c268-42">
-                                  <td colspan="7" class="ng-tns-c268-42">
+                                  <td colspan="8" class="ng-tns-c268-42">
                                     <div style="font-family: Arial; font-size: 11px; margin: 2px;"
                                       class="ng-tns-c268-42"> THE POLICIES OF INSURANCE
                                       LISTED BELOW
@@ -697,9 +697,8 @@
                                                 @endforeach
                                                 @endif
 
-                                                @if($pt->type_name == "Employers Liability")
+                                                @if($pt->type_name == "Work Comp")
                                                 @foreach ($pt->policies as $pp)
-                                                @if($pp->policy_title == "ANY PROPRIETOR/PARTNER/EXECUTIVE OFFICER/MEMBER EXCLUDED?")
                                                 <tr>
                                                     <td>
                                                         <table>
@@ -707,16 +706,7 @@
                                                                 <tr>
                                                                     <td>
                                                                       <div class="checkbox-container">
-                                                                          @php
-                                                                              $policyId = 20;
-                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
-                                                                          @endphp
-                                                                          @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
-                                                                          @else
-                                                                              <span class="checkbox"></span>
-                                                                          @endif
-                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                          <label>{{ $pp->policy_title }}</label>
                                                                       </div>
                                                                     </td>
                                                                 </tr>
@@ -724,7 +714,6 @@
                                                         </table>
                                                     </td>
                                                 </tr>
-                                                @endif
                                                 @endforeach
                                                 @endif
                                             </tbody>
@@ -761,20 +750,35 @@
                                     <td valign="top">
                                         <table width="100%" cellpadding="0" cellspacing="0">
                                             <tbody>
-                                                @foreach ($pt->policyLimits as $pl)
-                                                <tr>
+                                              @if(!empty($pt->policyLimits))
+                                                  @foreach ($pt->policyLimits as $pl)
+                                                    <tr>
+                                                        <td>{{ $pl->coverage_item }}</td>
+                                                        <td width="40%">
+                                                            <div>
+                                                                <span>$&nbsp;
+                                                                    <span>
+                                                                        @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                  @endforeach
+                                              @else
+                                                  <tr>
                                                     <td>{{ $pl->coverage_item }}</td>
                                                     <td width="40%">
                                                         <div>
                                                             <span>$&nbsp;
                                                                 <span>
-                                                                    @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif
+                                                                  N/A
                                                                 </span>
                                                             </span>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                @endforeach
+                                              @endif
                                             </tbody>
                                         </table>
                                     </td>
@@ -782,7 +786,7 @@
                                 @endforeach
 
                                 <tr class="ng-tns-c268-42">
-                                  <td colspan="7" style="padding: 10px;" class="ng-tns-c268-42">
+                                  <td colspan="8" style="padding: 10px;" class="ng-tns-c268-42">
                                     <div style="font-size: 11px; height:30px;" class="ng-tns-c268-42">
                                       DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES  (Attach ACORD 101, Additional Remarks Schedule, if more space is required) </div>
 
@@ -807,15 +811,15 @@
                                       class="tftable m-t-b-10 ng-tns-c268-42">
                                       <tbody class="ng-tns-c268-42">
                                         <tr class="ng-tns-c268-42">
-                                          <td rowspan="2" width="80%">
+                                          <td rowspan="2" width="50%">
                                             President <br />
-                                            The Intermodal
+                                            The Acme
                                             Association of North America <br /> 11785
                                             Beltsville Drive
                                             <br /> Suite
                                             1100<br />
                                             Calverton, MD
-                                            20705-4048<br />
+                                            20705-4048
                                           </td>
                                           <td class="fot_titel ng-tns-c268-42"> SHOULD
                                             ANY OF THE
@@ -844,8 +848,11 @@
                         </form>
                       </div>
                     </div>
-                    <div class="rights_reserved ng-tns-c268-42">2006 - 2024 ACORD CORPORATION. All rights
-                      reserved.</div>
+                    <footer>
+                      <div class="rights_reserved ng-tns-c268-42">
+                        2006 - 2024 ACORD CORPORATION. All rights reserved.
+                      </div>
+                    </footer>
                   </div>
 
                 </div>
