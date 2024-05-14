@@ -81,10 +81,9 @@ function validateInput(event) {
 
     // Check if the corresponding insurance input has value
     var correspondingInputName = insuranceInputs[inputValue];
-    console.log(correspondingInputName);
-    if (correspondingInputName) {
+    if (correspondingInputName !== undefined) {
         var input = document.getElementById(correspondingInputName);
-        console.log(input.value);
+        //console.log(correspondingInputName);
         if (input.value.trim() === '') {
             const swalWithBootstrapButtons = Swal.mixin({
                          customClass: {
@@ -100,6 +99,20 @@ function validateInput(event) {
                      });
                      event.target.value = ''; // Clear the input value
         }
+    } else {
+      const swalWithBootstrapButtons = Swal.mixin({
+                         customClass: {
+                             confirmButton: "btn btn-danger"
+                         },
+                         buttonsStyling: false
+                     });
+                     swalWithBootstrapButtons.fire({
+                         title: 'Error!',
+                         text: 'Error: Please Select the Insurance from Range A, B, C, D, E',
+                         icon: 'error',
+                         confirmButtonText: 'OK'
+                     });
+                     event.target.value = '';
     }
 }
 
