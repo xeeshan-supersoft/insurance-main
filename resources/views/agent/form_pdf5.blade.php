@@ -849,8 +849,8 @@
                       </div>
                     </div>
                     <footer>
-                      <div class="rights_reserved ng-tns-c268-42">
-                        2006 - 2024 ACORD CORPORATION. All rights reserved.
+                      <div class="rights_reserved ng-tns-c268-42" style="font-size: 10px;">
+                        © 1988-{{ date('Y') }} ACORD CORPORATION.  All rights reserved.
                       </div>
                     </footer>
                   </div>
