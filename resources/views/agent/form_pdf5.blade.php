@@ -29,6 +29,30 @@
 
   <link rel="stylesheet" href="{{ asset('assets/css/accord.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}" />
+
+  <Style>
+    .checkbox-container {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .checkbox {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border: 1px solid #999;
+        border-radius: 2px;
+    }
+
+    .check-symbol {
+        display: inline-block;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #4CAF50; /* Change color as needed */
+    }
+  </Style>
 </head>
 
 <body>
@@ -176,7 +200,7 @@
                                           <tr class="ng-tns-c268-42">
                                             <td class="lable_title tab_fild_set ng-tns-c268-42">
                                               CONTACT NAME:</td>
-                                            <td colspan="3" class="ng-tns-c268-42"> Nick
+                                            <td colspan="3" class="ng-tns-c268-42">
                                               {{ $agent->name }}
                                             </td>
                                           </tr>
@@ -220,7 +244,7 @@
                                           <tr height="70" class="ng-tns-c268-42">
                                             <td width="100" valign="middle" class="lable_title ng-tns-c268-42">
                                               INSURED
-
+                                              <br />
                                               {{ $driver->name }}<br class="ng-tns-c268-42">
                                               {{ $driver->truckers[0]->address }} <br class="ng-tns-c268-42">
                                               {{ $driver->truckers[0]->city }}
@@ -250,28 +274,45 @@
                                             </td>
                                           </tr>
 
-                                          @foreach ($certPolicy as $cp)
-                                           @foreach ($cp->policyType->certificatePolicies as $scp)
-                                           <tr class="ng-tns-c268-42">
-                                            <td class="lable_title ng-tns-c268-42 td">
-                                              INSURER {{ $scp->insuranceProvider->insurance_provider_code }} : </td>
-                                            <td class="ng-tns-c268-42 td">
+                                          @php
+                                          $arr = ['A', 'B', 'C', 'D', 'E'];
+                                          $count = 0;
+                                      @endphp
 
-                                              <div class="mat-form-field-infix ng-tns-c70-49">
-                                                  @if (isset(  $certPolicy ) ){{ $scp->insuranceProvider->name }} @endif
-                                              </div>
-
-                                            </td>
-                                            <td class="opd_td ng-tns-c268-42 td">
-                                              <div class="mat-form-field-infix ng-tns-c70-50">
-                                                @if (isset(  $certPolicy ) ){{ $scp->insuranceProvider->naic_number }} @endif
-                                              </div>
-                                            </td>
-                                          </tr>
-
-                                           @endforeach
-
+                                      @foreach ($certPolicy as $cp)
+                                          @foreach ($cp->policyType->certificatePolicies as $scp)
+                                              @if ($count < 5)
+                                                      <tr class="ng-tns-c268-42">
+                                                          <td class="lable_title ng-tns-c268-42 td">
+                                                              INSURER {{ $arr[$count] }} :
+                                                          </td>
+                                                          @if ($scp->insurance_provider_code == $arr[$count])
+                                                          <td class="ng-tns-c268-42 td">
+                                                              <div class="mat-form-field-infix ng-tns-c70-49">
+                                                                  @if (isset($certPolicy)){{ $scp->insuranceProvider->name }}@endif
+                                                              </div>
+                                                          </td>
+                                                          <td class="opd_td ng-tns-c268-42 td">
+                                                              <div class="mat-form-field-infix ng-tns-c70-50">
+                                                                  @if (isset($certPolicy)){{ $scp->insuranceProvider->naic_number }}@endif
+                                                              </div>
+                                                          </td>
+                                                          @else
+                                                          <td class="ng-tns-c268-42 td">
+                                                        </td>
+                                                        <td class="opd_td ng-tns-c268-42 td">
+                                                        </td>
+                                                          @endif
+                                                      </tr>
+                                                      @php
+                                                          $count++; // Increment the counter
+                                                      @endphp
+                                              @else
+                                                  @break {{-- Break out of the loop if the counter reaches 5 --}}
+                                              @endif
                                           @endforeach
+                                      @endforeach
+
 
                                         </tbody>
                                       </table>
@@ -308,11 +349,16 @@
                                 <tr id="scrollToPolicyHeaderTR" class="ng-tns-c268-42">
                                   <td width="3%" class="lable_title ng-tns-c268-42">INSR LTR
                                   </td>
-                                  <td width="20%" class="lable_title ng-tns-c268-42">
-                                    <div  class="ng-tns-c268-42">TYPE OF
-                                      INSURANCE</div>
+                                  <td width="30%" class="lable_title ng-tns-c268-42">
+                                    <div  class="ng-tns-c268-42">TYPE OF INSURANCE</div>
                                   </td>
-                                  <td width="20%" class="lable_title ng-tns-c268-42">
+                                  <td width="3%" class="lable_title ng-tns-c268-42">
+                                    <div  class="ng-tns-c268-42">ADDL INSR</div>
+                                  </td>
+                                  <td width="3%" class="lable_title ng-tns-c268-42">
+                                    <div  class="ng-tns-c268-42">SUBR WVD</div>
+                                  </td>
+                                  <td width="10%" class="lable_title ng-tns-c268-42">
                                     <div  class="ng-tns-c268-42">POLICY NUMBER
                                     </div>
                                   </td>
@@ -333,261 +379,411 @@
 
                                 @foreach ($policytypes->whereIn('id', [1,2,5,10]) as $pt)
                                 <tr>
-                                  <td >
-                                    <div>
-                                      <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
-                                    </div>
-                                  </td>
+                                    <td>
+                                        <div>
+                                            <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
+                                        </div>
+                                    </td>
 
-                                  <td valign="middle">
-                                    <table width="100%" cellpadding="0" cellspacing="0">
-                                      <tbody>
-                                        <tr>
-                                          <td>
-                                            {{$pt->type_name}}
-                                          </td>
-                                        </tr>
-
-                                        @if($pt->type_name == "General Liability")
-                                        @foreach ($pt->policies as $pp)
-
-                                          @if( $pp->policy_title == "COMMERCIAL GENERAL LIABILITY")
-                                          <tr>
-                                            <td>
-                                              <table>
-                                                <tbody>
-                                                  <tr>
+                                    <td valign="middle">
+                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                                <tr>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" value="7"
-                                                        @if(isset( $certPolicy ) )
-                                                          {{ $certPolicy->where('policy_id', 7)->first() ? 'checked' : '' }}
-                                                          @endif />
-                                                          {{ $pp->where('id', 7)->first()->policy_title }}
+                                                        {{$pt->type_name}}
                                                     </td>
-                                                  </tr>
-                                                  <tr>
+                                                </tr>
+
+                                                @if($pt->type_name == "General Liability")
+                                                @foreach ($pt->policies as $pp)
+                                                @if($pp->policy_title == "COMMERCIAL GENERAL LIABILITY")
+                                                <tr>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" value="8"
-                                                          @if(isset( $certPolicy ) )
-                                                            {{ $certPolicy->where('policy_id', 8)->first() ? 'checked' : '' }}
-                                                          @endif />
-                                                          {{ $pp->where('id', 8)->first()->policy_title }}
-
-                                                          <input class="form-check-input" type="checkbox" value="9"
-                                                          @if(isset( $certPolicy ) )
-                                                            {{ $certPolicy->where('policy_id', 9)->first() ? 'checked' : '' }}
-                                                            @endif />
-                                                            {{ $pp->where('id', 9)->first()->policy_title }}
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 7;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td>
+                                                                    <div class="checkbox-container">
+                                                                        @php
+                                                                            $policyId = 8;
+                                                                            $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                        @endphp
+                                                                        @if ($isChecked)
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                        @else
+                                                                            <span class="checkbox"></span>
+                                                                        @endif
+                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                    </div>
+                                                                  </td>
+                                                                  <td>
+                                                                    <div class="checkbox-container">
+                                                                        @php
+                                                                            $policyId = 9;
+                                                                            $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                        @endphp
+                                                                        @if ($isChecked)
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                        @else
+                                                                            <span class="checkbox"></span>
+                                                                        @endif
+                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                    </div>
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 10;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="checkbox-container">
+                                                                            @php
+                                                                                $policyId = 11;
+                                                                                $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                            @endphp
+                                                                            @if ($isChecked)
+                                                                                <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            @else
+                                                                                <span class="checkbox"></span>
+                                                                            @endif
+                                                                            <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </td>
-                                                  </tr>
-                                                  <tr>
+                                                </tr>
+                                                @endif
+                                                @endforeach
+                                                @endif
+
+                                                @if($pt->type_name == "Auto Liability")
+                                                @foreach ($pt->policies as $pp)
+                                                @if($pp->policy_title == "ANY AUTO")
+                                                <tr>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" value="11"
-                                                          @if(isset( $certPolicy ) )
-                                                            {{ $certPolicy->where('policy_id', 10)->first() ? 'checked' : '' }}
-                                                            @endif />
-                                                          {{ $pp->where('id', 10)->first()->policy_title }}
-
-                                                        <input class="form-check-input" type="checkbox" value="11"
-                                                          @if(isset( $certPolicy ) )
-                                                            {{ $certPolicy->where('policy_id', 11)->first() ? 'checked' : '' }}
-                                                          @endif />
-                                                          {{ $pp->where('id', 11)->first()->policy_title }}
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 1;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 2;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 3;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 4;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td>
+                                                                    <div class="checkbox-container">
+                                                                        @php
+                                                                            $policyId = 5;
+                                                                            $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                        @endphp
+                                                                        @if ($isChecked)
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                        @else
+                                                                            <span class="checkbox"></span>
+                                                                        @endif
+                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                    </div>
+                                                                  </td>
+                                                                  <td>
+                                                                    <div class="checkbox-container">
+                                                                        @php
+                                                                            $policyId = 6;
+                                                                            $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                        @endphp
+                                                                        @if ($isChecked)
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                        @else
+                                                                            <span class="checkbox"></span>
+                                                                        @endif
+                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                    </div>
+                                                                  </td>
+                                                              </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </td>
-                                          </tr>
-                                          @endif
-
-                                        @endforeach
-                                        @endif
-
-                                        @if($pt->type_name == "Auto Liability")
-                                        @foreach ($pt->policies as $pp)
-
-                                        @if( $pp->policy_title == "ANY AUTO")
-                                        <tr>
-                                          <td>
-                                            <table>
-                                              <tbody>
-                                                <tr>
-                                                  <td>
-                                                      <input class="form-check-input" type="checkbox" value="7"
-                                                      @if(isset( $certPolicy ) )
-                                                        {{ $certPolicy->where('policy_id', 1)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 1)->first()->policy_title }}
-
-                                                        <input class="form-check-input" type="checkbox" value="8"
-                                                        @if(isset( $certPolicy ) )
-                                                          {{ $certPolicy->where('policy_id', 2)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 2)->first()->policy_title }}
-                                                  </td>
                                                 </tr>
+                                                @endif
+                                                @endforeach
+                                                @endif
+
+                                                @if($pt->type_name == "Umbrella")
+                                                @foreach ($pt->policies as $pp)
+                                                @if($pp->policy_title == "UMBRELLA LIAB")
                                                 <tr>
-                                                  <td>
-                                                        <input class="form-check-input" type="checkbox" value="9"
-                                                        @if(isset( $certPolicy ) )
-                                                          {{ $certPolicy->where('policy_id', 3)->first() ? 'checked' : '' }}
-                                                          @endif />
-                                                          {{ $pp->where('id', 3)->first()->policy_title }}
-
-                                                          <input class="form-check-input" type="checkbox" value="9"
-                                                          @if(isset( $certPolicy ) )
-                                                            {{ $certPolicy->where('policy_id', 4)->first() ? 'checked' : '' }}
-                                                            @endif />
-                                                            {{ $pp->where('id', 4)->first()->policy_title }}
-                                                  </td>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 14;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 15;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 16;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td>
+                                                                    <div class="checkbox-container">
+                                                                        @php
+                                                                            $policyId = 17;
+                                                                            $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                        @endphp
+                                                                        @if ($isChecked)
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                        @else
+                                                                            <span class="checkbox"></span>
+                                                                        @endif
+                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                    </div>
+                                                                  </td>
+                                                                  <td>
+                                                                    <div class="checkbox-container">
+                                                                        @php
+                                                                            $policyId = 18;
+                                                                            $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                        @endphp
+                                                                        @if ($isChecked)
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                        @else
+                                                                            <span class="checkbox"></span>
+                                                                        @endif
+                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                    </div>
+                                                                  </td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>
+                                                                  <div class="checkbox-container">
+                                                                      @php
+                                                                          $policyId = 19;
+                                                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                      @endphp
+                                                                      @if ($isChecked)
+                                                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                      @else
+                                                                          <span class="checkbox"></span>
+                                                                      @endif
+                                                                      <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                  </div>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
+                                                @endif
+                                                @endforeach
+                                                @endif
+
+                                                @if($pt->type_name == "Employers Liability")
+                                                @foreach ($pt->policies as $pp)
+                                                @if($pp->policy_title == "ANY PROPRIETOR/PARTNER/EXECUTIVE OFFICER/MEMBER EXCLUDED?")
                                                 <tr>
-                                                  <td>
-                                                      <input class="form-check-input" type="checkbox" value="11"
-                                                        @if(isset( $certPolicy ) )
-                                                          {{ $certPolicy->where('policy_id', 5)->first() ? 'checked' : '' }}
-                                                          @endif />
-                                                        {{ $pp->where('id', 5)->first()->policy_title }}
-
-                                                      <input class="form-check-input" type="checkbox" value="11"
-                                                        @if(isset( $certPolicy ) )
-                                                          {{ $certPolicy->where('policy_id', 6)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 6)->first()->policy_title }}
-                                                  </td>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                      <div class="checkbox-container">
+                                                                          @php
+                                                                              $policyId = 20;
+                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                          @endphp
+                                                                          @if ($isChecked)
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          @else
+                                                                              <span class="checkbox"></span>
+                                                                          @endif
+                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                      </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
                                                 </tr>
-                                              </tbody>
-                                            </table>
-                                          </td>
-                                        </tr>
-                                        @endif
+                                                @endif
+                                                @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </td>
 
-                                        @endforeach
-                                        @endif
+                                    <td>
+                                        <div>
+                                            <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
+                                        </div>
+                                    </td>
 
-                                        @if( $pt->type_name == "Umbrella")
-                                        @foreach ($pt->policies as $pp)
-                                        <tr >
+                                    <td>
+                                        <div>
+                                            <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
+                                        </div>
+                                    </td>
 
-                                          @if( $pp->policy_title == "UMBRELLA LIAB")
-
-                                          <td>
-                                            <table>
-                                              <tbody>
+                                    <td valign="middle">
+                                        <div>
+                                            <span>{{ !empty($certPolicy) ? $certPolicy->where('policy_type_id', $pt->id)->first()->policy_number ?? '' : '' }}</span>
+                                        </div>
+                                    </td>
+                                    <td valign="middle">
+                                        <div>
+                                            <span>{{ !empty($certPolicy->where('policy_type_id', $pt->id)->first()->start_date) ? date('Y-m-d', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->start_date)) : '' }}</span>
+                                        </div>
+                                    </td>
+                                    <td valign="middle">
+                                        <div>
+                                            <span>{{ !empty($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date) ? date('Y-m-d', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date)) : '' }}</span>
+                                        </div>
+                                    </td>
+                                    <td valign="top">
+                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                                @foreach ($pt->policyLimits as $pl)
                                                 <tr>
-                                                  <td>
-                                                      <input class="form-check-input" type="checkbox" value="14"
-                                                       @if(isset( $certPolicy ) )
-                                                        {{ $certPolicy->where('policy_id', 14)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 14)->first()->policy_title }}
-
-                                                      <input class="form-check-input" type="checkbox" value="8"
-                                                      @if(isset( $certPolicy ) )
-                                                        {{ $certPolicy->where('policy_id', 15)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 15)->first()->policy_title }}
-                                                  </td>
+                                                    <td>{{ $pl->coverage_item }}</td>
+                                                    <td width="40%">
+                                                        <div>
+                                                            <span>$&nbsp;
+                                                                <span>
+                                                                    @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </td>
                                                 </tr>
-
-                                                <tr>
-                                                  <td>
-                                                      <input class="form-check-input" type="checkbox" value="14"
-                                                      @if(isset( $certPolicy ) )
-                                                        {{ $certPolicy->where('policy_id', 16)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 16)->first()->policy_title }}
-
-                                                    <input class="form-check-input" type="checkbox" value="8"
-                                                    @if(isset( $certPolicy ) )
-                                                      {{ $certPolicy->where('policy_id', 17)->first() ? 'checked' : '' }}
-                                                      @endif />
-                                                      {{ $pp->where('id', 17)->first()->policy_title }}
-                                                  </td>
-                                                </tr>
-
-                                                <tr>
-                                                  <td>
-                                                      <input class="form-check-input" type="checkbox" value="14"
-                                                      @if(isset( $certPolicy ) )
-                                                        {{ $certPolicy->where('policy_id', 18)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 18)->first()->policy_title }}
-
-                                                      <input class="form-check-input" type="checkbox" value="8"
-                                                      @if(isset( $certPolicy ) )
-                                                        {{ $certPolicy->where('policy_id', 19)->first() ? 'checked' : '' }}
-                                                        @endif />
-                                                        {{ $pp->where('id', 19)->first()->policy_title }}
-                                                  </td>
-                                                </tr>
-                                              </tbody>
-                                            </table>
-                                          </td>
-
-                                          @endif
-
-                                        </tr>
-
-                                        @endforeach
-                                        @endif
-
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                  <td valign="middle">
-                                    <div>
-                                      <span>
-                                        {{!empty($certPolicy) ? $certPolicy->where('policy_type_id', $pt->id)->first()->policy_number?? '' : ''}}
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td valign="middle">
-                                    <div>
-                                      <span>
-                                        {{!empty($certPolicy->where('policy_type_id', $pt->id)->first()->start_date) ? date('Y-m-d', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->start_date)):''}}
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td valign="middle">
-                                    <div>
-                                      <span>
-                                        {{!empty($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date)?date('Y-m-d', strtotime($certPolicy->where('policy_type_id', $pt->id)->first()->expiry_date)):''}}
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td valign="top">
-                                    <table width="100%" cellpadding="0" cellspacing="0">
-                                      <tbody>
-
-                                        @foreach ($pt->policyLimits as $pl)
-                                        <tr>
-                                          <td>
-                                            {{ $pl->coverage_item }}</td>
-                                          <td width="40%">
-                                            <div>
-                                              <span>$&nbsp;
-                                                  <span>
-                                                    @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0}}@endif
-                                                  </span>
-                                              </span>
-                                            </div>
-                                          </td>
-                                        </tr>
-                                        @endforeach
-
-                                      </tbody>
-                                    </table>
-                                  </td>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
-
                                 @endforeach
-                                {{-- {{$allpolicytypes[0]}} --}}
 
                                 <tr class="ng-tns-c268-42">
                                   <td colspan="7" style="padding: 10px;" class="ng-tns-c268-42">
-                                    <div style="font-size: 11px;" class="ng-tns-c268-42">
+                                    <div style="font-size: 11px; height:30px;" class="ng-tns-c268-42">
                                       DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES  (Attach ACORD 101, Additional Remarks Schedule, if more space is required) </div>
 
                                   </td>
@@ -600,9 +796,9 @@
                               class="ng-tns-c268-42">
                               <tbody class="ng-tns-c268-42">
                                 <tr class="ng-tns-c268-42">
-                                  <td style="width: 50%; font-size: 15px; font-weight: bold;" class="ng-tns-c268-42">
+                                  <td style="width: 50%; font-size: 12px; font-weight: bold;" class="ng-tns-c268-42">
                                     CERTIFICATE HOLDER</td>
-                                  <td style="width: 50%; font-size: 15px; font-weight: bold;" class="ng-tns-c268-42">
+                                  <td style="width: 50%; font-size: 12px; font-weight: bold;" class="ng-tns-c268-42">
                                     CANCELLATION</td>
                                 </tr>
                                 <tr class="ng-tns-c268-42">
@@ -611,7 +807,7 @@
                                       class="tftable m-t-b-10 ng-tns-c268-42">
                                       <tbody class="ng-tns-c268-42">
                                         <tr class="ng-tns-c268-42">
-                                          <td rowspan="2" width="80%" class="ct_holder ng-tns-c268-42">
+                                          <td rowspan="2" width="80%">
                                             President <br />
                                             The Intermodal
                                             Association of North America <br /> 11785
@@ -648,7 +844,7 @@
                         </form>
                       </div>
                     </div>
-                    <div class="rights_reserved ng-tns-c268-42">2006 -2024 ACORD CORPORATION. All rights
+                    <div class="rights_reserved ng-tns-c268-42">2006 - 2024 ACORD CORPORATION. All rights
                       reserved.</div>
                   </div>
 
