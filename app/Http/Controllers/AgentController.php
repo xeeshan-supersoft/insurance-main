@@ -216,7 +216,7 @@ class AgentController extends Controller
       ->where('id', $id)
       ->first();
 
-    $certPolicy = CertificatePolicy::with('policyType', 'policy')
+    $certPolicy = CertificatePolicy::with('policyType', 'policy', 'policyType.certificatePolicies')
       ->where('certificate_id', $certificate->id)
       ->get();
 
