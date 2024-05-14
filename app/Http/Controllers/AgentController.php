@@ -259,11 +259,11 @@ class AgentController extends Controller
 
     $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
 
-    $view = 'agent.form_pdf3';
+    $view = 'agent.form_pdf5';
     $cert = 'certificate.pdf';
 
     $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
-    return $pdf->stream('pdf.pdf');
+    return $pdf->stream($cert);
 
     //return view($view , $data);
   }
