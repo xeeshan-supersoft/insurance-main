@@ -10,19 +10,26 @@ class SelectSearchController extends Controller
   public function selectSearch(Request $request)
   {
     $results = [];
-    $search = $request->get('q');
-    $results = InsuranceProvider::select('id', 'name', 'contact_info', 'best_rating_number', 'naic_number')
-      ->where('name', 'LIKE', "%$search%")
-      ->get();
+    $output = '';
+    if($request->ajax()) {
+      $search = $request->get('query');
+      $results = InsuranceProvider::where('name', 'LIKE', "%$search%")
+        ->select('id', 'name', 'contact_info', 'best_rating_number', 'naic_number')
+        ->get();
 
-      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-      foreach($results as $row)
-      {
-       $output .= '
-       <li data-id="' . $row->id . '" data-naic="' . $row->naic_number .  '" data-brn="' . $row->best_rating_number . '"><a href="#">'.$row->name.'</a></li>
-       ';
+      if (count($results)>0) {
+        $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+        foreach($results as $row)
+        {
+        $output .= '
+          <li data-id="' . $row->id . '" data-naic="' . $row->naic_number .  '" data-brn="' . $row->best_rating_number . '"><a href="#">'.$row->name.'</a></li>
+        ';
+        }
+        $output .= '</ul>';
       }
-      $output .= '</ul>';
+    } else {
+      $output .= '<li><a href="#">No results</a></li>';
+    }
       return Response($output);
 
     //return response()->json($results);
