@@ -2,7 +2,7 @@
 @if ($r==1)
 <script type="text/javascript">
 
-    var inputFields = document.querySelectorAll('input, select');  
+    var inputFields = document.querySelectorAll('input, select');
     inputFields.forEach(function(input) {
         input.disabled = true;
     });
@@ -31,7 +31,7 @@ if (btn) {
     document.getElementById('btn').addEventListener('click', function(e) {
         validateCheckboxes();
         var validationStatus = document.getElementById('checkboxValidation').value;
-      
+
         // Check if at least one checkbox is checked
         if (validationStatus === 'false') {
             e.preventDefault();
@@ -48,7 +48,7 @@ if (btn) {
                          confirmButtonText: 'OK'
                      });
 
-        } 
+        }
     });
 
     function validateCheckboxes() {
@@ -65,16 +65,9 @@ if (btn) {
         document.getElementById('checkboxValidation').value = atLeastOneChecked ? 'true' : 'false';
     }
 
-
-
-
-
-
-
-
-
-
-
+    $('#mat-input-20').keyup(function() {
+        this.value = this.value.toLocaleUpperCase();
+    });
 
 function validateInput(event) {
     var inputValue = event.target.value.toUpperCase();
@@ -201,7 +194,7 @@ function validateInput(event) {
                 $('#insurA').val($(this).text());
                 $('#naic_a').val($(this).data("naic"));
                 $('#br_a').val($(this).data("brn"));
-                $('#insurance_provider_id_A').val($(this).data("id"));                
+                $('#insurance_provider_id_A').val($(this).data("id"));
                 $('#insurerAList').fadeOut();
             });
 
@@ -225,7 +218,7 @@ function validateInput(event) {
                 $('#insurB').val($(this).text());
                 $('#naic_b').val($(this).data("naic"));
                 $('#br_b').val($(this).data("brn"));
-                $('#insurance_provider_id_B').val($(this).data("id"));                
+                $('#insurance_provider_id_B').val($(this).data("id"));
                 $('#insurerBList').fadeOut();
             });
 
@@ -249,7 +242,7 @@ function validateInput(event) {
                 $('#insurC').val($(this).text());
                 $('#naic_c').val($(this).data("naic"));
                 $('#br_c').val($(this).data("brn"));
-                $('#insurance_provider_id_C').val($(this).data("id"));                
+                $('#insurance_provider_id_C').val($(this).data("id"));
                 $('#insurerCList').fadeOut();
             });
 
@@ -273,7 +266,7 @@ function validateInput(event) {
                 $('#insurD').val($(this).text());
                 $('#naic_d').val($(this).data("naic"));
                 $('#br_d').val($(this).data("brn"));
-                $('#insurance_provider_id_D').val($(this).data("id"));                
+                $('#insurance_provider_id_D').val($(this).data("id"));
                 $('#insurerDList').fadeOut();
             });
 
@@ -297,7 +290,7 @@ function validateInput(event) {
                 $('#insurE').val($(this).text());
                 $('#naic_e').val($(this).data("naic"));
                 $('#br_e').val($(this).data("brn"));
-                $('#insurance_provider_id_E').val($(this).data("id"));                
+                $('#insurance_provider_id_E').val($(this).data("id"));
                 $('#insurerEList').fadeOut();
             });
 
