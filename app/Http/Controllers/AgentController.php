@@ -172,7 +172,8 @@ class AgentController extends Controller
         'Cargo',
         'RAILER INTERCHANGEPHYSICAL DAMAG',
         'UMBRELLA LIA',
-        'WORKERS COMPENSATION'
+        'WORKERS COMPENSATION',
+        'Employers Liability'
     ];
 
     $policyExistTypes = PolicyType::with('policies', 'policyLimits')
