@@ -318,7 +318,7 @@
                                 <tr id="scrollToPolicyHeaderTR" class="ng-tns-c268-42">
                                   <td width="3%" class="lable_title ng-tns-c268-42">INSR LTR
                                   </td>
-                                  <td width="30%" class="lable_title ng-tns-c268-42">
+                                  <td width="25%" class="lable_title ng-tns-c268-42">
                                     <div  class="ng-tns-c268-42">TYPE OF INSURANCE</div>
                                   </td>
                                   <td width="3%" class="lable_title ng-tns-c268-42">
