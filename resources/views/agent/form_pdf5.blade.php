@@ -717,7 +717,7 @@
                                                   @if($pl->policy_type_id !=6)
                                                       <tr>
                                                           <td>{{ $pl->coverage_item }}</td>
-                                                          <td width="20%">
+                                                          <td width="30%">
                                                               <div>
                                                                   <span>$&nbsp; @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif<span>
                                                                   </span>
@@ -727,7 +727,7 @@
                                                     @else
                                                     <tr>
                                                       <td>{{ $pl->coverage_item }}</td>
-                                                      <td width="20%">
+                                                      <td width="30%">
                                                           <div>
                                                               <span>$&nbsp; @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif
                                                               </span>
