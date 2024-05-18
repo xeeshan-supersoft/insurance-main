@@ -101,48 +101,15 @@
                                           <td class="ng-tns-c268-42"><span class="acord_title ng-tns-c268-42"><img
                                                 src="{{ asset('assets/img/nlogo.png')}}" width="91" height="39"
                                                 class="ng-tns-c268-42 text-center">
-                                              &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                                              &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                                              &nbsp;&nbsp;&nbsp;&nbsp;
-                                              &nbsp;&nbsp;
-                                              &nbsp;&nbsp;&nbsp;&nbsp;
-                                              &nbsp;&nbsp;
-                                              &nbsp;&nbsp;
-                                              &nbsp;&nbsp;&nbsp;&nbsp;
-                                              &nbsp;&nbsp;
+                                              &nbsp;&nbsp;&nbsp;
+
                                               CERTIFICATE OF LIABILITY
                                               INSURANCE</span>
                                           </td>
-                                          <td width="180" class="date_top ng-tns-c268-42">
-                                             <mat-form-field appearance="outline"
-                                              class="mat-form-field ng-tns-c268-42 ng-tns-c70-48 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-star-inserted mat-form-field-should-float mat-form-field-disabled"
-                                              style="width: 170px !important;">
-                                              <div class="mat-form-field-wrapper ng-tns-c70-48">
-                                                <div class="mat-form-field-infix ng-tns-c70-48">
-                                                  <mat-datepicker class="ng-tns-c70-48">
-                                                  </mat-datepicker><span
-                                                    class="mat-form-field-label-wrapper ng-tns-c70-48"></span>
-                                                </div>
-                                                <div class="mat-form-field-suffix ng-tns-c70-48 ng-star-inserted">
-                                                  <mat-datepicker-toggle matsuffix=""
-                                                    class="mat-datepicker-toggle ng-tns-c70-48"
-                                                    data-mat-calendar="mat-datepicker-0">
-                                                    <button mat-icon-button="" type="button"
-                                                      class="mat-focus-indicator mat-icon-button mat-button-base mat-button-disabled"
-                                                      aria-haspopup="dialog" aria-label="Open calendar" tabindex="-1"
-                                                      disabled="true"><span matripple=""
-                                                        class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span
-                                                        class="mat-button-focus-overlay"></span></button>
-                                                  </mat-datepicker-toggle>
-                                                </div>
-                                              </div>
-                                              <div class="mat-form-field-subscript-wrapper ng-tns-c70-48">
-                                                <div
-                                                  class="mat-form-field-hint-wrapper ng-tns-c70-48 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                  style="opacity: 1; transform: translateY(0%);">
-                                                  <div class="mat-form-field-hint-spacer ng-tns-c70-48">
-                                                  </div>
-                                                </div>
+                                          <td width="120px" class="date_top ng-tns-c268-42">
+                                              <div class="mat-form-field-subscript-wrapper ng-tns-c70-48"
+                                              style="text-align: center; position: relative; top:10px; float: left; ">
+                                                  {{ date('Y-m-d', strtotime($certificate->created_at)) }}
                                               </div>
                                           </td>
                                         </tr>
@@ -379,7 +346,7 @@
                                   </td>
                                 </tr>
 
-                                @foreach ($policytypes->whereIn('id', [1,2,5,10]) as $pt)
+                                @foreach ($policytypes->whereIn('id', [1,2,6,10]) as $pt)
                                 <tr>
                                     <td>
                                         <div>
@@ -699,25 +666,18 @@
                                                 @endforeach
                                                 @endif
 
-                                                @if($pt->type_name == "Work Comp")
-                                                @foreach ($pt->policies as $pp)
-                                                <tr>
-                                                    <td>
-                                                        <table>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                      <div class="checkbox-container">
-                                                                          <label>{{ $pp->policy_title }}</label>
-                                                                      </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                                @endif
+                                                {{-- Remaining Policies --}}
+                                                  @if($pt->type_name == "Employers Liability")
+                                                  @foreach ($pt->policies as $pp)
+                                                  @if($pp->id == 20)
+                                                  <tr>
+                                                      <td>
+                                                        {{ $pp->where('id', 20)->first()->policy_title }}
+                                                      </td>
+                                                  </tr>
+                                                  @endif
+                                                  @endforeach
+                                                  @endif
                                             </tbody>
                                         </table>
                                     </td>
@@ -754,23 +714,32 @@
                                             <tbody>
                                               @if(!empty($pt->policyLimits))
                                                   @foreach ($pt->policyLimits as $pl)
+                                                  @if($pl->policy_type_id !=6)
+                                                      <tr>
+                                                          <td>{{ $pl->coverage_item }}</td>
+                                                          <td width="20%">
+                                                              <div>
+                                                                  <span>$&nbsp; @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif<span>
+                                                                  </span>
+                                                              </div>
+                                                          </td>
+                                                      </tr>
+                                                    @else
                                                     <tr>
-                                                        <td>{{ $pl->coverage_item }}</td>
-                                                        <td width="40%">
-                                                            <div>
-                                                                <span>$&nbsp;
-                                                                    <span>
-                                                                        @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif
-                                                                    </span>
-                                                                </span>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                      <td>{{ $pl->coverage_item }}</td>
+                                                      <td width="20%">
+                                                          <div>
+                                                              <span>$&nbsp; @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0}}@endif
+                                                              </span>
+                                                          </div>
+                                                      </td>
+                                                  </tr>
+                                                    @endif
                                                   @endforeach
                                               @else
                                                   <tr>
                                                     <td>{{ $pl->coverage_item }}</td>
-                                                    <td width="40%">
+                                                    <td width="20%">
                                                         <div>
                                                             <span>$&nbsp;
                                                                 <span>
@@ -835,9 +804,7 @@
                                         <tr class="ng-tns-c268-42">
                                           <td class="fot_titel ng-tns-c268-42">
                                             AUTHORIZED
-                                            REPRESENTATIVE <textarea cols="38" rows="3" readonly="readonly"
-                                              style="vertical-align: middle; margin-left: 10px;"
-                                              class="ng-tns-c268-42"></textarea>
+                                            REPRESENTATIVE <div class="ng-tns-c268-42"> <br /></div>
                                           </td>
                                         </tr>
                                       </tbody>
