@@ -170,9 +170,9 @@ class AgentController extends Controller
         'General Liability',
         'Auto Liability',
         'Cargo',
-        'RAILER INTERCHANGEPHYSICAL DAMAG',
-        'UMBRELLA LIA',
-        'WORKERS COMPENSATION',
+        'Trailer Interchange',
+        'Umbrella',
+        'Work Comp',
         'Employers Liability'
     ];
 
