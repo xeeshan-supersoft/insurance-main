@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('to')->constrained('users');
+            $table->foreignId('from')->constrained('users');
             $table->foreignId('upload_id')->constrained('uploads');
             $table->string('name')->nullable();
             $table->tinyInteger('status')->default(1);

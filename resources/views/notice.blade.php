@@ -31,10 +31,10 @@ $navbarHideToggle = false;
       <div class="card-body"> 
 @foreach ($notice as $n)
     
+<div class="alert alert-dark mb-1 text-center fw-normal fs-5 text-uppercase" role="alert">
+  {{ $n->name}}
+</div>
 @endforeach
-        <div class="alert alert-dark mb-0 text-center fw-normal fs-5 text-uppercase" role="alert">
-       {{ $n->name}}
-        </div>
 
       </div>
     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Insurance_data;
 use App\Models\Insurance_detail;
+use App\Models\Notice;
 
 class ShipperController extends Controller
 {public function __construct()

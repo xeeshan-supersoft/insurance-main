@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\User;
 use App\Models\Agent;
+use App\Models\Notice;
 use App\Models\Policy;
 use App\Models\PolicyType;
 use App\Models\AgencyInfos;
