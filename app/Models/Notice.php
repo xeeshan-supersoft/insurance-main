@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notice extends Model
 {
+    protected $fillable = [
+        'to', 
+        'from', 
+        'upload_id', 
+        'name', 
+        'status'
+    ];
     protected $table = 'notices';
     use HasFactory;
 }

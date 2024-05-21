@@ -10,6 +10,7 @@
  
 
 <form method="POST" action="{{ route('reg.add') }}">
+
   @csrf
 
 
@@ -143,7 +144,7 @@
 
 
 
-  <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
+  <button type="submit" id="saveButton" class="btn btn-primary">Save changes</button>
 </div>
 </form>
 

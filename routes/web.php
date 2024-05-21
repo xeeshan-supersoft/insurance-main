@@ -79,7 +79,9 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 });
 
 // NOW
-
+Route::get('wizard', function () {
+  return view('default');
+});
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');
@@ -127,7 +129,7 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
 })->name('add.ship');
   Route::get('/add-agency', function () { return view('truck.add-agency'); })->name('add.agnt');
   Route::get('/list-shipper', [TruckController::class, 'shipper'])->name('list.ship');
-  Route::get('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
+  Route::post('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
   Route::get('/profile-truck', [TruckController::class, 'truckprofiles'])->name('profile.truck');
 });
 

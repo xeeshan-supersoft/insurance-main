@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DriverDetail;
 use Illuminate\Http\Request;
+use App\Models\Notice;
 
 class DriverController extends Controller
 {

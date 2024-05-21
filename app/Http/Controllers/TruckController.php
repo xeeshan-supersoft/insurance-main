@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Notice;
 use App\Models\ShipperInfos;
 use App\Models\DriverDetail;
 use App\Models\AgencyInfos;
 use App\Models\Subscription_plan;
 use App\Models\Certificate;
+use App\Models\Subscription;
 use App\Models\CertificatePolicy;
 use App\Models\PolicyType;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Upload;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Cookie;
+use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
 class TruckController extends Controller
 {
   public function __construct()
@@ -45,8 +53,9 @@ class TruckController extends Controller
     return view('truck.list-shipper', compact('ship'));
   }
 
-  public function addReg()
+  public function addReg(Request $request)
   {
+    $userId = Auth::user()->id;
     $validatedDataa = Validator::make($request->all(), [
       'username' => 'required',
       'password1' => 'required',
@@ -70,7 +79,8 @@ class TruckController extends Controller
         ->withInput();
       // return 'fail';
     }
-
+    $currentDate = Carbon::now();
+    $endDate = $currentDate->copy()->addDays(30);
     $validatedData = $validatedDataa->validated();
 
     if ($validatedData['role'] == 'agent') {
@@ -85,6 +95,8 @@ class TruckController extends Controller
       $subb = Subscription::create([
         'user_id' => $lastInsertedId,
         'plan_id' => '1',
+        'start_date' =>  $currentDate,
+        'end_date' => $endDate,
         'status' => 'Active',
       ]);
       $user = AgencyInfos::create([
@@ -99,11 +111,13 @@ class TruckController extends Controller
         'cellphone' => $validatedData['phone'],
         'extra_email' => $validatedData['altemail'],
       ]);
-
-      return response()->json([
-        'message' => 'agent created successfully!',
-        'user_id' => $lastInsertedId,
-      ]);
+      $user = Notice::create([
+        'to' => $lastInsertedId,
+        'from' => $userId,
+        'name' => "agent added by".$userId,
+          ]);
+          return Redirect::back()
+          ->with('success' , 'agent created successfully!');    
     }
     if ($validatedData['role'] == 'shipper') {
       $user = User::create([
@@ -113,10 +127,16 @@ class TruckController extends Controller
         'role' => $validatedData['role'], // Assuming default role ID for 'user'
       ]);
       $lastInsertedId = $user->id;
-
+      $user = Notice::create([
+        'to' => $lastInsertedId,
+        'from' => $userId,
+        'name' => "shipper added by".$userId,
+          ]);
       $subb = Subscription::create([
         'user_id' => $lastInsertedId,
         'plan_id' => '1',
+        'start_date' =>  $currentDate,
+        'end_date' => $endDate,
         'status' => 'Active',
       ]);
       $user = ShipperInfos::create([
@@ -131,10 +151,8 @@ class TruckController extends Controller
         'cellphone' => $validatedData['phone'],
         'extra_email' => $validatedData['altemail'],
       ]);
-      return response()->json([
-        'message' => 'shipper created successfully!',
-        'user_id' => $lastInsertedId,
-      ]);
+      return Redirect::back()
+      ->with('success' ,'shipper created successfully!');       
     }
 
     return 'nothing';
@@ -177,12 +195,19 @@ class TruckController extends Controller
 
     // Store the uploaded file
     $path = $request->file('file')->store('uploads');
-
+    $userId = Auth::user()->id;
     // You can also store file information in the database here if needed
     $upload = new Upload();
     $upload->user_id = $request->user_id; // Assuming you have authentication and each upload is associated with a user
     $upload->path = $path;
     $upload->save();
+    $lastInsertedId = $upload->id;
+    $user = Notice::create([
+      'to' => $request->user_id,
+      'from' => $userId,
+      'upload_id' => $lastInsertedId,
+      'name' => "truck_driver uploaded files by".$userId,
+        ]);
 
     //  return "successfully";
     return back()->with('success', 'File uploaded successfully.');
