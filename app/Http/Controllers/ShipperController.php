@@ -13,7 +13,7 @@ class ShipperController extends Controller
     {
       $this->middleware('checkRole:shipper');
     }
-  
+
     // public function dash()
     // {
     //   return view('shipper.dash');
@@ -33,5 +33,10 @@ class ShipperController extends Controller
     $insuranceData = Insurance_data::where('id', $id)->first();
     $Insurance_detail = Insurance_detail::where('id_isu_data_fk', $id)->first();
     return view('shipper.pdf', compact('insuranceData', 'Insurance_detail'));
+  }
+
+  public function dash2()
+  {
+    return view('shipper.dash');
   }
 }

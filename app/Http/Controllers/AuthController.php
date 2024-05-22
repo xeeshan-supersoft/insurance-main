@@ -63,6 +63,9 @@ class AuthController extends Controller
     if ($user->role == 'truck_driver') {
       return redirect("/portal");
     }
+    if ($user->role == 'shipper') {
+      return redirect("/sportal");
+    }
 
     return redirect('/dash');
   }
@@ -95,7 +98,7 @@ class AuthController extends Controller
       'vehicle_status' => 'sometimes',
       'mc_number' => 'sometimes',
       'subs_id' => 'sometimes',
-      
+
     ]);
     // var_dump( $validatedDataa);
 
@@ -126,14 +129,14 @@ $subb = Subscription::create([
 
     // dd( $validatedDataa->getData()['Addss']);
 
-  
+
     if ($validatedData['role'] == 'agent') {
       $user = AgencyInfos::create([
         'user_id' => $lastInsertedId,
         'status' => '1',
         'address' => $validatedData['Addss'],
         'address2' => $validatedData['Addss2'],
-        'name' => $validatedData['fullname'],      
+        'name' => $validatedData['fullname'],
         'city' => $validatedData['city'],
         'state' => $validatedData['state'],
         'zip' => $validatedData['zip'],
@@ -165,7 +168,7 @@ $subb = Subscription::create([
     }
     if ($validatedData['role'] == 'truck_driver') {
        $user = DriverDetail::create([
-        'user_id' => $lastInsertedId,        
+        'user_id' => $lastInsertedId,
         'address' => $validatedData['Addss'],
         'address2' => $validatedData['Addss2'],
         'name' => $validatedData['fullname'],
@@ -195,7 +198,7 @@ $subb = Subscription::create([
     if ($validatedData['role'] == 'freight_driver') {
       $user = DriverDetail::create([
         'user_id' => $lastInsertedId,
-        
+
         'address' => $validatedData['Addss'],
         'address2' => $validatedData['Addss2'],
         'name' => $validatedData['fullname'],
@@ -225,7 +228,7 @@ $subb = Subscription::create([
   }
 
 
-  
+
 
   public function logout()
   {
@@ -238,7 +241,7 @@ $subb = Subscription::create([
     }
     return redirect('/logg');
   }
-  
+
   public function land()
   {
     $data=Subscription_plan::All();

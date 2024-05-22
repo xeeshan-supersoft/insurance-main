@@ -75,12 +75,12 @@
                   avatar-away
                   @endif
 
-          
+
              ">
                 <i class="mdi mdi-bell-outline mdi-24px"></i>
             </div>
             </a>
-            
+
         </li>
         <!-- User -->
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -197,10 +197,10 @@
         </li>
         <li>
             <a class="btn btn-light  ">Company Information</a>
-        </li>     
-    
+        </li>
+
         @elseif ($user->role == "admin")
-    
+
         <li>
             <a class="btn btn-light" href="{{ route('sub') }}" >Subscription Plans</a>
         </li>
@@ -208,12 +208,12 @@
             <a class="btn btn-light" href="{{ route('dashs') }}">Users</a>
         </li>
 
-        @else
+        @elseif ($user->role == "truck_driver")
 
-      <li>
+       <li>
             <a class="btn btn-light" href="{{ route('dashw') }}">Dasboard</a>
         </li>
-      
+
         <li>
             <a class="btn btn-light" href="{{ route('list.ship') }}">Shipper list</a>
         </li>
@@ -229,6 +229,10 @@
 
         <li>
             <a class="btn btn-light" href="{{ route('profile.truck') }}">Company Information</a>
+        </li>
+        @elseif ($user->role == "shipper")
+        <li>
+            <a class="btn btn-light" href="{{ route('sdash') }}">Dasboard</a>
         </li>
         @endif
 
