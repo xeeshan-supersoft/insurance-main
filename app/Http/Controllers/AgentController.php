@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
-//use misterspelik\LaravelPdf\Facades\Pdf;
+use Carbon\Carbon;
 
 class AgentController extends Controller
 {
@@ -34,8 +34,11 @@ class AgentController extends Controller
   public function dash()
   {
     $users = User::all();
+    $monthExp = CertificatePolicy::whereDate('expiry_date', '<=', Carbon::now()->addDays(30))->count();
+    $weekExp = CertificatePolicy::whereDate('expiry_date', '<=', Carbon::now()->addDays(7))->count();
+    $insuredCnt = Certificate::where('producer_user_id', Auth::user()->id)->distinct()->count('client_user_id');
 
-    return view('dash', compact('users'));
+    return view('dash', compact('users', 'monthExp', 'weekExp', 'insuredCnt'));
   }
 
   public function formlist()
