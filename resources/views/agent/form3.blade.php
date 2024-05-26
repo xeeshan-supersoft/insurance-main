@@ -1350,6 +1350,7 @@ $navbarHideToggle = false;
                                                                                 <input autocomplete="off" oninput="validateInput(event)"
                                                                                     formcontrolname="insrLtrGL" name="insurance_provider_code[{{ $pt->id }}]"
                                                                                     maxlength="1" minlength="1" value=""
+                                                                                    oninput="this.value = this.value.toUpperCase()"
                                                                                     class="mat-input-element mat-form-field-autofill-control ng-tns-c70-64 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                                                                                     required="" id="mat-input-20"
                                                                                  ><span
