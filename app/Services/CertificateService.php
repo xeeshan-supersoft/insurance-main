@@ -72,7 +72,7 @@ class CertificateService
           $certificatePolicyLimit->certificate_id = $cid;
           $certificatePolicyLimit->policy_type_id = $k;
           $certificatePolicyLimit->policy_limit_id = $vv;
-          $certificatePolicyLimit->amount = $val;
+          $certificatePolicyLimit->amount = floatval(str_replace(',', '', $val));
           $certificatePolicyLimit->save();
         }
       }
@@ -93,6 +93,35 @@ class CertificateService
           ->where('policy_id', $val)
           ->first();
         if (isset($certificatePolicy->policy_id)) {
+          $certificatePolicy->certificate_id = $cert->id;
+          $certificatePolicy->policy_type_id = $k;
+          $certificatePolicy->policy_id = $val;
+          $certificatePolicy->policy_deductible = 0;
+          $certificatePolicy->policy_retention = 0;
+          $certificatePolicy->is_policy_checked = false;
+          $certificatePolicy->is_risk_retention_insured = false;
+          $certificatePolicy->is_actual_cash_value = false;
+          $certificatePolicy->insurance_provider_code = $certificateData['insurance_provider_code'][$k];
+          if($certificateData['insurance_provider_code'][$k]=='A'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='B'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='C'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='D'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
+          }
+          if($certificateData['insurance_provider_code'][$k]=='E'){
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
+          }
+          $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
+          $certificatePolicy->issue_date = Carbon::now()->format('Y-m-d');
+          $certificatePolicy->start_date = $certificateData['main_policy_eff_date'][$k];
+          $certificatePolicy->expiry_date = $certificateData['main_policy_exp_date'][$k];
+          $certificatePolicy->save();
         } else {
           $certificatePolicy = new CertificatePolicy();
           $certificatePolicy->certificate_id = $cert->id;
@@ -138,7 +167,7 @@ class CertificateService
             $certificatePolicyLimit->certificate_id = $cert->id;
             $certificatePolicyLimit->policy_type_id = $k;
             $certificatePolicyLimit->policy_limit_id = $vv;
-            $certificatePolicyLimit->amount = $val;
+            $certificatePolicyLimit->amount = floatval(str_replace(',', '', $val));
             $certificatePolicyLimit->save();
           } else {
             // $certificatePolicyLimit = new CertificatePolicyLimit();
@@ -151,5 +180,7 @@ class CertificateService
         }
       }
     }
+
+    return $cert;
   }
 }

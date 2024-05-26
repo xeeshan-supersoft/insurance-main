@@ -10,7 +10,7 @@ $navbarHideToggle = false;
 @endpush
 
 @section('content')
-<form method="post" action="{{ route('update_cert') }}">
+<form method="post" action="{{ route('update_cert') }}" id="form">
     @csrf
 <div id="acordPage" fxlayout="row" class="page-layout simple right-sidebar ng-tns-c268-42"
     style="flex-direction: row; box-sizing: border-box; display: flex;">
@@ -42,7 +42,7 @@ $navbarHideToggle = false;
                                 <div class="widget-front box m-0 bn_n ng-tns-c268-42">
                                     <div fxlayout="row" fxlayoutalign="start" class="p-10 ng-tns-c268-42"
                                         style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch flex-start; align-items: stretch;">
-                                        <form novalidate="" name="acordForm" style="width: 100% !important;"
+                                        <div novalidate="" name="acordForm" style="width: 100% !important;"
                                             class="ng-tns-c268-42 ng-untouched ng-pristine ng-invalid">
                                             <div id="accord_container" class="ng-tns-c268-42">
                                                 <table border="0" cellpadding="0" cellspacing="0"
@@ -1795,7 +1795,7 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-70">
-                                                                                                <input type="text" class="form-control" id="{{ $pl->coverage_item }}"
+                                                                                                <input type="number" class="form-control" id="{{ $pl->coverage_item }}"
                                                                                                 name="main_policy_coverage[{{ str_replace(' ', '_', $pt->id) }}][{{ $pl->id }}]"
                                                                                                 placeholder=""
                                                                                                 value="@if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0}}@endif"
@@ -1956,7 +1956,7 @@ $navbarHideToggle = false;
                                                                                     formcontrolname="glLiability"
                                                                                     class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
                                                                                     id="mat-checkbox-29">
-                                                                                    <input class="form-check-input abcd" type="checkbox" value="{{ $pp->id }}"
+                                                                                    <input class="form-check-input" type="checkbox" value="{{ $pp->id }}"
                                                                                     name="main_policy_sub[{{ str_replace(' ', '_', $pt->id) }}][{{ $pp->id }}]"
                                                                                     id="{{ $pp->policy_title }}"
 
@@ -1965,7 +1965,6 @@ $navbarHideToggle = false;
                                                                                     @endif
                                                                                     disabled
                                                                                  />
-                                                                                 <input type="hidden" id="checkboxValidation" value="false">
                                                                                 </mat-checkbox>
                                                                             </td>
                                                                             <td colspan="3"
