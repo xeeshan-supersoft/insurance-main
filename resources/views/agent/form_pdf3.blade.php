@@ -1126,7 +1126,7 @@
                                                   </div>
 
                                                   <span class="">
-                                                    @if(isset($certPolimit)){{$certPolimit->where('policy_limit_id', $pl->id)->first()->amount??0}}@endif
+                                                    @if(isset($certPolimit)){{number_format($certPolimit->where('policy_limit_id', $pl->id)->first()->amount, 2, '.', ',')??0}}@endif
                                                   </span>
 
                                                 </div>
