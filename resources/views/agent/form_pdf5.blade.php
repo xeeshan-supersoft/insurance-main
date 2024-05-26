@@ -719,7 +719,7 @@
                                                           <td>{{ $pl->coverage_item }}</td>
                                                           <td width="30%">
                                                               <div>
-                                                                  <span>$&nbsp; @if(isset($certPolimit)){{number_format($certPolimit->where('policy_limit_id', $pl->id)->first()->amount, 2, '.', ',') ?? 0}}@endif<span>
+                                                                  <span>$&nbsp; @if(isset($certPolimit)){{number_format($certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0, 2, '.', ',') }}@endif<span>
                                                                   </span>
                                                               </div>
                                                           </td>
@@ -729,7 +729,7 @@
                                                       <td>{{ $pl->coverage_item }}</td>
                                                       <td width="30%">
                                                           <div>
-                                                              <span>$&nbsp; @if(isset($certPolimit)){{number_format($certPolimit->where('policy_limit_id', $pl->id)->first()->amount, 2, '.', ',') ?? 0}}@endif
+                                                              <span>$&nbsp; @if(isset($certPolimit)){{number_format($certPolimit->where('policy_limit_id', $pl->id)->first()->amount ?? 0, 2, '.', ',') }}@endif
                                                               </span>
                                                           </div>
                                                       </td>
