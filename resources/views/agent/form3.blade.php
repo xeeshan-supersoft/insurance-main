@@ -10,7 +10,7 @@ $navbarHideToggle = false;
 @endpush
 
 @section('content')
-<form method="post" action="{{ route('save_cert') }}">
+<form method="post" action="{{ route('save_cert') }}" id="form">
     @csrf
 <div id="acordPage" fxlayout="row" class="page-layout simple right-sidebar ng-tns-c268-42"
     style="flex-direction: row; box-sizing: border-box; display: flex;">
@@ -41,7 +41,7 @@ $navbarHideToggle = false;
                                 <div class="widget-front box m-0 bn_n ng-tns-c268-42">
                                     <div fxlayout="row" fxlayoutalign="start" class="p-10 ng-tns-c268-42"
                                         style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch flex-start; align-items: stretch;">
-                                        <form novalidate="" name="acordForm" style="width: 100% !important;"
+                                        <div novalidate="" name="acordForm" style="width: 100% !important;"
                                             class="ng-tns-c268-42 ng-untouched ng-pristine ng-invalid">
                                             <div id="accord_container" class="ng-tns-c268-42">
                                                 <table border="0" cellpadding="0" cellspacing="0"
