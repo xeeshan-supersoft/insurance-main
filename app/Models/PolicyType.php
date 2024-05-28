@@ -27,4 +27,9 @@ class PolicyType extends Model
     {
         return $this->hasMany(PolicyLimit::class);
     }
+
+    public function certificateUmbrellas()
+    {
+        return $this->hasMany(CertificateUmbrella::class);
+    }
 }

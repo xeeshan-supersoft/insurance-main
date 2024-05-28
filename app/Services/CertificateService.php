@@ -56,13 +56,22 @@ class CertificateService
         if($certificateData['insurance_provider_code'][$k]=='E'){
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
         }
+
+        if (isset($certificateData['umbrella_checkbox'][$k])) {
+          // Create entry in CertificateUmbrella table
+          $certificateUmbrella = new CertificateUmbrella();
+          $certificateUmbrella->certificate_id = $cid;
+          $certificateUmbrella->policy_type_id = $k;
+          $certificateUmbrella->umbrella_subtype_id = $val;
+          $certificateUmbrella->save();
+        }
+
         $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
         $certificatePolicy->issue_date = Carbon::now()->format('Y-m-d');
         $certificatePolicy->start_date = $certificateData['main_policy_eff_date'][$k];
         $certificatePolicy->expiry_date = $certificateData['main_policy_exp_date'][$k];
         $certificatePolicy->save();
       }
-
     }
 
     foreach ($certificateData['main_policy_coverage'] as $k => $v) {
