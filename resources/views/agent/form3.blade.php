@@ -2244,8 +2244,34 @@ $navbarHideToggle = false;
                                                                     </tbody>
                                                                 </table>
                                                             </td>
-                                                        </tr>
+                                                        </tr>                                                        
                                                         @endforeach
+
+                                                        
+                                                        <tr class="ng-tns-c268-42 ng-trigger ng-trigger-slideUpDown ng-star-inserted">
+                                                            <td colspan="7" class="chkb_lable_title ng-tns-c268-42">                                                                
+                                                                <table>
+                                                                        <tbody>                                                                            
+                                                                            <tr>
+                                                                                <td>
+                                                                                    Apply Umbrella Liability to:
+                                                                                </td>
+                                                                                @foreach($policytypes->where('id', '!=', 10) as $pt)
+                                                                                    <td>
+                                                                                        <mat-checkbox
+                                                                                        class="mat-checkbox ng-tns-c268-42 mat-accent mat-checkbox-checked"
+                                                                                        id="mat-checkbox-28">
+                                                                                        <input class="form-check-input" name="umbrella_checkbox[{{ $pt->id }}]" type="checkbox" value="{{ $pt->id }}"
+                                                                                        />
+                                                                                        </mat-checkbox> {{$pt->type_name}}
+                                                                                    </td>
+                                                                                @endforeach
+                                                                            </tr>
+                                                                        </tbody>
+                                                                </table>                                                               
+                                                            </td>
+                                                        </tr>
+                                                        
 
                                                         <tr class="ng-tns-c268-42">
                                                             <td colspan="7" style="padding: 10px;"

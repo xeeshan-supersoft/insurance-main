@@ -157,7 +157,11 @@ Route::fallback(function () {
 });
 
 
-
+Route::get('/mrun', function () {
+  Artisan::call("migrate");
+  Artisan::call("db:seed");
+  echo "Done";
+});
 
 // layout
 // Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');

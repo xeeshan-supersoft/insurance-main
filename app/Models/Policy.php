@@ -22,4 +22,9 @@ class Policy extends Model
     {
         return $this->belongsTo(InsuranceProvider::class);
     }
+
+    public function certificateUmbrellas()
+    {
+        return $this->hasMany(CertificateUmbrella::class, 'umbrella_subtype_id');
+    }
 }
