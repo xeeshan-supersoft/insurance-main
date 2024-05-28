@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Models\Certificate;
 use App\Models\CertificatePolicy;
 use App\Models\CertificatePolicyLimit;
+use App\Models\CertificateUmbrella;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -41,29 +42,20 @@ class CertificateService
         $certificatePolicy->is_risk_retention_insured = false;
         $certificatePolicy->is_actual_cash_value = false;
         $certificatePolicy->insurance_provider_code = $certificateData['insurance_provider_code'][$k];
-        if($certificateData['insurance_provider_code'][$k]=='A'){
+        if ($certificateData['insurance_provider_code'][$k] == 'A') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
         }
-        if($certificateData['insurance_provider_code'][$k]=='B'){
+        if ($certificateData['insurance_provider_code'][$k] == 'B') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
         }
-        if($certificateData['insurance_provider_code'][$k]=='C'){
+        if ($certificateData['insurance_provider_code'][$k] == 'C') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
         }
-        if($certificateData['insurance_provider_code'][$k]=='D'){
+        if ($certificateData['insurance_provider_code'][$k] == 'D') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
         }
-        if($certificateData['insurance_provider_code'][$k]=='E'){
+        if ($certificateData['insurance_provider_code'][$k] == 'E') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
-        }
-
-        if (isset($certificateData['umbrella_checkbox'][$k])) {
-          // Create entry in CertificateUmbrella table
-          $certificateUmbrella = new CertificateUmbrella();
-          $certificateUmbrella->certificate_id = $cid;
-          $certificateUmbrella->policy_type_id = $k;
-          $certificateUmbrella->umbrella_subtype_id = $val;
-          $certificateUmbrella->save();
         }
 
         $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
@@ -71,6 +63,20 @@ class CertificateService
         $certificatePolicy->start_date = $certificateData['main_policy_eff_date'][$k];
         $certificatePolicy->expiry_date = $certificateData['main_policy_exp_date'][$k];
         $certificatePolicy->save();
+      }
+    }
+
+    if (!empty($certificateData['main_policy_sub'][10])) {
+      foreach ($certificateData['main_policy_sub'] as $k => $v) {
+        foreach ($certificateData['main_policy_sub'][10] as $vv => $val) {
+          if ($k != 10) {
+            $certificateUmbrella = new CertificateUmbrella();
+            $certificateUmbrella->certificate_id = $cid;
+            $certificateUmbrella->policy_type_id = $k;
+            $certificateUmbrella->umbrella_subtype_id = $val;
+            $certificateUmbrella->save();
+          }
+        }
       }
     }
 
@@ -111,19 +117,19 @@ class CertificateService
           $certificatePolicy->is_risk_retention_insured = false;
           $certificatePolicy->is_actual_cash_value = false;
           $certificatePolicy->insurance_provider_code = $certificateData['insurance_provider_code'][$k];
-          if($certificateData['insurance_provider_code'][$k]=='A'){
+          if ($certificateData['insurance_provider_code'][$k] == 'A') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
           }
-          if($certificateData['insurance_provider_code'][$k]=='B'){
+          if ($certificateData['insurance_provider_code'][$k] == 'B') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
           }
-          if($certificateData['insurance_provider_code'][$k]=='C'){
+          if ($certificateData['insurance_provider_code'][$k] == 'C') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
           }
-          if($certificateData['insurance_provider_code'][$k]=='D'){
+          if ($certificateData['insurance_provider_code'][$k] == 'D') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
           }
-          if($certificateData['insurance_provider_code'][$k]=='E'){
+          if ($certificateData['insurance_provider_code'][$k] == 'E') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
           }
           $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
@@ -142,19 +148,19 @@ class CertificateService
           $certificatePolicy->is_risk_retention_insured = false;
           $certificatePolicy->is_actual_cash_value = false;
           $certificatePolicy->insurance_provider_code = $certificateData['insurance_provider_code'][$k];
-          if($certificateData['insurance_provider_code'][$k]=='A'){
+          if ($certificateData['insurance_provider_code'][$k] == 'A') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
           }
-          if($certificateData['insurance_provider_code'][$k]=='B'){
+          if ($certificateData['insurance_provider_code'][$k] == 'B') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
           }
-          if($certificateData['insurance_provider_code'][$k]=='C'){
+          if ($certificateData['insurance_provider_code'][$k] == 'C') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
           }
-          if($certificateData['insurance_provider_code'][$k]=='D'){
+          if ($certificateData['insurance_provider_code'][$k] == 'D') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
           }
-          if($certificateData['insurance_provider_code'][$k]=='E'){
+          if ($certificateData['insurance_provider_code'][$k] == 'E') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
           }
           $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
