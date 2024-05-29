@@ -57,8 +57,7 @@ $navbarHideToggle = false;
                                                                                 class="acord_title ng-tns-c268-42"><img
                                                                                 src="{{ asset('assets/img/nlogo.png')}}"
                                                                                     width="91" height="39"
-                                                                                    class="ng-tns-c268-42">
-                                                                                &nbsp;&nbsp;INTERMODAL INTERCHANGE
+                                                                                    class="ng-tns-c268-42">                                                                                
                                                                                 CERTIFICATE OF
                                                                                 INSURANCE</span></td>
                                                                                 <td width="120px" class="date_top ng-tns-c268-42">
