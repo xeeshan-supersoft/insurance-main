@@ -2310,106 +2310,10 @@ $navbarHideToggle = false;
                                                                     required) </div>
                                                                 <table width="100%" cellpadding="0" cellspacing="0"
                                                                     border="0" class="ng-tns-c268-42">
-                                                                    <tbody class="ng-tns-c268-42">
-                                                                        <tr class="ng-tns-c268-42">
-                                                                            <td align="center" valign="middle"
-                                                                                formgroupname="autoDetForm"
-                                                                                class="age_checkbox ng-tns-c268-42 ng-untouched ng-pristine ng-invalid">
-                                                                                <mat-checkbox
-                                                                                    formcontrolname="stdEndorse"
-                                                                                    class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
-                                                                                    id="mat-checkbox-16"><label
-                                                                                        class="mat-checkbox-layout"
-                                                                                        for="mat-checkbox-16-input"><span
-                                                                                            class="mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin"><input
-                                                                                                type="checkbox"
-                                                                                                class="mat-checkbox-input cdk-visually-hidden"
-                                                                                                id="mat-checkbox-16-input"
-                                                                                                tabindex="0"
-                                                                                                aria-checked="false"><span
-                                                                                                matripple=""
-                                                                                                class="mat-ripple mat-checkbox-ripple mat-focus-indicator"><span
-                                                                                                    class="mat-ripple-element mat-checkbox-persistent-ripple"></span></span><span
-                                                                                                class="mat-checkbox-frame"></span><span
-                                                                                                class="mat-checkbox-background"><svg
-                                                                                                    version="1.1"
-                                                                                                    focusable="false"
-                                                                                                    viewBox="0 0 24 24"
-                                                                                                    aria-hidden="true"
-                                                                                                    class="mat-checkbox-checkmark">
-                                                                                                    <path fill="none"
-                                                                                                        stroke="white"
-                                                                                                        d="M4.1,12.7 9,17.6 20.3,6.3"
-                                                                                                        class="mat-checkbox-checkmark-path">
-                                                                                                    </path>
-                                                                                                </svg><span
-                                                                                                    class="mat-checkbox-mixedmark"></span></span></span><span
-                                                                                            class="mat-checkbox-label"><span
-                                                                                                style="display: none;">&nbsp;</span></span></label>
-                                                                                </mat-checkbox>
-                                                                            </td>
+                                                                    <tbody class="ng-tns-c268-42">                                                                       
+                                                                        <tr class="ng-tns-c268-42">                                                                          
                                                                             <td class="ng-tns-c268-42">
-                                                                                <div class="age_text ng-tns-c268-42">
-                                                                                    The Truckers
-                                                                                    Uniform Intermodal Interchange
-                                                                                    Endorsement (Form
-                                                                                    <a href="javascript:void(0);"
-                                                                                        class="ng-tns-c268-42">UIIE-1</a>
-                                                                                    or <a href="javascript:void(0);"
-                                                                                        class="ng-tns-c268-42">CA
-                                                                                        23-17</a>
-                                                                                    equivalent) is part of the auto
-                                                                                    policy(ies).
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr class="ng-tns-c268-42">
-                                                                            <td align="center" valign="middle"
-                                                                                class="age_checkbox ng-tns-c268-42">
-                                                                                <mat-checkbox formcontrolname="gltiFlag"
-                                                                                    class="mat-checkbox ng-tns-c268-42 mat-accent ng-untouched ng-pristine ng-valid"
-                                                                                    id="mat-checkbox-17"><label
-                                                                                        class="mat-checkbox-layout"
-                                                                                        for="mat-checkbox-17-input"><span
-                                                                                            class="mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin"><input
-                                                                                                type="checkbox"
-                                                                                                class="mat-checkbox-input cdk-visually-hidden"
-                                                                                                id="mat-checkbox-17-input"
-                                                                                                tabindex="0"
-                                                                                                aria-checked="false"><span
-                                                                                                matripple=""
-                                                                                                class="mat-ripple mat-checkbox-ripple mat-focus-indicator"><span
-                                                                                                    class="mat-ripple-element mat-checkbox-persistent-ripple"></span></span><span
-                                                                                                class="mat-checkbox-frame"></span><span
-                                                                                                class="mat-checkbox-background"><svg
-                                                                                                    version="1.1"
-                                                                                                    focusable="false"
-                                                                                                    viewBox="0 0 24 24"
-                                                                                                    aria-hidden="true"
-                                                                                                    class="mat-checkbox-checkmark">
-                                                                                                    <path fill="none"
-                                                                                                        stroke="white"
-                                                                                                        d="M4.1,12.7 9,17.6 20.3,6.3"
-                                                                                                        class="mat-checkbox-checkmark-path">
-                                                                                                    </path>
-                                                                                                </svg><span
-                                                                                                    class="mat-checkbox-mixedmark"></span></span></span><span
-                                                                                            class="mat-checkbox-label"><span
-                                                                                                style="display: none;">&nbsp;</span></span></label>
-                                                                                </mat-checkbox>
-                                                                            </td>
-                                                                            <td class="ng-tns-c268-42">
-                                                                                <div class="age_text ng-tns-c268-42">
-                                                                                    Below list of
-                                                                                    providers are additional insureds in
-                                                                                    regards to
-                                                                                    the auto liability. Those providers
-                                                                                    with (*) are
-                                                                                    additional insureds on the general
-                                                                                    liability and
-                                                                                    those with (**) are additional
-                                                                                    insureds on
-                                                                                    trailer interchange coverage. </div>
+                                                                               
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
