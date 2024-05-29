@@ -2285,7 +2285,16 @@ $navbarHideToggle = false;
                                                                         class="ng-tns-c268-42">ACORD 101</a>,
                                                                     Additional Remarks Schedule, if more space is
                                                                     required) </div>
-                                                                
+                                                                <table width="100%" cellpadding="0" cellspacing="0"
+                                                                    border="0" class="ng-tns-c268-42">
+                                                                    <tbody class="ng-tns-c268-42">                                                                       
+                                                                        <tr class="ng-tns-c268-42">                                                                            
+                                                                            <td class="ng-tns-c268-42">
+                                                                                
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </td>
                                                         </tr>
 
