@@ -62,7 +62,7 @@ $navbarHideToggle = false;
                                                                                 <td width="120px" class="date_top ng-tns-c268-42">
                                                                                     <div class="mat-form-field-subscript-wrapper ng-tns-c70-48"
                                                                                     style="text-align: center; position: relative; top:10px; float: left; ">
-                                                                                        {{ date('Y-m-d', strtotime($certificate->created_at)) }}
+                                                                                        {{ isset($certificate->created_at) ?date('Y-m-d', strtotime($certificate->created_at)) : '' }}
                                                                                     </div>
                                                                                 </td>
                                                                     </tr>
