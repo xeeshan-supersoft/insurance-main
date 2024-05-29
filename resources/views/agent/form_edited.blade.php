@@ -61,92 +61,12 @@ $navbarHideToggle = false;
                                                                                 &nbsp;&nbsp;INTERMODAL INTERCHANGE
                                                                                 CERTIFICATE OF
                                                                                 INSURANCE</span></td>
-                                                                        <td width="180" class="date_top ng-tns-c268-42">
-                                                                            {{-- <div class="date_lable ng-tns-c268-42">DATE
-                                                                                (MM/DD/YYYY)
-                                                                            </div> --}}
-                                                                            <mat-form-field appearance="outline"
-                                                                                class="mat-form-field ng-tns-c268-42 ng-tns-c70-48 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-star-inserted mat-form-field-should-float mat-form-field-disabled"
-                                                                                style="width: 170px !important;">
-                                                                                <div
-                                                                                    class="mat-form-field-wrapper ng-tns-c70-48">
-                                                                                    {{-- <div
-                                                                                        class="mat-form-field-flex ng-tns-c70-48">
-                                                                                        <div
-                                                                                            class="mat-form-field-outline ng-tns-c70-48 ng-star-inserted">
-                                                                                            <div class="mat-form-field-outline-start ng-tns-c70-48"
-                                                                                                style="width: 0px;">
-                                                                                            </div>
-                                                                                            <div class="mat-form-field-outline-gap ng-tns-c70-48"
-                                                                                                style="width: 0px;">
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="mat-form-field-outline-end ng-tns-c70-48">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-48 ng-star-inserted">
-                                                                                            <div class="mat-form-field-outline-start ng-tns-c70-48"
-                                                                                                style="width: 0px;">
-                                                                                            </div>
-                                                                                            <div class="mat-form-field-outline-gap ng-tns-c70-48"
-                                                                                                style="width: 0px;">
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="mat-form-field-outline-end ng-tns-c70-48">
-                                                                                            </div>
-                                                                                        </div> --}}
-                                                                                        <div
-                                                                                            class="mat-form-field-infix ng-tns-c70-48">
-                                                                                            {{-- <input type="date"
-                                                                                            matinput=""
-                                                                                                formcontrolname="acordCertiDate"
-                                                                                                placeholder="Choose a date"
-                                                                                                class="mat-input-element mat-form-field-autofill-control mat-datepicker-input acordCertiDateCls l_h_23 ng-tns-c70-48 ng-untouched ng-pristine cdk-text-field-autofill-monitored"
-                                                                                                id="mat-input-4"
-                                                                                                data-placeholder="Choose a date"
-                                                                                                aria-invalid="false"
-                                                                                                aria-required="false"
-                                                                                                aria-haspopup="dialog"
-                                                                                                data-mat-calendar="mat-datepicker-0"
-                                                                                                disabled=""> --}}
-                                                                                            <mat-datepicker
-                                                                                                class="ng-tns-c70-48">
-                                                                                            </mat-datepicker><span
-                                                                                                class="mat-form-field-label-wrapper ng-tns-c70-48"></span>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="mat-form-field-suffix ng-tns-c70-48 ng-star-inserted">
-                                                                                            <mat-datepicker-toggle
-                                                                                                matsuffix=""
-                                                                                                class="mat-datepicker-toggle ng-tns-c70-48"
-                                                                                                data-mat-calendar="mat-datepicker-0">
-                                                                                                <button
-                                                                                                    mat-icon-button=""
-                                                                                                    type="button"
-                                                                                                    class="mat-focus-indicator mat-icon-button mat-button-base mat-button-disabled"
-                                                                                                    aria-haspopup="dialog"
-                                                                                                    aria-label="Open calendar"
-                                                                                                    tabindex="-1"
-                                                                                                    disabled="true"><span
-                                                                                                        matripple=""
-                                                                                                        class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span
-                                                                                                        class="mat-button-focus-overlay"></span></button>
-                                                                                            </mat-datepicker-toggle>
-                                                                                        </div>
+                                                                                <td width="120px" class="date_top ng-tns-c268-42">
+                                                                                    <div class="mat-form-field-subscript-wrapper ng-tns-c70-48"
+                                                                                    style="text-align: center; position: relative; top:10px; float: left; ">
+                                                                                        {{ date('Y-m-d', strtotime($certificate->created_at)) }}
                                                                                     </div>
-                                                                                    <div
-                                                                                        class="mat-form-field-subscript-wrapper ng-tns-c70-48">
-                                                                                        <div class="mat-form-field-hint-wrapper ng-tns-c70-48 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
-                                                                                            style="opacity: 1; transform: translateY(0%);">
-                                                                                            <div
-                                                                                                class="mat-form-field-hint-spacer ng-tns-c70-48">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </mat-form-field>
-                                                                        </td>
+                                                                                </td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
