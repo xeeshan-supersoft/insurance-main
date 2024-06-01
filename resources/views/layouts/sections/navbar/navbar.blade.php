@@ -234,6 +234,12 @@
         <li>
             <a class="btn btn-light" href="{{ route('sdash') }}">Dasboard</a>
         </li>
+        <li>
+            <a class="btn btn-light" href="{{ route('add.freights') }}">Add freight</a>
+        </li>
+        <li>
+            <a class="btn btn-light" href="{{ route('add.trucks') }}">Add trucks</a>
+        </li>
         @endif
 
     </ul>

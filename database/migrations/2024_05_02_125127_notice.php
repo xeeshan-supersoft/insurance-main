@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('to')->constrained('users');
             $table->foreignId('from')->constrained('users');
-            $table->foreignId('upload_id')->constrained('uploads');
+            $table->foreignId('upload_id')->constrained('uploads')->nullable();
             $table->string('name')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
