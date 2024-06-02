@@ -207,10 +207,10 @@ class AgentController extends Controller
     $view = 'agent.form_pdf5';
     $cert = 'certificate.pdf';
 
-    // $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
-    // return $pdf->stream($cert);
+    $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
+    return $pdf->stream($cert);
 
-    return view($view , $data);
+    // return view($view , $data);
   }
 
   public function showPDF2(string $id)
