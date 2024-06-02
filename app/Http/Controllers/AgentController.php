@@ -62,7 +62,7 @@ class AgentController extends Controller
    */
   public function create(Request $request)
   {
-    $policytypes = PolicyType::with('policies', 'policyLimits')
+    $policytypes = PolicyType::with('policies', 'policyLimits', 'certificateUmbrellas')
       ->whereIn('id', $request->policyGroup)
       ->get();
 
@@ -116,7 +116,7 @@ class AgentController extends Controller
 
   public function showCertificate(string $id)
   {
-    $certificate = Certificate::with('policies', 'policyLimits')
+    $certificate = Certificate::with('policies', 'policyLimits', 'certificateUmbrellas')
       ->where('id', $id)
       ->first();
 
@@ -158,7 +158,7 @@ class AgentController extends Controller
 
   public function showPDF(string $id)
   {
-    $certificate = Certificate::with('policies', 'policyLimits')
+    $certificate = Certificate::with('policies', 'policyLimits', 'certificateUmbrellas')
       ->where('id', $id)
       ->first();
 
@@ -276,7 +276,7 @@ class AgentController extends Controller
    */
   public function editCertificate(string $id)
   {
-    $certificate = Certificate::with('policies', 'policyLimits')
+    $certificate = Certificate::with('policies', 'policyLimits', 'certificateUmbrellas')
       ->where('id', $id)
       ->first();
 

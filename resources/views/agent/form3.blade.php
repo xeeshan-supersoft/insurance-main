@@ -1271,7 +1271,7 @@ $navbarHideToggle = false;
                                                                                     formcontrolname="insrLtrGL" name="insurance_provider_code[{{ $pt->id }}]"
                                                                                     maxlength="1" minlength="1" value=""
                                                                                     oninput="this.value = this.value.toUpperCase()"
-                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-64 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
+                                                                                    class="toupper mat-input-element mat-form-field-autofill-control ng-tns-c70-64 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
                                                                                     required="" id="mat-input-20"
                                                                                  ><span
                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
@@ -2164,14 +2164,14 @@ $navbarHideToggle = false;
                                                                     </tbody>
                                                                 </table>
                                                             </td>
-                                                        </tr>                                                        
+                                                        </tr>
                                                         @endforeach
 
-                                                        
+                                                        @if(!empty($policytypes->where('id', 10)->first()))
                                                         <tr class="ng-tns-c268-42 ng-trigger ng-trigger-slideUpDown ng-star-inserted">
-                                                            <td colspan="7" class="chkb_lable_title ng-tns-c268-42">                                                                
+                                                            <td colspan="7" class="chkb_lable_title ng-tns-c268-42">
                                                                 <table>
-                                                                        <tbody>                                                                            
+                                                                        <tbody>
                                                                             <tr>
                                                                                 <td>
                                                                                     Apply Umbrella Liability to:
@@ -2188,10 +2188,10 @@ $navbarHideToggle = false;
                                                                                 @endforeach
                                                                             </tr>
                                                                         </tbody>
-                                                                </table>                                                               
+                                                                </table>
                                                             </td>
                                                         </tr>
-                                                        
+                                                        @endif
 
                                                         <tr class="ng-tns-c268-42">
                                                             <td colspan="7" style="padding: 10px;"
@@ -2207,8 +2207,8 @@ $navbarHideToggle = false;
                                                                     required) </div>
                                                                 <table width="100%" cellpadding="0" cellspacing="0"
                                                                     border="0" class="ng-tns-c268-42">
-                                                                    <tbody class="ng-tns-c268-42">                                                                       
-                                                                        <tr class="ng-tns-c268-42">                                                                            
+                                                                    <tbody class="ng-tns-c268-42">
+                                                                        <tr class="ng-tns-c268-42">
                                                                             <td class="ng-tns-c268-42">
                                                                                 <br/><br/><br/>
                                                                             </td>

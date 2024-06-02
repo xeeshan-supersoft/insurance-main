@@ -65,7 +65,7 @@ if (btn) {
         document.getElementById('checkboxValidation').value = atLeastOneChecked ? 'true' : 'false';
     }
 
-    $('#mat-input-20').keyup(function() {
+    $('.toupper').keyup(function() {
         this.value = this.value.toLocaleUpperCase();
     });
 
