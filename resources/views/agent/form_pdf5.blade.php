@@ -304,19 +304,24 @@
                                   </tr>
                               </tbody>
                             </table>
-                            <div class=" ng-tns-c268-42"     style="display:flex; justify-content:space-between;">
-                              <span class="agenc_sub_titel ng-tns-c268-42"
-                              >COVERAGES      </span>
+                            <table  width="100%" cellpadding="0" cellspacing="0" class="tftable ng-tns-c268-42">
+                                <tbody class="ng-tns-c268-42">
+                                  <tr class="ng-tns-c268-42">
+                                    <td> </td>
+                                  <span class="agenc_sub_titel ng-tns-c268-42"
+                                  >COVERAGES      </span>
+                                </td> <td>
+                                    <span class="agenc_sub_titel  ng-tns-c268-42"
+                                  >CERTIFICATE NUMBER</span>
+                                  </td> <td>
+                                    <span class="agenc_sub_titel  ng-tns-c268-42"
+                                  >REVISION NUMBER</span>
+                                </td>
+                              </tr>
+                                </tbody>
+                          </table>
 
-                                <span class="agenc_sub_titel  ng-tns-c268-42"
-                               >CERTIFICATE NUMBER</span>
-
-                                <span class="agenc_sub_titel  ng-tns-c268-42"
-                              >REVISION NUMBER</span>
-                              <div class="clearfix ng-tns-c268-42"></div>
-                            </div>
-
-                            <table  style="border-spacing: 0px;" width="100%" cellpadding="0" cellspacing="0"
+                            <table width="100%" cellpadding="0" cellspacing="0"
                               class="tftable ng-tns-c268-42">
                               <tbody class="ng-tns-c268-42">
                                 <tr class="ng-tns-c268-42">
