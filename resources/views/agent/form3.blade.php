@@ -2182,7 +2182,7 @@ $navbarHideToggle = false;
                                                                                         class="mat-checkbox ng-tns-c268-42 mat-accent mat-checkbox-checked"
                                                                                         id="mat-checkbox-28">
                                                                                         <input class="form-check-input" name="umbrella_checkbox[{{ $pt->id }}]" type="checkbox" value="{{ $pt->id }}"
-
+                                                                                          {{ ($pt->certificateUmbrellas->first()->policy_type_id == $pt->id) ? 'checked' : '' }}
                                                                                         />
                                                                                         </mat-checkbox> {{$pt->type_name}}
                                                                                     </td>
