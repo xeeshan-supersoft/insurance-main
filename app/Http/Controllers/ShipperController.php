@@ -54,28 +54,28 @@ class ShipperController extends Controller
     $userId = Auth::user()->id;
     $validatedDataa = Validator::make($request->all(), [
       'username' => 'required',
-      'password1' => 'required',
+      'password1' => 'sometimes',
       'email' => 'required|email|unique:users',
-      'Addss' => 'sometimes',
-      'Addss2' => 'sometimes',
-      'fullname' => 'sometimes',
-      'city' => 'sometimes',
-      'state' => 'sometimes',
-      'zip' => 'sometimes',
+      // 'Addss' => 'sometimes',
+      // 'Addss2' => 'sometimes',
+      // 'fullname' => 'sometimes',
+      // 'city' => 'sometimes',
+      // 'state' => 'sometimes',
+      // 'zip' => 'sometimes',
       'phone' => 'sometimes',
-      'altemail' => 'sometimes',
+      // 'altemail' => 'sometimes',
       'role' => 'sometimes',
-      'license_number' => 'sometimes',
-      'license_expiry_date' => 'sometimes',
-      'license_type' => 'sometimes',
-      'years_of_experience' => 'sometimes',
-      'vehicle_registration_number' => 'sometimes',
-      'vehicle_make' => 'sometimes',
-      'vehicle_model' => 'sometimes',
-      'vehicle_year' => 'sometimes:',
-      'vehicle_capacity' => 'sometimes',
-      'vehicle_status' => 'sometimes',
-      'mc_number' => 'sometimes',
+      // 'license_number' => 'sometimes',
+      // 'license_expiry_date' => 'sometimes',
+      // 'license_type' => 'sometimes',
+      // 'years_of_experience' => 'sometimes',
+      // 'vehicle_registration_number' => 'sometimes',
+      // 'vehicle_make' => 'sometimes',
+      // 'vehicle_model' => 'sometimes',
+      // 'vehicle_year' => 'sometimes:',
+      // 'vehicle_capacity' => 'sometimes',
+      // 'vehicle_status' => 'sometimes',
+      // 'mc_number' => 'sometimes',
       'subs_id' => 'sometimes',
     ]);
     // var_dump( $validatedDataa);
@@ -83,7 +83,7 @@ class ShipperController extends Controller
     if ($validatedDataa->fails()) {
       return Redirect::back()
         ->withErrors($validatedDataa)
-        ->withInput();   
+        ->withInput();
     }
     $currentDate = Carbon::now();
     $endDate = $currentDate->copy()->addDays(30);
@@ -93,7 +93,7 @@ class ShipperController extends Controller
       $user = User::create([
         'name' => $validatedData['username'],
         'email' => $validatedData['email'],
-        'password' => Hash::make($validatedData['password1']),
+        'password' => Hash::make('123'),
         'role' => $validatedData['role'], // Assuming default role ID for 'user'
       ]);
       $lastInsertedId = $user->id;
@@ -105,31 +105,31 @@ class ShipperController extends Controller
         'end_date' => $endDate,
         'status' => 'Active',
       ]);
-      $user = DriverDetail::create([
-        'user_id' => $lastInsertedId,
-        'status' => '1',
-        'address' => $validatedData['Addss'],
-        'address2' => $validatedData['Addss2'],
-        'name' => $validatedData['fullname'],
-        'city' => $validatedData['city'],
-        'state' => $validatedData['state'],
-        'zip' => $validatedData['zip'],
-        'cellphone' => $validatedData['phone'],
-        'extra_email' => $validatedData['altemail'],
-      ]);
+      // $user = DriverDetail::create([
+      //   'user_id' => $lastInsertedId,
+      //   'status' => '1',
+      //   'address' => $validatedData['Addss'],
+      //   'address2' => $validatedData['Addss2'],
+      //   'name' => $validatedData['fullname'],
+      //   'city' => $validatedData['city'],
+      //   'state' => $validatedData['state'],
+      //   'zip' => $validatedData['zip'],
+      //   'cellphone' => $validatedData['phone'],
+      //   'extra_email' => $validatedData['altemail'],
+      // ]);
       $user = Notice::create([
         'to' => $lastInsertedId,
         'from' => $userId,
         'name' => "freight_driver added by".$userId,
           ]);
           return Redirect::back()
-          ->with('success' , 'freight_driver created successfully!');    
-    }                           
+          ->with('success' , 'freight_driver created successfully!');
+    }
     if ($validatedData['role'] == 'truck_driver') {
       $user = User::create([
         'name' => $validatedData['username'],
         'email' => $validatedData['email'],
-        'password' => Hash::make($validatedData['password1']),
+        'password' => Hash::make('123'),
         'role' => $validatedData['role'], // Assuming default role ID for 'user'
       ]);
       $lastInsertedId = $user->id;
@@ -145,41 +145,41 @@ class ShipperController extends Controller
         'end_date' => $endDate,
         'status' => 'Active',
       ]);
-  
-        $user = DriverDetail::create([
-         'user_id' => $lastInsertedId,
-         'address' => $validatedData['Addss'],
-         'address2' => $validatedData['Addss2'],
-         'name' => $validatedData['fullname'],
-         'city' => $validatedData['city'],
-         'state' => $validatedData['state'],
-         'zip' => $validatedData['zip'],
-         'cellphone' => $validatedData['phone'],
-         'extra_email' => $validatedData['altemail'],
-         'license_number' => $validatedData['license_number'],
-         'license_expiry_date'=> $validatedData['license_expiry_date'],
-         'license_type' => $validatedData['license_type'],
-         'years_of_experience'=> $validatedData['years_of_experience'],
-         'vehicle_registration_number'=> $validatedData['vehicle_registration_number'],
-         'vehicle_make'=> $validatedData['vehicle_make'],
-         'vehicle_model'=> $validatedData['vehicle_model'],
-         'vehicle_year'=> $validatedData['vehicle_year'],
-         'vehicle_capacity'=> $validatedData['vehicle_capacity'],
-         'vehicle_status'=> $validatedData['vehicle_status'],
-         'mc_number'=> $validatedData['mc_number'],
-       ]);
+
+      //   $user = DriverDetail::create([
+      //    'user_id' => $lastInsertedId,
+      //    'address' => $validatedData['Addss'],
+      //    'address2' => $validatedData['Addss2'],
+      //    'name' => $validatedData['fullname'],
+      //    'city' => $validatedData['city'],
+      //    'state' => $validatedData['state'],
+      //    'zip' => $validatedData['zip'],
+      //    'cellphone' => $validatedData['phone'],
+      //    'extra_email' => $validatedData['altemail'],
+      //    'license_number' => $validatedData['license_number'],
+      //    'license_expiry_date'=> $validatedData['license_expiry_date'],
+      //    'license_type' => $validatedData['license_type'],
+      //    'years_of_experience'=> $validatedData['years_of_experience'],
+      //    'vehicle_registration_number'=> $validatedData['vehicle_registration_number'],
+      //    'vehicle_make'=> $validatedData['vehicle_make'],
+      //    'vehicle_model'=> $validatedData['vehicle_model'],
+      //    'vehicle_year'=> $validatedData['vehicle_year'],
+      //    'vehicle_capacity'=> $validatedData['vehicle_capacity'],
+      //    'vehicle_status'=> $validatedData['vehicle_status'],
+      //    'mc_number'=> $validatedData['mc_number'],
+      //  ]);
       return Redirect::back()
-      ->with('success' ,'truck_driver created successfully!');       
+      ->with('success' ,'truck_driver created successfully!');
     }
 
     return 'nothing';
   }
-  
+
 
   public function truckprofiles()
   {
     $userId = Auth::user()->id;
- 
+
     $driverdetail = DriverDetail::where('user_id', $userId)->get();
 
     return view('truck.profile' , compact('driverdetail'));
