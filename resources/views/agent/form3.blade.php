@@ -2167,7 +2167,7 @@ $navbarHideToggle = false;
                                                         </tr>
                                                         @endforeach
 
-                                                        @if(!empty($policytypes->where('id', 10)->first()))
+                                                        @if(!empty($policytypes->where('id', 10)->all()))
                                                         <tr class="ng-tns-c268-42 ng-trigger ng-trigger-slideUpDown ng-star-inserted">
                                                             <td colspan="7" class="chkb_lable_title ng-tns-c268-42">
                                                                 <table>
@@ -2182,6 +2182,7 @@ $navbarHideToggle = false;
                                                                                         class="mat-checkbox ng-tns-c268-42 mat-accent mat-checkbox-checked"
                                                                                         id="mat-checkbox-28">
                                                                                         <input class="form-check-input" name="umbrella_checkbox[{{ $pt->id }}]" type="checkbox" value="{{ $pt->id }}"
+
                                                                                         />
                                                                                         </mat-checkbox> {{$pt->type_name}}
                                                                                     </td>

@@ -32,4 +32,9 @@ class Certificate extends Model
     {
         return $this->hasMany(CertificatePolicyLimit::class);
     }
+
+    public function certificateUmbrellas()
+    {
+        return $this->hasMany(CertificateUmbrella::class);
+    }
 }
