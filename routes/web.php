@@ -143,9 +143,9 @@ Route::get('reboot',function(){
 Route::group(['middleware' => 'checkRole:shipper'], function () {
   Route::get('/sportal', [ShipperController::class, 'dash2'])->name('sdash');
   Route::get('/add-trucks', function () { return view('shipper.add-trucker'); })->name('add.trucks');
-  
+
   Route::get('/add-freights', function () { return view('shipper.add-freight'); })->name('add.freights');
-  Route::post('/reg-adds', [ShipperController::class, 'addReg'])->name('regs.add'); 
+  Route::post('/reg-adds', [ShipperController::class, 'addReg'])->name('regs.add');
   Route::get('/profile-shipper', [TruckController::class, 'shipperprofiles'])->name('profile.shipper');
 
 });
@@ -173,9 +173,9 @@ Route::fallback(function () {
 
 
 Route::get('/mrun', function () {
-  //Artisan::call("migrate");
-  //Artisan::call("db:seed");
-  //echo "Done";
+  Artisan::call("migrate");
+  Artisan::call("db:seed");
+  return 'Done';
 });
 
 // layout
