@@ -185,6 +185,7 @@ class AgentController extends Controller
     ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
     ->get();
 
+
     $policyNotExistTypes = PolicyType::with('policies', 'policyLimits')
     ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
     ->orderByRaw('FIELD(type_name, "'.implode('","', $customOrder).'")')
@@ -200,19 +201,16 @@ class AgentController extends Controller
     });
 
     $r = 1;
-
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
-
     $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
-
     $view = 'agent.form_pdf5';
     $cert = 'certificate.pdf';
 
-    $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
-    return $pdf->stream($cert);
+    // $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
+    // return $pdf->stream($cert);
 
-    // return view($view , $data);
+    return view($view , $data);
   }
 
   public function showPDF2(string $id)
@@ -270,7 +268,7 @@ class AgentController extends Controller
     $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
     return $pdf->stream($cert);
 
-    //return view($view , $data);
+    // return view($view , $data);
   }
 
   /**

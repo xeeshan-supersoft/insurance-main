@@ -132,10 +132,25 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::post('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
   Route::get('/profile-truck', [TruckController::class, 'truckprofiles'])->name('profile.truck');
 });
+Route::get('reboot',function(){
+  Artisan::call('view:clear');
+  Artisan::call('route:clear');
+  Artisan::call('config:clear');
+  Artisan::call('cache:clear');
+  Artisan::call('key:generate');
+});
 
 Route::group(['middleware' => 'checkRole:shipper'], function () {
   Route::get('/sportal', [ShipperController::class, 'dash2'])->name('sdash');
+  Route::get('/add-trucks', function () { return view('shipper.add-trucker'); })->name('add.trucks');
+  
+  Route::get('/add-freights', function () { return view('shipper.add-freight'); })->name('add.freights');
+  Route::post('/reg-adds', [ShipperController::class, 'addReg'])->name('regs.add'); 
+  Route::get('/profile-shipper', [TruckController::class, 'shipperprofiles'])->name('profile.shipper');
+
 });
+
+
 
 Route::get('/notice', [AdminController::class, 'notice'])->name('notice');
 Route::group(['middleware' => 'checkRole:shipper'], function () {

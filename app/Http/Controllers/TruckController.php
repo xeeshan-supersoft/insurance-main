@@ -223,6 +223,9 @@ class TruckController extends Controller
     )->get();
     return view('truck.policy-list', compact('insurance_data'));
   }
+
+
+  
   public function pdf(request $request, $id)
   {
     $insuranceData = Insurance_data::where('id', $id)->first();
