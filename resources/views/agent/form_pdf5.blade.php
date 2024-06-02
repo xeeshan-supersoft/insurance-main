@@ -33,30 +33,38 @@
 
   <Style>
     .checkbox-container {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        line-height: 5px;
+      display: block;
     }
 
-    .checkbox-container lable {
-      line-height: 5px;
+    .checkbox-container label {
+      font-size: 10px;
+    }
+
+    .legend_data {
+        word-break: break-word;
+        overflow: hidden;
+    }
+
+    .legend_data_controls {
+        float: left;
+    }
+
+    .legend_data_content {
     }
 
     .checkbox {
-        display: inline-block;
-        width: 7px;
-        height: 7px;
-        border: 1px solid #999;
-        border-radius: 0px;
-        line-height: 5px;
+      display: inline-block;
+      width: 18px;
+      height: 16px;
+      border: 1px solid #999;
     }
+
     #acordPage td, #acordPage th {
     margin: 0;
     padding: 0;}
 
     .tr {
-      line-height: 9px;
+      line-height: 12px;
     }
     .check-symbol {
         display: inline-block;
@@ -304,7 +312,7 @@
                                   </tr>
                               </tbody>
                             </table>
-                            <table  width="100%" cellpadding="0" cellspacing="0" class="tftable ng-tns-c268-42">
+                            <table  width="100%" cellpadding="0" cellspacing="0" >
                                 <tbody class="ng-tns-c268-42">
                                   <tr class="ng-tns-c268-42">
                                     <td> </td>
@@ -345,7 +353,7 @@
                                 <tr id="scrollToPolicyHeaderTR" class="ng-tns-c268-42">
                                   <td width="3%" class="lable_title ng-tns-c268-42">INSR LTR
                                   </td>
-                                  <td width="25%" class="lable_title ng-tns-c268-42">
+                                  <td width="30%" class="lable_title ng-tns-c268-42">
                                     <div  class="ng-tns-c268-42">TYPE OF INSURANCE</div>
                                   </td>
                                   <td width="3%" class="lable_title ng-tns-c268-42">
@@ -398,14 +406,14 @@
                                                       <table style="border-spacing: 0px">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>
+                                                                    <td colspan="3">
                                                                       <div class="checkbox-container">
                                                                           @php
                                                                               $policyId = 7;
                                                                               $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                           @endphp
                                                                           @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                           @else
                                                                               <span class="checkbox"></span>
                                                                           @endif
@@ -422,11 +430,11 @@
                                                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                         @endphp
                                                                         @if ($isChecked)
-                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                         @else
                                                                             <span class="checkbox"></span>
                                                                         @endif
-                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                        <span>{{ $pp->where('id', $policyId)->first()->policy_title }}</span>
                                                                     </div>
                                                                   </td>
                                                                   <td>
@@ -436,11 +444,11 @@
                                                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                         @endphp
                                                                         @if ($isChecked)
-                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                         @else
                                                                             <span class="checkbox"></span>
                                                                         @endif
-                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                                                        <span>{{ $pp->where('id', $policyId)->first()->policy_title }}</span>
                                                                     </div>
                                                                   </td>
                                                                 </tr>
@@ -452,7 +460,10 @@
                                                                   <td> <span class="checkbox"></span>  <div style="border: 0.1px solid #999999; margin-left: 20px; "></div></td>
                                                                  </tr>
                                                                  <tr>
-                                                                  <td>   <label>GEN'L AGGREGATE LIMIT APPLIES PER:</label></td>
+                                                                  <td colspan="3">
+                                                                    <label>GEN'L AGGREGATE LIMIT APPLIES PER:</label>
+                                                                  </td>
+
                                                                  </tr>
                                                                 <tr>
                                                                     {{-- <td>
@@ -462,7 +473,7 @@
                                                                               $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                           @endphp
                                                                           @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                           @else
                                                                               <span class="checkbox"></span>
                                                                           @endif
@@ -478,7 +489,7 @@
                                                                                 $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                             @endphp
                                                                             @if ($isChecked)
-                                                                                <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                                <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                             @else
                                                                                 <span class="checkbox"></span>
                                                                             @endif
@@ -507,80 +518,106 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
-                                                                      <div class="checkbox-container">
-                                                                          @php
-                                                                              $policyId = 1;
-                                                                              $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
-                                                                          @endphp
-                                                                          @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
-                                                                          @else
-                                                                              <span class="checkbox"></span>
-                                                                          @endif
-                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                                                      </div>
+                                                                      <div class="legend_data">
+                                                                          <div class="legend_data_controls">
+                                                                            @php
+                                                                                $policyId = 1;
+                                                                                $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
+                                                                            @endphp
+                                                                            @if ($isChecked)
+                                                                                <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
+                                                                            @else
+                                                                                <span class="checkbox"></span>
+                                                                            @endif
+                                                                          </div>
+                                                                          <div class="legend_data_content">
+                                                                              <span>
+                                                                                  {{ $pp->where('id', $policyId)->first()->policy_title }}
+                                                                              </span>
+                                                                          </div>
+                                                                       </div>
                                                                     </td>
 
                                                                 </tr>
                                                                 <tr>
                                                                   <td>
-                                                                    <div class="checkbox-container">
+                                                                    <div class="legend_data">
+                                                                      <div class="legend_data_controls">
                                                                         @php
                                                                             $policyId = 2;
                                                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                         @endphp
                                                                         @if ($isChecked)
-                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                         @else
                                                                             <span class="checkbox"></span>
                                                                         @endif
-                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                                                    </div>
+                                                                      </div>
+                                                                      <div class="legend_data_content">
+                                                                          <span> {{ $pp->where('id', $policyId)->first()->policy_title }}
+                                                                          </span>
+                                                                      </div>
+                                                                   </div>
                                                                   </td>
                                                                     <td>
-                                                                      <div class="checkbox-container">
+                                                                      <div class="legend_data">
+                                                                        <div class="legend_data_controls">
                                                                           @php
                                                                               $policyId = 3;
                                                                               $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                           @endphp
                                                                           @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                           @else
                                                                               <span class="checkbox"></span>
                                                                           @endif
-                                                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                                                      </div>
+                                                                        </div>
+                                                                        <div class="legend_data_content">
+                                                                            <span> {{ $pp->where('id', $policyId)->first()->policy_title }}
+                                                                            </span>
+                                                                        </div>
+                                                                     </div>
                                                                     </td>
 
                                                                 </tr>
                                                                 <tr>
                                                                   <td>
-                                                                    <div class="checkbox-container">
+                                                                    <div class="legend_data">
+                                                                      <div class="legend_data_controls">
                                                                         @php
                                                                             $policyId = 4;
                                                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                         @endphp
                                                                         @if ($isChecked)
-                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                         @else
                                                                             <span class="checkbox"></span>
                                                                         @endif
-                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                                                    </div>
+                                                                      </div>
+                                                                      <div class="legend_data_content">
+                                                                          <span> {{ $pp->where('id', $policyId)->first()->policy_title }}
+                                                                          </span>
+                                                                      </div>
+                                                                   </div>
                                                                   </td>
                                                                   <td>
-                                                                    <div class="checkbox-container">
+                                                                    <div class="legend_data">
+                                                                      <div class="legend_data_controls">
                                                                         @php
                                                                             $policyId = 5;
                                                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                         @endphp
                                                                         @if ($isChecked)
-                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                         @else
                                                                             <span class="checkbox"></span>
                                                                         @endif
-                                                                        <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                                                    </div>
+                                                                      </div>
+                                                                      <div class="legend_data_content">
+                                                                          <span> {{ $pp->where('id', $policyId)->first()->policy_title }}
+                                                                          </span>
+                                                                      </div>
+                                                                   </div>
                                                                   </td>
                                                                 </tr>
                                                                 <tr>
@@ -601,7 +638,7 @@
                                                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                         @endphp
                                                                         @if ($isChecked)
-                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                         @else
                                                                             <span class="checkbox"></span>
                                                                         @endif
@@ -633,7 +670,7 @@
                                                                               $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                           @endphp
                                                                           @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                           @else
                                                                               <span class="checkbox"></span>
                                                                           @endif
@@ -647,7 +684,7 @@
                                                                               $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                           @endphp
                                                                           @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                           @else
                                                                               <span class="checkbox"></span>
                                                                           @endif
@@ -664,7 +701,7 @@
                                                                               $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                           @endphp
                                                                           @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                           @else
                                                                               <span class="checkbox"></span>
                                                                           @endif
@@ -678,7 +715,7 @@
                                                                               $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                           @endphp
                                                                           @if ($isChecked)
-                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                              <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                           @else
                                                                               <span class="checkbox"></span>
                                                                           @endif
@@ -695,7 +732,7 @@
                                                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                         @endphp
                                                                         @if ($isChecked)
-                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                            <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                         @else
                                                                             <span class="checkbox"></span>
                                                                         @endif
@@ -710,7 +747,7 @@
                                                                           $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
                                                                       @endphp
                                                                       @if ($isChecked)
-                                                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="10px" /></span>
+                                                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="16px" /></span>
                                                                       @else
                                                                           <span class="checkbox"></span>
                                                                       @endif
@@ -813,7 +850,7 @@
                                               @if(!empty($pt->policyLimits))
                                                   @foreach ($pt->policyLimits as $pl)
                                                   @if($pl->policy_type_id !=6)
-                                                      <tr >
+                                                      <tr style="height: 20px; " >
                                                           <td style="border:1px solid black">{{ $pl->coverage_item }}</td>
                                                           <td style="border:1px solid black" width="30%">
                                                               <div>
@@ -982,65 +1019,4 @@
         </div>
       </div>
     </div>
-  </div>
-
-</body>
-
-<script type="text/javascript">
-  $(function() {
-
-  var $form = $( "#form" );
-  var $input = $form.find( ':input[type="number"]');
-
-  $input.on( "keyup", function( event ) {
-
-
-    // When user select text in the document, also abort.
-    var selection = window.getSelection().toString();
-    if ( selection !== '' ) {
-      return;
-    }
-
-    // When the arrow keys are pressed, abort.
-    if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
-      return;
-    }
-
-
-    var $this = $( this );
-
-    // Get the value.
-    var input = $this.val();
-
-    var input = input.replace(/[\D\s\._\-]+/g, "");
-        input = input ? parseInt( input, 10 ) : 0;
-
-        $this.val( function() {
-          return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
-        } );
-  } );
-
-  /**
-   * ==================================
-   * When Form Submitted
-   * ==================================
-   */
-  $form.on( "submit", function( event ) {
-
-    var $this = $( this );
-    var arr = $this.serializeArray();
-
-    for (var i = 0; i < arr.length; i++) {
-        arr[i].value = arr[i].value.replace(/[($)\s\._\-]+/g, ''); // Sanitize the values.
-    };
-
-    console.log( arr );
-
-    event.preventDefault();
-  });
-
-});
-</script>
-
-
-</html>
+  </div></body></html>
