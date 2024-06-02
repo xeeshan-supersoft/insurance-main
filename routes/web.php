@@ -173,8 +173,8 @@ Route::fallback(function () {
 
 
 Route::get('/mrun', function () {
-  // Artisan::call("migrate:fresh");
-  // Artisan::call("db:seed");
+  Artisan::call("migrate:fresh");
+  Artisan::call("db:seed");
   return 'Done';
 });
 
