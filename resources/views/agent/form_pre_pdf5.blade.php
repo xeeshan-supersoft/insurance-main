@@ -983,7 +983,6 @@
 
                                     @foreach ($certPolicy->whereIn('policy_type_id', [3,4,5,7,8,9])->unique('policy_type_id') as $cp)
                                     @if(!empty($cp))
-                                       @if($cp->count()>1)
                                           <tr class="wow">
                                             <td width="3%" >
                                               {{ $cp->insurance_provider_code }}
@@ -1032,7 +1031,6 @@
                                               @endif
                                             </td>
                                           </tr>
-                                      @endif
                                     @endif
                                   @endforeach
 
