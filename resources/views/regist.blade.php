@@ -65,56 +65,49 @@
         
         <div class="form-floating form-floating-outline mb-4">
           <input type="text" class="form-control" name="fullname" id="fullname1" placeholder="ACME Inc." />
-          <label for="fullname1"> Name</label>
+          <label for="fullname1"> NAME</label>
         </div>
       </div>
         <div class="col-6">
         <div class="form-floating form-floating-outline mb-4">
             <input type="text" class="form-control" name="Addss"id="Addss1"  placeholder="" />
-            <label for="Addss1"> Address 1</label>
+            <label for="Addss1"> ADDRESS 1</label>
         </div>
     </div> 
           <div class="col-6">
             <div class="form-floating form-floating-outline mb-4">
               <input type="text" class="form-control" name="Addss2"id="Address21"  placeholder="" />
-              <label for="Address21"> Address 1</label>
+              <label for="Address21"> ADDRESS 2</label>
           </div>
         </div>
         <div class="col-6">
           <div class="form-floating form-floating-outline mb-4">
               <input type="text" class="form-control" name="state"id="state1"  placeholder="" />
-              <label for="state1">state</label>
+              <label for="state1">STATE</label>
           </div>
       </div> 
             <div class="col-6">
               <div class="form-floating form-floating-outline mb-4">
                 <input type="text" class="form-control" name="country"id="country1"  placeholder="" />
-                <label for="country1"> country</label>
+                <label for="country1"> COUNTRY</label>
             </div>
           </div>
           <div class="col-6">
             <div class="form-floating form-floating-outline mb-4">
                 <input type="text" class="form-control" name="city"id="city1"  placeholder="" />
-                <label for="city1"> city</label>
+                <label for="city1"> CITY</label>
             </div>
         </div> 
               <div class="col-6">
                 <div class="form-floating form-floating-outline mb-4">
                   <input type="text" class="form-control" name="zip"id="zip1"  placeholder="" />
-                  <label for="zip1"> zip</label>
+                  <label for="zip1"> ZIP</label>
               </div>
             </div>
                  
         
-      </div>
-    
-
-      {{-- card end --}}
-  </div>
-
-
-
-      <div class="flex items-center justify-end mt-4">
+      </div>     {{-- card end --}}
+  </div> <div class="flex items-center justify-end mt-4">
           <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
               {{ __('Already registered?') }}
           </a>        
