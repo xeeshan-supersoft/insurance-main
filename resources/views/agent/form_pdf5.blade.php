@@ -979,27 +979,30 @@
                                 <div class="ng-tns-c268-42"></div>
                               </td>
                             </tr> --}}
-
+                            <tr class="ng-tns-c268-42"
+                            style="vertical-align: top; line-height:4;">
+                            <td  colspan="10">
+                              <table style="border-spacing: 0px;" width="100%" cellpadding="0" cellspacing="0"
+                              class=" ng-tns-c268-42">
+                            <tbody>
                             @foreach ($certPolicy->whereIn('policy_type_id', [3,4,5,7,8,9])->unique('policy_type_id') as $cp)
                                     @if(!empty($cp))
-                                    <tr id="scrollToPolicyHeaderTR" class="ng-tns-c268-42" height="10"
-                                    style="vertical-align: middle; ">
-                                            <td width="3%" >
-                                              {{ $cp->insurance_provider_code }}
+                                    <tr style="line-height:1;"><td width="3%" style="border-right: 1px solid black;" >
+                                            <label>{{ $cp->insurance_provider_code }}</label> 
                                             </td>
-                                            <td width="25%">
-                                              {{ $cp->policyType->type_name }}
+                                            <td width="24.5%" style="border-right: 1px solid black;">
+                                              <label>{{ $cp->policyType->type_name }}</label>                                          
                                             </td>
-                                            <td width="3%"></td>
-                                            <td width="3%"></td>
-                                            <td width="10%">
+                                            <td width="3%" style="border-right: 1px solid black;"></td>
+                                            <td width="3%" style="border-right: 1px solid black;"></td>
+                                            <td width="24.5%" style="border-right: 1px solid black;">
                                               {{ $cp->policy_number }}
                                             </td>
-                                            <td width="10%" style="text-align: center;">
-                                              {{ $cp->start_date }}
+                                            <td valign="middle" style="text-align: center; vertical-align: middle; border-right: 1px solid black;">
+                                              {{  date('m-d-Y', strtotime($cp->start_date)) }}
                                             </td>
-                                            <td width="10%" style="text-align: center;">
-                                              {{ $cp->expiry_date }}
+                                            <td valign="middle" style="text-align: center; vertical-align: middle; border-right: 1px solid black;">
+                                              {{  date('m-d-Y', strtotime($cp->expiry_date)) }}
                                             </td>
                                             <td width="28%">
                                               @if($cp->policyType->id==4 )
@@ -1029,11 +1032,14 @@
                                                 {{ $cptpl->where('policy_limit_id', 26)->first()->amount }}
                                                 @endforeach
                                               @endif
-                                            </td>
+                                            </td>                                       
                                           </tr>
                                     @endif
                                   @endforeach
-
+                                </tbody>
+                              </table>
+                            </td>
+                                </tr>
 
 
                             <tr class="ng-tns-c268-42">
@@ -1048,13 +1054,13 @@
                             </tbody>
                             </table>
 
-                            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 9px;"
+                            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 3px;"
                               class="ng-tns-c268-42">
                               <tbody class="ng-tns-c268-42">
                                 <tr class="ng-tns-c268-42">
-                                  <td style="width: 50%; font-size: 12px; font-weight: bold;" class="ng-tns-c268-42">
+                                  <td style="width: 50%; font-size: 9px; font-weight: bold;" class="ng-tns-c268-42">
                                     CERTIFICATE HOLDER</td>
-                                  <td style="width: 50%; font-size: 12px; font-weight: bold;" class="ng-tns-c268-42">
+                                  <td style="width: 50%; font-size: 9px; font-weight: bold;" class="ng-tns-c268-42">
                                     CANCELLATION</td>
                                 </tr>
                                 <tr class="ng-tns-c268-42">
