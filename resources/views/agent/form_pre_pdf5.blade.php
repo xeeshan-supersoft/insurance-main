@@ -39,6 +39,10 @@
       /* line-height: 18px; */
     }
 
+    tr.wow  {
+      border-bottom-style: hidden;
+    }
+
     .checkbox-container lable {
       /* line-height: 18px; */
     }
@@ -354,7 +358,9 @@
                                   <td>
                                     <div>
                                       <span class="mat-form-field-label-wrapper ng-tns-c70-64">
-                                        {{$certPolicy->where('policy_type_id', $pt->id)->first()->insurance_provider_code}}
+                                        @if(!empty($certPolicy->where('policy_type_id', $pt->id)->first()))
+                                          {{$certPolicy->where('policy_type_id', $pt->id)->first()->insurance_provider_code}}
+                                        @endif
                                       </span>
                                     </div>
                                   </td>
@@ -975,36 +981,66 @@
                             </tr>
                             @endforeach
 
-                            @foreach ($certPolimit->whereIn('policy_type_id', [3,4,5,7,8,9])->unique('policy_type_id') as $pot)
-                                    <tr>
-                                      <td width="3%" class="lable_title ng-tns-c268-42">
-                                        {{ $certPolicy->where('policy_type_id', $pt->id)->first()->insurance_provider_code }}
-                                      </td>
-                                      <td width="25%" class="lable_title ng-tns-c268-42">
-                                            {{ $pot->policyType->type_name }}
-                                      </td>
-                                      <td width="3%" class="">
-                                      </td>
-                                      <td width="3%" class="">
-                                      </td>
-                                      <td width="10%" class="">
-
-                                      </td>
-                                      <td width="10%" class="">
-                                      </td>
-                                      <td width="10%" class="">
-                                      </td>
-                                      <td width="28%" class="">
-                                      </td>
-                                    </tr>
-                                    @endforeach
+                                    @foreach ($certPolicy->whereIn('policy_type_id', [3,4,5,7,8,9])->unique('policy_type_id') as $cp)
+                                    @if(!empty($cp))
+                                       @if($cp->count()>1)
+                                          <tr class="wow">
+                                            <td width="3%" >
+                                              {{ $cp->insurance_provider_code }}
+                                            </td>
+                                            <td width="25%">
+                                              {{ $cp->policyType->type_name }}
+                                            </td>
+                                            <td width="3%"></td>
+                                            <td width="3%"></td>
+                                            <td width="10%">
+                                              {{ $cp->policy_number }}
+                                            </td>
+                                            <td width="10%" style="text-align: center;">
+                                              {{ $cp->start_date }}
+                                            </td>
+                                            <td width="10%" style="text-align: center;">
+                                              {{ $cp->expiry_date }}
+                                            </td>
+                                            <td width="28%">
+                                              @if($cp->policyType->id==4 )
+                                                Limit/ Trailer
+                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
+                                                {{ $cptpl->where('policy_limit_id', 12)->first()->amount }}
+                                                @endforeach
+                                              @endif
+                                              @if($cp->policyType->id==7 )
+                                                Limit/Ded
+                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
+                                                {{ $cptpl->where('policy_limit_id', 21)->first()->amount }} /
+                                                {{ $cptpl->where('policy_limit_id', 22)->first()->amount }}
+                                                @endforeach
+                                              @endif
+                                              @if($cp->policyType->id==8 )
+                                                Limit/Ded
+                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
+                                                {{ $cptpl->where('policy_limit_id', 23)->first()->amount }} /
+                                                {{ $cptpl->where('policy_limit_id', 24)->first()->amount }}
+                                                @endforeach
+                                              @endif
+                                              @if($cp->policyType->id==9 )
+                                                Limit/Ded
+                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
+                                                {{ $cptpl->where('policy_limit_id', 25)->first()->amount }} /
+                                                {{ $cptpl->where('policy_limit_id', 26)->first()->amount }}
+                                                @endforeach
+                                              @endif
+                                            </td>
+                                          </tr>
+                                      @endif
+                                    @endif
+                                  @endforeach
 
                             <tr class="ng-tns-c268-42">
                               <td colspan="8" style="padding: 10px;" class="ng-tns-c268-42">
                                 <div style="font-size: 11px; height:30px;" class="ng-tns-c268-42">
                                   DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES (Attach ACORD 101, Additional Remarks
                                   Schedule, if more space is required) </div>
-
                               </td>
                             </tr>
 

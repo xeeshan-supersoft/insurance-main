@@ -30,3 +30,15 @@ INSERT INTO policies (`policy_type_id`, `policy_title`) values (10, 'RETENTION')
 
 -- Employers Liability = 6
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (6, 'ANY PROPRIETOR/PARTNER/EXECUTIVE OFFICER/MEMBER EXCLUDED?');
+
+-- Work Comp = 5
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (5, '');
+
+-- Contingent Cargo = 7
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (7, '');
+
+-- Ref. Trailer = 8
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (8, '');
+
+-- Employee Dishonesty = 9
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, '');
