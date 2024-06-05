@@ -9,6 +9,7 @@ use App\Models\DriverDetail;
 use App\Models\AgencyInfos;
 use App\Models\Subscription_plan;
 use App\Models\ShipperInfos;
+use App\Models\AgentDriver;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
@@ -17,7 +18,7 @@ class AdminController extends Controller
   {
     $this->middleware('checkRole:admin');
   }
- 
+
 
   public function dashadmin()
   {
@@ -26,7 +27,7 @@ class AdminController extends Controller
     return view('admin_dash', compact('users'));
     // return view('dash');
   }
-  
+
   public function edituser(int $id){
     $users = User::find($id);
     // return $users->role;
@@ -66,7 +67,7 @@ elseif ($users->role == "truck_driver" || $users->role == "freight_driver" ) {
       $users->save();
       $message = 'edite done agent';
       return back()->with($message);
-    
+
     }
     elseif ($request->role == "shipper") {
       $userss = ShipperInfos::find($request->table_id);
@@ -107,7 +108,7 @@ elseif ($request->role == "truck_driver" || $request->role == "freight_driver" )
   $message='edite done truck & freight driver ';
   return back()->with($message);
 
-} 
+}
 
 $message='Not Done';
 return back()->with($message);
@@ -134,7 +135,7 @@ return back()->with($message);
 
     // return view('sub', compact('sub'))->with('success', 'Subscription Plan created successfully.');
     return response()->json([
-      'message' => 'Subscription Plan created successfully.'   
+      'message' => 'Subscription Plan created successfully.'
     ]);
   }
   public function notice ()
@@ -153,7 +154,36 @@ return back()->with($message);
     $subs = Subscription_plan::find($request->id);
     $subs->update($request->all());
     return response()->json([
-      'message' => 'Subscription Plan Update successfully.'   
+      'message' => 'Subscription Plan Update successfully.'
     ]);
+  }
+
+  public function assign_driver_to_agent()
+  {
+    $agents = User::where('role', 'agent')->get();
+    $drivers = User::where('role', 'truck_driver')->orWhere('role', 'freight_driver')->get();
+    $agent_trucker = AgentDriver::with(['agent', 'driver'])->get();
+
+    return view('agent_truck', compact('agents', 'drivers', 'agent_trucker'));
+  }
+
+  public function relate_driver_to_agent(Request $request)
+  {
+
+    $agent_driver_relate = AgentDriver::where('agent_id', $request->agent_id)->where('driver_id', $request->driver_id)->first();
+
+    if(!empty($agent_driver_relate))
+    {
+      return response()->json(['message' => 'Relation Already Exists']);
+    }
+    else
+    {
+      $new_relate = new AgentDriver;
+      $new_relate->agent_id = $request->agent_id;
+      $new_relate->driver_id = $request->driver_id;
+      $new_relate->save();
+
+      return response()->json(['message' => 'Relation Added Successfully']);
+    }
   }
 }

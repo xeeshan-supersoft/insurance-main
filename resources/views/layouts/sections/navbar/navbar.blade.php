@@ -207,6 +207,9 @@
         <li>
             <a class="btn btn-light" href="{{ route('dashs') }}">Users</a>
         </li>
+        <li>
+          <a class="btn btn-light" href="{{ route('a2t') }}">Assign Driver To Agent</a>
+        </li>
 
         @elseif ($user->role == "truck_driver")
 

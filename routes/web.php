@@ -76,6 +76,8 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::post('/admin/update_user/', [AdminController::class, 'updateuser'])->name('update_user');
   Route::post('/admin/add_sub/', [AdminController::class, 'add_sub'])->name('add_sub');
   Route::post('/admin/edit_sub/{id}', [AdminController::class, 'edit_sub'])->name('edit_sub');
+  Route::get('/admin/agent_truck/', [AdminController::class, 'assign_driver_to_agent'])->name('a2t');
+  Route::post('/admin/add_agent_driver/', [AdminController::class, 'relate_driver_to_agent'])->name('add_agent_driver');
 });
 
 // NOW
