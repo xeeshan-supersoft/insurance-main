@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
   @stack('body-css')
 
-  <link rel="stylesheet" href="{{ asset('assets/css/accord.css') }}" />
+  <link rel="stylesheet" href="{{ asset('assets/css/accord2.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}" />
 
   <Style>
