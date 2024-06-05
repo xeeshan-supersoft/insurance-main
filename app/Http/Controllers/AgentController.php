@@ -204,13 +204,13 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
     $data = compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r');
-    $view = 'agent.form_pdf5';
+    $view = 'agent.form_pre_pdf5';
     $cert = 'certificate.pdf';
 
-    $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
-    return $pdf->stream($cert);
+    // $pdf = PDF::loadView($view, $data)->setPaper('a4', 'portrait');
+    // return $pdf->stream($cert);
 
-    // return view($view , $data);
+    return view($view , $data);
   }
 
   public function showPDF2(string $id)
