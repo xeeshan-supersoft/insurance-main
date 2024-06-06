@@ -349,7 +349,7 @@
                                   </td>
                                 </tr>
 
-                                @foreach ($policytypes->whereIn('id', [1,2,6,10]) as $pt)
+                                @foreach ($policytypes->whereIn('id', [1,2,5,9]) as $pt)
                                 <tr>
                                   <td>
                                     <div>
@@ -655,7 +655,6 @@
                                       </td>
                                     </tr>
                                     <tr>
-
                                       <td>
                                         <div class="checkbox-container">
                                           @php
@@ -690,7 +689,6 @@
                                       </td>
                                     </tr>
                                     <tr>
-
                                       <td>
                                         <div class="checkbox-container">
                                           @php
@@ -707,7 +705,6 @@
                                           <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
                                         </div>
                                       </td>
-
                                       <td>
                                         <div class="checkbox-container">
                                           @php
@@ -735,17 +732,14 @@
                             @endif
 
                             {{-- Remaining Policies --}}
-                            @if($pt->type_name == "Employers Liability")
+                            @if($pt->type_name == "Work Comp Employers Liability")
                             @foreach ($pt->policies as $pp)
-                            @if($pp->id == 5)
+                            @if($pp->id == 14)
                             <tr>
                               <td>
-                                <b>WORKERS COMPENSATION <br>AND EMPLOYERS' LIABILITY
-                                </b>
-                                <br>
+                                <b>WORKERS COMPENSATION <br>AND EMPLOYERS' LIABILITY</b>
                               </td>
-                              <td> Y/N
-                              </td>
+                              <td> Y/N </td>
                             </tr>
                             <tr>
                               <td style="line-height: 1.1">                                
@@ -768,21 +762,18 @@
                             @endif
                             @endforeach
                             @endif
-                            </tbody>
-                            </table>
+                            </tbody></table>
                             </td>
                             <td>
                               <div>
                                 <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
                               </div>
                             </td>
-
                             <td>
                               <div>
                                 <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
                               </div>
                             </td>
-
                             <td valign="middle" style="text-align: center; vertical-align: middle;">
                               <div>
                                 <span>{{ !empty($certPolicy) ? $certPolicy->where('policy_type_id',
@@ -806,14 +797,17 @@
                             <td valign="top">
                               <table width="100%" cellpadding="0" cellspacing="0">
                                 <tbody>
+                                  @php
+                                      $coverageItems13And14 = ''; // Initialize the variable outside the loop
+                                  @endphp
                                   @php $additionalRowAdded = false; @endphp
                                   @if(!empty($pt->policyLimits))
-                                  @foreach ($pt->policyLimits as $pl)
+                                  @foreach ($pt->policyLimits->where('id', '!=', 18) as $pl)
                                   @if($pl->policy_type_id !=6)
-                                  <tr style="
-                                                      line-height:2;
-                                                  ">
-                                    <td style="border:1px solid black; line-height:0.7;">{{ $pl->coverage_item }}</td>
+                                  <tr style="line-height:2;">
+                                    <td style="border:1px solid black; line-height:0.7;">                                      
+                                      {{ $pl->coverage_item }}
+                                    </td>
                                     <td style="border:1px solid black" width="40%">
                                       <div>
                                         <span>$&nbsp;
@@ -823,23 +817,8 @@
                                       </div>
                                     </td>
                                   </tr>
-
-                                  {{-- @if(!$additionalRowAdded)
-                                  @php $additionalRowAdded = true; @endphp
-                                  <tr>
-                                    <td style="border:1px solid black"></td>
-                                    <td style="border:1px solid black" width="30%">
-                                      <div>
-                                        <span>$&nbsp; </span>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                  @endif --}}
                                   @else
-
-                                  <tr style="
-                                                    line-height: 2;
-                                                ">
+                                  <tr style="line-height: 2;">
                                     <td style="border:1px solid black; line-height:0.7;">{{ $pl->coverage_item }}</td>
                                     <td style="border:1px solid black" width="40%">
                                       <div>
@@ -850,8 +829,6 @@
                                       </div>
                                     </td>
                                   </tr>
-
-
                                   @endif
                                   @endforeach
                                   <tr>
@@ -862,7 +839,6 @@
                                       </div>
                                     </td>
                                   </tr>
-
                                   @else
                                   <tr>
                                     <td style="border:1px solid black; line-height:0;">{{ $pl->coverage_item }}</td>
@@ -877,49 +853,17 @@
                                     </td>
                                   </tr>
                                   @endif
-                                </tbody>
-                              </table>
+                                </tbody></table>
                             </td>
                             </tr>
-                            @endforeach
-                            {{-- <tr id="scrollToPolicyHeaderTR" class="ng-tns-c268-42" height="10"
-                              style="vertical-align: middle; ">
-                              <td width="3%" class="lable_title ng-tns-c268-42">
-
-                              </td>
-                              <td width="25%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"><b>OTHERS</b></div>
-                                <br class="ng-tns-c268-42"><br class="ng-tns-c268-42"><br class="ng-tns-c268-42">
-                              </td>
-                              <td width="3%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"> </div>
-                              </td>
-                              <td width="3%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"></div>
-                              </td>
-                              <td width="10%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42">
-                                </div>
-                              </td>
-                              <td width="10%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42">
-                                  <br class="ng-tns-c268-42">
-                                </div>
-                              </td>
-                              <td width="10%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"><br class="ng-tns-c268-42"></div>
-                              </td>
-                              <td width="28%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"></div>
-                              </td>
-                            </tr> --}}
+                            @endforeach                            
                             <tr class="ng-tns-c268-42"
                             style="vertical-align: top; line-height:4;">
                             <td  colspan="10">
                               <table style="border-spacing: 0px;" width="100%" cellpadding="0" cellspacing="0"
                               class=" ng-tns-c268-42">
                             <tbody>
-                            @foreach ($certPolicy->whereIn('policy_type_id', [3,4,5,7,8,9])->unique('policy_type_id') as $cp)
+                            @foreach ($certPolicy->whereIn('policy_type_id', [3,4,7,8])->unique('policy_type_id') as $cp)
                                     @if(!empty($cp))
                                     <tr style="line-height:1;"><td width="3%" style="border-right: 1px solid black;" >
                                             <label>{{ $cp->insurance_provider_code }}</label> 
@@ -958,14 +902,7 @@
                                                 {{ $cptpl->where('policy_limit_id', 23)->first()->amount }} /
                                                 {{ $cptpl->where('policy_limit_id', 24)->first()->amount }}
                                                 @endforeach
-                                              @endif
-                                              @if($cp->policyType->id==9 )
-                                                Limit/Ded
-                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                {{ $cptpl->where('policy_limit_id', 25)->first()->amount }} /
-                                                {{ $cptpl->where('policy_limit_id', 26)->first()->amount }}
-                                                @endforeach
-                                              @endif
+                                              @endif                                              
                                             </td>                                       
                                           </tr>
                                     @endif
