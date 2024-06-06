@@ -36,5 +36,5 @@ INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'UMBRELLA LIA
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'OCCUR');
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'EXCESS LIAB');
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'CLAIMS-MADE');
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'DEDUCTIBLE');
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'DED');
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'RETENTION');
