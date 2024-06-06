@@ -176,8 +176,7 @@ class AgentController extends Controller
         'Cargo',
         'Trailer Interchange',
         'Umbrella',
-        'Work Comp',
-        'Employers Liability'
+        'Work Comp Employers Liability'
     ];
 
     $policyExistTypes = PolicyType::with('policies', 'policyLimits')
