@@ -377,7 +377,7 @@
                                        
                                         <tr>
                                           <td>
-                                            <table style="border-spacing: 0px" cellspacing="2">
+                                            <table style="border-spacing: 1px" cellspacing="2">
                                               <tbody>
                                                 <tr>
                                                   <td colspan="3" cellspacing="1">
@@ -390,7 +390,7 @@
                                                       @if ($isChecked)
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else
                                                       <span class="checkbox"></span>
                                                       @endif
@@ -399,7 +399,6 @@
                                                     </div>
                                                   </td>
                                                 </tr>
-
                                                 <tr>
                                                   <td colspan="2">
                                                  <table><tbody><tr><td>
@@ -412,7 +411,7 @@
                                                       <span class="checkbox"></span>
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else
                                                       <span class="checkbox"></span>
                                                       <span class="checkbox"></span>
@@ -421,7 +420,6 @@
                                                         }}</label>
                                                    </td></tr></tbody></table>
                                                   </td>
-
                                                   <td>
                                                     <table><tbody><tr><td >
                                                       @php
@@ -432,7 +430,7 @@
                                                       @if ($isChecked)
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else
                                                       <span class="checkbox"></span>
                                                       @endif
@@ -441,7 +439,6 @@
                                                     </td></tr></tbody></table>
                                                   </td>
                                                 </tr>
-
                                                 <tr>
                                                   <td colspan="3"> <span
                                                       class="checkbox"></span>
@@ -473,7 +470,7 @@
                                                       @if ($isChecked)
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else<span class="checkbox"></span>
                                                       @endif<label>{{ $pp->where('id', $policyId)->first()->policy_title
                                                         }}</label></div></td><td style="margin-right: 2px" ><table><tbody><tr><td>                                                    
@@ -488,19 +485,16 @@
                                         @endforeach
                                         @endif
                                         @if($pt->type_name == "Auto Liability")
-                                        <tr valign="top">
-                                          <td valign="top" style="line-height:1.9">
-                                          <label >{{ Str::upper($pt->type_name) }}</label>
-                                        </td>
-                                      </tr>
+                                        <tr valign="top" cellpadding="1"  style="padding-bottom:13px" ><td valign="top" style="line-height:0 padding-bottom:1px"><label><b>{{ Str::upper($pt->type_name)}}</b></label></td></tr>
                                         @foreach ($pt->policies as $pp)
                                         @if($pp->policy_title == "ANY AUTO")
-                                        <tr><td><table style="border-spacing: 0px"><tbody><tr><td valign="top">                                                
+                                        <tr><td><table style="border-spacing: 0px"><tbody><tr><td valign="bottom">                                                
                                                     @php
                                                     $policyId = 1;
                                                     $isChecked = $certPolicy->where('policy_id',
                                                     $policyId)->first() ? true : false;
                                                     @endphp
+                                                    <br style="line-height:0.5" >
                                                     @if ($isChecked)
                                                     <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="12px" /></span>
                                                     @else
@@ -508,31 +502,21 @@
                                                     @endif<label >{{ $pp->where('id',
                                                       $policyId)->first()->policy_title }}</label>
                                                   </td></tr>
-                                                  <tr><td><table><tbody><tr><td>
+                                                  <tr><td><table style="border-spacing: 0px" ><tbody><tr><td valign="bottom">
                                                     @php
                                                     $policyId = 2;
                                                     $isChecked = $certPolicy->where('policy_id', $policyId)->first() ?
                                                     true : false;
                                                     @endphp
                                                     @if ($isChecked)
-                                                    <span class="check-symbol"><img
-                                                        src="{{ asset('assets/img/checked.png') }}"
-                                                        width="12px" /></span>
+                                                    <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"width="12px" /></span>
                                                     @else
                                                     <span class="checkbox"></span>
                                                     @endif
                                                   </td><td valign="bottom"><label style="line-height: 0;">{{ $pp->where('id',
                                                       $policyId)->first()->policy_title }}</label>
-                                                  </td>
-                                                </tr>
-                                              </tbody>
-                                            </table>                                         
-                                  </td>
-                                  <td>
-                                    <table>
-                                      <tbody>
-                                        <tr>
-                                          <td>
+                                                  </td></tr></tbody></table></td>
+                                  <td><table><tbody><tr><td>
                                             @php
                                             $policyId = 3;
                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
@@ -540,12 +524,12 @@
                                             @endphp
                                             @if ($isChecked)
                                             <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                                width="12px" /></span>
+                                                width="14px" /></span>
                                             @else
                                             <span class="checkbox"></span>
                                             @endif
                                           </td>
-                                          <td valign="bottom"><label style="line-height: 0;">{{ $pp->where('id',
+                                          <td ><label style="line-height: 0;">{{ $pp->where('id',
                                               $policyId)->first()->policy_title }}</label>
                                           </td>
                                         </tr>
@@ -566,7 +550,7 @@
                                             @endphp
                                             @if ($isChecked)
                                             <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                                width="12px" /></span>
+                                                width="14px" /></span>
                                             @else
                                             <span class="checkbox"></span>
                                             @endif
@@ -590,7 +574,7 @@
                                             @endphp
                                             @if ($isChecked)
                                             <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                                width="12px" /></span>
+                                                width="14px" /></span>
                                             @else
                                             <span class="checkbox"></span>
                                             @endif</td><td valign="bottom"><label style="line-height: 0;">{{ $pp->where('id',
@@ -621,7 +605,7 @@
                                 <table style="border-spacing: 0px">
                                   <tbody>
                                     <tr>
-                                      <td colspan="1">
+                                      <td>
                                         <div class="checkbox-container">
                                           @php
                                           $policyId = 18;
@@ -630,7 +614,7 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
@@ -646,7 +630,7 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
@@ -664,7 +648,7 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
@@ -680,7 +664,7 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
@@ -698,7 +682,7 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
@@ -714,7 +698,7 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
@@ -801,12 +785,16 @@
                                       $coverageItems13And14 = ''; // Initialize the variable outside the loop
                                   @endphp
                                   @php $additionalRowAdded = false; @endphp
-                                  @if(!empty($pt->policyLimits))
-                                  @foreach ($pt->policyLimits->where('id', '!=', 18) as $pl)
+                                  @if(!empty($pt->policyLimits))                                  
+                                  @php
+                                    $cover1 = $pt->policyLimits->where('id', 13)->first();
+                                    $cover2 = $pt->policyLimits->where('id', 14)->first();
+                                  @endphp
+                                  @foreach ($pt->policyLimits->whereNotIn('id', [13,14,18]) as $pl)
                                   @if($pl->policy_type_id !=6)
-                                  <tr style="line-height:2;">
-                                    <td style="border:1px solid black; line-height:0.7;">                                      
-                                      {{ $pl->coverage_item }}
+                                  <tr style="line-height:2;">                                                                       
+                                    <td style="border:1px solid black; line-height:0.9;">                                                                            
+                                      {{$pl->coverage_item}}
                                     </td>
                                     <td style="border:1px solid black" width="40%">
                                       <div>
