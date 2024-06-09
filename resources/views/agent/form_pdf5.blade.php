@@ -978,6 +978,206 @@
 
         </div>
       </div>
+   <div style="height: 90px"></div>
+
+
+<div id="acordPage" fxlayout="row" class="page-layout simple right-sidebar ng-tns-c268-42"
+style="flex-direction: row; box-sizing: border-box; display: flex;">
+
+<div fuseperfectscrollbar="" class="center ng-tns-c268-42 ps"
+          style="flex-direction: column; box-sizing: border-box; display: flex;">
+          <div class="ps__rail-x" style="left: 0px; top: 0px;">
+            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+          </div>
+          <div class="ps__rail-y" style="top: 0px; left: 0px; height: 1357px;">
+            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+          </div>
+          <div fxlayout="column" fxlayoutalign="space-between" class="header ng-tns-c268-42"
+            style="flex-direction: column; box-sizing: border-box; display: flex; place-content: stretch space-between; align-items: stretch;">
+            <div fxlayout="row wrap" fxflex="100%" fxflex.xs="100%" fxflex.sm="100%"
+              class="widget-group tableBox pt-0 ng-tns-c268-42 ng-trigger ng-trigger-animateStagger">
+              <div fxlayout="row" fxflex="100%" fxflex.xs="100%" fxflex.sm="100%"
+                class="widget ng-tns-c268-42 ng-trigger ng-trigger-animate"
+                style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 100%; max-width: 100%;">
+                <div class="fuse-widget-front ng-tns-c268-42">
+                  <div fxlayout="row wrap" fxlayoutalign="start"
+                    class="ng-tns-c268-42 ng-trigger ng-trigger-slideIn ng-star-inserted"
+                    style="flex-flow: wrap; box-sizing: border-box; display: flex; place-content: stretch flex-start; align-items: stretch;">
+                    <div fxlayout="column" fxflex="100" fxflex.gt-xs="100" fxflex.gt-md="100"
+                      class="widget p-lr-24 ng-tns-c268-42 ng-trigger ng-trigger-animate"
+                      style="flex-direction: column; box-sizing: border-box; display: flex; flex: 1 1 100%; max-width: 100%;">
+                      <div class="widget-front box m-0 bn_n ng-tns-c268-42">
+                        <div fxlayout="row" fxlayoutalign="start" class="p-10 ng-tns-c268-42"
+                          style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch flex-start; align-items: stretch;">
+                          <form novalidate="" name="acordForm" style="width: 100% !important;"
+                            class="ng-tns-c268-42 ng-untouched ng-pristine ng-invalid" id="form">
+                            <div id="accord_container" class="ng-tns-c268-42">
+                             
+
+
+<table width="100%" cellpadding="0" cellspacing="0" class="ng-tns-c268-42">
+  <tr class="ng-tns-c268-42">
+    <td class="ng-tns-c268-42"><span class="acord_title ng-tns-c268-42"><img
+          src="{{ asset('assets/img/nlogo.png')}}" width="91" height="39"
+          class="ng-tns-c268-42 text-center">
+        &nbsp;&nbsp;
+        ADDITIONAL REMARKS SCHEDULE
+         </span>
+    </td>                                          
+    <td  valign="top" width="150px" class="ng-tns-c268-42"
+      style="">
+    
+      <div class=""style="font-size:9px; ">
+    Page <u>2</u> of <u>2</u>
+      </div>
+    </td>
+  </tr>
+</table>
+  <table width="100%" cellpadding="0" cellspacing="0" class="ng-tns-c268-42">
+<tr ><td colspan="8" valign="top" class="p-0 ng-tns-c268-42" width="50%" >
+  <table width="100%" cellpadding="0" cellspacing="0" class="tftable">
+    <tbody>
+      <tr style="line-height: 2;border:1px solid black;" class="lable_title" width="100%">
+     
+        <td colspan="2" class="lable_title"> <label> AGENCY</label>    
+        {{ $agent->agencies[0]->name }}<br class="ng-tns-c268-42">
+        </td>
+
+      </tr>
+      <tr  style="line-height: 2;border:1px solid black;" width="100%" class="lable_title">
+        <td colspan="2" class="lable_title"><label> POLICY NUMBER</label>    </td>
+       
+      </tr>
+      <tr style="line-height: 2;">
+        <td  class="lable_title">  <label> CARRIER</label>    </td> 
+        <td class="lable_title"> <label>NAIC CODE</label>    </td> 
+      </tr>
+    </tbody>
+  </table>
+</td>
+<td valign="top" class="p-0 ng-tns-c268-42"  width="50%" >
+  <table width="100%" cellpadding="0" cellspacing="0" class="tftable agenc_sub_table a_s_t_b">
+    <tbody>
+      <tr  style="border:1px solid black;">
+        <td>   <label> NAME INSURED </label>     </td> 
+        <td>   {{ $driver->name }}<br class="ng-tns-c268-42">
+          {{ $driver->truckers[0]->address }} <br class="ng-tns-c268-42">
+          {{ $driver->truckers[0]->city }}
+          {{ $driver->truckers[0]->state }} <br class="ng-tns-c268-42"> ,
+          {{ $driver->truckers[0]->zip }} <br class="ng-tns-c268-42">   </td> 
+      </tr>      
+      <tr  style="border:1px solid black; line-height: 2;">
+
+        <td colspan="2">      <label> EFFECTIVE DATE:</label>    </td> 
+
+      </tr>
+    </tbody>
+  </table>  
+</td></tr></table>
+<table width="100%" cellpadding="22" cellspacing="3" class=" ng-tns-c268-42">
+  <tbody class="ng-tns-c268-42">
+    <tr class="ng-tns-c268-42">
+      <td style="font-size: 12px">
+        ADDITIONAL REMARKS
+      </td>
+     
+    </tr>
+  </tbody>
+</table>
+<table width="100%" cellpadding="22" cellspacing="3" class="tftable ng-tns-c268-42">
+  <tbody class="ng-tns-c268-42">
+    <tr class="ng-tns-c268-42">  
+      <td>    
+     THIS ADDITIONAL REMARKS DORM IS A SCHEDULE TO ACCORD FORM, <br>
+    FORM NUMBER <u> 101 </u> FROM TITLE: <u> </u> </td></tr>
+    <tr class="ng-tns-c268-42"  >
+      <td> 
+        - Meridian Title Corporation (IN) – IL
+- Meridian Title Corporation (IN) - IL
+- Meridian National Account Services - PA
+- Meridian National Account Services Company – MO
+- Meridian Title Company
+The following locations are also covered under the above mentioned policies:
+Illinois Location:
+150 South Wacker Drive, 24th Floor, Chicago, IL 60606
+Indiana Locations:
+1) 11711 N. Pennsylvania Street, Suite 110 Carmel, IN 46032
+2) 723 Third Street, Columbus, IN 47201
+3) 1182 E. Summit Street, Crown Point, IN 46307
+4) 9885 E. 116th Street, Suite 600, Fishers, IN 46037
+5) 6432 Georgetown North Boulevard, Fort Wayne, IN 46815
+6) 5375 East Dupont Road, Suite 102 Fort Wayne IN 46825
+7) 2305 Main Street, Unit A Highland, IN 46322
+8) 1675 W. Smith Valley, Road Suite E4, Greenwood, IN 46142
+9) 935 Mezzanine Suite A Lafayette, IN 47905
+10) 1447 S. Lake Park Avenue Hobart, IN 46342
+11) 251 E. Ohio Street, Suite 100 Indianapolis, IN 46204
+12) 3850 Priority Way South Drive, Suite 120, Indianapolis, IN 46240
+13) 1000 W. State Road 2, LaPorte, IN 46350
+14) 1375 S. Lebanon Street, Suite 800, Lebanon, IN 46052
+15) 241 Medical Plaza, Unit D, Michigan City, IN 46360
+16) 4440 Edison Lakes Parkway, Suite 100, Mishawaka, IN 46545
+17) 1307 US 33, Goshen Road Goshen, IN 46526
+18) 465 Sheridan Road, Noblesville, IN 46060
+19) 607 W. Jefferson Street, Plymouth, IN 46563
+20) 6340 Main Street, Suite A, Portage, IN 46368
+21) 202 S. Michigan Street, Suite 300, South Bend, IN 46601
+22) 57 Franklin Street, Suite 103, Valparaiso, IN 46383
+23) 612 N. Detroit Street, Warsaw, IN 46580
+24) 1120 W. Oak Street, Suite 250 Zionsville, IN 46077
+25) 9835 East US Highway 36, Avon, IN 46123
+26) 7131 West Jefferson Boulevard, Fort Wayne, IN 46804
+27) 881 Parkway Avenue, Suite 300, Elkhart, IN 46516
+28) 245 W. Johnson Road, Suite 9, LaPorte, IN 46350
+Michigan Locations:
+1) 103 N. Broadway, Cassopolis, MI 49031
+2) 107 Commercial Street, Dowagiac, MI 49047
+3) 69045 M-62, Suite 3, Edwardsburg, MI 49112
+4) 4 W. Buffalo Street, New Buffalo, MI 49117
+5) 309 Broadway Street, Niles, MI 49120
+6) 800 Ship Street, Suite 115, St. Joseph, MI 49085
+National Account Services Location:
+4440 Edison Lakes Parkway, Suite 100, Mishawaka, IN 46545
+- 120 E Jefferson Street, Tipton, IN 46072
+- 3 North Jackson Street, Frankfort, IN 46041
+- 1215 East Hoffer Street, Kokomo, IN 46902
+
+        
+
+
+      </td>
+     
+    </tr>
+  </tbody>
+</table>
+
+<footer>
+  <div class="rights_reserved ng-tns-c268-42" style="font-size: 10px;">
+    © 1988-{{ date('Y') }} ACORD CORPORATION. All rights reserved.
+  </div>
+  <div class="right_reserveds ng-tns-c268-42" style="font-size: 10px;">
+   ACCOR 25 (2010/05)
+   <div class="right_reservedss ng-tns-c268-42" style="font-size: 10px;">
+    The ACCORD name and logo are registered marks of ACCORD 
+   </div>
+  </div>
+ 
+</footer>
+
+</div>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
     </div>
   </div>
 </body>

@@ -25,7 +25,10 @@ class CertificateService
     $new_cert = new Certificate();
     $new_cert->client_user_id = Session::get('driver_id');
     $new_cert->producer_user_id = Auth::user()->id;
+    $new_cert->ars =  $certificateData['ars'];
+    $new_cert->	descrp =  $certificateData['	descrp'];
     $new_cert->created_at = $this->current_date_time;
+
     $new_cert->save();
 
     $cid = $new_cert->id;

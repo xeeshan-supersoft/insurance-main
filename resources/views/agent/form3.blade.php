@@ -2207,7 +2207,13 @@ $navbarHideToggle = false;
                                                                         href="javascript:void(0);" id="acordBox"
                                                                         class="ng-tns-c268-42">ACORD 101</a>,
                                                                     Additional Remarks Schedule, if more space is
-                                                                    required) </div>
+                                                                    required)
+                                                                
+                                                                    <div class="form-floating form-floating-outline mb-4">
+                                                                        <textarea class="form-control h-px-100" name="descrp" style="background-color: rgb(201 196 196 / 15%) !important;width: 100%;height: 90px;color: #000000;" placeholder="Comments here..."></textarea>
+                                                                      
+                                                                      </div>
+                                                                </div>
                                                                 <table width="100%" cellpadding="0" cellspacing="0"
                                                                     border="0" class="ng-tns-c268-42">
                                                                     <tbody class="ng-tns-c268-42">
@@ -2281,6 +2287,16 @@ $navbarHideToggle = false;
                                 <div class="rights_reserved ng-tns-c268-42">2006 -2024 ACORD CORPORATION. All rights
                                     reserved.</div>
                             </div>
+
+                            <div class="form-floating form-floating-outline mb-4">
+                              <h3>Additional Remarks Schedule</h3>
+                              </div>
+   
+                            <div class="form-floating form-floating-outline mb-4">
+                                <textarea class="form-control h-px-100" name="ars" style="background-color: rgb(201 196 196 / 15%) !important;width: 100%;height: 290px;color: #000000;" placeholder="Comments here..."></textarea>
+                              
+                              </div>
+
                             <div fxlayout="row" fxlayoutalign="center center" class="acord-button-row ng-tns-c268-42"
                                 style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center; align-items: center;">
                                 <button mat-flat-button="" color="accent" id="btn"  type="submit"
