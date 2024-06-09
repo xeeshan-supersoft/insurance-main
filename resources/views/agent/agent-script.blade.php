@@ -76,7 +76,8 @@ function validateInput(event) {
         'B': 'insurB',
         'C': 'insurC',
         'D': 'insurD',
-        'E': 'insurE'
+        'E': 'insurE',
+         'F': 'insurF'
     };
 
     // Check if the corresponding insurance input has value
@@ -108,7 +109,7 @@ function validateInput(event) {
                      });
                      swalWithBootstrapButtons.fire({
                          title: 'Error!',
-                         text: 'Error: Please Select the Insurance from Range A, B, C, D, E',
+                         text: 'Error: Please Select the Insurance from Range A, B, C, D, E,F',
                          icon: 'error',
                          confirmButtonText: 'OK'
                      });
@@ -306,6 +307,32 @@ function validateInput(event) {
                 $('#insurance_provider_id_E').val($(this).data("id"));
                 $('#insurerEList').fadeOut();
             });
+
+            $('#insurF').keyup(function(){
+                var query = $(this).val();
+                if(query != '')
+                {
+                $.ajax({
+                  url: path,
+                  method:"GET",
+                  data:{query:query},
+                  success:function(data){
+                    $('#insurerFList').fadeIn();
+                    $('#insurerFList').html(data);
+                  }
+                });
+                }
+            });
+
+            $("#insurerFList").on("click", "li",function(){
+                $('#insurF').val($(this).text());
+                $('#naic_F').val($(this).data("naic"));
+                $('#br_f').val($(this).data("brn"));
+                $('#insurance_provider_id_F').val($(this).data("id"));
+                $('#insurerFList').fadeOut();
+            });
+
+            
 
             //  $('#insurB').select2({
             //      ajax: {

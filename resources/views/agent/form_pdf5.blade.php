@@ -30,6 +30,9 @@
   <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}" />
 
   <Style>
+      body {
+            font-family: Arial, sans-serif;
+        }
     .checkbox-container {
       position: relative;
       display: inline-block;
@@ -142,7 +145,7 @@
                               <tbody class="ng-tns-c268-42">
                                 <tr class="ng-tns-c268-42" style="border:1px solid black;">
                                   <td colspan="8" class="ng-tns-c268-42" style="border:1px solid black;">
-                                    <div class="acord_title_matter ng-tns-c268-42">THIS
+                                    <div class="acord_title_matter ng-tns-c268-42" style=" padding: 0px 10px; text-align: justify;">THIS
                                       CERTIFICATE IS
                                       ISSUED AS A MATTER OF INFORMATION ONLY AND CONFERS
                                       NO RIGHTS
@@ -162,7 +165,7 @@
                                 </tr>
                                 <tr class="ng-tns-c268-42">
                                   <td colspan="8" class="ng-tns-c268-42">
-                                    <div class="acord_title_matter ng-tns-c268-42"> IMPORTANT: If the certificate holder is an ADDITIONAL INSURED, the policy(ies) must be endorsed. If SUBROGATION IS WAIVED, subject to the terms and conditions of the policy, certain policies may require an endorsement.
+                                    <div class="acord_title_matter ng-tns-c268-42" style=" padding: 0px 10px; text-align: justify;"> IMPORTANT: If the certificate holder is an ADDITIONAL INSURED, the policy(ies) must be endorsed. If SUBROGATION IS WAIVED, subject to the terms and conditions of the policy, certain policies may require an endorsement.
                                        A statement on this certificate does not confer rights to the certificate holder in lieu of such endorsement(s). </div>
                                   </td>
                                 </tr>
@@ -174,9 +177,9 @@
                                         <tr height="7" class="ng-tns-c268-42">
                                           <td width="100%" valign="middle" class="lable_title ng-tns-c268-42">
                                             PRODUCER
-                                            {{ $agent->agencies[0]->agency_name }}<br class="ng-tns-c268-42">
-                                            {{ $agent->agencies[0]->agency_address }}<br class="ng-tns-c268-42">
-                                            {{ $agent->agencies[0]->agency_city }} {{ $agent->agencies[0]->agency_state }}, {{ $agent->agencies[0]->agency_zip }} 
+                                            {{ $agent->agencies[0]->name }}<br class="ng-tns-c268-42">
+                                            {{ $agent->agencies[0]->address }}<br class="ng-tns-c268-42">
+                                            {{ $agent->agencies[0]->city }} {{ $agent->agencies[0]->state }}, {{ $agent->agencies[0]->zip }} 
                                           </td>
                                           <td>
                                           </td>
@@ -239,13 +242,13 @@
                                    
                                         </tr>                                        
                                         @php
-                                        $arr = ['A', 'B', 'C', 'D', 'E'];
+                                        $arr = ['A', 'B', 'C', 'D', 'E' ,'F'];
                                         $count = 0;
                                         @endphp
 
                                         @foreach ($certPolicy as $cp)
                                         @foreach ($cp->policyType->certificatePolicies as $scp)
-                                        @if ($count < 5)
+                                        @if ($count < 6)
                                         <tr class="" style="line-height: 2;">
                                           <td colspan="20" class="lable_title  td" style="broder:none">
                                             INSURER {{ $arr[$count] }} :
@@ -296,8 +299,8 @@
                               <tbody class="ng-tns-c268-42">
                                 <tr class="ng-tns-c268-42">
                                   <td colspan="8" class="ng-tns-c268-42">
-                                    <div style="font-family: Arial; font-size: 11px; margin: 2px;"
-                                      class="ng-tns-c268-42"> THE POLICIES OF INSURANCE
+                                    <div class="acord_title_matter ng-tns-c268-42" style=" padding: 0px 10px; text-align: justify;"
+                                    > THE POLICIES OF INSURANCE
                                       LISTED BELOW
                                       HAVE BEEN ISSUED TO THE INSURED NAMED ABOVE FOR THE
                                       POLICY
@@ -346,7 +349,7 @@
                                   </td>
                                 </tr>
 
-                                @foreach ($policytypes->whereIn('id', [1,2,6,10]) as $pt)
+                                @foreach ($policytypes->whereIn('id', [1,2,5,9]) as $pt)
                                 <tr>
                                   <td>
                                     <div>
@@ -366,7 +369,7 @@
                                         @if($pt->type_name == "General Liability")
                                         <tr>
                                           <td>
-                                            <label>GENERAL LIABILITY</label>
+                                           <b><label>{{ Str::upper($pt->type_name) }}</label></b>
                                           </td>
                                         </tr>
                                         @foreach ($pt->policies as $pp)
@@ -374,7 +377,7 @@
                                        
                                         <tr>
                                           <td>
-                                            <table style="border-spacing: 0px" cellspacing="2">
+                                            <table style="border-spacing: 1px" cellspacing="2">
                                               <tbody>
                                                 <tr>
                                                   <td colspan="3" cellspacing="1">
@@ -387,7 +390,7 @@
                                                       @if ($isChecked)
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else
                                                       <span class="checkbox"></span>
                                                       @endif
@@ -396,7 +399,6 @@
                                                     </div>
                                                   </td>
                                                 </tr>
-
                                                 <tr>
                                                   <td colspan="2">
                                                  <table><tbody><tr><td>
@@ -409,7 +411,7 @@
                                                       <span class="checkbox"></span>
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else
                                                       <span class="checkbox"></span>
                                                       <span class="checkbox"></span>
@@ -418,7 +420,6 @@
                                                         }}</label>
                                                    </td></tr></tbody></table>
                                                   </td>
-
                                                   <td>
                                                     <table><tbody><tr><td >
                                                       @php
@@ -429,7 +430,7 @@
                                                       @if ($isChecked)
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else
                                                       <span class="checkbox"></span>
                                                       @endif
@@ -438,7 +439,6 @@
                                                     </td></tr></tbody></table>
                                                   </td>
                                                 </tr>
-
                                                 <tr>
                                                   <td colspan="3"> <span
                                                       class="checkbox"></span>
@@ -459,27 +459,7 @@
                                                   <td colspan="3" valign="top"  style="line-height: 14px"><label>GEN'L AGGREGATE LIMIT APPLIES PER:</label>
                                                   </td>
                                                 </tr>
-                                                <tr>
-                                                  {{-- <td>
-                                                    <div class="checkbox-container">
-                                                      @php
-                                                      $policyId = 10;
-                                                      $isChecked = $certPolicy->where('policy_id', $policyId)->first() ?
-                                                      true : false;
-                                                      @endphp
-                                                      @if ($isChecked)
-                                                      <span class="check-symbol"><img
-                                                          src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
-                                                      @else
-                                                      <span class="checkbox"></span>
-                                                      @endif
-                                                      <label>{{ $pp->where('id', $policyId)->first()->policy_title
-                                                        }}</label>
-                                                    </div>
-                                                  </td> --}}
-
-
+                                                <tr>                                         
                                                   <td>
                                                     <div class="checkbox-container">
                                                       @php
@@ -490,7 +470,7 @@
                                                       @if ($isChecked)
                                                       <span class="check-symbol"><img
                                                           src="{{ asset('assets/img/checked.png') }}"
-                                                          width="12px" /></span>
+                                                          width="14px" /></span>
                                                       @else<span class="checkbox"></span>
                                                       @endif<label>{{ $pp->where('id', $policyId)->first()->policy_title
                                                         }}</label></div></td><td style="margin-right: 2px" ><table><tbody><tr><td>                                                    
@@ -505,19 +485,16 @@
                                         @endforeach
                                         @endif
                                         @if($pt->type_name == "Auto Liability")
-                                        <tr valign="top">
-                                          <td valign="top" style="line-height:1.9">
-                                          <label >AUTOMOBLIE LIABILITY</label>
-                                        </td>
-                                      </tr>
+                                        <tr valign="top" cellpadding="1"  style="padding-bottom:13px" ><td valign="top" style="line-height:0 padding-bottom:1px"><label><b>{{ Str::upper($pt->type_name)}}</b></label></td></tr>
                                         @foreach ($pt->policies as $pp)
                                         @if($pp->policy_title == "ANY AUTO")
-                                        <tr><td><table style="border-spacing: 0px"><tbody><tr><td valign="top">                                                
+                                        <tr><td><table style="border-spacing: 0px"><tbody><tr><td valign="bottom">                                                
                                                     @php
                                                     $policyId = 1;
                                                     $isChecked = $certPolicy->where('policy_id',
                                                     $policyId)->first() ? true : false;
                                                     @endphp
+                                                    <br style="line-height:0.5" >
                                                     @if ($isChecked)
                                                     <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}" width="12px" /></span>
                                                     @else
@@ -525,32 +502,21 @@
                                                     @endif<label >{{ $pp->where('id',
                                                       $policyId)->first()->policy_title }}</label>
                                                   </td></tr>
-                                                  <tr><td><table><tbody><tr><td>
+                                                  <tr><td><table style="border-spacing: 0px" ><tbody><tr><td valign="bottom">
                                                     @php
                                                     $policyId = 2;
                                                     $isChecked = $certPolicy->where('policy_id', $policyId)->first() ?
                                                     true : false;
                                                     @endphp
                                                     @if ($isChecked)
-                                                    <span class="check-symbol"><img
-                                                        src="{{ asset('assets/img/checked.png') }}"
-                                                        width="12px" /></span>
+                                                    <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"width="12px" /></span>
                                                     @else
                                                     <span class="checkbox"></span>
                                                     @endif
                                                   </td><td valign="bottom"><label style="line-height: 0;">{{ $pp->where('id',
                                                       $policyId)->first()->policy_title }}</label>
-                                                  </td>
-                                                </tr>
-                                              </tbody>
-                                            </table>
-                                         
-                                  </td>
-                                  <td>
-                                    <table>
-                                      <tbody>
-                                        <tr>
-                                          <td>
+                                                  </td></tr></tbody></table></td>
+                                  <td><table><tbody><tr><td>
                                             @php
                                             $policyId = 3;
                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
@@ -558,23 +524,21 @@
                                             @endphp
                                             @if ($isChecked)
                                             <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                                width="12px" /></span>
+                                                width="14px" /></span>
                                             @else
                                             <span class="checkbox"></span>
                                             @endif
                                           </td>
-                                          <td valign="bottom"><label style="line-height: 0;">{{ $pp->where('id',
+                                          <td ><label style="line-height: 0;">{{ $pp->where('id',
                                               $policyId)->first()->policy_title }}</label>
                                           </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                   </td>
-
                                 </tr>
                                 <tr>
                                   <td>
-
                                     <table>
                                       <tbody>
                                         <tr>
@@ -586,7 +550,7 @@
                                             @endphp
                                             @if ($isChecked)
                                             <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                                width="12px" /></span>
+                                                width="14px" /></span>
                                             @else
                                             <span class="checkbox"></span>
                                             @endif
@@ -602,24 +566,19 @@
                                     <table>
                                       <tbody>
                                         <tr>
-
-
                                           <td>
                                             @php
                                             $policyId = 5;
                                             $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
                                             false;
                                             @endphp
-
-
                                             @if ($isChecked)
                                             <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                                width="12px" /></span>
+                                                width="14px" /></span>
                                             @else
                                             <span class="checkbox"></span>
                                             @endif</td><td valign="bottom"><label style="line-height: 0;">{{ $pp->where('id',
                                               $policyId)->first()->policy_title }}</label>
-
                                           </td>
                                         </tr>
                                       </tbody>
@@ -630,24 +589,6 @@
                                   <td><span class="checkbox"></span></td>
                                   <td><span class="checkbox"></span></td>
                                 </tr>
-                                {{-- <tr>
-                                  <td>
-                                    <div class="checkbox-container">
-                                      @php
-                                      $policyId = 6;
-                                      $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true : false;
-                                      @endphp
-                                      @if ($isChecked)
-                                      <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                          width="12px" /></span>
-                                      @else
-                                      <span class="checkbox"></span>
-                                      @endif
-                                      <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                    </div>
-                                  </td>
-                                </tr> --}}
-
                               </tbody>
                             </table>
                             </td>
@@ -664,76 +605,6 @@
                                 <table style="border-spacing: 0px">
                                   <tbody>
                                     <tr>
-                                      <td colspan="1">
-                                        <div class="checkbox-container">
-                                          @php
-                                          $policyId = 14;
-                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
-                                          false;
-                                          @endphp
-                                          @if ($isChecked)
-                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
-                                          @else
-                                          <span class="checkbox"></span>
-                                          @endif
-                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="checkbox-container">
-                                          @php
-                                          $policyId = 15;
-                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
-                                          false;
-                                          @endphp
-                                          @if ($isChecked)
-                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
-                                          @else
-                                          <span class="checkbox"></span>
-                                          @endif
-                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-
-                                      <td>
-                                        <div class="checkbox-container">
-                                          @php
-                                          $policyId = 16;
-                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
-                                          false;
-                                          @endphp
-                                          @if ($isChecked)
-                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
-                                          @else
-                                          <span class="checkbox"></span>
-                                          @endif
-                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="checkbox-container">
-                                          @php
-                                          $policyId = 17;
-                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
-                                          false;
-                                          @endphp
-                                          @if ($isChecked)
-                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
-                                          @else
-                                          <span class="checkbox"></span>
-                                          @endif
-                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-
                                       <td>
                                         <div class="checkbox-container">
                                           @php
@@ -743,14 +614,13 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
                                           <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
                                         </div>
                                       </td>
-
                                       <td>
                                         <div class="checkbox-container">
                                           @php
@@ -760,7 +630,75 @@
                                           @endphp
                                           @if ($isChecked)
                                           <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
-                                              width="12px" /></span>
+                                              width="14px" /></span>
+                                          @else
+                                          <span class="checkbox"></span>
+                                          @endif
+                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <div class="checkbox-container">
+                                          @php
+                                          $policyId = 20;
+                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
+                                          false;
+                                          @endphp
+                                          @if ($isChecked)
+                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
+                                              width="14px" /></span>
+                                          @else
+                                          <span class="checkbox"></span>
+                                          @endif
+                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="checkbox-container">
+                                          @php
+                                          $policyId = 21;
+                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
+                                          false;
+                                          @endphp
+                                          @if ($isChecked)
+                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
+                                              width="14px" /></span>
+                                          @else
+                                          <span class="checkbox"></span>
+                                          @endif
+                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <div class="checkbox-container">
+                                          @php
+                                          $policyId = 22;
+                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
+                                          false;
+                                          @endphp
+                                          @if ($isChecked)
+                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
+                                              width="14px" /></span>
+                                          @else
+                                          <span class="checkbox"></span>
+                                          @endif
+                                          <label>{{ $pp->where('id', $policyId)->first()->policy_title }}</label>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="checkbox-container">
+                                          @php
+                                          $policyId = 23;
+                                          $isChecked = $certPolicy->where('policy_id', $policyId)->first() ? true :
+                                          false;
+                                          @endphp
+                                          @if ($isChecked)
+                                          <span class="check-symbol"><img src="{{ asset('assets/img/checked.png') }}"
+                                              width="14px" /></span>
                                           @else
                                           <span class="checkbox"></span>
                                           @endif
@@ -778,77 +716,48 @@
                             @endif
 
                             {{-- Remaining Policies --}}
-                            @if($pt->type_name == "Employers Liability")
+                            @if($pt->type_name == "Work Comp Employers Liability")
                             @foreach ($pt->policies as $pp)
-                            @if($pp->id == 20)
+                            @if($pp->id == 14)
                             <tr>
                               <td>
-
-                                <b>WORKERS COMPENSATION <br>AND EMPLOYERS' LIABILITY
-                                </b>
-                                <br>
+                                <b>WORKERS COMPENSATION <br>AND EMPLOYERS' LIABILITY</b>
                               </td>
-                              <td> Y/N
-                              </td>
-
+                              <td> Y/N </td>
                             </tr>
                             <tr>
-                              <td style="line-height: 1.1">
-                                
+                              <td style="line-height: 1.1">                                
                                 PROPRIETOR/PARTNER/EXECUTIVE <br> OFFICER/MEMBER EXCLUDED?
-
                               </td>
                               <td> <span class="checkbox"></span>
-                              </td>
-                              {{-- <td>
-                                {{ $pp->where('id', 20)->first()->policy_title }}
-                              </td> --}}
+                              </td>                              
                             </tr>
                             <tr>
                               <td>
-
                                 <b>(Mandatory in NH)</b>
-
                               </td>
                             </tr>
                             <tr>
                               <td>
-
                                 If yes, describe under <br>
                                 DESCRIPTION OF OPERATIONS below
-
                               </td>
                             </tr>
-
-
-
                             @endif
                             @endforeach
                             @endif
-
-
-
-
-
-
-
-
-                            </tbody>
-                            </table>
+                            </tbody></table>
                             </td>
-
                             <td>
                               <div>
                                 <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
                               </div>
                             </td>
-
                             <td>
                               <div>
                                 <span class="mat-form-field-label-wrapper ng-tns-c70-64"></span>
                               </div>
                             </td>
-
                             <td valign="middle" style="text-align: center; vertical-align: middle;">
                               <div>
                                 <span>{{ !empty($certPolicy) ? $certPolicy->where('policy_type_id',
@@ -872,14 +781,21 @@
                             <td valign="top">
                               <table width="100%" cellpadding="0" cellspacing="0">
                                 <tbody>
+                                  @php
+                                      $coverageItems13And14 = ''; // Initialize the variable outside the loop
+                                  @endphp
                                   @php $additionalRowAdded = false; @endphp
-                                  @if(!empty($pt->policyLimits))
-                                  @foreach ($pt->policyLimits as $pl)
+                                  @if(!empty($pt->policyLimits))                                  
+                                  @php
+                                    $cover1 = $pt->policyLimits->where('id', 13)->first();
+                                    $cover2 = $pt->policyLimits->where('id', 14)->first();
+                                  @endphp
+                                  @foreach ($pt->policyLimits->whereNotIn('id', [13,14,18]) as $pl)
                                   @if($pl->policy_type_id !=6)
-                                  <tr style="
-                                                      line-height:2;
-                                                  ">
-                                    <td style="border:1px solid black; line-height:0.7;">{{ $pl->coverage_item }}</td>
+                                  <tr style="line-height:2;">                                                                       
+                                    <td style="border:1px solid black; line-height:0.9;">                                                                            
+                                      {{$pl->coverage_item}}
+                                    </td>
                                     <td style="border:1px solid black" width="40%">
                                       <div>
                                         <span>$&nbsp;
@@ -889,23 +805,8 @@
                                       </div>
                                     </td>
                                   </tr>
-
-                                  {{-- @if(!$additionalRowAdded)
-                                  @php $additionalRowAdded = true; @endphp
-                                  <tr>
-                                    <td style="border:1px solid black"></td>
-                                    <td style="border:1px solid black" width="30%">
-                                      <div>
-                                        <span>$&nbsp; </span>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                  @endif --}}
                                   @else
-
-                                  <tr style="
-                                                    line-height: 2;
-                                                ">
+                                  <tr style="line-height: 2;">
                                     <td style="border:1px solid black; line-height:0.7;">{{ $pl->coverage_item }}</td>
                                     <td style="border:1px solid black" width="40%">
                                       <div>
@@ -916,8 +817,6 @@
                                       </div>
                                     </td>
                                   </tr>
-
-
                                   @endif
                                   @endforeach
                                   <tr>
@@ -928,7 +827,6 @@
                                       </div>
                                     </td>
                                   </tr>
-
                                   @else
                                   <tr>
                                     <td style="border:1px solid black; line-height:0;">{{ $pl->coverage_item }}</td>
@@ -943,49 +841,17 @@
                                     </td>
                                   </tr>
                                   @endif
-                                </tbody>
-                              </table>
+                                </tbody></table>
                             </td>
                             </tr>
-                            @endforeach
-                            {{-- <tr id="scrollToPolicyHeaderTR" class="ng-tns-c268-42" height="10"
-                              style="vertical-align: middle; ">
-                              <td width="3%" class="lable_title ng-tns-c268-42">
-
-                              </td>
-                              <td width="25%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"><b>OTHERS</b></div>
-                                <br class="ng-tns-c268-42"><br class="ng-tns-c268-42"><br class="ng-tns-c268-42">
-                              </td>
-                              <td width="3%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"> </div>
-                              </td>
-                              <td width="3%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"></div>
-                              </td>
-                              <td width="10%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42">
-                                </div>
-                              </td>
-                              <td width="10%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42">
-                                  <br class="ng-tns-c268-42">
-                                </div>
-                              </td>
-                              <td width="10%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"><br class="ng-tns-c268-42"></div>
-                              </td>
-                              <td width="28%" class="lable_title ng-tns-c268-42">
-                                <div class="ng-tns-c268-42"></div>
-                              </td>
-                            </tr> --}}
+                            @endforeach                            
                             <tr class="ng-tns-c268-42"
                             style="vertical-align: top; line-height:4;">
                             <td  colspan="10">
                               <table style="border-spacing: 0px;" width="100%" cellpadding="0" cellspacing="0"
                               class=" ng-tns-c268-42">
                             <tbody>
-                            @foreach ($certPolicy->whereIn('policy_type_id', [3,4,5,7,8,9])->unique('policy_type_id') as $cp)
+                            @foreach ($certPolicy->whereIn('policy_type_id', [3,4,7,8])->unique('policy_type_id') as $cp)
                                     @if(!empty($cp))
                                     <tr style="line-height:1;"><td width="3%" style="border-right: 1px solid black;" >
                                             <label>{{ $cp->insurance_provider_code }}</label> 
@@ -1024,14 +890,7 @@
                                                 {{ $cptpl->where('policy_limit_id', 23)->first()->amount }} /
                                                 {{ $cptpl->where('policy_limit_id', 24)->first()->amount }}
                                                 @endforeach
-                                              @endif
-                                              @if($cp->policyType->id==9 )
-                                                Limit/Ded
-                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                {{ $cptpl->where('policy_limit_id', 25)->first()->amount }} /
-                                                {{ $cptpl->where('policy_limit_id', 26)->first()->amount }}
-                                                @endforeach
-                                              @endif
+                                              @endif                                              
                                             </td>                                       
                                           </tr>
                                     @endif
@@ -1046,7 +905,8 @@
                               <td colspan="8" style="padding: 0px;" class="ng-tns-c268-42">
                                 <div style="font-size: 9px; height:90px;" class="ng-tns-c268-42">
                                   DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES (Attach ACORD 101, Additional Remarks
-                                  Schedule, if more space is required) <br class="ng-tns-c268-42"> <br class="ng-tns-c268-42"> </div>
+                                  Schedule, if more space is required) <br class="ng-tns-c268-42"> <br class="ng-tns-c268-42"> 
+                                  <lable>   {{$certificate->ars}}    </lable></div>
 
                               </td>
                             </tr>
@@ -1119,6 +979,201 @@
 
         </div>
       </div>
+   <div style="height: 90px"></div>
+
+
+<div id="acordPage" fxlayout="row" class="page-layout simple right-sidebar ng-tns-c268-42"
+style="flex-direction: row; box-sizing: border-box; display: flex;">
+
+<div fuseperfectscrollbar="" class="center ng-tns-c268-42 ps"
+          style="flex-direction: column; box-sizing: border-box; display: flex;">
+          <div class="ps__rail-x" style="left: 0px; top: 0px;">
+            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+          </div>
+          <div class="ps__rail-y" style="top: 0px; left: 0px; height: 1357px;">
+            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+          </div>
+          <div fxlayout="column" fxlayoutalign="space-between" class="header ng-tns-c268-42"
+            style="flex-direction: column; box-sizing: border-box; display: flex; place-content: stretch space-between; align-items: stretch;">
+            <div fxlayout="row wrap" fxflex="100%" fxflex.xs="100%" fxflex.sm="100%"
+              class="widget-group tableBox pt-0 ng-tns-c268-42 ng-trigger ng-trigger-animateStagger">
+              <div fxlayout="row" fxflex="100%" fxflex.xs="100%" fxflex.sm="100%"
+                class="widget ng-tns-c268-42 ng-trigger ng-trigger-animate"
+                style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 100%; max-width: 100%;">
+                <div class="fuse-widget-front ng-tns-c268-42">
+                  <div fxlayout="row wrap" fxlayoutalign="start"
+                    class="ng-tns-c268-42 ng-trigger ng-trigger-slideIn ng-star-inserted"
+                    style="flex-flow: wrap; box-sizing: border-box; display: flex; place-content: stretch flex-start; align-items: stretch;">
+                    <div fxlayout="column" fxflex="100" fxflex.gt-xs="100" fxflex.gt-md="100"
+                      class="widget p-lr-24 ng-tns-c268-42 ng-trigger ng-trigger-animate"
+                      style="flex-direction: column; box-sizing: border-box; display: flex; flex: 1 1 100%; max-width: 100%;">
+                      <div class="widget-front box m-0 bn_n ng-tns-c268-42">
+                        <div fxlayout="row" fxlayoutalign="start" class="p-10 ng-tns-c268-42"
+                          style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch flex-start; align-items: stretch;">
+                          <form novalidate="" name="acordForm" style="width: 100% !important;"
+                            class="ng-tns-c268-42 ng-untouched ng-pristine ng-invalid" id="form">
+                            <div id="accord_container" class="ng-tns-c268-42">
+                             
+
+
+<table width="100%" cellpadding="0" cellspacing="0" class="ng-tns-c268-42">
+  <tr class="ng-tns-c268-42">
+    <td class="ng-tns-c268-42"><span class="acord_title ng-tns-c268-42"><img
+          src="{{ asset('assets/img/nlogo.png')}}" width="91" height="39"
+          class="ng-tns-c268-42 text-center">
+        &nbsp;&nbsp;
+        ADDITIONAL REMARKS SCHEDULE
+         </span>
+    </td>                                          
+    <td  valign="bottom" width="150px" class="ng-tns-c268-42"
+      style="float:right;">    
+      <div class=""style="font-size:9px; ">
+    <b> Page <u>2</u> of <u>2</u></b>
+      </div>
+    </td>
+  </tr>
+</table>
+  <table width="100%" cellpadding="0" cellspacing="0" class="ng-tns-c268-42">
+<tr ><td colspan="8" valign="top" class="p-0 ng-tns-c268-42" width="50%" >
+  <table width="100%" cellpadding="0" cellspacing="0" class="">
+    <tbody>
+      <tr style="line-height: 1.5;border:1px solid black;" class="lable_title" width="100%">
+     
+        <td colspan="2"  width="100%"  class="lable_title" style="border-top: 1px solid black"> <label> AGENCY</label>    
+        {{ $agent->agencies[0]->name }}<br class="ng-tns-c268-42">
+        </td>
+<td style="border-top: 1px solid black"></td>
+      </tr>
+      <tr  style="line-height: 1.5;border:1px solid black;" width="100%" class="lable_title">
+        <td colspan="2"  width="100%" class="lable_title" style="border-top: 1px solid black">  <label> POLICY NUMBER</label>    </td>
+        <td style="border-top: 1px solid black"></td>
+
+      </tr>
+      <tr style="line-height: 2;border:1px solid black;">
+        <td colspan="2"  width="80%"class="lable_title" style="border-right: 1px solid black">  <label> CARRIER</label>    </td> 
+        <td class="lable_title" width="20%" style="border-top: 1px solid black"> <label>NAIC CODE</label>    </td> 
+      </tr>
+    </tbody>
+  </table>
+</td>
+<td valign="top" class="p-0 ng-tns-c268-42"  width="50%" >
+  <table width="100%" cellpadding="0" cellspacing="0" class="tftable agenc_sub_table a_s_t_b">
+    <tbody>
+      <tr  style="border:1px solid black;">
+        <td>   <label> NAME INSURED </label>     </td> 
+        <td>   {{ $driver->name }}<br class="ng-tns-c268-42">
+          {{ $driver->truckers[0]->address }} <br class="ng-tns-c268-42">
+          {{ $driver->truckers[0]->city }}
+          {{ $driver->truckers[0]->state }} <br class="ng-tns-c268-42"> ,
+          {{ $driver->truckers[0]->zip }} <br class="ng-tns-c268-42">   </td> 
+      </tr>      
+      <tr  style="border:1px solid black; line-height: 1.6;">
+
+        <td colspan="2">      <label> EFFECTIVE DATE:</label>    </td> 
+
+      </tr>
+    </tbody>
+  </table>  
+</td></tr></table>
+<table width="100%" cellpadding="22" cellspacing="3" class=" ng-tns-c268-42">
+  <tbody class="ng-tns-c268-42">
+    <tr class="ng-tns-c268-42">
+      <td style="font-size: 12px">
+        ADDITIONAL REMARKS
+      </td>
+     
+    </tr>
+  </tbody>
+</table>
+<table width="100%" cellpadding="22" cellspacing="3" class="tftable ng-tns-c268-42">
+  <tbody class="ng-tns-c268-42">
+    <tr class="ng-tns-c268-42">  
+      <td style="font-size: 9px; ">    
+     THIS ADDITIONAL REMARKS DORM IS A SCHEDULE TO ACCORD FORM, <br>
+    FORM NUMBER <u> 101 </u> FROM TITLE: <u> </u> </td></tr>
+    <tr class="ng-tns-c268-42"  >
+      <td> 
+        - Meridian Title Corporation (IN)  IL <br>
+- Meridian Title Corporation (IN) - IL<br>
+- Meridian National Account Services - PA<br>
+- Meridian National Account Services Company MO<br>
+- Meridian Title Company<br>
+The following locations are also covered under the above mentioned policies:<br>
+Illinois Location:<br>
+150 South Wacker Drive, 24th Floor, Chicago, IL 60606<br>
+Indiana Locations:<br>
+1) 11711 N. Pennsylvania Street, Suite 110 Carmel, IN 46032<br>
+2) 723 Third Street, Columbus, IN 47201<br>
+3) 1182 E. Summit Street, Crown Point, IN 46307<br>
+4) 9885 E. 116th Street, Suite 600, Fishers, IN 46037<br>
+5) 6432 Georgetown North Boulevard, Fort Wayne, IN 46815<br>
+6) 5375 East Dupont Road, Suite 102 Fort Wayne IN 46825<br>
+7) 2305 Main Street, Unit A Highland, IN 46322<br>
+8) 1675 W. Smith Valley, Road Suite E4, Greenwood, IN 46142<br>
+9) 935 Mezzanine Suite A Lafayette, IN 47905<br>
+10) 1447 S. Lake Park Avenue Hobart, IN 46342<br>
+11) 251 E. Ohio Street, Suite 100 Indianapolis, IN 46204<br>
+12) 3850 Priority Way South Drive, Suite 120, Indianapolis, IN 4624<br>
+13) 1000 W. State Road 2, LaPorte, IN 46350<br>
+14) 1375 S. Lebanon Street, Suite 800, Lebanon, IN 46052<br>
+15) 241 Medical Plaza, Unit D, Michigan City, IN 46360<br>
+16) 4440 Edison Lakes Parkway, Suite 100, Mishawaka, IN 46545<br>
+17) 1307 US 33, Goshen Road Goshen, IN 46526<br>
+18) 465 Sheridan Road, Noblesville, IN 46060<br>
+19) 607 W. Jefferson Street, Plymouth, IN 46563<br>
+20) 6340 Main Street, Suite A, Portage, IN 46368<br>
+21) 202 S. Michigan Street, Suite 300, South Bend, IN 46601<br>
+22) 57 Franklin Street, Suite 103, Valparaiso, IN 46383<br>
+23) 612 N. Detroit Street, Warsaw, IN 46580<br>
+24) 1120 W. Oak Street, Suite 250 Zionsville, IN 46077<br>
+25) 9835 East US Highway 36, Avon, IN 46123<br>
+26) 7131 West Jefferson Boulevard, Fort Wayne, IN 46804<br>
+27) 881 Parkway Avenue, Suite 300, Elkhart, IN 46516<br>
+28) 245 W. Johnson Road, Suite 9, LaPorte, IN 46350<br>
+1) 103 N. Broadway, Cassopolis, MI 49031<br>
+2) 107 Commercial Street, Dowagiac, MI 49047<br>
+3) 69045 M-62, Suite 3, Edwardsburg, MI 49112<br>
+4) 4 W. Buffalo Street, New Buffalo, MI 49117<br>
+5) 309 Broadway Street, Niles, MI 49120<br>
+
+National Account Services Location:<br>
+
+
+        
+
+
+      </td>
+     
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+  <div class="rights_reserved ng-tns-c268-42" style="font-size: 10px;">
+    © 1988-{{ date('Y') }} ACORD CORPORATION. All rights reserved.
+  </div>
+  <div class="right_reserveds ng-tns-c268-42" style="font-size: 10px;">
+   ACCOR 25 (2010/05)
+   <div class="right_reservedss ng-tns-c268-42" style="font-size: 10px;">
+    The ACCORD name and logo are registered marks of ACCORD 
+   </div>
+  </div>
+ 
+</footer>
+</div>
     </div>
   </div>
 </body>

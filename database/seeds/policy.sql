@@ -19,26 +19,22 @@ INSERT INTO policies (`policy_type_id`, `policy_title`) values (3, 'PER VEHICLE 
 -- Trailer Interchange =  4
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (4, 'PER TRAILER DED');
 
+-- Employers Liability = 5
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (5, 'ANY PROPRIETOR/PARTNER/EXECUTIVE OFFICER/MEMBER EXCLUDED?');
 
--- Umbrella = 10
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (10, 'UMBRELLA LIAB');
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (10, 'OCCUR');
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (10, 'EXCESS LIAB');
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (10, 'CLAIMS-MADE');
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (10, 'DEDUCTIBLE');
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (10, 'RETENTION');
+-- Contingent Cargo = 6
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (6, '');
 
--- Employers Liability = 6
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (6, 'ANY PROPRIETOR/PARTNER/EXECUTIVE OFFICER/MEMBER EXCLUDED?');
-
--- Work Comp = 5
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (5, '');
-
--- Contingent Cargo = 7
+-- Ref. Trailer = 7
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (7, '');
 
--- Ref. Trailer = 8
+-- Employee Dishonesty = 8
 INSERT INTO policies (`policy_type_id`, `policy_title`) values (8, '');
 
--- Employee Dishonesty = 9
-INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, '');
+-- Umbrella = 9
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'UMBRELLA LIAB');
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'OCCUR');
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'EXCESS LIAB');
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'CLAIMS-MADE');
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'DED');
+INSERT INTO policies (`policy_type_id`, `policy_title`) values (9, 'RETENTION');

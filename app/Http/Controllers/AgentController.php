@@ -14,7 +14,6 @@ use App\Models\DriverDetail;
 use App\Models\Certificate;
 use App\Models\CertificatePolicy;
 use App\Models\CertificatePolicyLimit;
-
 use App\Services\CertificateService;
 
 use Illuminate\Http\Request;
@@ -176,8 +175,7 @@ class AgentController extends Controller
         'Cargo',
         'Trailer Interchange',
         'Umbrella',
-        'Work Comp',
-        'Employers Liability'
+        'Work Comp Employers Liability'
     ];
 
     $policyExistTypes = PolicyType::with('policies', 'policyLimits')

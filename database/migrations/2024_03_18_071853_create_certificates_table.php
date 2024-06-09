@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_user_id')->constrained('users');
             $table->foreignId('producer_user_id')->constrained('users');
+            $table->longText('ars')->nullable();
+            $table->longText('descrp')->nullable();
             $table->timestamps();
         });
     }
