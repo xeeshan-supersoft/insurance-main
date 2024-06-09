@@ -62,11 +62,11 @@ Route::get('/form3', function () {
 
 Route::get('/insurSearch', [ssc::class, 'selectSearch'])->name('insurSearch');
 
-Route::get('/run-migrations', function () {
-  //Artisan::call('migrate:fresh', ['--force' => true]);
-  //Artisan::call('db:seed');
-  echo 'All Done!';
-});
+// Route::get('/run-migrations', function () {
+//   //Artisan::call('migrate:fresh', ['--force' => true]);
+//   //Artisan::call('db:seed');
+//   echo 'All Done!';
+// });
 
 Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::get('/admin/dash', [AdminController::class, 'dashadmin'])->name('dashs');
@@ -175,8 +175,8 @@ Route::fallback(function () {
 
 
 Route::get('/mrun', function () {
-  // Artisan::call("migrate:fresh");
-  // Artisan::call("db:seed");
+  Artisan::call("migrate:fresh");
+  Artisan::call("db:seed");
   return 'Done';
 });
 
