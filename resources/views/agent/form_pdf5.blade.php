@@ -1151,18 +1151,6 @@ National Account Services Location:
   </tbody>
 </table>
 
-<footer>
-  <div class="rights_reserved ng-tns-c268-42" style="font-size: 10px;">
-    © 1988-{{ date('Y') }} ACORD CORPORATION. All rights reserved.
-  </div>
-  <div class="right_reserveds ng-tns-c268-42" style="font-size: 10px;">
-   ACCOR 25 (2010/05)
-   <div class="right_reservedss ng-tns-c268-42" style="font-size: 10px;">
-    The ACCORD name and logo are registered marks of ACCORD 
-   </div>
-  </div>
- 
-</footer>
 
 </div>
   </form>
@@ -1176,7 +1164,18 @@ National Account Services Location:
 </div>
 </div>
 
-
+<footer>
+  <div class="rights_reserved ng-tns-c268-42" style="font-size: 10px;">
+    © 1988-{{ date('Y') }} ACORD CORPORATION. All rights reserved.
+  </div>
+  <div class="right_reserveds ng-tns-c268-42" style="font-size: 10px;">
+   ACCOR 25 (2010/05)
+   <div class="right_reservedss ng-tns-c268-42" style="font-size: 10px;">
+    The ACCORD name and logo are registered marks of ACCORD 
+   </div>
+  </div>
+ 
+</footer>
 </div>
     </div>
   </div>
