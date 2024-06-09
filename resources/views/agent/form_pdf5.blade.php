@@ -242,13 +242,13 @@
                                    
                                         </tr>                                        
                                         @php
-                                        $arr = ['A', 'B', 'C', 'D', 'E'];
+                                        $arr = ['A', 'B', 'C', 'D', 'E' ,'F'];
                                         $count = 0;
                                         @endphp
 
                                         @foreach ($certPolicy as $cp)
                                         @foreach ($cp->policyType->certificatePolicies as $scp)
-                                        @if ($count < 5)
+                                        @if ($count < 6)
                                         <tr class="" style="line-height: 2;">
                                           <td colspan="20" class="lable_title  td" style="broder:none">
                                             INSURER {{ $arr[$count] }} :
@@ -369,7 +369,7 @@
                                         @if($pt->type_name == "General Liability")
                                         <tr>
                                           <td>
-                                            <label>{{ Str::upper($pt->type_name) }}</label>
+                                           <b><label>{{ Str::upper($pt->type_name) }}</label></b>
                                           </td>
                                         </tr>
                                         @foreach ($pt->policies as $pp)
@@ -905,7 +905,8 @@
                               <td colspan="8" style="padding: 0px;" class="ng-tns-c268-42">
                                 <div style="font-size: 9px; height:90px;" class="ng-tns-c268-42">
                                   DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES (Attach ACORD 101, Additional Remarks
-                                  Schedule, if more space is required) <br class="ng-tns-c268-42"> <br class="ng-tns-c268-42"> </div>
+                                  Schedule, if more space is required) <br class="ng-tns-c268-42"> <br class="ng-tns-c268-42"> 
+                                  <lable>   {{$certificate->ars}}    </lable></div>
 
                               </td>
                             </tr>
@@ -1024,33 +1025,33 @@ style="flex-direction: row; box-sizing: border-box; display: flex;">
         ADDITIONAL REMARKS SCHEDULE
          </span>
     </td>                                          
-    <td  valign="top" width="150px" class="ng-tns-c268-42"
-      style="">
-    
+    <td  valign="bottom" width="150px" class="ng-tns-c268-42"
+      style="float:right;">    
       <div class=""style="font-size:9px; ">
-    Page <u>2</u> of <u>2</u>
+    <b> Page <u>2</u> of <u>2</u></b>
       </div>
     </td>
   </tr>
 </table>
   <table width="100%" cellpadding="0" cellspacing="0" class="ng-tns-c268-42">
 <tr ><td colspan="8" valign="top" class="p-0 ng-tns-c268-42" width="50%" >
-  <table width="100%" cellpadding="0" cellspacing="0" class="tftable">
+  <table width="100%" cellpadding="0" cellspacing="0" class="">
     <tbody>
-      <tr style="line-height: 2;border:1px solid black;" class="lable_title" width="100%">
+      <tr style="line-height: 1.5;border:1px solid black;" class="lable_title" width="100%">
      
-        <td colspan="2" class="lable_title"> <label> AGENCY</label>    
+        <td colspan="2"  width="100%"  class="lable_title" style="border-top: 1px solid black"> <label> AGENCY</label>    
         {{ $agent->agencies[0]->name }}<br class="ng-tns-c268-42">
         </td>
+<td style="border-top: 1px solid black"></td>
+      </tr>
+      <tr  style="line-height: 1.5;border:1px solid black;" width="100%" class="lable_title">
+        <td colspan="2"  width="100%" class="lable_title" style="border-top: 1px solid black">  <label> POLICY NUMBER</label>    </td>
+        <td style="border-top: 1px solid black"></td>
 
       </tr>
-      <tr  style="line-height: 2;border:1px solid black;" width="100%" class="lable_title">
-        <td colspan="2" class="lable_title"><label> POLICY NUMBER</label>    </td>
-       
-      </tr>
-      <tr style="line-height: 2;">
-        <td  class="lable_title">  <label> CARRIER</label>    </td> 
-        <td class="lable_title"> <label>NAIC CODE</label>    </td> 
+      <tr style="line-height: 2;border:1px solid black;">
+        <td colspan="2"  width="80%"class="lable_title" style="border-right: 1px solid black">  <label> CARRIER</label>    </td> 
+        <td class="lable_title" width="20%" style="border-top: 1px solid black"> <label>NAIC CODE</label>    </td> 
       </tr>
     </tbody>
   </table>
@@ -1066,7 +1067,7 @@ style="flex-direction: row; box-sizing: border-box; display: flex;">
           {{ $driver->truckers[0]->state }} <br class="ng-tns-c268-42"> ,
           {{ $driver->truckers[0]->zip }} <br class="ng-tns-c268-42">   </td> 
       </tr>      
-      <tr  style="border:1px solid black; line-height: 2;">
+      <tr  style="border:1px solid black; line-height: 1.6;">
 
         <td colspan="2">      <label> EFFECTIVE DATE:</label>    </td> 
 
@@ -1087,60 +1088,56 @@ style="flex-direction: row; box-sizing: border-box; display: flex;">
 <table width="100%" cellpadding="22" cellspacing="3" class="tftable ng-tns-c268-42">
   <tbody class="ng-tns-c268-42">
     <tr class="ng-tns-c268-42">  
-      <td>    
+      <td style="font-size: 9px; ">    
      THIS ADDITIONAL REMARKS DORM IS A SCHEDULE TO ACCORD FORM, <br>
     FORM NUMBER <u> 101 </u> FROM TITLE: <u> </u> </td></tr>
     <tr class="ng-tns-c268-42"  >
       <td> 
-        - Meridian Title Corporation (IN) – IL
-- Meridian Title Corporation (IN) - IL
-- Meridian National Account Services - PA
-- Meridian National Account Services Company – MO
-- Meridian Title Company
-The following locations are also covered under the above mentioned policies:
-Illinois Location:
-150 South Wacker Drive, 24th Floor, Chicago, IL 60606
-Indiana Locations:
-1) 11711 N. Pennsylvania Street, Suite 110 Carmel, IN 46032
-2) 723 Third Street, Columbus, IN 47201
-3) 1182 E. Summit Street, Crown Point, IN 46307
-4) 9885 E. 116th Street, Suite 600, Fishers, IN 46037
-5) 6432 Georgetown North Boulevard, Fort Wayne, IN 46815
-6) 5375 East Dupont Road, Suite 102 Fort Wayne IN 46825
-7) 2305 Main Street, Unit A Highland, IN 46322
-8) 1675 W. Smith Valley, Road Suite E4, Greenwood, IN 46142
-9) 935 Mezzanine Suite A Lafayette, IN 47905
-10) 1447 S. Lake Park Avenue Hobart, IN 46342
-11) 251 E. Ohio Street, Suite 100 Indianapolis, IN 46204
-12) 3850 Priority Way South Drive, Suite 120, Indianapolis, IN 46240
-13) 1000 W. State Road 2, LaPorte, IN 46350
-14) 1375 S. Lebanon Street, Suite 800, Lebanon, IN 46052
-15) 241 Medical Plaza, Unit D, Michigan City, IN 46360
-16) 4440 Edison Lakes Parkway, Suite 100, Mishawaka, IN 46545
-17) 1307 US 33, Goshen Road Goshen, IN 46526
-18) 465 Sheridan Road, Noblesville, IN 46060
-19) 607 W. Jefferson Street, Plymouth, IN 46563
-20) 6340 Main Street, Suite A, Portage, IN 46368
-21) 202 S. Michigan Street, Suite 300, South Bend, IN 46601
-22) 57 Franklin Street, Suite 103, Valparaiso, IN 46383
-23) 612 N. Detroit Street, Warsaw, IN 46580
-24) 1120 W. Oak Street, Suite 250 Zionsville, IN 46077
-25) 9835 East US Highway 36, Avon, IN 46123
-26) 7131 West Jefferson Boulevard, Fort Wayne, IN 46804
-27) 881 Parkway Avenue, Suite 300, Elkhart, IN 46516
-28) 245 W. Johnson Road, Suite 9, LaPorte, IN 46350
-Michigan Locations:
-1) 103 N. Broadway, Cassopolis, MI 49031
-2) 107 Commercial Street, Dowagiac, MI 49047
-3) 69045 M-62, Suite 3, Edwardsburg, MI 49112
-4) 4 W. Buffalo Street, New Buffalo, MI 49117
-5) 309 Broadway Street, Niles, MI 49120
-6) 800 Ship Street, Suite 115, St. Joseph, MI 49085
-National Account Services Location:
-4440 Edison Lakes Parkway, Suite 100, Mishawaka, IN 46545
-- 120 E Jefferson Street, Tipton, IN 46072
-- 3 North Jackson Street, Frankfort, IN 46041
-- 1215 East Hoffer Street, Kokomo, IN 46902
+        - Meridian Title Corporation (IN)  IL <br>
+- Meridian Title Corporation (IN) - IL<br>
+- Meridian National Account Services - PA<br>
+- Meridian National Account Services Company MO<br>
+- Meridian Title Company<br>
+The following locations are also covered under the above mentioned policies:<br>
+Illinois Location:<br>
+150 South Wacker Drive, 24th Floor, Chicago, IL 60606<br>
+Indiana Locations:<br>
+1) 11711 N. Pennsylvania Street, Suite 110 Carmel, IN 46032<br>
+2) 723 Third Street, Columbus, IN 47201<br>
+3) 1182 E. Summit Street, Crown Point, IN 46307<br>
+4) 9885 E. 116th Street, Suite 600, Fishers, IN 46037<br>
+5) 6432 Georgetown North Boulevard, Fort Wayne, IN 46815<br>
+6) 5375 East Dupont Road, Suite 102 Fort Wayne IN 46825<br>
+7) 2305 Main Street, Unit A Highland, IN 46322<br>
+8) 1675 W. Smith Valley, Road Suite E4, Greenwood, IN 46142<br>
+9) 935 Mezzanine Suite A Lafayette, IN 47905<br>
+10) 1447 S. Lake Park Avenue Hobart, IN 46342<br>
+11) 251 E. Ohio Street, Suite 100 Indianapolis, IN 46204<br>
+12) 3850 Priority Way South Drive, Suite 120, Indianapolis, IN 4624<br>
+13) 1000 W. State Road 2, LaPorte, IN 46350<br>
+14) 1375 S. Lebanon Street, Suite 800, Lebanon, IN 46052<br>
+15) 241 Medical Plaza, Unit D, Michigan City, IN 46360<br>
+16) 4440 Edison Lakes Parkway, Suite 100, Mishawaka, IN 46545<br>
+17) 1307 US 33, Goshen Road Goshen, IN 46526<br>
+18) 465 Sheridan Road, Noblesville, IN 46060<br>
+19) 607 W. Jefferson Street, Plymouth, IN 46563<br>
+20) 6340 Main Street, Suite A, Portage, IN 46368<br>
+21) 202 S. Michigan Street, Suite 300, South Bend, IN 46601<br>
+22) 57 Franklin Street, Suite 103, Valparaiso, IN 46383<br>
+23) 612 N. Detroit Street, Warsaw, IN 46580<br>
+24) 1120 W. Oak Street, Suite 250 Zionsville, IN 46077<br>
+25) 9835 East US Highway 36, Avon, IN 46123<br>
+26) 7131 West Jefferson Boulevard, Fort Wayne, IN 46804<br>
+27) 881 Parkway Avenue, Suite 300, Elkhart, IN 46516<br>
+28) 245 W. Johnson Road, Suite 9, LaPorte, IN 46350<br>
+1) 103 N. Broadway, Cassopolis, MI 49031<br>
+2) 107 Commercial Street, Dowagiac, MI 49047<br>
+3) 69045 M-62, Suite 3, Edwardsburg, MI 49112<br>
+4) 4 W. Buffalo Street, New Buffalo, MI 49117<br>
+5) 309 Broadway Street, Niles, MI 49120<br>
+
+National Account Services Location:<br>
+
 
         
 
