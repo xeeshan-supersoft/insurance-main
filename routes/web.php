@@ -170,7 +170,7 @@ Route::get('/', [AuthController::class, 'land'])->name('landing');
 
 
 Route::fallback(function () {
-  return view('content.pages.pages-misc-error');
+  // return view('content.pages.pages-misc-error');
 });
 
 

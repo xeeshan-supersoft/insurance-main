@@ -5,8 +5,8 @@
        {{ $successMessage }}
     </div>
     @endif
-      
-    <div class="row stepwizard">
+    <div class="row p-2  bg-white">
+    <div class="row stepwizard ">
         <div class="stepwizard-row setup-panel d-flex flex-row  justify-content-between">
             <div class="stepwizard-step d-flex flex-row  align-items-center ">
                 <a href="#step-1" type="button" class="btn btn-circle {{ $currentStep != 1 ? 'btn-default' : 'btn-primary' }}">1</a>
@@ -22,31 +22,53 @@
             </div>
         </div>
     </div>
-      
-        <div class="row setup-content {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1" >
+</div>
+        <div class="row p-3 setup-content {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1" >
             <div class="col-xs-12">
-                <div class="col-md-12">
+                <div class="row px-5">
+                <div class="col-md-6">
                    
       
-                    <div class="form-group">
-                        <label for="title">Product Name:</label>
+                    <div class="form-group p-3">
+                        <label for="title">Company Name:</label>
                         <input type="text" wire:model="name" class="form-control" id="taskTitle">
                         @error('name') <span class="error">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="description">Product Amount:</label>
-                        <input type="text" wire:model="amount" class="form-control" id="productAmount"/>
-                        @error('amount') <span class="error">{{ $message }}</span> @enderror
+                    <div class="form-group p-3">
+                        <label for="description">Federal Registration No. (MC Number)</label>
+                        <input type="number" oninput="this.value=this.value.slice(0,8)"  maxlength="8"  wire:model="mc_number" class="form-control" id="productAmount"/>
+                        @error('mc_number') <span class="error">{{ $message }}</span> @enderror
+                    </div>      
+                    <div class="form-group p-3">
+                        <label for="description">US Tax ID / Canadian Business Number</label>
+                        <input type="text"  class="form-control" id="productAmount"/>
+                        {{-- @error('description') <span class="error">{{ $message }}</span> @enderror --}}
+                    </div>      
                     </div>
+                    
+                    <div class="col-md-6">
+                   
       
-                    <div class="form-group">
-                        <label for="description">Product Description:</label>
-                        <textarea type="text" wire:model="description" class="form-control" id="taskDescription">{{{ $description ?? '' }}}</textarea>
-                        @error('description') <span class="error">{{ $message }}</span> @enderror
+                        <div class="form-group p-3">
+                            <label for="title">SCAC Code</label>
+                            <input type="text"  maxlength="4" class="form-control" id="taskTitle">
+                            {{-- @error('name') <span class="error">{{ $message }}</span> @enderror --}}
+                        </div>
+                        <div class="form-group p-3">
+                            <label for="description">US DOT #</label>
+                            <input type="number" oninput="this.value=this.value.slice(0,8)"  maxlength="8"  class="form-control" id="productAmount"/>
+                            {{-- @error('amount') <span class="error">{{ $message }}</span> @enderror --}}
+                        </div>
+          
+                        <div class="form-group p-3">
+                            <label for="description">Company Website address:</label>
+                            <input type="text"  class="form-control" id="productAmount"/>
+                            {{-- @error('description') <span class="error">{{ $message }}</span> @enderror --}}
+                        </div>
+          
+                        </div>
                     </div>
-      
-                    <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="firstStepSubmit" type="button" >Next</button>
-                </div>
+                <button class="btn btn-primary nextBtn btn-lg pull-right" wire:click="firstStepSubmit" type="button" >Next</button>
             </div>
         </div>
         <div class="row setup-content {{ $currentStep != 2 ? 'displayNone' : '' }}" id="step-2">
@@ -84,7 +106,7 @@
                         </tr>
                         <tr>
                             <td>Product Amount:</td>
-                            <td><strong>{{$amount}}</strong></td>
+                            <td><strong></strong></td>
                         </tr>
                         <tr>
                             <td>Product status:</td>
