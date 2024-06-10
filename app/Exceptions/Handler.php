@@ -27,11 +27,11 @@ class Handler extends ExceptionHandler
   }
   public function render($request, Throwable $exception)
   {
-    if ($exception instanceof QueryException) {
-      // Database exception occurred, redirect to custom error page
-      return response()->view('content.pages.pages-misc-error', [], 500);
-    }
+    // if ($exception instanceof QueryException) {
+    //   // Database exception occurred, redirect to custom error page
+    //   return response()->view('content.pages.pages-misc-error', [], 500);
+    // }
 
-    return parent::render($request, $exception);
+    //return parent::render($request, $exception);
   }
 }

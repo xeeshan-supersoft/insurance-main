@@ -6,7 +6,7 @@ use Livewire\Component;
 class Regtruck extends Component
 {
     public $currentStep = 1;
-    public $name, $amount, $description, $status = 1, $stock;
+    public $name, $mc_number, $description, $status = 1, $stock;
     public $successMessage = '';
   
     /**
@@ -24,12 +24,12 @@ class Regtruck extends Component
      *
      * @return response()
      */
+
     public function firstStepSubmit()
     {
         $validatedData = $this->validate([
-            'name' => 'required|unique:products',
-            'mc_number' => 'required|numeric',
-            
+            'name' => 'required',
+            'mc_number' => 'required|numeric' ,         
         ]);
  
         $this->currentStep = 2;
@@ -107,7 +107,7 @@ class Regtruck extends Component
     public function clearForm()
     {
         $this->name = '';
-        $this->amount = '';
+        $this->mc_number = '';
         $this->description = '';
         $this->stock = '';
         $this->status = 1;
