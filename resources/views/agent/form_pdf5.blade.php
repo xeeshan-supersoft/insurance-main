@@ -954,7 +954,7 @@
                                             </td>
                                           
                                               <td class=" ng-tns-c268-42">
-                                            <img   src="{{ asset('assets/img/sign.png')}}" width="91" height="39" alt="">                                        
+                                            <img src="{{ storage_path('public/' .  $driver->truckers[0]->image_path)}}" width="91" height="39" alt="">                                        
                                          </td>
                                          <tr class="ng-tns-c268-42">
                                           </tbody>
