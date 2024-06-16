@@ -51,8 +51,6 @@ return [
     */
 
     'lazy_placeholder' => null,
-    
-    // 'asset_url' => 'http://localhost:8080/accord/public',
     /*
     |---------------------------------------------------------------------------
     | Temporary File Uploads

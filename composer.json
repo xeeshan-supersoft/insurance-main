@@ -11,6 +11,10 @@
     "php": "^8.1",
     "barryvdh/laravel-dompdf": "^2.1",
     "guzzlehttp/guzzle": "^7.2",
+<<<<<<< HEAD
+    "intervention/image": "^3.6",
+=======
+>>>>>>> db73b152bbfb74bd9c3e2e42c902ef4a86ef780f
     "laravel/breeze": "^1.27",
     "laravel/framework": "^10.23",
     "laravel/sanctum": "^3.2",

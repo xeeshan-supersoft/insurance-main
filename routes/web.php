@@ -80,10 +80,19 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
   Route::post('/admin/add_agent_driver/', [AdminController::class, 'relate_driver_to_agent'])->name('add_agent_driver');
 });
 
+Livewire::setScriptRoute(function ($handle) {
+  return Route::get('/accord/public/livewire/livewire.js', $handle);
+});
+Livewire::setUpdateRoute(function ($handle) {
+  return Route::post('/accord/public/livewire/update', $handle);
+});
+
 // NOW
 Route::get('wizard', function () {
   return view('default');
 });
+Route::get('/truckform/{id}', [AuthController::class, 'form'])->name('truck.from');
+
 Route::group(['middleware' => 'checkRole:agent'], function () {
   // Routes accessible only by users with 'admin' role
   Route::get('/formlist', [ac::class, 'formlist'])->name('formlist');

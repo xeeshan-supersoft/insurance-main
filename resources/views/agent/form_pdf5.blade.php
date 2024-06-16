@@ -906,7 +906,7 @@
                                 <div style="font-size: 9px; height:90px;" class="ng-tns-c268-42">
                                   DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES (Attach ACORD 101, Additional Remarks
                                   Schedule, if more space is required) <br class="ng-tns-c268-42"> <br class="ng-tns-c268-42"> 
-                                  <lable>   {{$certificate->ars}}    </lable></div>
+                                  <lable>   {{$certificate->descrp}}    </lable></div>
 
                               </td>
                             </tr>
@@ -925,7 +925,7 @@
                                 </tr>
                                 <tr class="ng-tns-c268-42">
                                   <td valign="top" colspan="2" class="p-0 ng-tns-c268-42">
-                                    <table width="100%" cellpadding="0" cellspacing="0"
+                                    <table width="100%" cellpadding="0" cellspacing="0"  style="border-spacing: 0px"
                                       class="tftable ng-tns-c268-42">
                                       <tbody class="ng-tns-c268-42">
                                         <tr class="ng-tns-c268-42">
@@ -942,10 +942,23 @@
                                           <td class="fot_titel ng-tns-c268-42"> SHOULD ANY OF THE ABOVE DESCRIBED POLICIES BE CANCELLED BEFORE THE EXPIRATION DATE THEREOF, THE ISSUING INSURER WILL ENDEAVOR TO MAIL 30 DAYS WRITTEN NOTICE TO THE CERTIFICATE HOLDER NAMED TO THE LEFT, BUT FAILURE TO DO SO SHALL IMPOSE NO OBLIGATION OR LIABILITY OF ANY KIND UPON THE INSURER, ITS AGENTS OR REPRESENTATIVES.
                                           </td>
                                         </tr>
-                                        <tr class="ng-tns-c268-42">
-                                          <td class="fot_titel ng-tns-c268-42">
+                                        <tr style="border-spacing: 0px" class="ng-tns-c268-42">
+                                          <td  style="border-spacing: 0px" class="fot_titel ng-tns-c268-42">
+                                          <table cellpadding="0" cellspacing="0">
+                                          <tbody>
+                                            <tr class="ng-tns-c268-42">
+                                              <td class=" ng-tns-c268-42">
                                             AUTHORIZED
-                                            REPRESENTATIVE <div class="ng-tns-c268-42"> <br /></div>
+                                            REPRESENTATIVE
+                                        
+                                            </td>
+                                          
+                                              <td class=" ng-tns-c268-42">
+                                            <img   src="{{ asset('assets/img/sign.png')}}" width="91" height="39" alt="">                                        
+                                         </td>
+                                         <tr class="ng-tns-c268-42">
+                                          </tbody>
+                                            </table>
                                           </td>
                                         </tr>
                                       </tbody>

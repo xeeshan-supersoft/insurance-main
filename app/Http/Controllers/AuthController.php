@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\ValidationException;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class AuthController extends Controller
 {
@@ -227,8 +228,15 @@ $subb = Subscription::create([
       return 'notthing';
   }
 
-
-
+  public function form(int $id)
+  {
+    $data = DriverDetail::Where('user_id' , $id)->get();
+    $view = 'truck.from';
+    // $cert = 'driver.pdf';
+    // $pdf = PDF::loadView($view, compact('data'))->setPaper('a4', 'portrait');   
+    // return $pdf->download($cert);
+    return view($view, compact('data'));
+  }
 
   public function logout()
   {

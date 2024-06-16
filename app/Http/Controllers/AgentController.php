@@ -102,14 +102,11 @@ class AgentController extends Controller
     $certificate = Certificate::with('policies', 'policyLimits')
       ->where('id', $id)
       ->first();
-
     $certPolicy = CertificatePolicy::with('policyType', 'policy')
       ->where('certificate_id', $certificate->id)
       ->get();
-
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
-
     return view('agent.certificate_list', compact('certificate', 'certPolicy', 'driver', 'agent'));
   }
 

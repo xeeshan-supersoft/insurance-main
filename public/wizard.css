@@ -48,7 +48,9 @@ input[type=number] {
     text-align: center;
     position: relative;
 }
-
+.error{
+    color:crimson;
+}
 .setup-content{
     margin-top: 10px;
     background-color: white;
@@ -65,3 +67,17 @@ input[type=number] {
 .displayNone{
   display: none;
 }
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+   
+    text-align: left;
+    padding: 8px;
+  }
+  /* tr:nth-child(even) {
+    background-color: #dddddd;
+  } */

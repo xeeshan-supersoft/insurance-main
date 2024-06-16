@@ -13,6 +13,16 @@ class DriverDetail extends Model
   protected $fillable = [
     'user_id',
     'name',
+    'mname',
+    'lname',
+    'suffix',
+    'salutation',
+    'title',
+    'prefix',
+    'websit',
+    'tax',
+    'scac',
+    'usdot',    
     'address',
     'address2',
     'state',
@@ -31,7 +41,8 @@ class DriverDetail extends Model
     'vehicle_status',
     'mc_number',
     'extra_email',
-    'is_active'
+    'is_active',
+    'image_path'
   ];
 
   public function user()

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <html>
 <head>
     <title>Laravel Livewire Example</title>
     @livewireStyles
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet" />
+
+  
     
     <link rel="stylesheet" href="{{ asset(mix('assets/vendor/fonts/materialdesignicons.css')) }}" />
     <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/node-waves/node-waves.css')) }}" />
@@ -27,10 +26,24 @@
         <h1 class="h2 text-center"> Participating Party Agreement </h1>
       </div>
       <div class="card-body">
-        <livewire:Regtruck />
+        <livewire:wizard />
       </div>
     </div>        
 </div>
-@livewireScripts    
+@livewireScripts  
+<script  src="https://code.jquery.com/jquery-3.7.1.min.js"  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+  @yield('page-scripts')
+<script src="{{ asset(mix('assets/vendor/libs/popper/popper.js')) }}"></script>
+<script src="{{ asset(mix('assets/vendor/js/bootstrap.js')) }}"></script>
+<script src="{{ asset(mix('assets/vendor/libs/node-waves/node-waves.js')) }}"></script>
+<script src="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')) }}"></script>
+<script src="{{ asset(mix('assets/vendor/js/menu.js')) }}"></script>
+@yield('vendor-script')
+<!-- END: Page Vendor JS-->
+<!-- BEGIN: Theme JS-->
+
+
+@stack('scripts')
 </body> 
 </html>
