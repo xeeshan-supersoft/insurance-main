@@ -81,10 +81,12 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 });
 
 Livewire::setScriptRoute(function ($handle) {
-  return Route::get('/accord/public/livewire/livewire.js', $handle);
+  return Route::get('/public/insurance/public/livewire/livewire.js', $handle);
+  //return Route::get('/accord/public/livewire/livewire.js', $handle);
 });
 Livewire::setUpdateRoute(function ($handle) {
-  return Route::post('/accord/public/livewire/update', $handle);
+  return Route::post('/public/insurance/public/livewire/update', $handle);
+  // return Route::post('/accord/public/livewire/update', $handle);
 });
 
 // NOW
