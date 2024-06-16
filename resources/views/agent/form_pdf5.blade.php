@@ -851,50 +851,68 @@
                               <table style="border-spacing: 0px;" width="100%" cellpadding="0" cellspacing="0"
                               class=" ng-tns-c268-42">
                             <tbody>
-                            @foreach ($certPolicy->whereIn('policy_type_id', [3,4,7,8])->unique('policy_type_id') as $cp)
-                                    @if(!empty($cp))
-                                    <tr style="line-height:1;"><td width="3%" style="border-right: 1px solid black;" >
-                                            <label>{{ $cp->insurance_provider_code }}</label> 
-                                            </td>
-                                            <td width="24.5%" style="border-right: 1px solid black;">
-                                              <label>{{ $cp->policyType->type_name }}</label>                                          
-                                            </td>
-                                            <td width="3%" style="border-right: 1px solid black;"></td>
-                                            <td width="3%" style="border-right: 1px solid black;"></td>
-                                            <td width="24.5%" style="border-right: 1px solid black;">
-                                              {{ $cp->policy_number }}
-                                            </td>
-                                            <td valign="middle" style="text-align: center; vertical-align: middle; border-right: 1px solid black;">
-                                              {{  date('m-d-Y', strtotime($cp->start_date)) }}
-                                            </td>
-                                            <td valign="middle" style="text-align: center; vertical-align: middle; border-right: 1px solid black;">
-                                              {{  date('m-d-Y', strtotime($cp->expiry_date)) }}
-                                            </td>
-                                            <td width="28%">
-                                              @if($cp->policyType->id==4 )
-                                                Limit/ Trailer
-                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                {{ $cptpl->where('policy_limit_id', 12)->first()->amount }}
-                                                @endforeach
-                                              @endif
-                                              @if($cp->policyType->id==7 )
-                                                Limit/Ded
-                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                {{ $cptpl->where('policy_limit_id', 21)->first()->amount }} /
-                                                {{ $cptpl->where('policy_limit_id', 22)->first()->amount }}
-                                                @endforeach
-                                              @endif
-                                              @if($cp->policyType->id==8 )
-                                                Limit/Ded
-                                                @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                {{ $cptpl->where('policy_limit_id', 23)->first()->amount }} /
-                                                {{ $cptpl->where('policy_limit_id', 24)->first()->amount }}
-                                                @endforeach
-                                              @endif                                              
-                                            </td>                                       
-                                          </tr>
-                                    @endif
-                                  @endforeach
+                              @php
+                                $filteredPolicies = $certPolicy->whereIn('policy_type_id', [3, 4, 7, 8])->unique('policy_type_id');
+                              @endphp
+                              @if($filteredPolicies->isNotEmpty())
+                              @foreach ($certPolicy->whereIn('policy_type_id', [3,4,7,8])->unique('policy_type_id') as $cp)
+                                      @if(!empty($cp))
+                                      <tr style="line-height:1;"><td width="3%" style="border-right: 1px solid black;" >
+                                              <td>
+                                                <label>{{ $cp->insurance_provider_code }}</label> 
+                                              </td>
+                                              <td width="24.5%" style="border-right: 1px solid black;">
+                                                <label>{{ $cp->policyType->type_name }}</label>                                          
+                                              </td>
+                                              <td width="3%" style="border-right: 1px solid black;"></td>
+                                              <td width="3%" style="border-right: 1px solid black;"></td>
+                                              <td width="24.5%" style="border-right: 1px solid black;">
+                                                {{ $cp->policy_number }}
+                                              </td>
+                                              <td valign="middle" style="text-align: center; vertical-align: middle; border-right: 1px solid black;">
+                                                {{  date('m-d-Y', strtotime($cp->start_date)) }}
+                                              </td>
+                                              <td valign="middle" style="text-align: center; vertical-align: middle; border-right: 1px solid black;">
+                                                {{  date('m-d-Y', strtotime($cp->expiry_date)) }}
+                                              </td>
+                                              <td width="28%">
+                                                @if($cp->policyType->id==4 )
+                                                  Limit/ Trailer
+                                                  @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
+                                                  {{ $cptpl->where('policy_limit_id', 12)->first()->amount }}
+                                                  @endforeach
+                                                @endif
+                                                @if($cp->policyType->id==7 )
+                                                  Limit/Ded
+                                                  @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
+                                                  {{ $cptpl->where('policy_limit_id', 21)->first()->amount }} /
+                                                  {{ $cptpl->where('policy_limit_id', 22)->first()->amount }}
+                                                  @endforeach
+                                                @endif
+                                                @if($cp->policyType->id==8 )
+                                                  Limit/Ded
+                                                  @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
+                                                  {{ $cptpl->where('policy_limit_id', 23)->first()->amount }} /
+                                                  {{ $cptpl->where('policy_limit_id', 24)->first()->amount }}
+                                                  @endforeach
+                                                @endif                                              
+                                              </td>                                       
+                                            </tr>
+                                      @endif
+                                    @endforeach      
+                                    @else                           
+                                  <tr style="line-height:1;"><td width="3%" style="border-right: 1px solid black;" >
+                                    <td>
+                                      <label>
+                                          Others
+                                      </label> 
+                                      <br>
+                                      <br>
+                                      <br>
+                                      <br>
+                                    </td> 
+                                  </tr>    
+                                  @endif                            
                                 </tbody>
                               </table>
                             </td>
@@ -952,9 +970,8 @@
                                             REPRESENTATIVE
                                         
                                             </td>
-                                          
                                               <td class=" ng-tns-c268-42">
-                                            <img src="{{ storage_path('photos/' .  $driver->truckers[0]->image_path)}}" width="91" height="39" alt="">                                        
+                                            <img src="{{ storage_path('app/' .  $driver->truckers[0]->image_path)}}" width="91" height="39" alt="">                                        
                                          </td>
                                          <tr class="ng-tns-c268-42">
                                           </tbody>
