@@ -127,8 +127,7 @@ class Wizard extends Component
             'image' => 'required|image|mimes:png|dimensions:min_width=200,max_width=200,min_height=100,max_height=100|max:1024',
           ]);
           $name = md5($this->image . microtime()).'.'.$this->image->extension();
-          $this->image->storeAs('photos', $name);
-          $this->imagePath = $this->image->path($name);
+          $this->imagePath = $this->image->storeAs('photos', $name);
           $this->submitForm();
       }
 
