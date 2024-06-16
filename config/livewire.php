@@ -51,7 +51,6 @@ return [
     */
 
     'lazy_placeholder' => null,
-
     /*
     |---------------------------------------------------------------------------
     | Temporary File Uploads

@@ -32,6 +32,10 @@ class Handler extends ExceptionHandler
     //   return response()->view('content.pages.pages-misc-error', [], 500);
     // }
 
+<<<<<<< HEAD
     return parent::render($request, $exception);
+=======
+    //return parent::render($request, $exception);
+>>>>>>> db73b152bbfb74bd9c3e2e42c902ef4a86ef780f
   }
 }
