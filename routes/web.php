@@ -126,11 +126,19 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
 
 Route::post('/register', [AuthController::class, 'registerfrom'])->name('regist');
 Route::post('/reg', [AuthController::class, 'register'])->name('form.reg');
+Route::post('/reggg', [AuthController::class, 'getregister'])->name('get.regester');
+Route::get('/reg-agency', function () { return view('content.authentications.reg-agency'); })->name('reg.agency');
+Route::get('/reg-shipper', function () { return view('content.authentications.reg-shipper'); })->name('reg.shipper');
+Route::get('/reg-trucker', function () { return view('content.authentications.reg-trucker'); })->name('reg.trucker');
+Route::get('/reg-freights', function () { return view('content.authentications.reg-freights'); })->name('reg.freights');
+
 
 
 Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/portal', [TruckController::class, 'trucker'])->name('dashw');
   Route::post('/upload', [TruckController::class, 'upload'])->name('upload');
+
+
 
   // Route::get('/formlist/{id}', [ac::class, 'pdf'])->name('agent.pdf');
   //Route::get('/formlist', [TruckController::class, 'truckersss'])->name('truck.list');
@@ -156,11 +164,9 @@ Route::get('reboot',function(){
 Route::group(['middleware' => 'checkRole:shipper'], function () {
   Route::get('/sportal', [ShipperController::class, 'dash2'])->name('sdash');
   Route::get('/add-trucks', function () { return view('shipper.add-trucker'); })->name('add.trucks');
-
   Route::get('/add-freights', function () { return view('shipper.add-freight'); })->name('add.freights');
   Route::post('/reg-adds', [ShipperController::class, 'addReg'])->name('regs.add');
   Route::get('/profile-shipper', [TruckController::class, 'shipperprofiles'])->name('profile.shipper');
-
 });
 
 
@@ -215,6 +221,11 @@ Route::get('/mrun', function () {
 
 // authentication
 Route::get('/logg', [LoginBasic::class, 'index'])->name('auth-login-basic');
+Route::get('/login/shipper', [LoginBasic::class, 'indexs'])->name('auth-login-s');
+Route::get('/login/truck', [LoginBasic::class, 'indext'])->name('auth-login-t');
+Route::get('/login/freight', [LoginBasic::class, 'indexs'])->name('auth-login-f');
+
+
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');
 Route::get('/auth/forgot-password-basic', [ForgotPasswordBasic::class, 'index'])->name('auth-reset-password-basic');
