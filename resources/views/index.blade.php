@@ -58,6 +58,29 @@
             <li class="nav-item"><a class='nav-link-item' href='#'>About</a></li>
             <li class="nav-item "><a href="#" class="nav-link-item ">Services</a></li>
              <li class="nav-item "><a href="#" class="nav-link-item">Contact</a></li>
+             <li class="nav-item nav-item-has-children">
+                <a href="#" class="nav-link-item drop-trigger">login
+                    <i class="fa-solid fa-angle-down"></i>
+                </a>
+                <ul class="sub-menu" id="submenu-11">
+                    <li class="sub-menu--item">
+                  <a class='btn-text hidden hover:text-ColorPurple sm:inline-block' 
+                  href='{{ route('auth-login-basic')}}'> Agent Login</a>
+                    </li>
+                    <li class="sub-menu--item">
+                        <a class='btn-text hidden hover:text-ColorPurple sm:inline-block' 
+                  href='{{ route('auth-login-t')}}'>Trucker Login</a>
+                    </li>
+                    <li class="sub-menu--item">
+                        <a class='btn-text hidden hover:text-ColorPurple sm:inline-block' 
+                        href='{{ route('auth-login-s')}}'> Shipper Login</a>
+                    </li>
+                    <li class="sub-menu--item">
+                        <a class='btn-text hidden hover:text-ColorPurple sm:inline-block' 
+                        href='{{ route('auth-login-f')}}'>Freight Login</a>
+                    </li>
+                </ul>
+            </li>
                             </ul>
                         </nav>
                     </div>
@@ -65,7 +88,9 @@
 
                     <!-- Header User Event -->
                     <div class="flex items-center gap-6">
-                        <a class='btn-text hidden hover:text-ColorPurple sm:inline-block' href='{{ route('auth-login-basic')}}'>Login</a>
+                        {{-- <a class='btn-text hidden hover:text-ColorPurple sm:inline-block' href='{{ route('auth-login-basic')}}'>Login</a> --}}
+                     
+
                         <a class='btn is-black btn-animation group hidden rounded sm:inline-block' href='{{ route('auth-login-basic')}}'><span>Sign up free</span></a>
                         <!-- Responsive Offcanvas Menu Button -->
                         <div class="block lg:hidden">
