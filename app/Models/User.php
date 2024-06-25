@@ -92,4 +92,9 @@ class User extends Authenticatable
   {
     return $this->hasMany(AgencyInfos::class, 'user_id');
   }
+
+  public function truck_detail()
+  {
+    return $this->hasMany(TruckDetail::class, 'user_id');
+  }
 }

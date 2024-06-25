@@ -155,6 +155,8 @@ Route::group(['middleware' => 'checkRole:truck'], function () {
   Route::get('/list-shipper', [TruckController::class, 'shipper'])->name('list.ship');
   Route::post('/reg-add', [TruckController::class, 'addReg'])->name('reg.add');
   Route::get('/profile-truck', [TruckController::class, 'truckprofiles'])->name('profile.truck');
+  Route::get('/add-truck', [TruckController::class, 'addTruck'])->name('add.truck');
+  Route::post('/store-truck', [TruckController::class, 'storeTruck'])->name('store.truck');
 });
 Route::get('reboot',function(){
   Artisan::call('view:clear');
