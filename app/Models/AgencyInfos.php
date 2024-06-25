@@ -19,9 +19,15 @@ class AgencyInfos extends Model
     'state',
     'zip',
     'cellphone',
-    'extra_email',
     'fax',
+    'lname',
+    'ialn',
+    'mname',
+    'prefix',
+    'fname',
+    'suffix',
     'producer_customer_number',
+    'image_path',
     'is_active',
   ];
 

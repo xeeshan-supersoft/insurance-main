@@ -4,7 +4,7 @@ namespace App\Livewire;
 use App\Rules\TransparentPNG;
 use Livewire\WithFileUploads;
 use Livewire\Component;
-use App\Models\DriverDetail;
+use App\Models\AgencyInfos;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -20,7 +20,7 @@ class Wizard extends Component
     public $name, $mc_number ,$suffix ,$fname ,$salutation, $mname ,$lname ,$title ,$prefix;
     public $address ,$address2 , $zip , $city, $state ,$country, $password ,$password_confirmation;
     public $email ,$phone, $fax, $exemail ,$secphone;
-    public $websit ,$tax , $scac, $usdot ,$imagePath;
+    public $websit ,$ialn , $scac, $usdot ,$imagePath;
     public $successMessage = '';
   
     /**
@@ -43,11 +43,12 @@ class Wizard extends Component
      {
          $validatedData = $this->validate([
              'name' => 'required',
-             'mc_number' => 'required|numeric' ,  
-             'tax' => 'required',
-             'scac' => 'required',
-             'usdot' => 'required',
-             'websit' => 'required',
+             'ialn' => 'required',
+             'fname' => 'required',            
+             'lname' => 'required', 
+             'title' => 'required', 
+             'suffix' => 'required', 
+             'mname' => 'required',  
          ]);
          $this->currentStep = 2;
      }
@@ -58,32 +59,23 @@ class Wizard extends Component
       */
      public function secondStepSubmit()
      {
-         $validatedData = $this->validate([
-         'fname' => 'required', 
-         'salutation' => 'required', 
-         'lname' => 'required', 
-         'title' => 'required', 
-         'suffix' => 'required', 
-         'mname' => 'required',  
+         $validatedData = $this->validate([      
+         'websit' => 'required',
          'address' => 'required', 
          'address2' => 'required',
          'state' => 'required', 
          'zip' => 'required', 
          'city' => 'required', 
-         'exemail' => 'required', 
          'email' => 'required|email', 
          'phone' => [
             'required',
             'regex:/^\+\d{1,2} \(\d{3}\) \d{3}-\d{4}$/', // Adjust the regex to match your phone number format requirements
-        ], 
-         'fax' => 'required|numeric', 
-         'exemail' => 'required|email', 
-         'secphone' => ['required',
-           'regex:/^\+\d{1,2} \(\d{3}\) \d{3}-\d{4}$/', // Adjust the regex to match your phone number format requirements
-        ],  
-              ]);
+        ],
+         'fax' => 'required|numeric',
+ ]);
  
      $this->currentStep = 3;
+     
      }
    
      /**
@@ -146,31 +138,26 @@ class Wizard extends Component
                 'role' => "truck_driver", 
               ]);
               $lastInsertedId = $user->id;
-             DriverDetail::create([
+              AgencyInfos::create([
                 'user_id' =>$lastInsertedId ,
                 'name' => $this->name,
                  'title' => $this->title,
-            'mname' => $this->mname,
+                 'ialn' => $this->ialn,
+                     'mname' => $this->mname,
 'lname' => $this->lname,
 'suffix' => $this->suffix,
-'salutation' => $this->salutation,
 'prefix' => $this->prefix,
 'address' => $this->address,
 'address2' => $this->address2,
 'zip' => $this->zip,
-'websit' => $this->websit,
-'tax' => $this->tax,
-'scac' => $this->scac,
-'usdot' => $this->usdot,
+'city' => $this->city,
 'state' => $this->state,
 'cellphone' => $this->phone,
-'extra_email' => $this->exemail,
 'fname' => $this->fname,
-'mc_number' => $this->mc_number, 
 'is_active' => "2",
 'image_path' => $this->imagePath,
              ]);     
-             $this->successMessage = 'Trucker Created Successfully.';
+             $this->successMessage = 'Created Successfully.';
              $this->clearForm();
            //  return $pdf->stream($cert);
               return redirect()->to('/truckform/'.$lastInsertedId );

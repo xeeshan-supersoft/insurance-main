@@ -22,6 +22,13 @@ return new class extends Migration {
       $table->string('cellphone')->nullable();
       $table->string('extra_email')->nullable();
       $table->string('fax', 255)->nullable();
+      $table->string('lname', 255)->nullable();
+      $table->string('mname', 255)->nullable();
+      $table->string('fname', 255)->nullable();
+      $table->string('ialn', 255)->nullable();
+      $table->string('prefix', 255)->nullable();
+      $table->string('suffix', 255)->nullable();
+      $table->string('image_path', 255)->nullable();
       $table->string('producer_customer_number', 255)->nullable();
       $table->tinyInteger('is_active')->default(1);
       $table->timestamps();

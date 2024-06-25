@@ -23,7 +23,7 @@
     <div class=" " style="background-color: transparent">
       <div class="card-header text-center">
         <img src="{{ asset('assets/img/logo.png') }}" alt class="" style="width: 180px">
-        <h1 class="h2 text-center"> Participating Party Agreement </h1>
+        <h1 class="h2 text-center"> Insurance Agent - Registration </h1>
       </div>
       <div class="card-body">
         <livewire:wizard />
