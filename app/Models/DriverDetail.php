@@ -22,7 +22,7 @@ class DriverDetail extends Model
     'websit',
     'tax',
     'scac',
-    'usdot',    
+    'usdot',
     'address',
     'address2',
     'state',
@@ -48,5 +48,9 @@ class DriverDetail extends Model
   public function user()
   {
     return $this->belongsTo(User::class);
+  }
+
+  public function getByUserId ($id) {
+      return DriverDetail::where('user_id',$id)->first();
   }
 }

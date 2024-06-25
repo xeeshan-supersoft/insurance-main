@@ -216,7 +216,7 @@
        <li>
             <a class="btn btn-light" href="{{ route('dashw') }}">Dasboard</a>
         </li>
-
+         @if($user->truckers->first()->is_active==1)
         <li>
             <a class="btn btn-light" href="{{ route('list.ship') }}">Shipper list</a>
         </li>
@@ -229,7 +229,10 @@
         <li>
             <a class="btn btn-light" href="{{ route('dashw') }}">Print Certificates</a>
         </li>
-
+        @endif
+        <li>
+          <a class="btn btn-light" href="{{ route('add.truck') }}">Add Trucks</a>
+      </li>
         <li>
             <a class="btn btn-light" href="{{ route('profile.truck') }}">Company Information</a>
         </li>

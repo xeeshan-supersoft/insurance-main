@@ -14,6 +14,7 @@ use App\Models\Subscription;
 use App\Models\CertificatePolicy;
 use App\Models\PolicyType;
 use App\Models\Upload;
+use App\Models\TruckDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -24,16 +25,23 @@ use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 class TruckController extends Controller
 {
-  public function __construct()
+  protected $driver;
+
+  public function __construct(DriverDetail $driver)
   {
     $this->middleware('checkRole:truker');
+    $this->driver = $driver;
   }
 
   public function trucker()
   {
     $userId = Auth::user()->id;
     $certificatePolicies = null;
+
+    $driverInfo = $this->driver->getByUserId($userId);
+
     $policies = null;
+
     $yourCertificateId = Certificate::select('id')
       ->where('client_user_id', $userId)
       ->first();
@@ -43,7 +51,7 @@ class TruckController extends Controller
     $policies = PolicyType::get();
     $ship = ShipperInfos::all();
 
-    return view('truck.dash', compact('ship', 'certificatePolicies', 'policies'));
+    return view('truck.dash', compact('ship', 'certificatePolicies', 'policies', 'driverInfo'));
   }
 
   public function shipper()
@@ -117,7 +125,7 @@ class TruckController extends Controller
         'name' => "agent added by".$userId,
           ]);
           return Redirect::back()
-          ->with('success' , 'agent created successfully!');    
+          ->with('success' , 'agent created successfully!');
     }
     if ($validatedData['role'] == 'shipper') {
       $user = User::create([
@@ -152,20 +160,54 @@ class TruckController extends Controller
         'extra_email' => $validatedData['altemail'],
       ]);
       return Redirect::back()
-      ->with('success' ,'shipper created successfully!');       
+      ->with('success' ,'shipper created successfully!');
     }
 
     return 'nothing';
   }
-  
+
 
   public function truckprofiles()
   {
     $userId = Auth::user()->id;
- 
+
     $driverdetail = DriverDetail::where('user_id', $userId)->get();
 
     return view('truck.profile' , compact('driverdetail'));
+  }
+
+  public function addTruck()
+  {
+    return view('truck.add-truck');
+  }
+
+  public function storeTruck(Request $request)
+  {
+    $data = $request->only(['vehicle_registration_number',
+                            'vehicle_make',
+                            'vehicle_model',
+                            'vehicle_year',
+                            'vehicle_capacity',
+                            'vehicle_status',
+                            'mc_number'
+                          ]);
+    $trukData = [];
+
+    foreach ($data['vehicle_registration_number'] as $index => $title) {
+        $trukData[] = [
+            'user_id'=>Auth::user()->id,
+            'vehicle_registration_number' => $title,
+            'vehicle_make' => $data['vehicle_make'][$index],
+            'vehicle_model' => $data['vehicle_model'][$index],
+            'vehicle_year' => $data['vehicle_year'][$index],
+            'vehicle_capacity' => $data['vehicle_capacity'][$index],
+            'vehicle_status' => $data['vehicle_status'][$index],
+            'mc_number' => $data['mc_number'][$index]
+        ];
+    }
+
+    TruckDetail::insert($trukData);
+    return redirect()->to('portal');
   }
 
   public function truckers()
@@ -224,8 +266,6 @@ class TruckController extends Controller
     return view('truck.policy-list', compact('insurance_data'));
   }
 
-
-  
   public function pdf(request $request, $id)
   {
     $insuranceData = Insurance_data::where('id', $id)->first();

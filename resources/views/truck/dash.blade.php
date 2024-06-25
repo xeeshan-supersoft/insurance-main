@@ -73,7 +73,7 @@
                             <span class="ng-tns-c246-95">&nbsp;</span><span class="num red-fg ng-tns-c246-95">&nbsp;</span><span
                                 class="go-btn ng-tns-c246-95" tabindex="0">GO ></span>
                         </div>
-                        
+
                     </div>
                 </div>
                 <!--/ Congratulations card -->
@@ -97,6 +97,7 @@
                 <!--/ Congratulations card -->
             </div>
         </div>
+        @if($driverInfo->is_active==1)
         <!-- Data Tables -->
         <div class="col-12">
             <div class="card">
@@ -142,8 +143,6 @@
             </div>
         </div>
         <!--/ Data Tables -->
-
-
 
         <div class="col-12">
             <div class="card">
@@ -191,6 +190,11 @@
                 </div>
             </div>
         </div>
+        @else
+          <div class="bg-danger text-white">
+            You are seeing this is because Admin is Processing your request, Please have Patience.
+          </div>
+        @endif
         <!--/ Data Tables -->
     </div>
 @endsection
