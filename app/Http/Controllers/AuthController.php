@@ -392,7 +392,7 @@ $subb = Subscription::create([
 
   public function form(int $id)
   {
-    $data = DriverDetail::Where('user_id' , $id)->get();
+    $data = AgencyInfos::Where('user_id' , $id)->get();
     $view = 'truck.from';
     // $cert = 'driver.pdf';
     // $pdf = PDF::loadView($view, compact('data'))->setPaper('a4', 'portrait');   

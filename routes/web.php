@@ -81,18 +81,18 @@ Route::group(['middleware' => 'checkRole:admin'], function () {
 });
 
 Livewire::setScriptRoute(function ($handle) {
-  return Route::get('/public/insurance/public/livewire/livewire.js', $handle);
+  return Route::get('accord/public/livewire/livewire.js', $handle);
   //return Route::get('/accord/public/livewire/livewire.js', $handle);
 });
 Livewire::setUpdateRoute(function ($handle) {
-  return Route::post('/public/insurance/public/livewire/update', $handle);
+  return Route::post('accord/public/livewire/update', $handle);
   // return Route::post('/accord/public/livewire/update', $handle);
 });
 
 // NOW
-Route::get('wizard', function () {
+Route::get('/reg-agency', function () {
   return view('default');
-});
+})->name('reg.trucker');
 Route::get('/truckform/{id}', [AuthController::class, 'form'])->name('truck.from');
 
 Route::group(['middleware' => 'checkRole:agent'], function () {
@@ -127,11 +127,14 @@ Route::group(['middleware' => 'checkRole:agent'], function () {
 Route::post('/register', [AuthController::class, 'registerfrom'])->name('regist');
 Route::post('/reg', [AuthController::class, 'register'])->name('form.reg');
 Route::post('/reggg', [AuthController::class, 'getregister'])->name('get.regester');
-Route::get('/reg-agency', function () { return view('content.authentications.reg-agency'); })->name('reg.agency');
+// Route::get('/reg-agency', function () { return view('content.authentications.reg-agency'); })->name('reg.agency');
 Route::get('/reg-shipper', function () { return view('content.authentications.reg-shipper'); })->name('reg.shipper');
-Route::get('/reg-trucker', function () { return view('content.authentications.reg-trucker'); })->name('reg.trucker');
+// Route::get('/reg-trucker', function () { return view('content.authentications.reg-trucker'); })->name('reg.trucker');
 Route::get('/reg-freights', function () { return view('content.authentications.reg-freights'); })->name('reg.freights');
 
+Route::get('/reg-trucker', function () {
+  return view('content.authentications.reg-agency');
+})->name('reg.agency');
 
 
 Route::group(['middleware' => 'checkRole:truck'], function () {
