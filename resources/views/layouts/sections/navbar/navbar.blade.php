@@ -216,7 +216,7 @@
        <li>
             <a class="btn btn-light" href="{{ route('dashw') }}">Dasboard</a>
         </li>
-         @if($user->truckers->first()->is_active==1)
+         @if($user->status === 0)
         <li>
             <a class="btn btn-light" href="{{ route('list.ship') }}">Shipper list</a>
         </li>
