@@ -61,6 +61,23 @@ class TruckController extends Controller
     return view('truck.list-shipper', compact('ship'));
   }
 
+  public function trucks()
+  {
+    $truck = TruckDetail::all();
+
+    return view('truck.list-truck', compact('truck'));
+
+
+  }
+  public function deltruck($id)
+  {
+    $truck = TruckDetail::findOrFail($id);
+    $truck->delete();
+
+    return redirect()->route('lists.truck')->with('success', 'Truck deleted successfully');
+}
+
+
   public function addReg(Request $request)
   {
     $userId = Auth::user()->id;
@@ -189,7 +206,11 @@ class TruckController extends Controller
                             'vehicle_year',
                             'vehicle_capacity',
                             'vehicle_status',
-                            'mc_number'
+                            'mc_number',
+                            'license_number',
+                            'license_expiry_date',
+                            'license_type',
+                            'years_of_experience'
                           ]);
     $trukData = [];
 
@@ -202,7 +223,14 @@ class TruckController extends Controller
             'vehicle_year' => $data['vehicle_year'][$index],
             'vehicle_capacity' => $data['vehicle_capacity'][$index],
             'vehicle_status' => $data['vehicle_status'][$index],
-            'mc_number' => $data['mc_number'][$index]
+            'mc_number' => $data['mc_number'][$index],
+'license_number' => $data['license_number'][$index],
+'license_expiry_date' => $data['license_expiry_date'][$index],
+'license_type' => $data['license_type'][$index],
+'years_of_experience' => $data['years_of_experience'][$index],
+
+
+
         ];
     }
 

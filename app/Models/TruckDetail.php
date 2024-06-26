@@ -20,6 +20,11 @@ class TruckDetail extends Model
       'vehicle_capacity',
       'vehicle_status',
       'mc_number',
+      'license_number', 
+      'license_type',
+      'license_expiry_date',
+      'years_of_experience',
+
     ];
 
     public function user()

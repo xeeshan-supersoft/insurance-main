@@ -231,7 +231,8 @@
         </li>
         @endif
         <li>
-          <a class="btn btn-light" href="{{ route('add.truck') }}">Add Trucks</a>
+          <a class="btn btn-light" href="{{ route('lists.truck') }}">List Trucks</a>
+
       </li>
         <li>
             <a class="btn btn-light" href="{{ route('profile.truck') }}">Company Information</a>

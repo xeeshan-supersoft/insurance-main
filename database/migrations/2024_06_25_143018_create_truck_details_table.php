@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('vehicle_capacity', 255)->nullable();
             $table->string('vehicle_status', 50)->nullable();
             $table->string('mc_number', 255)->nullable();
+            $table->string('license_number', 255)->nullable();
+            $table->string('license_expiry_date', 255)->nullable();
+            $table->string('license_type', 255)->nullable();
+            $table->string('years_of_experience', 255)->nullable();
             $table->timestamps();
         });
     }
