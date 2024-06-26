@@ -58,8 +58,7 @@ $navbarHideToggle = false;
                                                                                 src="{{ asset('assets/img/nlogo.png')}}"
                                                                                     width="91" height="39"
                                                                                     class="ng-tns-c268-42">
-                                                                                CERTIFICATE OF
-                                                                                INSURANCE</span></td>
+                                                                                    CERTIFICATE OF LIABILITY INSURANCE</span></td>
                                                                                 <td width="120px" class="date_top ng-tns-c268-42">
                                                                                     <div class="mat-form-field-subscript-wrapper ng-tns-c70-48"
                                                                                     style="text-align: center; position: relative; top:10px; float: left; ">
