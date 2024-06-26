@@ -63,7 +63,12 @@
                <td class="text-truncate">{{$user->email}}</td>           
                <td class="text-truncate">{{$user->role}}</td>
                <td> 
-                <span class="badge bg-label-success rounded-pill">{{$user->role}}</span></td>            
+                @if ($user->status === 0)
+                <a href="{{ route('deactive', ['id' => $user->id]) }}" class="badge bg-label-success rounded-pill">Active</a>
+                @else
+                <a href="{{ route('active' , ['id' => $user->id]) }}" class="badge bg-label-danger rounded-pill">Inactive</a>
+                @endif
+              </td>  
                <td>
                  <div class="dropdown">
                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></button>
