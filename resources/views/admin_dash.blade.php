@@ -62,7 +62,8 @@
                </td>
                <td class="text-truncate">{{$user->email}}</td>           
                <td class="text-truncate">{{$user->role}}</td>
-               <td> <span class="badge bg-label-success rounded-pill">Active</span></td>            
+               <td> 
+                <span class="badge bg-label-success rounded-pill">{{$user->role}}</span></td>            
                <td>
                  <div class="dropdown">
                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></button>

@@ -122,6 +122,39 @@ return back()->with($message);
     return view('agent.pdf', compact('insuranceData', 'Insurance_detail'));
   }
 
+  public function active($id)
+  {
+    $user = User::find($id);
+
+    // Check if user exists
+    if ($user) {
+        // Update the user's status to 'deactivated'
+        $user->status = '0';
+        $user->save();
+    } else {
+        // Handle the case where the user was not found
+        return redirect()->back()->withErrors(['User not found.']);
+    }
+    return redirect()->back();
+  }
+  public function deactive($id)
+  {
+    $user = User::find($id);
+
+    // Check if user exists
+    if ($user) {
+        // Update the user's status to 'deactivated'
+        $user->status = '1';
+        $user->save();
+    } else {
+        // Handle the case where the user was not found
+        return redirect()->back()->withErrors(['User not found.']);
+    }
+    return redirect()->back();
+  }
+
+
+
 
   public function subs()
   {
