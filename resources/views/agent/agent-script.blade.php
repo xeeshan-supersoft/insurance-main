@@ -28,7 +28,7 @@ if (btn) {
     });
 
     // Add event listener to the button
-    document.getElementById('btn').addEventListener('click', function(e) {
+    document.getElementById('btnsub').addEventListener('click', function(e) {
         validateCheckboxes();
         var validationStatus = document.getElementById('checkboxValidation').value;
 
@@ -48,6 +48,30 @@ if (btn) {
                          confirmButtonText: 'OK'
                      });
 
+        }
+
+        var anySelected = false;
+        $('.selecter').each(function(){
+          var selected = $(this).val();
+            if(selected){
+              anySelected = true;
+          }
+        });
+        if(anySelected == false) {
+          e.preventDefault();
+          const swalWithBootstrapButtons = Swal.mixin({
+                         customClass: {
+                             confirmButton: "btn btn-danger"
+                         },
+                         buttonsStyling: false
+                     });
+                     swalWithBootstrapButtons.fire({
+                         title: 'Error!',
+                         text: 'Error: Please select atleast one Insurance Provider.',
+                         icon: 'error',
+                         confirmButtonText: 'OK'
+                     });
+          return false;
         }
     });
 
@@ -117,53 +141,53 @@ function validateInput(event) {
     }
 }
 
-         $(document).ready(function() {
-             var path = "{{ route('insurSearch') }}";
+  $(document).ready(function() {
+      var path = "{{ route('insurSearch') }}";
 
-            $('#insurA').on('change',function(){
-                $('#naic_a').val($(this).find(':selected').data('naic'));
+    $('#insurA').on('change',function(){
+        $('#naic_a').val($(this).find(':selected').data('naic'));
 
-                $('#br_a').val($(this).find(':selected').data("brn"));
-                $('#insurance_provider_id_A').val(this.value);
-            });
+        $('#br_a').val($(this).find(':selected').data("brn"));
+        $('#insurance_provider_id_A').val(this.value);
+    });
 
-            $('#insurB').on('change',function(){
-                $('#naic_b').val($(this).find(':selected').data('naic'));
+    $('#insurB').on('change',function(){
+        $('#naic_b').val($(this).find(':selected').data('naic'));
 
-                $('#br_b').val($(this).find(':selected').data("brn"));
-                $('#insurance_provider_id_B').val(this.value);
-            });
+        $('#br_b').val($(this).find(':selected').data("brn"));
+        $('#insurance_provider_id_B').val(this.value);
+    });
 
-            $('#insurC').on('change',function(){
-                $('#naic_c').val($(this).find(':selected').data('naic'));
+    $('#insurC').on('change',function(){
+        $('#naic_c').val($(this).find(':selected').data('naic'));
 
-                $('#br_c').val($(this).find(':selected').data("brn"));
-                $('#insurance_provider_id_C').val(this.value);
-            });
+        $('#br_c').val($(this).find(':selected').data("brn"));
+        $('#insurance_provider_id_C').val(this.value);
+    });
 
-            $('#insurD').on('change',function(){
-                $('#naic_d').val($(this).find(':selected').data('naic'));
+    $('#insurD').on('change',function(){
+        $('#naic_d').val($(this).find(':selected').data('naic'));
 
-                $('#br_d').val($(this).find(':selected').data("brn"));
-                $('#insurance_provider_id_D').val(this.value);
-            });
+        $('#br_d').val($(this).find(':selected').data("brn"));
+        $('#insurance_provider_id_D').val(this.value);
+    });
 
-            $('#insurE').on('change',function(){
-                $('#naic_e').val($(this).find(':selected').data('naic'));
+    $('#insurE').on('change',function(){
+        $('#naic_e').val($(this).find(':selected').data('naic'));
 
-                $('#br_e').val($(this).find(':selected').data("brn"));
-                $('#insurance_provider_id_E').val(this.value);
-            });
+        $('#br_e').val($(this).find(':selected').data("brn"));
+        $('#insurance_provider_id_E').val(this.value);
+    });
 
-            $('#insurF').on('change',function(){
-                $('#naic_f').val($(this).find(':selected').data('naic'));
+    $('#insurF').on('change',function(){
+        $('#naic_f').val($(this).find(':selected').data('naic'));
 
-                $('#br_f').val($(this).find(':selected').data("brn"));
-                $('#insurance_provider_id_F').val(this.value);
-            });
-         });
+        $('#br_f').val($(this).find(':selected').data("brn"));
+        $('#insurance_provider_id_F').val(this.value);
+    });
+  });
 
-         $('input[type="number"]').each((i,ele)=>{
+ $('input[type="number"]').each((i,ele)=>{
         let clone=$(ele).clone(false)
         clone.attr('type','text')
         let ele1=$(ele)
@@ -194,5 +218,5 @@ function validateInput(event) {
             $(ele1).hide()
         })
     })
-     </script>
+</script>
  @endpush

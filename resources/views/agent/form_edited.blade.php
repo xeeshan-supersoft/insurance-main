@@ -263,8 +263,8 @@ $navbarHideToggle = false;
                                                                                                     aria-expanded="false"
                                                                                                     aria-haspopup="listbox"> --}}
 
-                                                                                                    <select id="insurA">
-                                                                                                      <option>-Select-</option>
+                                                                                                    <select id="insurA" class="selecter">
+                                                                                                      <option value="">-Select-</option>
                                                                                                       @foreach ($insurProviders as $ip)
                                                                                                         <option @if (!empty(  $certPolicy->first() ) ){{ ($certPolicy->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
                                                                                                           data-naic="{{ $ip->naic_number }}"
@@ -475,8 +475,8 @@ $navbarHideToggle = false;
                                                                                                     aria-expanded="false"
                                                                                                     aria-haspopup="listbox"> --}}
 
-                                                                                                    <select id="insurB">
-                                                                                                      <option>-Select-</option>
+                                                                                                    <select id="insurB" class="selecter">
+                                                                                                      <option value="">-Select-</option>
                                                                                                       @foreach ($insurProviders as $ip)
                                                                                                         <option @if (!empty(  $certPolicy->skip(1)->take(1)->first() ) ){{ ($certPolicy->skip(1)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
                                                                                                           data-naic="{{ $ip->naic_number }}"
@@ -671,8 +671,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-55">
-                                                                                                <select id="insurC">
-                                                                                                  <option>-Select-</option>
+                                                                                                <select id="insurC" class="selecter">
+                                                                                                  <option value="">-Select-</option>
                                                                                                   @foreach ($insurProviders as $ip)
                                                                                                   <option @if (!empty(  $certPolicy->skip(2)->take(1)->first() ) ){{ ($certPolicy->skip(2)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
                                                                                                       data-naic="{{ $ip->naic_number }}"
@@ -868,8 +868,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-58">
-                                                                                                <select id="insurD">
-                                                                                                  <option>-Select-</option>
+                                                                                                <select id="insurD" class="selecter">
+                                                                                                  <option value="">-Select-</option>
                                                                                                   @foreach ($insurProviders as $ip)
                                                                                                   <option @if (!empty(  $certPolicy->skip(3)->take(1)->first() ) ){{ ($certPolicy->skip(3)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
                                                                                                       data-naic="{{ $ip->naic_number }}"
@@ -1065,8 +1065,8 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-61">
-                                                                                                <select id="insurE">
-                                                                                                  <option>-Select-</option>
+                                                                                                <select id="insurE" class="selecter">
+                                                                                                  <option value="">-Select-</option>
                                                                                                   @foreach ($insurProviders as $ip)
                                                                                                   <option @if (!empty(  $certPolicy->skip(4)->take(1)->first() ) ){{ ($certPolicy->skip(4)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
                                                                                                       data-naic="{{ $ip->naic_number }}"
@@ -1263,8 +1263,8 @@ $navbarHideToggle = false;
                                                                                           </div>
                                                                                           <div
                                                                                               class="mat-form-field-infix ng-tns-c70-61">
-                                                                                              <select id="insurF">
-                                                                                                <option>-Select-</option>
+                                                                                              <select id="insurF" class="selecter">
+                                                                                                <option value="">-Select-</option>
                                                                                                 @foreach ($insurProviders as $ip)
                                                                                                 <option @if (!empty(  $certPolicy->skip(5)->take(1)->first() ) ){{ ($certPolicy->skip(5)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
                                                                                                     data-naic="{{ $ip->naic_number }}"
@@ -2526,7 +2526,7 @@ $navbarHideToggle = false;
                             </div>
                             <div fxlayout="row" fxlayoutalign="center center" class="acord-button-row ng-tns-c268-42"
                                 style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center; align-items: center;">
-                                <button mat-flat-button="" color="accent" id="btn"  type="submit"
+                                <button mat-flat-button="" color="accent" id="btnsub"  type="submit"
                                     class="mat-focus-indicator action-buttion ng-tns-c268-42 mat-flat-button mat-button-base mat-accent">
 
                                     <span
