@@ -63,7 +63,7 @@
                <td class="text-truncate">{{$user->email}}</td>           
                <td class="text-truncate">{{$user->role}}</td>
                <td> 
-                @if ($user->status === 0)
+                @if ($user->status === '0')
                 <a href="{{ route('deactive', ['id' => $user->id]) }}" class="badge bg-label-success rounded-pill">Active</a>
                 @else
                 <a href="{{ route('active' , ['id' => $user->id]) }}" class="badge bg-label-danger rounded-pill">Inactive</a>
