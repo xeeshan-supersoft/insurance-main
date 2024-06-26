@@ -57,7 +57,7 @@ $navbarHideToggle = false;
                                                                                 class="acord_title ng-tns-c268-42"><img
                                                                                 src="{{ asset('assets/img/nlogo.png')}}"
                                                                                     width="91" height="39"
-                                                                                    class="ng-tns-c268-42">                                                                                
+                                                                                    class="ng-tns-c268-42">
                                                                                 CERTIFICATE OF
                                                                                 INSURANCE</span></td>
                                                                                 <td width="120px" class="date_top ng-tns-c268-42">
@@ -249,7 +249,7 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-49">
-                                                                                                <input matinput=""
+                                                                                                {{-- <input matinput=""
                                                                                                     placeholder="Enter Insurer A Details"
                                                                                                     formcontrolname="insurerA"
                                                                                                     value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
@@ -262,7 +262,19 @@ $navbarHideToggle = false;
                                                                                                     role="combobox"
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                    aria-haspopup="listbox"> --}}
+
+                                                                                                    <select id="insurA">
+                                                                                                      <option>-Select-</option>
+                                                                                                      @foreach ($insurProviders as $ip)
+                                                                                                        <option @if (!empty(  $certPolicy->first() ) ){{ ($certPolicy->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                          data-naic="{{ $ip->naic_number }}"
+                                                                                                          data-brn="{{ $ip->best_rating_number }}"
+                                                                                                          value="{{ $ip->id }}">
+                                                                                                          {{ $ip->name }}
+                                                                                                      </option>
+                                                                                                      @endforeach
+                                                                                                    </select>
                                                                                                     <input type="hidden" id="insurance_provider_id_A" name="insurance_provider_id[]" value="@if(isset($certPolicy)){{$certPolicy->first()->insuranceProvider->id}}@endif"/>
                                                                                                     <div id="insurerAList">
                                                                                                     </div>
@@ -449,7 +461,7 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-52">
-                                                                                                <input matinput=""
+                                                                                                {{-- <input matinput=""
                                                                                                     placeholder="Enter Insurer B Details"
                                                                                                     formcontrolname="insurerB"
                                                                                                     value=""
@@ -462,7 +474,20 @@ $navbarHideToggle = false;
                                                                                                     role="combobox"
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                    aria-haspopup="listbox"> --}}
+
+                                                                                                    <select id="insurB">
+                                                                                                      <option>-Select-</option>
+                                                                                                      @foreach ($insurProviders as $ip)
+                                                                                                        <option @if (!empty(  $certPolicy->skip(1)->take(1)->first() ) ){{ ($certPolicy->skip(1)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                          data-naic="{{ $ip->naic_number }}"
+                                                                                                          data-brn="{{ $ip->best_rating_number }}"
+                                                                                                          value="{{ $ip->id }}">
+                                                                                                          {{ $ip->name }}
+                                                                                                      </option>
+                                                                                                      @endforeach
+                                                                                                    </select>
+                                                                                                    <input type="hidden" id="insurance_provider_id_B" name="insurance_provider_id[]" value="@if(!empty($certPolicy->skip(1)->take(1)->first() )){{$certPolicy->skip(1)->take(1)->first()->insuranceProvider->id}}@endif"/>
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-52">
@@ -517,19 +542,19 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-53">
                                                                                                 <input matinput=""
-                                                                                                    placeholder="Enter Insurer B Details"
-                                                                                                    formcontrolname="insNaicNoB"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-53 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-9"
-                                                                                                    data-placeholder="Enter Insurer B Details"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"
-                                                                                                    autocomplete="off"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                        placeholder="Enter Insurer B Details"
+                                                                                                        formcontrolname="insNaicNoB"
+                                                                                                        value="@if (!empty(  $certPolicy->skip(1)->take(1)->first() ) ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                        class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                        id="naic_b"
+                                                                                                        data-placeholder="Enter Insurer B Details"
+                                                                                                        aria-invalid="false"
+                                                                                                        aria-required="false"
+                                                                                                        autocomplete="off"
+                                                                                                        role="combobox"
+                                                                                                        aria-autocomplete="list"
+                                                                                                        aria-expanded="false"
+                                                                                                        aria-haspopup="listbox" readonly>
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-53">
@@ -588,11 +613,12 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="insBestRatingB"
                                                                                                     readonly="true"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-54 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-10"
+                                                                                                    value="@if (!empty(  $certPolicy->skip(1)->take(1)->first() ) ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                    id="br_b"
                                                                                                     aria-invalid="false"
-                                                                                                    aria-required="false"><span
+                                                                                                    aria-required="false" readonly>
+                                                                                                    <span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-54"></span>
                                                                                             </div>
                                                                                         </div>
@@ -646,20 +672,19 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-55">
-                                                                                                <input matinput=""
-                                                                                                    placeholder="Enter Insurer C Details"
-                                                                                                    formcontrolname="insurerC"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-55 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-11"
-                                                                                                    data-placeholder="Enter Insurer C Details"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"
-                                                                                                    autocomplete="off"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                <select id="insurC">
+                                                                                                  <option>-Select-</option>
+                                                                                                  @foreach ($insurProviders as $ip)
+                                                                                                  <option @if (!empty(  $certPolicy->skip(2)->take(1)->first() ) ){{ ($certPolicy->skip(2)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                      data-naic="{{ $ip->naic_number }}"
+                                                                                                      data-brn="{{ $ip->best_rating_number }}"
+                                                                                                      value="{{ $ip->id }}">
+                                                                                                      {{ $ip->name }}
+                                                                                                  </option>
+                                                                                                  @endforeach
+                                                                                              </select>
+                                                                                              <input type="hidden" id="insurance_provider_id_C" name="insurance_provider_id[]" value="@if(!empty($certPolicy->skip(2)->take(1)->first() )){{$certPolicy->skip(2)->take(1)->first()->insuranceProvider->id}}@endif"/>
+
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-55">
@@ -714,20 +739,20 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-56">
                                                                                                 <input matinput=""
-                                                                                                    placeholder="Enter Insurer C Details"
-                                                                                                    formcontrolname="insNaicNoC"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-56 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-12"
-                                                                                                    data-placeholder="Enter Insurer C Details"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"
-                                                                                                    autocomplete="off"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
-                                                                                                <mat-autocomplete
+                                                                                                        placeholder="Enter Insurer C Details"
+                                                                                                        formcontrolname="insNaicNoC"
+                                                                                                        value="@if (!empty(  $certPolicy->skip(2)->take(1)->first() ) ){{ $certPolicy->skip(2)->take(1)->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                        class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                        id="naic_c"
+                                                                                                        data-placeholder="Enter Insurer C Details"
+                                                                                                        aria-invalid="false"
+                                                                                                        aria-required="false"
+                                                                                                        autocomplete="off"
+                                                                                                        role="combobox"
+                                                                                                        aria-autocomplete="list"
+                                                                                                        aria-expanded="false"
+                                                                                                        aria-haspopup="listbox" readonly>
+                                                                                                  <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-56">
                                                                                                 </mat-autocomplete><span
@@ -785,11 +810,12 @@ $navbarHideToggle = false;
                                                                                                     matinput=""
                                                                                                     formcontrolname="insBestRatingC"
                                                                                                     readonly="true"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-57 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-13"
+                                                                                                    value="@if (!empty(  $certPolicy->skip(2)->take(1)->first() ) ){{ $certPolicy->skip(2)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                    id="br_c"
                                                                                                     aria-invalid="false"
-                                                                                                    aria-required="false"><span
+                                                                                                    aria-required="false" readonly>
+                                                                                                <span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-57"></span>
                                                                                             </div>
                                                                                         </div>
@@ -843,20 +869,19 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-58">
-                                                                                                <input matinput=""
-                                                                                                    placeholder="Enter Insurer D Details"
-                                                                                                    formcontrolname="insurerD"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-58 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-14"
-                                                                                                    data-placeholder="Enter Insurer D Details"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"
-                                                                                                    autocomplete="off"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                <select id="insurD">
+                                                                                                  <option>-Select-</option>
+                                                                                                  @foreach ($insurProviders as $ip)
+                                                                                                  <option @if (!empty(  $certPolicy->skip(3)->take(1)->first() ) ){{ ($certPolicy->skip(3)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                      data-naic="{{ $ip->naic_number }}"
+                                                                                                      data-brn="{{ $ip->best_rating_number }}"
+                                                                                                      value="{{ $ip->id }}">
+                                                                                                      {{ $ip->name }}
+                                                                                                  </option>
+                                                                                                  @endforeach
+                                                                                              </select>
+                                                                                              <input type="hidden" id="insurance_provider_id_D" name="insurance_provider_id[]" value="@if(!empty($certPolicy->skip(3)->take(1)->first() )){{$certPolicy->skip(3)->take(1)->first()->insuranceProvider->id}}@endif"/>
+
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-58">
@@ -911,19 +936,19 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-59">
                                                                                                 <input matinput=""
-                                                                                                    placeholder="Enter Insurer D Details"
-                                                                                                    formcontrolname="insNaicNoD"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-59 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-15"
-                                                                                                    data-placeholder="Enter Insurer D Details"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"
-                                                                                                    autocomplete="off"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                      placeholder="Enter Insurer D Details"
+                                                                                                      formcontrolname="insNaicNoD"
+                                                                                                      value="@if (!empty(  $certPolicy->skip(3)->take(1)->first() ) ){{ $certPolicy->skip(3)->take(1)->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                      class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                      id="naic_d"
+                                                                                                      data-placeholder="Enter Insurer D Details"
+                                                                                                      aria-invalid="false"
+                                                                                                      aria-required="false"
+                                                                                                      autocomplete="off"
+                                                                                                      role="combobox"
+                                                                                                      aria-autocomplete="list"
+                                                                                                      aria-expanded="false"
+                                                                                                      aria-haspopup="listbox" readonly>
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-59">
@@ -978,15 +1003,16 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-60">
                                                                                                 <input
-                                                                                                    autocomplete="off"
-                                                                                                    matinput=""
-                                                                                                    formcontrolname="insBestRatingD"
-                                                                                                    readonly="true"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-60 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-16"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"><span
+                                                                                                      autocomplete="off"
+                                                                                                      matinput=""
+                                                                                                      formcontrolname="insBestRatingD"
+                                                                                                      readonly="true"
+                                                                                                      value="@if (!empty(  $certPolicy->skip(3)->take(1)->first() ) ){{ $certPolicy->skip(3)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                      class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                      id="br_d"
+                                                                                                      aria-invalid="false"
+                                                                                                      aria-required="false" readonly>
+                                                                                                <span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-60"></span>
                                                                                             </div>
                                                                                         </div>
@@ -1040,20 +1066,19 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-61">
-                                                                                                <input matinput=""
-                                                                                                    placeholder="Enter Insurer E Details"
-                                                                                                    formcontrolname="insurerE"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-61 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-17"
-                                                                                                    data-placeholder="Enter Insurer E Details"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"
-                                                                                                    autocomplete="off"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                <select id="insurE">
+                                                                                                  <option>-Select-</option>
+                                                                                                  @foreach ($insurProviders as $ip)
+                                                                                                  <option @if (!empty(  $certPolicy->skip(4)->take(1)->first() ) ){{ ($certPolicy->skip(4)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                      data-naic="{{ $ip->naic_number }}"
+                                                                                                      data-brn="{{ $ip->best_rating_number }}"
+                                                                                                      value="{{ $ip->id }}">
+                                                                                                      {{ $ip->name }}
+                                                                                                  </option>
+                                                                                                  @endforeach
+                                                                                              </select>
+                                                                                              <input type="hidden" id="insurance_provider_id_E" name="insurance_provider_id[]" value="@if(!empty($certPolicy->skip(4)->take(1)->first() )){{$certPolicy->skip(1)->take(1)->first()->insuranceProvider->id}}@endif"/>
+
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-61">
@@ -1108,19 +1133,20 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-62">
                                                                                                 <input matinput=""
-                                                                                                    placeholder="Enter Insurer E Details"
-                                                                                                    formcontrolname="insNaicNoE"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-62 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-18"
-                                                                                                    data-placeholder="Enter Insurer E Details"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"
-                                                                                                    autocomplete="off"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-haspopup="listbox">
+                                                                                                        placeholder="Enter Insurer E Details"
+                                                                                                        formcontrolname="insNaicNoE"
+                                                                                                        value="@if (!empty(  $certPolicy->skip(4)->take(1)->first() ) ){{ $certPolicy->skip(4)->take(1)->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                        class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                        id="naic_e"
+                                                                                                        data-placeholder="Enter Insurer E Details"
+                                                                                                        aria-invalid="false"
+                                                                                                        aria-required="false"
+                                                                                                        autocomplete="off"
+                                                                                                        role="combobox"
+                                                                                                        aria-autocomplete="list"
+                                                                                                        aria-expanded="false"
+                                                                                                        aria-haspopup="listbox" readonly>
+
                                                                                                 <mat-autocomplete
                                                                                                     panelwidth="auto"
                                                                                                     class="mat-autocomplete ng-tns-c70-62">
@@ -1175,15 +1201,16 @@ $navbarHideToggle = false;
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-63">
                                                                                                 <input
-                                                                                                    autocomplete="off"
-                                                                                                    matinput=""
-                                                                                                    formcontrolname="insBestRatingE"
-                                                                                                    readonly="true"
-                                                                                                    value=""
-                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-63 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="mat-input-19"
-                                                                                                    aria-invalid="false"
-                                                                                                    aria-required="false"><span
+                                                                                                      autocomplete="off"
+                                                                                                      matinput=""
+                                                                                                      formcontrolname="insBestRatingE"
+                                                                                                      readonly="true"
+                                                                                                      value="@if (!empty(  $certPolicy->skip(4)->take(1)->first() ) ){{ $certPolicy->skip(4)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                      class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                      id="br_e"
+                                                                                                      aria-invalid="false"
+                                                                                                      aria-required="false" readonly>
+                                                                                                    <span
                                                                                                     class="mat-form-field-label-wrapper ng-tns-c70-63"></span>
                                                                                             </div>
                                                                                         </div>
@@ -1200,6 +1227,204 @@ $navbarHideToggle = false;
                                                                                 </mat-form-field>
                                                                             </td>
                                                                         </tr>
+                                                                        <tr class="ng-tns-c268-42">
+                                                                          <td class="lable_title ng-tns-c268-42">
+                                                                              INSURER F : </td>
+                                                                          <td class="ng-tns-c268-42">
+                                                                              <mat-form-field appearance="outline"
+                                                                                  class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-61 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
+                                                                                  style="">
+                                                                                  <div
+                                                                                      class="mat-form-field-wrapper ng-tns-c70-61">
+                                                                                      <div
+                                                                                          class="mat-form-field-flex ng-tns-c70-61">
+                                                                                          <div
+                                                                                              class="mat-form-field-outline ng-tns-c70-61 ng-star-inserted">
+                                                                                              <div class="mat-form-field-outline-start ng-tns-c70-61"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div class="mat-form-field-outline-gap ng-tns-c70-61"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div
+                                                                                                  class="mat-form-field-outline-end ng-tns-c70-61">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          <div
+                                                                                              class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-61 ng-star-inserted">
+                                                                                              <div class="mat-form-field-outline-start ng-tns-c70-61"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div class="mat-form-field-outline-gap ng-tns-c70-61"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div
+                                                                                                  class="mat-form-field-outline-end ng-tns-c70-61">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          <div
+                                                                                              class="mat-form-field-infix ng-tns-c70-61">
+                                                                                              <select id="insurF">
+                                                                                                <option>-Select-</option>
+                                                                                                @foreach ($insurProviders as $ip)
+                                                                                                <option @if (!empty(  $certPolicy->skip(5)->take(1)->first() ) ){{ ($certPolicy->skip(5)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                    data-naic="{{ $ip->naic_number }}"
+                                                                                                    data-brn="{{ $ip->best_rating_number }}"
+                                                                                                    value="{{ $ip->id }}">
+                                                                                                    {{ $ip->name }}
+                                                                                                </option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                            <input type="hidden" id="insurance_provider_id_F" name="insurance_provider_id[]" value="@if(!empty($certPolicy->skip(5)->take(1)->first() )){{$certPolicy->skip(5)->take(1)->first()->insuranceProvider->id}}@endif"/>
+
+                                                                                              <mat-autocomplete
+                                                                                                  panelwidth="auto"
+                                                                                                  class="mat-autocomplete ng-tns-c70-61">
+                                                                                              </mat-autocomplete><span
+                                                                                                  class="mat-form-field-label-wrapper ng-tns-c70-61"></span>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                      <div
+                                                                                          class="mat-form-field-subscript-wrapper ng-tns-c70-61">
+                                                                                          <div class="mat-form-field-hint-wrapper ng-tns-c70-61 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
+                                                                                              style="opacity: 1; transform: translateY(0%);">
+                                                                                              <div
+                                                                                                  class="mat-form-field-hint-spacer ng-tns-c70-61">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </mat-form-field>
+                                                                          </td>
+                                                                          <td class="ng-tns-c268-42">
+                                                                              <mat-form-field appearance="outline"
+                                                                                  class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-62 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
+                                                                                  style="">
+                                                                                  <div
+                                                                                      class="mat-form-field-wrapper ng-tns-c70-62">
+                                                                                      <div
+                                                                                          class="mat-form-field-flex ng-tns-c70-62">
+                                                                                          <div
+                                                                                              class="mat-form-field-outline ng-tns-c70-62 ng-star-inserted">
+                                                                                              <div class="mat-form-field-outline-start ng-tns-c70-62"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div class="mat-form-field-outline-gap ng-tns-c70-62"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div
+                                                                                                  class="mat-form-field-outline-end ng-tns-c70-62">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          <div
+                                                                                              class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-62 ng-star-inserted">
+                                                                                              <div class="mat-form-field-outline-start ng-tns-c70-62"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div class="mat-form-field-outline-gap ng-tns-c70-62"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div
+                                                                                                  class="mat-form-field-outline-end ng-tns-c70-62">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          <div
+                                                                                              class="mat-form-field-infix ng-tns-c70-62">
+                                                                                              <input matinput=""
+                                                                                                      placeholder="Enter Insurer F Details"
+                                                                                                      formcontrolname="insNaicNoF"
+                                                                                                      value="@if (!empty(  $certPolicy->skip(5)->take(1)->first() ) ){{ $certPolicy->skip(5)->take(1)->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                      class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                      id="naic_f"
+                                                                                                      data-placeholder="Enter Insurer F Details"
+                                                                                                      aria-invalid="false"
+                                                                                                      aria-required="false"
+                                                                                                      autocomplete="off"
+                                                                                                      role="combobox"
+                                                                                                      aria-autocomplete="list"
+                                                                                                      aria-expanded="false"
+                                                                                                      aria-haspopup="listbox" readonly>
+
+                                                                                              <mat-autocomplete
+                                                                                                  panelwidth="auto"
+                                                                                                  class="mat-autocomplete ng-tns-c70-62">
+                                                                                              </mat-autocomplete><span
+                                                                                                  class="mat-form-field-label-wrapper ng-tns-c70-62"></span>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                      <div
+                                                                                          class="mat-form-field-subscript-wrapper ng-tns-c70-62">
+                                                                                          <div class="mat-form-field-hint-wrapper ng-tns-c70-62 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
+                                                                                              style="opacity: 1; transform: translateY(0%);">
+                                                                                              <div
+                                                                                                  class="mat-form-field-hint-spacer ng-tns-c70-62">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </mat-form-field>
+                                                                          </td>
+                                                                          <td class="ng-tns-c268-42">
+                                                                              <mat-form-field appearance="outline"
+                                                                                  class="mat-form-field full-width-text ng-tns-c268-42 ng-tns-c70-63 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted"
+                                                                                  style="">
+                                                                                  <div
+                                                                                      class="mat-form-field-wrapper ng-tns-c70-63">
+                                                                                      <div
+                                                                                          class="mat-form-field-flex ng-tns-c70-63">
+                                                                                          <div
+                                                                                              class="mat-form-field-outline ng-tns-c70-63 ng-star-inserted">
+                                                                                              <div class="mat-form-field-outline-start ng-tns-c70-63"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div class="mat-form-field-outline-gap ng-tns-c70-63"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div
+                                                                                                  class="mat-form-field-outline-end ng-tns-c70-63">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          <div
+                                                                                              class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c70-63 ng-star-inserted">
+                                                                                              <div class="mat-form-field-outline-start ng-tns-c70-63"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div class="mat-form-field-outline-gap ng-tns-c70-63"
+                                                                                                  style="width: 0px;">
+                                                                                              </div>
+                                                                                              <div
+                                                                                                  class="mat-form-field-outline-end ng-tns-c70-63">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          <div
+                                                                                              class="mat-form-field-infix ng-tns-c70-63">
+                                                                                              <input
+                                                                                                    autocomplete="off"
+                                                                                                    matinput=""
+                                                                                                    formcontrolname="insBestRatingF"
+                                                                                                    readonly="true"
+                                                                                                    value="@if (!empty(  $certPolicy->skip(5)->take(1)->first() ) ){{ $certPolicy->skip(5)->take(1)->first()->insuranceProvider->best_rating_number }} @endif"
+                                                                                                    class="mat-input-element mat-form-field-autofill-control ng-tns-c70-51 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
+                                                                                                    id="br_f"
+                                                                                                    aria-invalid="false"
+                                                                                                    aria-required="false" readonly>
+                                                                                                  <span
+                                                                                                  class="mat-form-field-label-wrapper ng-tns-c70-63"></span>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                      <div
+                                                                                          class="mat-form-field-subscript-wrapper ng-tns-c70-63">
+                                                                                          <div class="mat-form-field-hint-wrapper ng-tns-c70-63 ng-trigger ng-trigger-transitionMessages ng-star-inserted"
+                                                                                              style="opacity: 1; transform: translateY(0%);">
+                                                                                              <div
+                                                                                                  class="mat-form-field-hint-spacer ng-tns-c70-63">
+                                                                                              </div>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              </mat-form-field>
+                                                                          </td>
+                                                                      </tr>
                                                                     </tbody>
                                                                 </table>
                                                             </td>
@@ -2229,8 +2454,8 @@ $navbarHideToggle = false;
                                                                     required) </div>
                                                                 <table width="100%" cellpadding="0" cellspacing="0"
                                                                     border="0" class="ng-tns-c268-42">
-                                                                    <tbody class="ng-tns-c268-42">                                                                       
-                                                                        <tr class="ng-tns-c268-42">                                                                          
+                                                                    <tbody class="ng-tns-c268-42">
+                                                                        <tr class="ng-tns-c268-42">
                                                                             <td class="ng-tns-c268-42">
                                                                                <br/><br/><br/>
                                                                             </td>

@@ -117,334 +117,50 @@ function validateInput(event) {
     }
 }
 
-
-
-        //  function validateInput(event) {
-        //      var inputValue = event.target.value.toUpperCase();
-        //      var insuranceInputs = {
-        //          'A': 'insurA',
-        //          'B': 'insurB',
-        //          'C': 'insurC',
-        //          'D': 'insurD',
-        //          'E': 'insurE'
-        //      };
-
-        //      // Check if the corresponding insurance input has value
-        //      var correspondingInputName = insuranceInputs[inputValue];
-        //      console.log(correspondingInputName);
-
-        //      if (correspondingInputName) {
-        //          var input = document.getElementById(correspondingInputName);
-        //          console.log(input.length);
-        //          if ( input.length === 0 ) {
-
-        //              const swalWithBootstrapButtons = Swal.mixin({
-        //                  customClass: {
-        //                      confirmButton: "btn btn-danger"
-        //                  },
-        //                  buttonsStyling: false
-        //              });
-        //              swalWithBootstrapButtons.fire({
-        //                  title: 'Error!',
-        //                  text: 'Error: Please fill out the corresponding insurance input before proceeding.',
-        //                  icon: 'error',
-        //                  confirmButtonText: 'OK'
-        //              });
-        //              event.target.value = ''; // Clear the input value
-        //          }
-        //      }
-        //  }
-
-
-
          $(document).ready(function() {
              var path = "{{ route('insurSearch') }}";
 
-            //  $('#insurA').select2({
-            //      ajax: {
-            //          url: path,
-            //          dataType: 'json',
-            //          delay: 250,
-            //          processResults: function(data) {
-            //              return {
-            //                  results: $.map(data, function(item) {
-            //                      return {
-            //                          text: item.name,
-            //                          id: item.id,
-            //                          naic: item.naic_number,
-            //                          best_rate: item.best_rating_number,
-            //                      }
-            //                  })
-            //              };
-            //          },
-            //          cache: true
-            //      }
-            //  }).on('select2:select', function(event) {
-            //      // This is how I got ahold of the data
-            //      var contact = event.params.data;
-            //      $('#naic_a').val(contact.naic);
-            //      $('#br_a').val(contact.best_rate);
-            //      // contact.suggestions ...
-            //      // contact.organization_id ...
-            //  });
+            $('#insurA').on('change',function(){
+                $('#naic_a').val($(this).find(':selected').data('naic'));
 
-            $('#insurA').keyup(function(){
-                var query = $(this).val();
-                if(query != '')
-                {
-                $.ajax({
-                  url: path,
-                  method:"GET",
-                  data:{query:query},
-                  success:function(data){
-                    $('#insurerAList').fadeIn();
-                    $('#insurerAList').html(data);
-                  }
-                });
-                }
+                $('#br_a').val($(this).find(':selected').data("brn"));
+                $('#insurance_provider_id_A').val(this.value);
             });
 
-            $("#insurerAList").on("click", "li",function(){
-                $('#insurA').val($(this).text());
-                $('#naic_a').val($(this).data("naic"));
-                $('#br_a').val($(this).data("brn"));
-                $('#insurance_provider_id_A').val($(this).data("id"));
-                $('#insurerAList').fadeOut();
+            $('#insurB').on('change',function(){
+                $('#naic_b').val($(this).find(':selected').data('naic'));
+
+                $('#br_b').val($(this).find(':selected').data("brn"));
+                $('#insurance_provider_id_B').val(this.value);
             });
 
-            $('#insurB').keyup(function(){
-                var query = $(this).val();
-                if(query != '')
-                {
-                $.ajax({
-                  url: path,
-                  method:"GET",
-                  data:{query:query},
-                  success:function(data){
-                    $('#insurerBList').fadeIn();
-                    $('#insurerBList').html(data);
-                  }
-                });
-                }
+            $('#insurC').on('change',function(){
+                $('#naic_c').val($(this).find(':selected').data('naic'));
+
+                $('#br_c').val($(this).find(':selected').data("brn"));
+                $('#insurance_provider_id_C').val(this.value);
             });
 
-            $('#insurerBList').on("click", "li",function(){
-                $('#insurB').val($(this).text());
-                $('#naic_b').val($(this).data("naic"));
-                $('#br_b').val($(this).data("brn"));
-                $('#insurance_provider_id_B').val($(this).data("id"));
-                $('#insurerBList').fadeOut();
+            $('#insurD').on('change',function(){
+                $('#naic_d').val($(this).find(':selected').data('naic'));
+
+                $('#br_d').val($(this).find(':selected').data("brn"));
+                $('#insurance_provider_id_D').val(this.value);
             });
 
-            $('#insurC').keyup(function(){
-                var query = $(this).val();
-                if(query != '')
-                {
-                $.ajax({
-                  url: path,
-                  method:"GET",
-                  data:{query:query},
-                  success:function(data){
-                    $('#insurerCList').fadeIn();
-                    $('#insurerCList').html(data);
-                  }
-                });
-                }
+            $('#insurE').on('change',function(){
+                $('#naic_e').val($(this).find(':selected').data('naic'));
+
+                $('#br_e').val($(this).find(':selected').data("brn"));
+                $('#insurance_provider_id_E').val(this.value);
             });
 
-            $('#insurerCList').on("click", "li",function(){
-                $('#insurC').val($(this).text());
-                $('#naic_c').val($(this).data("naic"));
-                $('#br_c').val($(this).data("brn"));
-                $('#insurance_provider_id_C').val($(this).data("id"));
-                $('#insurerCList').fadeOut();
+            $('#insurF').on('change',function(){
+                $('#naic_f').val($(this).find(':selected').data('naic'));
+
+                $('#br_f').val($(this).find(':selected').data("brn"));
+                $('#insurance_provider_id_F').val(this.value);
             });
-
-            $('#insurD').keyup(function(){
-                var query = $(this).val();
-                if(query != '')
-                {
-                $.ajax({
-                  url: path,
-                  method:"GET",
-                  data:{query:query},
-                  success:function(data){
-                    $('#insurerDList').fadeIn();
-                    $('#insurerDList').html(data);
-                  }
-                });
-                }
-            });
-
-            $('#insurerDList').on("click", "li",function(){
-                $('#insurD').val($(this).text());
-                $('#naic_d').val($(this).data("naic"));
-                $('#br_d').val($(this).data("brn"));
-                $('#insurance_provider_id_D').val($(this).data("id"));
-                $('#insurerDList').fadeOut();
-            });
-
-            $('#insurE').keyup(function(){
-                var query = $(this).val();
-                if(query != '')
-                {
-                $.ajax({
-                  url: path,
-                  method:"GET",
-                  data:{query:query},
-                  success:function(data){
-                    $('#insurerEList').fadeIn();
-                    $('#insurerEList').html(data);
-                  }
-                });
-                }
-            });
-
-            $('#insurerEList').on("click", "li",function(){
-                $('#insurE').val($(this).text());
-                $('#naic_e').val($(this).data("naic"));
-                $('#br_e').val($(this).data("brn"));
-                $('#insurance_provider_id_E').val($(this).data("id"));
-                $('#insurerEList').fadeOut();
-            });
-
-            $('#insurF').keyup(function(){
-                var query = $(this).val();
-                if(query != '')
-                {
-                $.ajax({
-                  url: path,
-                  method:"GET",
-                  data:{query:query},
-                  success:function(data){
-                    $('#insurerFList').fadeIn();
-                    $('#insurerFList').html(data);
-                  }
-                });
-                }
-            });
-
-            $("#insurerFList").on("click", "li",function(){
-                $('#insurF').val($(this).text());
-                $('#naic_F').val($(this).data("naic"));
-                $('#br_f').val($(this).data("brn"));
-                $('#insurance_provider_id_F').val($(this).data("id"));
-                $('#insurerFList').fadeOut();
-            });
-
-            
-
-            //  $('#insurB').select2({
-            //      ajax: {
-            //          url: path,
-            //          dataType: 'json',
-            //          delay: 250,
-            //          processResults: function(data) {
-            //              return {
-            //                  results: $.map(data, function(item) {
-            //                      return {
-            //                          text: item.name,
-            //                          id: item.id,
-            //                          naic: item.naic_number,
-            //                          best_rate: item.best_rating_number,
-            //                      }
-            //                  })
-            //              };
-            //          },
-            //          cache: true
-            //      }
-            //  }).on('select2:select', function(event) {
-            //      // This is how I got ahold of the data
-            //      var contact = event.params.data;
-            //      $('#naic_b').val(contact.naic);
-            //      $('#br_b').val(contact.best_rate);
-            //      // contact.suggestions ...
-            //      // contact.organization_id ...
-            //  });
-
-            //  $('#insurC').select2({
-            //      ajax: {
-            //          url: path,
-            //          dataType: 'json',
-            //          delay: 250,
-            //          processResults: function(data) {
-            //              return {
-            //                  results: $.map(data, function(item) {
-            //                      return {
-            //                          text: item.name,
-            //                          id: item.id,
-            //                          naic: item.naic_number,
-            //                          best_rate: item.best_rating_number,
-            //                      }
-            //                  })
-            //              };
-            //          },
-            //          cache: true
-            //      }
-            //  }).on('select2:select', function(event) {
-            //      // This is how I got ahold of the data
-            //      var contact = event.params.data;
-            //      $('#naic_c').val(contact.naic);
-            //      $('#br_c').val(contact.best_rate);
-            //      // contact.suggestions ...
-            //      // contact.organization_id ...
-            //  });
-
-            //  $('#insurD').select2({
-            //      ajax: {
-            //          url: path,
-            //          dataType: 'json',
-            //          delay: 250,
-            //          processResults: function(data) {
-            //              return {
-            //                  results: $.map(data, function(item) {
-            //                      return {
-            //                          text: item.name,
-            //                          id: item.id,
-            //                          naic: item.naic_number,
-            //                          best_rate: item.best_rating_number,
-            //                      }
-            //                  })
-            //              };
-            //          },
-            //          cache: true
-            //      }
-            //  }).on('select2:select', function(event) {
-            //      // This is how I got ahold of the data
-            //      var contact = event.params.data;
-            //      $('#naic_d').val(contact.naic);
-            //      $('#br_d').val(contact.best_rate);
-            //      // contact.suggestions ...
-            //      // contact.organization_id ...
-            //  });
-
-            //  $('#insurE').select2({
-            //      ajax: {
-            //          url: path,
-            //          dataType: 'json',
-            //          delay: 250,
-            //          processResults: function(data) {
-            //              return {
-            //                  results: $.map(data, function(item) {
-            //                      return {
-            //                          text: item.name,
-            //                          id: item.id,
-            //                          naic: item.naic_number,
-            //                          best_rate: item.best_rating_number,
-            //                      }
-            //                  })
-            //              };
-            //          },
-            //          cache: true
-            //      }
-            //  }).on('select2:select', function(event) {
-            //      // This is how I got ahold of the data
-            //      var contact = event.params.data;
-            //      $('#naic_e').val(contact.naic);
-            //      $('#br_e').val(contact.best_rate);
-            //      // contact.suggestions ...
-            //      // contact.organization_id ...
-            //  });
          });
 
          $('input[type="number"]').each((i,ele)=>{

@@ -14,6 +14,7 @@ use App\Models\DriverDetail;
 use App\Models\Certificate;
 use App\Models\CertificatePolicy;
 use App\Models\CertificatePolicyLimit;
+use App\Models\InsuranceProvider;
 use App\Services\CertificateService;
 
 use Illuminate\Http\Request;
@@ -68,12 +69,14 @@ class AgentController extends Controller
       $allpolicytypes = PolicyType::whereNotIn('id', $request->policyGroup)->get();
       $r=0;
 
+    $insurProviders = InsuranceProvider::all();
+
     $driver_id = Session::get('driver_id');
 
     $driver = User::with('truckers')->find($driver_id);
     $agent = User::with('agencies')->find(Auth::user()->id);
 
-    return view('agent.form3', compact('policytypes', 'driver', 'agent', 'r', 'allpolicytypes'));
+    return view('agent.form3', compact('policytypes', 'driver', 'agent', 'r', 'allpolicytypes', 'insurProviders'));
   }
 
   /**
@@ -137,6 +140,8 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
+    $insurProviders = InsuranceProvider::all();
+
     $data = [
       'certificate' => $certificate,
       'policytypes' => $policytypes,
@@ -148,7 +153,7 @@ class AgentController extends Controller
 
     return view(
       'agent.form3',
-      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes')
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes', 'insurProviders')
     );
   }
 
@@ -288,6 +293,8 @@ class AgentController extends Controller
       ->whereNotIn('id', $certPolicy->map->only(['policy_type_id']))
       ->get();
 
+     $insurProviders = InsuranceProvider::all();
+
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
@@ -297,7 +304,7 @@ class AgentController extends Controller
       'certPolicy' => $certPolicy,
       'certPolimit' => $certPolimit,
       'driver' => $driver,
-      'agent' => $agent,
+      'agent' => $agent
     ];
 
     $options = ([
@@ -314,7 +321,7 @@ $r=0;
 
     return view(
       'agent.form_edited',
-      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes')
+      compact('certificate', 'policytypes', 'certPolicy', 'certPolimit', 'driver', 'agent', 'r', 'allpolicytypes', 'insurProviders')
     );
 
 

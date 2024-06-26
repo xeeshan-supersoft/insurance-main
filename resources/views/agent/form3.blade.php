@@ -248,12 +248,23 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-49">
-                                                                                                <input
+                                                                                                {{-- <input
                                                                                                     placeholder="Enter Insurer A Details"
                                                                                                     value="@if (isset(  $certPolicy ) ){{ $certPolicy->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurA"
-                                                                                                    data-placeholder="Enter Insurer A Details">
+                                                                                                    data-placeholder="Enter Insurer A Details"> --}}
+                                                                                                    <select id="insurA">
+                                                                                                        <option>-Select-</option>
+                                                                                                          @foreach ($insurProviders as $ip)
+                                                                                                            <option @if (isset(  $certPolicy ) ){{ ($certPolicy->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                              data-naic="{{ $ip->naic_number }}"
+                                                                                                              data-brn="{{ $ip->best_rating_number }}"
+                                                                                                              value="{{ $ip->id }}">
+                                                                                                              {{ $ip->name }}
+                                                                                                          </option>
+                                                                                                          @endforeach
+                                                                                                    </select>
                                                                                                     <input type="hidden" id="insurance_provider_id_A" name="insurance_provider_id[]" value=""/>
                                                                                                     <div id="insurerAList">
                                                                                                     </div>
@@ -437,12 +448,23 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-52">
-                                                                                                <input
+                                                                                                {{-- <input
                                                                                                 placeholder="Enter Insurer B Details"
                                                                                                 value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                 class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                 id="insurB"
-                                                                                                data-placeholder="Enter Insurer B Details">
+                                                                                                data-placeholder="Enter Insurer B Details"> --}}
+                                                                                                <select id="insurB">
+                                                                                                  <option>-Select-</option>
+                                                                                                  @foreach ($insurProviders as $ip)
+                                                                                                    <option @if (!empty(  $certPolicy->skip(1)->take(1)->first() ) ){{ ($certPolicy->skip(1)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                      data-naic="{{ $ip->naic_number }}"
+                                                                                                      data-brn="{{ $ip->best_rating_number }}"
+                                                                                                      value="{{ $ip->id }}">
+                                                                                                      {{ $ip->name }}
+                                                                                                  </option>
+                                                                                                  @endforeach
+                                                                                                </select>
                                                                                                 <input type="hidden" id="insurance_provider_id_B" name="insurance_provider_id[]" value=""/>
                                                                                                 <div id="insurerBList">
                                                                                                 </div>
@@ -625,12 +647,23 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-55">
-                                                                                                <input
+                                                                                                {{-- <input
                                                                                                 placeholder="Enter Insurer C Details"
                                                                                                 value="@if (isset($certPolicy) && null !==  $certPolicy->skip(2)->take(1)->first() ){{ $certPolicy->skip(2)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                 class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                 id="insurC"
-                                                                                                data-placeholder="Enter Insurer C Details">
+                                                                                                data-placeholder="Enter Insurer C Details"> --}}
+                                                                                                <select id="insurC">
+                                                                                                  <option>-Select-</option>
+                                                                                                  @foreach ($insurProviders as $ip)
+                                                                                                    <option @if (!empty( $certPolicy->skip(2)->take(1)->first() ) ){{ ($certPolicy->skip(2)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                      data-naic="{{ $ip->naic_number }}"
+                                                                                                      data-brn="{{ $ip->best_rating_number }}"
+                                                                                                      value="{{ $ip->id }}">
+                                                                                                      {{ $ip->name }}
+                                                                                                  </option>
+                                                                                                  @endforeach
+                                                                                                </select>
                                                                                                 <input type="hidden" id="insurance_provider_id_C" name="insurance_provider_id[]" value=""/>
                                                                                                 <div id="insurerCList">
                                                                                                 </div>
@@ -813,12 +846,23 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-58">
-                                                                                                <input
+                                                                                                {{-- <input
                                                                                                     placeholder="Enter Insurer D Details"
                                                                                                     value="@if (isset($certPolicy) && null !==  $certPolicy->skip(3)->take(1)->first() ){{ $certPolicy->skip(3)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurD"
-                                                                                                    data-placeholder="Enter Insurer D Details">
+                                                                                                    data-placeholder="Enter Insurer D Details"> --}}
+                                                                                                    <select id="insurD">
+                                                                                                      <option>-Select-</option>
+                                                                                                      @foreach ($insurProviders as $ip)
+                                                                                                        <option @if (!empty(  $certPolicy->skip(3)->take(1)->first() ) ){{ ($certPolicy->skip(3)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                          data-naic="{{ $ip->naic_number }}"
+                                                                                                          data-brn="{{ $ip->best_rating_number }}"
+                                                                                                          value="{{ $ip->id }}">
+                                                                                                          {{ $ip->name }}
+                                                                                                      </option>
+                                                                                                      @endforeach
+                                                                                                    </select>
                                                                                                     <input type="hidden" id="insurance_provider_id_D" name="insurance_provider_id[]" value=""/>
                                                                                                     <div id="insurerDList">
                                                                                                     </div></span>
@@ -996,12 +1040,23 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-61">
-                                                                                                <input
+                                                                                                {{-- <input
                                                                                                     placeholder="Enter Insurer E  Details"
                                                                                                     value="@if (isset($certPolicy) && null !==  $certPolicy->skip(4)->take(1)->first() ){{ $certPolicy->skip(4)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                     class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                     id="insurE"
-                                                                                                    data-placeholder="Enter Insurer E Details">
+                                                                                                    data-placeholder="Enter Insurer E Details"> --}}
+                                                                                                    <select id="insurE">
+                                                                                                      <option>-Select-</option>
+                                                                                                      @foreach ($insurProviders as $ip)
+                                                                                                        <option @if (!empty(  $certPolicy->skip(4)->take(1)->first() ) ){{ ($certPolicy->skip(4)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                          data-naic="{{ $ip->naic_number }}"
+                                                                                                          data-brn="{{ $ip->best_rating_number }}"
+                                                                                                          value="{{ $ip->id }}">
+                                                                                                          {{ $ip->name }}
+                                                                                                      </option>
+                                                                                                      @endforeach
+                                                                                                    </select>
                                                                                                     <input type="hidden" id="insurance_provider_id_E" name="insurance_provider_id[]" value=""/>
                                                                                                     <div id="insurerEList">
                                                                                                     </div>
@@ -1185,12 +1240,23 @@ $navbarHideToggle = false;
                                                                                             </div>
                                                                                             <div
                                                                                                 class="mat-form-field-infix ng-tns-c70-52">
-                                                                                                <input
+                                                                                                {{-- <input
                                                                                                 placeholder="Enter Insurer F Details"
                                                                                                 value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->name }} @endif"
                                                                                                 class="js-example-basic-single form-control mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-49 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
                                                                                                 id="insurF"
-                                                                                                data-placeholder="Enter Insurer F Details">
+                                                                                                data-placeholder="Enter Insurer F Details"> --}}
+                                                                                                <select id="insurF">
+                                                                                                  <option>-Select-</option>
+                                                                                                  @foreach ($insurProviders as $ip)
+                                                                                                    <option @if (!empty(  $certPolicy->skip(5)->take(1)->first() ) ){{ ($certPolicy->skip(5)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                      data-naic="{{ $ip->naic_number }}"
+                                                                                                      data-brn="{{ $ip->best_rating_number }}"
+                                                                                                      value="{{ $ip->id }}">
+                                                                                                      {{ $ip->name }}
+                                                                                                  </option>
+                                                                                                  @endforeach
+                                                                                                </select>
                                                                                                 <input type="hidden" id="insurance_provider_id_F" name="insurance_provider_id[]" value=""/>
                                                                                                 <div id="insurerFList">
                                                                                                 </div>
@@ -1250,9 +1316,9 @@ $navbarHideToggle = false;
                                                                                                 <input matinput=""
                                                                                                     placeholder="Enter Insurer F Details"
                                                                                                     formcontrolname="insNaicNoF"
-                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(1)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->naic_number }} @endif"
+                                                                                                    value="@if (isset($certPolicy) && null !==  $certPolicy->skip(5)->take(1)->first() ){{ $certPolicy->skip(1)->take(1)->first()->insuranceProvider->naic_number }} @endif"
                                                                                                     class="mat-input-element mat-form-field-autofill-control mat-autocomplete-trigger ng-tns-c70-50 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored"
-                                                                                                    id="naic_F"
+                                                                                                    id="naic_f"
                                                                                                     data-placeholder="Enter Insurer F Details"
                                                                                                     aria-autocomplete="list"
                                                                                                     aria-expanded="false"
@@ -2396,10 +2462,10 @@ $navbarHideToggle = false;
                                                                         class="ng-tns-c268-42">ACORD 101</a>,
                                                                     Additional Remarks Schedule, if more space is
                                                                     required)
-                                                                
+
                                                                     <div class="form-floating form-floating-outline mb-4">
                                                                         <textarea class="form-control h-px-100" name="descrp" style="background-color: rgb(201 196 196 / 15%) !important;width: 100%;height: 90px;color: #000000;" placeholder="Comments here..."></textarea>
-                                                                      
+
                                                                       </div>
                                                                 </div>
                                                                 <table width="100%" cellpadding="0" cellspacing="0"
@@ -2479,10 +2545,10 @@ $navbarHideToggle = false;
                             <div class="form-floating form-floating-outline mb-4">
                               <h3>Additional Remarks Schedule</h3>
                               </div>
-   
+
                             <div class="form-floating form-floating-outline mb-4">
                                 <textarea class="form-control h-px-100" name="ars" style="background-color: rgb(201 196 196 / 15%) !important;width: 100%;height: 290px;color: #000000;" placeholder="Comments here..."></textarea>
-                              
+
                               </div>
 
                             <div fxlayout="row" fxlayoutalign="center center" class="acord-button-row ng-tns-c268-42"
