@@ -855,10 +855,10 @@
                               class=" ng-tns-c268-42">
                             <tbody>
                               @php
-                                $filteredPolicies = $certPolicy->whereIn('policy_type_id', [3, 4, 7, 8])->unique('policy_type_id');
+                                $filteredPolicies = $certPolicy->whereIn('policy_type_id', [3, 4,6, 7, 8])->unique('policy_type_id');
                               @endphp
                               @if($filteredPolicies->isNotEmpty())
-                              @foreach ($certPolicy->whereIn('policy_type_id', [3,4,7,8])->unique('policy_type_id') as $cp)
+                              @foreach ($certPolicy->whereIn('policy_type_id', [3,4,6, 7,8])->unique('policy_type_id') as $cp)
                                       @if(!empty($cp))
                                       <tr style="line-height:1;">
                                         <td width="3%" style="border-right: 1px solid black;" >
