@@ -10,7 +10,7 @@ class Certificate extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client_user_id', 'producer_user_id', 'created_at', 'ars' , 'descrp','updated_at',
+        'client_user_id', 'producer_user_id', 'created_at', 'ars' , 'ch', 'descrp','updated_at',
     ];
 
     public function agent()

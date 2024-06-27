@@ -26,7 +26,8 @@ class CertificateService
     $new_cert->client_user_id = Session::get('driver_id');
     $new_cert->producer_user_id = Auth::user()->id;
     $new_cert->ars =  $certificateData['ars'];
-    $new_cert->	descrp =  $certificateData['descrp'];
+    $new_cert->descrp =  $certificateData['descrp'];
+    $new_cert->ch =  $certificateData['ch'];
     $new_cert->created_at = $this->current_date_time;
 
     $new_cert->save();
@@ -59,6 +60,9 @@ class CertificateService
         }
         if ($certificateData['insurance_provider_code'][$k] == 'E') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
+        }
+        if ($certificateData['insurance_provider_code'][$k] == 'F') {
+          $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][5];
         }
 
         $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
@@ -135,6 +139,9 @@ class CertificateService
           if ($certificateData['insurance_provider_code'][$k] == 'E') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
           }
+          if ($certificateData['insurance_provider_code'][$k] == 'F') {
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][5];
+          }
           $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
           $certificatePolicy->issue_date = Carbon::now()->format('Y-m-d');
           $certificatePolicy->start_date = $certificateData['main_policy_eff_date'][$k];
@@ -165,6 +172,9 @@ class CertificateService
           }
           if ($certificateData['insurance_provider_code'][$k] == 'E') {
             $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
+          }
+          if ($certificateData['insurance_provider_code'][$k] == 'F') {
+            $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][5];
           }
           $certificatePolicy->policy_number = $certificateData['main_policy_polnum'][$k];
           $certificatePolicy->issue_date = Carbon::now()->format('Y-m-d');
