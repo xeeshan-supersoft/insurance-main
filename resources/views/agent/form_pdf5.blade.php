@@ -863,15 +863,15 @@
                                       <tr style="line-height:1;">
                                         <td width="3%" style="border-right: 1px solid black;" >
                                              
-                                                <label>{{ $cp->insurance_provider_code }}</label> 
+                                          &nbsp;&nbsp;<label>{{ $cp->insurance_provider_code }}</label> 
                                               </td>
                                               <td width="24.5%" style="border-right: 1px solid black;">
-                                                <label>{{ $cp->policyType->type_name }}</label>                                          
+                                                &nbsp;&nbsp;<label>{{ $cp->policyType->type_name }}</label>                                          
                                               </td>
                                               <td width="3%" style="border-right: 1px solid black;"></td>
                                               <td width="3%" style="border-right: 1px solid black;"></td>
                                               <td width="24.5%" style="border-right: 1px solid black;">
-                                                {{ $cp->policy_number }}
+                                                &nbsp;&nbsp;{{ $cp->policy_number }}
                                               </td>
                                               <td valign="middle" style="text-align: center; vertical-align: middle; border-right: 1px solid black;">
                                                 {{  date('m-d-Y', strtotime($cp->start_date)) }}
@@ -881,33 +881,33 @@
                                               </td>
                                               <td width="28%">
                                                 @if($cp->policyType->id==3 )
-                                                LIMIT PER VEHICLE
+                                                &nbsp;&nbsp;LIMIT PER VEHICLE
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
                                                   {{ $cptpl->where('policy_limit_id', 11)->first()->amount }}
                                                   @endforeach
                                                 @endif
                                                 @if($cp->policyType->id==4 )
-                                                  Limit/ Trailer
+                                                &nbsp;&nbsp;Limit/ Trailer
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
                                                   {{ $cptpl->where('policy_limit_id', 12)->first()->amount }}
                                                   @endforeach
                                                 @endif
                                                 @if($cp->policyType->id==6 )
-                                                Limit/Ded
+                                                &nbsp;&nbsp;Limit/Ded
                                                 @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
                                                 {{ $cptpl->where('policy_limit_id', 20)->first()->amount }}/
                                                 {{ $cptpl->where('policy_limit_id', 19)->first()->amount }}
                                                 @endforeach
                                               @endif
                                                 @if($cp->policyType->id==7 )
-                                                  Limit/Ded
+                                                &nbsp;&nbsp;Limit/Ded
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
                                                   {{ $cptpl->where('policy_limit_id', 22)->first()->amount }} /
                                                   {{ $cptpl->where('policy_limit_id', 21)->first()->amount }}
                                                   @endforeach
                                                 @endif
                                                 @if($cp->policyType->id==8 )
-                                                  Limit/Ded
+                                                &nbsp;&nbsp;Limit/Ded
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
                                                   {{ $cptpl->where('policy_limit_id', 24)->first()->amount }} /
                                                   {{ $cptpl->where('policy_limit_id', 23)->first()->amount }}
