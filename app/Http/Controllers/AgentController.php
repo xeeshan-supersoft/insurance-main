@@ -174,7 +174,6 @@ class AgentController extends Controller
       $customOrder = [
         'General Liability',
         'Auto Liability',
-        'Cargo',
         'Trailer Interchange',
         'Umbrella',
         'Work Comp Employers Liability'
