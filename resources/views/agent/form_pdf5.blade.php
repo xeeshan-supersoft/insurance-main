@@ -895,7 +895,7 @@
                                                 @if($cp->policyType->id==6 )
                                                 Limit/Ded
                                                 @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                {{ $cptpl->where('policy_limit_id', 20)->first()->amount }}
+                                                {{ $cptpl->where('policy_limit_id', 20)->first()->amount }}/
                                                 {{ $cptpl->where('policy_limit_id', 19)->first()->amount }}
                                                 @endforeach
                                               @endif
@@ -965,14 +965,7 @@
                                       <tbody class="ng-tns-c268-42">
                                         <tr class="ng-tns-c268-42">
                                           <td rowspan="2" width="50%">
-                                            President <br />
-                                            The Acme
-                                            Association of North America <br /> 11785
-                                            Beltsville Drive
-                                            <br /> Suite
-                                            1100<br />
-                                            Calverton, MD
-                                            20705-4048
+                                            &nbsp;&nbsp;&nbsp;&nbsp; {{$certificate->ch}}
                                           </td>
                                           <td class="fot_titel ng-tns-c268-42"> SHOULD ANY OF THE ABOVE DESCRIBED POLICIES BE CANCELLED BEFORE THE EXPIRATION DATE THEREOF, THE ISSUING INSURER WILL ENDEAVOR TO MAIL 30 DAYS WRITTEN NOTICE TO THE CERTIFICATE HOLDER NAMED TO THE LEFT, BUT FAILURE TO DO SO SHALL IMPOSE NO OBLIGATION OR LIABILITY OF ANY KIND UPON THE INSURER, ITS AGENTS OR REPRESENTATIVES.
                                           </td>
@@ -1026,7 +1019,7 @@
 
         </div>
       </div>
-   <div style="height: 90px"></div>
+   <div style="height: 60px"></div>
 
 
 <div id="acordPage" fxlayout="row" class="page-layout simple right-sidebar ng-tns-c268-42"
@@ -1099,7 +1092,7 @@ style="flex-direction: row; box-sizing: border-box; display: flex;">
       </tr>
       <tr style="border:1px solid black; ">
         <td colspan="2"  width="80%"class="lable_title" style="border-right: 1px solid black">  <label> &nbsp;&nbsp; CARRIER</label> <br class="ng-tns-c268-42"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </td> 
-        <td class="lable_title" width="20%" style="border-top: 1px solid black"> <label>NAIC CODE</label> <br class="ng-tns-c268-42">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </td> 
+        <td class="lable_title" width="20%" style="border-top: 1px solid black"> <label>&nbsp;&nbsp;NAIC CODE</label> <br class="ng-tns-c268-42">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </td> 
       </tr>
     </tbody>
   </table>
@@ -1139,7 +1132,7 @@ style="flex-direction: row; box-sizing: border-box; display: flex;">
      THIS ADDITIONAL REMARKS DORM IS A SCHEDULE TO ACCORD FORM, <br>
     FORM NUMBER <u> 101 </u> FROM TITLE: <u> </u> </td></tr>
     <tr class="ng-tns-c268-42 efd">
-      <td valign="top"  style="height:750px;"> 
+      <td valign="top"  style="height:750px; font-size:10px"> 
        
         {{$certificate->ars}}
 
