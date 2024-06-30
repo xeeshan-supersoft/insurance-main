@@ -133,7 +133,7 @@
                                             style="border :1px solid black; text-align: center;">
                                             <span  style="font-size:9px;" >DATE (MM/DD/YYYY)</span>
                                             <div class=""style="font-size:9px; ">
-                                              {{ date('m-d-Y', strtotime($certificate->created_at)) }}
+                                              {{ date('m-d-Y', strtotime($certificate->date)) }}
                                             </div>
                                           </td>
                                         </tr>
@@ -855,10 +855,10 @@
                               class=" ng-tns-c268-42">
                             <tbody>
                               @php
-                                $filteredPolicies = $certPolicy->whereIn('policy_type_id', [3, 4,6, 7, 8])->unique('policy_type_id');
+                                $filteredPolicies = $certPolicy->whereIn('policy_type_id', [3, 4, 6, 7, 8])->unique('policy_type_id');
                               @endphp
                               @if($filteredPolicies->isNotEmpty())
-                              @foreach ($certPolicy->whereIn('policy_type_id', [3,4,6, 7,8])->unique('policy_type_id') as $cp)
+                              @foreach ($certPolicy->whereIn('policy_type_id', [3,4,6,7,8])->unique('policy_type_id') as $cp)
                                       @if(!empty($cp))
                                       <tr style="line-height:1;">
                                         <td width="3%" style="border-right: 1px solid black;" >
@@ -883,34 +883,34 @@
                                                 @if($cp->policyType->id==3 )
                                                 &nbsp;&nbsp;LIMIT PER VEHICLE
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                  {{ $cptpl->where('policy_limit_id', 11)->first()->amount }}
+                                                  {{ $cptpl->where('policy_limit_id', 11)->where('certificate_id', $certificate->id)->get()->last()->amount }}
                                                   @endforeach
                                                 @endif
                                                 @if($cp->policyType->id==4 )
                                                 &nbsp;&nbsp;Limit/ Trailer
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                  {{ $cptpl->where('policy_limit_id', 12)->first()->amount }}
+                                                  {{ $cptpl->where('policy_limit_id', 12)->where('certificate_id', $certificate->id)->get()->last()->amount }}
                                                   @endforeach
                                                 @endif
                                                 @if($cp->policyType->id==6 )
                                                 &nbsp;&nbsp;Limit/Ded
                                                 @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                {{ $cptpl->where('policy_limit_id', 20)->first()->amount }}/
-                                                {{ $cptpl->where('policy_limit_id', 19)->first()->amount }}
+                                                {{ $cptpl->where('policy_limit_id', 20)->where('certificate_id', $certificate->id)->get()->last()->amount }}/
+                                                {{ $cptpl->where('policy_limit_id', 19)->where('certificate_id', $certificate->id)->get()->last()->amount }}
                                                 @endforeach
                                               @endif
                                                 @if($cp->policyType->id==7 )
                                                 &nbsp;&nbsp;Limit/Ded
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                  {{ $cptpl->where('policy_limit_id', 22)->first()->amount }} /
-                                                  {{ $cptpl->where('policy_limit_id', 21)->first()->amount }}
+                                                  {{ $cptpl->where('policy_limit_id', 22)->where('certificate_id', $certificate->id)->get()->last()->amount }} /
+                                                  {{ $cptpl->where('policy_limit_id', 21)->where('certificate_id', $certificate->id)->get()->last()->amount }}
                                                   @endforeach
                                                 @endif
                                                 @if($cp->policyType->id==8 )
                                                 &nbsp;&nbsp;Limit/Ded
                                                   @foreach ($cp->policyType->certificatePolicyLimits->unique('policy_type_id') as $cptpl)
-                                                  {{ $cptpl->where('policy_limit_id', 24)->first()->amount }} /
-                                                  {{ $cptpl->where('policy_limit_id', 23)->first()->amount }}
+                                                  {{ $cptpl->where('policy_limit_id', 24)->where('certificate_id', $certificate->id)->get()->last()->amount }} /
+                                                  {{ $cptpl->where('policy_limit_id', 23)->where('certificate_id', $certificate->id)->get()->last()->amount }}
                                                   @endforeach
                                                 @endif                                              
                                               </td>                                       
@@ -941,7 +941,7 @@
                                 <div style="font-size: 9px; height:90px;" class="ng-tns-c268-42">
                                   DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES (Attach ACORD 101, Additional Remarks
                                   Schedule, if more space is required) <br class="ng-tns-c268-42"> <br class="ng-tns-c268-42"> 
-                                  <lable>   {{$certificate->descrp}}    </lable></div>
+                                  <lable style="white-space: pre-wrap;">   {{$certificate->descrp}}    </lable></div>
 
                               </td>
                             </tr>
@@ -964,7 +964,7 @@
                                       class="tftable ng-tns-c268-42">
                                       <tbody class="ng-tns-c268-42">
                                         <tr class="ng-tns-c268-42">
-                                          <td rowspan="2" width="50%">
+                                          <td rowspan="2" width="50%" style="white-space: pre-wrap;">
                                             &nbsp;&nbsp;&nbsp;&nbsp; {{$certificate->ch}}
                                           </td>
                                           <td class="fot_titel ng-tns-c268-42"> SHOULD ANY OF THE ABOVE DESCRIBED POLICIES BE CANCELLED BEFORE THE EXPIRATION DATE THEREOF, THE ISSUING INSURER WILL ENDEAVOR TO MAIL 30 DAYS WRITTEN NOTICE TO THE CERTIFICATE HOLDER NAMED TO THE LEFT, BUT FAILURE TO DO SO SHALL IMPOSE NO OBLIGATION OR LIABILITY OF ANY KIND UPON THE INSURER, ITS AGENTS OR REPRESENTATIVES.

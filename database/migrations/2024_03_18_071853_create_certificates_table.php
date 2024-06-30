@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('ars')->nullable();
             $table->longText('descrp')->nullable();
             $table->longText('ch')->nullable();
+            $table->string('date')->nullable();
             $table->timestamps();
         });
     }

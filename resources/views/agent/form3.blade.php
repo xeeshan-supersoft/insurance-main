@@ -61,8 +61,19 @@ $navbarHideToggle = false;
                                                                                 INSURANCE</span></td></span></td>
                                                                                 <td width="120px" class="date_top ng-tns-c268-42">
                                                                                     <div class="mat-form-field-subscript-wrapper ng-tns-c70-48"
-                                                                                    style="text-align: center; position: relative; top:10px; float: left; ">
-                                                                                        {{ isset($certificate->created_at) ?date('Y-m-d', strtotime($certificate->created_at)) : '' }}
+                                                                                    style=" position: relative; top:10px; float: left; ">
+
+                                                                                    <input
+                                                                                    @if ($r==1)
+                                                                                    type="text"
+                                                                                    @else
+                                                                                    type="date"
+                                                                                    @endif    
+                                                                                 name="date"
+                                                                                style="font-size:13px"
+                                                                                 value=" {{ isset($certificate->date) ?date('Y-m-d', strtotime($certificate->date)) : '' }}"
+                                                                                     >
+                                                                                        
                                                                                     </div>
                                                                                 </td>
                                                                     </tr>
@@ -2500,9 +2511,10 @@ $navbarHideToggle = false;
                                                                         <tr class="ng-tns-c268-42">
                                                                             <td rowspan="2" width="50%"
                                                                                 class="ct_holder ng-tns-c268-42">
-                                                                                <input name="ch" value=""oninput="this.value = this.value.toUpperCase()"
-                                                                                class="toupper mat-input-element mat-form-field-autofill-control ng-tns-c70-64 ng-untouched ng-pristine ng-invalid cdk-text-field-autofill-monitored"
-                                                                                required="" id="sad">
+                                                                              
+                                                                                <textarea class="form-control h-px-100" required name="ch" style="background-color: rgb(201 196 196 / 15%) !important;width: 100%;height: 90px;color: #000000;" placeholder="Comments here..."></textarea>
+
+
                                                                             </td>
                                                                             <td class="fot_titel ng-tns-c268-42"> SHOULD
                                                                                 ANY OF THE

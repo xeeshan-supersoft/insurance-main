@@ -49,19 +49,19 @@ class CertificateService
         if ($certificateData['insurance_provider_code'][$k] == 'A') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'B') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'B') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'C') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'C') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'D') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'D') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'E') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'E') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'F') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'F') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][5];
         }
 
