@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group py-3">
                         <label for="description">Phone No:</label>
-                        <input type="tel" wire:model="phone" class="form-control" id="productAmount" />
+                        <input type="tel" wire:model="phone" class="form-control" id="phone" />
                         @error('phone') <span class="error">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group p-3">

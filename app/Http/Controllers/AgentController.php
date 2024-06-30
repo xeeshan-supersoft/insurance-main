@@ -85,6 +85,7 @@ class AgentController extends Controller
   public function store(Request $request, CertificateService $certificateService)
   {
     $resp = $certificateService->store($request->all());
+    // return dd($request);
     return redirect()->route('formlist');
   }
 
@@ -297,6 +298,8 @@ class AgentController extends Controller
     $driver = User::with('truckers')->find($certificate->client_user_id);
     $agent = User::with('agencies')->find($certificate->producer_user_id);
 
+    // dd($certPolicy);
+    
     $data = [
       'certificate' => $certificate,
       'policytypes' => $policytypes,

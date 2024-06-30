@@ -25,6 +25,7 @@ class CertificateService
     $new_cert = new Certificate();
     $new_cert->client_user_id = Session::get('driver_id');
     $new_cert->producer_user_id = Auth::user()->id;
+    $new_cert->date =  $certificateData['date'];
     $new_cert->ars =  $certificateData['ars'];
     $new_cert->descrp =  $certificateData['descrp'];
     $new_cert->ch =  $certificateData['ch'];
@@ -49,19 +50,19 @@ class CertificateService
         if ($certificateData['insurance_provider_code'][$k] == 'A') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][0];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'B') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'B') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][1];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'C') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'C') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][2];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'D') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'D') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][3];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'E') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'E') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][4];
         }
-        if ($certificateData['insurance_provider_code'][$k] == 'F') {
+        elseif ($certificateData['insurance_provider_code'][$k] == 'F') {
           $certificatePolicy->insurance_provider_id = $certificateData['insurance_provider_id'][5];
         }
 

@@ -61,8 +61,8 @@ $navbarHideToggle = false;
                                                                                     CERTIFICATE OF LIABILITY INSURANCE</span></td>
                                                                                 <td width="120px" class="date_top ng-tns-c268-42">
                                                                                     <div class="mat-form-field-subscript-wrapper ng-tns-c70-48"
-                                                                                    style="text-align: center; position: relative; top:10px; float: left; ">
-                                                                                        {{ date('Y-m-d', strtotime($certificate->created_at)) }}
+                                                                                    style="text-align: center; position: relative; top:10px; float: left;  font-size:13px">
+                                                                                        {{ date('Y-m-d', strtotime($certificate->date)) }}
                                                                                     </div>
                                                                                 </td>
                                                                     </tr>
@@ -266,7 +266,7 @@ $navbarHideToggle = false;
                                                                                                     <select id="insurA" class="selecter">
                                                                                                       <option value="">-Select-</option>
                                                                                                       @foreach ($insurProviders as $ip)
-                                                                                                        <option @if (!empty(  $certPolicy->first() ) ){{ ($certPolicy->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                        <option @if (!empty(  $certPolicy->first() ) ){{ ($certPolicy->first()->insurance_provider_id ==$ip->id   && $certPolicy->first()->insurance_provider_code == 'A' )? 'selected' : ''  }} @endif
                                                                                                           data-naic="{{ $ip->naic_number }}"
                                                                                                           data-brn="{{ $ip->best_rating_number }}"
                                                                                                           value="{{ $ip->id }}">
@@ -274,6 +274,7 @@ $navbarHideToggle = false;
                                                                                                       </option>
                                                                                                       @endforeach
                                                                                                     </select>
+                                                                                                          
                                                                                                     <input type="hidden" id="insurance_provider_id_A" name="insurance_provider_id[]" value="@if(isset($certPolicy)){{$certPolicy->first()->insuranceProvider->id}}@endif"/>
                                                                                                     <div id="insurerAList">
                                                                                                     </div>
@@ -478,7 +479,7 @@ $navbarHideToggle = false;
                                                                                                     <select id="insurB" class="selecter">
                                                                                                       <option value="">-Select-</option>
                                                                                                       @foreach ($insurProviders as $ip)
-                                                                                                        <option @if (!empty(  $certPolicy->skip(1)->take(1)->first() ) ){{ ($certPolicy->skip(1)->take(1)->first()->insurance_provider_id ==$ip->id)? 'selected' : ''  }} @endif
+                                                                                                        <option @if (!empty(  $certPolicy->skip(1)->take(1)->first() ) ){{ ($certPolicy->skip(1)->take(1)->first()->insurance_provider_id ==$ip->id && $certPolicy->first()->insurance_provider_code == 'B')? 'selected' : ''  }} @endif
                                                                                                           data-naic="{{ $ip->naic_number }}"
                                                                                                           data-brn="{{ $ip->best_rating_number }}"
                                                                                                           value="{{ $ip->id }}">
